@@ -30,26 +30,26 @@ const Terminal: React.FC = () => {
       }
 
       const currentLine = script[lineIndex];
-      
+
       // Instant print for separator lines or results, typing effect for commands
       if (!currentLine.startsWith('>')) {
-         setLines(prev => {
-            const newLines = [...prev];
-            if (newLines[lineIndex] !== currentLine) {
-                newLines[lineIndex] = currentLine;
-            } else {
-                // If line already exists (from re-render), don't duplicate logic
-                return prev;
-            }
-            return newLines;
-         });
-         // Fill empty slot if needed
-         if (lines.length <= lineIndex) {
-            setLines(prev => [...prev, currentLine]);
-         }
-         
-         lineIndex++;
-         timeout = setTimeout(typeLine, 300);
+        setLines(prev => {
+          const newLines = [...prev];
+          if (newLines[lineIndex] !== currentLine) {
+            newLines[lineIndex] = currentLine;
+          } else {
+            // If line already exists (from re-render), don't duplicate logic
+            return prev;
+          }
+          return newLines;
+        });
+        // Fill empty slot if needed
+        if (lines.length <= lineIndex) {
+          setLines(prev => [...prev, currentLine]);
+        }
+
+        lineIndex++;
+        timeout = setTimeout(typeLine, 300);
       } else {
         // Typing effect
         if (charIndex <= currentLine.length) {
@@ -85,8 +85,8 @@ const Terminal: React.FC = () => {
           <div className="w-3 h-3 rounded-full bg-green-500 hover:bg-green-600 transition-colors"></div>
         </div>
         <div className="flex items-center text-gray-400 gap-2 text-xs">
-            <TerminalIcon size={12} />
-            <span>dauda_profile.py — zsh</span>
+          <TerminalIcon size={12} />
+          <span>dauda_profile.py — zsh</span>
         </div>
         <div className="w-10"></div> {/* Spacer for centering */}
       </div>
@@ -96,17 +96,20 @@ const Terminal: React.FC = () => {
         {lines.map((line, idx) => (
           <div key={idx} className="min-h-[1.5em] whitespace-pre-wrap">
             {line}
-            {idx === lines.findIndex(l => l.length < script[lines.findIndex(s => s === l)]?.length ?? -1) && isTyping && (
-              <span className="animate-pulse inline-block w-2 h-4 bg-green-400 ml-1 align-middle"></span>
-            )}
+            {idx === lines.findIndex(l => {
+              const scriptLine = script[lines.indexOf(l)];
+              return l.length < (scriptLine?.length ?? -1);
+            }) && isTyping && (
+                <span className="animate-pulse inline-block w-2 h-4 bg-green-400 ml-1 align-middle"></span>
+              )}
           </div>
         ))}
         {!isTyping && (
-           <div className="mt-2 flex items-center">
-              <span className="text-blue-400 mr-2">➜</span>
-              <span className="text-yellow-300 mr-2">~</span>
-              <span className="animate-pulse inline-block w-2 h-4 bg-gray-400"></span>
-           </div>
+          <div className="mt-2 flex items-center">
+            <span className="text-blue-400 mr-2">➜</span>
+            <span className="text-yellow-300 mr-2">~</span>
+            <span className="animate-pulse inline-block w-2 h-4 bg-gray-400"></span>
+          </div>
         )}
       </div>
     </div>

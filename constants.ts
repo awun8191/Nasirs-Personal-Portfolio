@@ -1,7 +1,7 @@
 
-import { Project, SkillCategory } from './types';
+import { Project } from './types';
 
-export const HERO_IMAGE = "https://picsum.photos/id/1005/800/1000"; 
+export const HERO_IMAGE = "https://picsum.photos/id/1005/800/1000";
 
 export const ABOUT_TEXT = "I am a Senior Software Engineer with a deep focus on building scalable systems. My expertise bridges the gap between robust Python backends and fluid Flutter mobile experiences. Recently, I've pivoted towards the cutting edge of AI, specializing in RAG systems and AI Agent development, backed by Nvidia certification.";
 
@@ -30,7 +30,7 @@ export const SKILL_SECTIONS = [
     title: "Cloud Infrastructure",
     description: "I architect scalable, serverless, and global solutions. My multi-cloud strategy leverages the best services from AWS and GCP to ensure 99.99% uptime and low latency.",
     theme: {
-      bg: "bg-[#0B1120] dark:bg-[#050914]", 
+      bg: "bg-[#0B1120] dark:bg-[#050914]",
       text: "text-white",
       secondaryText: "text-slate-400",
       card: "bg-white/5 border-white/10 hover:bg-white/10 hover:border-white/20 backdrop-blur-sm",
@@ -49,7 +49,7 @@ export const SKILL_SECTIONS = [
     title: "AI & Intelligence",
     description: "Certified by Nvidia, I integrate cutting-edge AI into practical business applications. From RAG pipelines to autonomous agents, I build systems that think.",
     theme: {
-      bg: "bg-[#F0FDF4] dark:bg-[#064e3b]/20", 
+      bg: "bg-[#F0FDF4] dark:bg-[#064e3b]/20",
       text: "text-[#14532D] dark:text-[#4ade80]",
       secondaryText: "text-[#166534] dark:text-[#86efac]",
       card: "bg-white dark:bg-gray-900 border-green-100 dark:border-green-900 hover:border-green-300 shadow-sm hover:shadow-green-900/5",
@@ -68,7 +68,7 @@ export const SKILL_SECTIONS = [
     title: "DevOps & Delivery",
     description: "Code is only as good as its delivery pipeline. I implement rigorous CI/CD workflows and containerization strategies to ensure rapid, reliable deployments.",
     theme: {
-      bg: "bg-[#FAFAFA] dark:bg-neutral-900", 
+      bg: "bg-[#FAFAFA] dark:bg-neutral-900",
       text: "text-dark dark:text-gray-100",
       secondaryText: "text-gray-500 dark:text-gray-400",
       card: "bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 hover:border-dark dark:hover:border-gray-500 hover:shadow-none transition-all duration-200",
