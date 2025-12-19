@@ -2,21 +2,13 @@ import { GoogleGenAI, GenerateContentResponse } from "@google/genai";
 import { SYSTEM_INSTRUCTION } from '../constants';
 
 // Initialize Gemini Client
-const apiKey = process.env.API_KEY || ''; 
-// Note: In a real prod environment, you might proxy this through a backend to hide the key, 
-// but for this client-side demo per instructions, we use process.env.
-
-const ai = new GoogleGenAI({ apiKey });
+const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
 
 export const sendMessageToGemini = async (
   message: string,
   history: { role: string; parts: { text: string }[] }[]
 ): Promise<string> => {
   try {
-    if (!apiKey) {
-      return "I'm sorry, I cannot connect to the brain right now (Missing API Key).";
-    }
-
     const modelId = 'gemini-3-flash-preview';
 
     // Construct the chat history for context, though for simple stateless calls we can just use generateContent.
