@@ -1,7 +1,7 @@
 
 import { Project } from './types';
 
-export const HERO_IMAGE = "https://picsum.photos/id/1005/800/1000";
+export const HERO_IMAGE = "/image.png";
 
 export const ABOUT_TEXT = "I am a Senior Software Engineer with a deep focus on building scalable systems. My expertise bridges the gap between robust Python backends and fluid Flutter mobile experiences. Recently, I've pivoted towards the cutting edge of AI, specializing in RAG systems and AI Agent development, backed by Nvidia certification.";
 
@@ -112,7 +112,7 @@ export const PROJECTS: Project[] = [
 
 export const SOCIAL_LINKS = [
   { platform: "LinkedIn", url: "#", label: "Connect on LinkedIn" },
-  { platform: "WhatsApp", url: "#", label: "Chat on WhatsApp" },
+  { platform: "WhatsApp", url: "https://wa.me/2349153002715", label: "09153002715" },
   { platform: "Email", url: "mailto:nasirdaud2015@gmail.com", label: "nasirdaud2015@gmail.com" }
 ];
 
