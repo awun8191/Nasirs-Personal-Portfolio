@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState, useCallback, useRef } from 'react';
 import {
     ArrowLeft, ArrowRight, Cpu, Brain,
     Layers,
@@ -18,6 +18,7 @@ interface CaseStudyProps {
 const EngineeringHubCaseStudy: React.FC<CaseStudyProps> = ({ onBack, onViewDocs }) => {
     const [activeIndex, setActiveIndex] = useState(0);
     const [isPaused, setIsPaused] = useState(false);
+    const scrollRef = useRef<HTMLDivElement>(null);
 
     // Scroll to top on mount
     useEffect(() => {
@@ -110,13 +111,34 @@ const EngineeringHubCaseStudy: React.FC<CaseStudyProps> = ({ onBack, onViewDocs 
         }
     ];
 
+    const scrollToIndex = useCallback((index: number) => {
+        if (scrollRef.current) {
+            const container = scrollRef.current;
+            container.scrollTo({
+                left: index * container.clientWidth,
+                behavior: 'smooth'
+            });
+            setActiveIndex(index);
+        }
+    }, [activeIndex]);
+
     const nextSlide = useCallback(() => {
-        setActiveIndex((prev) => (prev + 1) % capabilities.length);
-    }, [capabilities.length]);
+        scrollToIndex((activeIndex + 1) % capabilities.length);
+    }, [activeIndex, capabilities.length, scrollToIndex]);
 
     const prevSlide = useCallback(() => {
-        setActiveIndex((prev) => (prev - 1 + capabilities.length) % capabilities.length);
-    }, [capabilities.length]);
+        scrollToIndex((activeIndex - 1 + capabilities.length) % capabilities.length);
+    }, [activeIndex, capabilities.length, scrollToIndex]);
+
+    const handleScroll = () => {
+        if (scrollRef.current) {
+            const container = scrollRef.current;
+            const index = Math.round(container.scrollLeft / container.clientWidth);
+            if (index !== activeIndex && index >= 0 && index < capabilities.length) {
+                setActiveIndex(index);
+            }
+        }
+    };
 
     // Auto-scroll logic
     useEffect(() => {
@@ -271,52 +293,51 @@ const EngineeringHubCaseStudy: React.FC<CaseStudyProps> = ({ onBack, onViewDocs 
                         onMouseEnter={() => setIsPaused(true)}
                         onMouseLeave={() => setIsPaused(false)}
                     >
-                        <div className="overflow-hidden py-10">
-                            <div
-                                className="flex transition-transform duration-700 cubic-bezier(0.4, 0, 0.2, 1)"
-                                style={{ transform: `translateX(-${activeIndex * 100}%)` }}
-                            >
-                                {capabilities.map((cap, idx) => (
-                                    <div key={idx} className="w-full flex-shrink-0 px-2 md:px-0">
-                                        <div className="max-w-5xl mx-auto p-8 md:p-16 rounded-[3rem] md:rounded-[4rem] bg-gray-50 dark:bg-gray-950 border border-gray-100 dark:border-white/5 shadow-2xl relative overflow-hidden group">
-                                            {/* bg gradient accent */}
-                                            <div className={`absolute top-0 right-0 w-[400px] h-[400px] ${cap.bgAccent} rounded-full blur-[100px] -mr-40 -mt-40 opacity-50 group-hover:scale-110 transition-transform duration-1000`} />
+                        <div
+                            ref={scrollRef}
+                            onScroll={handleScroll}
+                            className="overflow-x-auto overflow-y-hidden py-10 flex scroll-smooth snap-x snap-mandatory scrollbar-hide"
+                        >
+                            {capabilities.map((cap, idx) => (
+                                <div key={idx} className="w-full flex-shrink-0 px-2 md:px-0 snap-center">
+                                    <div className="max-w-5xl mx-auto p-6 md:p-16 rounded-[2.5rem] md:rounded-[4rem] bg-gray-50 dark:bg-gray-950 border border-gray-100 dark:border-white/5 shadow-2xl relative overflow-hidden group">
+                                        {/* bg gradient accent */}
+                                        <div className={`absolute top-0 right-0 w-[400px] h-[400px] ${cap.bgAccent} rounded-full blur-[100px] -mr-40 -mt-40 opacity-50 group-hover:scale-110 transition-transform duration-1000`} />
 
-                                            <div className="relative z-10 grid md:grid-cols-2 gap-12 md:gap-20 items-center">
-                                                <div>
-                                                    <div className="w-20 h-20 md:w-24 md:h-24 rounded-[2rem] bg-white dark:bg-dark border border-gray-100 dark:border-white/10 flex items-center justify-center shadow-xl mb-10">
-                                                        <cap.icon className={cap.accent} size={40} />
-                                                    </div>
-                                                    <h3 className="text-3xl md:text-5xl font-black text-dark dark:text-white mb-6 uppercase tracking-tighter leading-none">{cap.title}</h3>
-                                                    <p className="text-lg md:text-xl text-gray-500 dark:text-gray-400 mb-10 font-medium leading-tight tracking-tight">
-                                                        {cap.description}
-                                                    </p>
-
-                                                    <div className="flex gap-8">
-                                                        {cap.features.map((f, i) => (
-                                                            <div key={i}>
-                                                                <p className={`text-3xl md:text-4xl font-black ${cap.accent} tracking-tighter`}>{f.val}</p>
-                                                                <p className="text-[10px] uppercase tracking-widest font-black text-gray-400 mt-1">{f.label}</p>
-                                                            </div>
-                                                        ))}
-                                                    </div>
+                                        <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 items-center">
+                                            <div>
+                                                <div className="w-20 h-20 md:w-24 md:h-24 rounded-[2rem] bg-white dark:bg-dark border border-gray-100 dark:border-white/10 flex items-center justify-center shadow-xl mb-10">
+                                                    <cap.icon className={cap.accent} size={40} />
                                                 </div>
+                                                <h3 className="text-2xl md:text-5xl font-black text-dark dark:text-white mb-4 md:mb-6 uppercase tracking-tighter leading-none">{cap.title}</h3>
+                                                <p className="text-base md:text-xl text-gray-500 dark:text-gray-400 mb-8 md:mb-10 font-medium leading-tight tracking-tight">
+                                                    {cap.description}
+                                                </p>
 
-                                                <div className="space-y-4">
-                                                    <p className="text-[10px] font-black uppercase tracking-[0.3em] text-teal-500 mb-6">Key Implementations</p>
-                                                    {cap.items.map((item, i) => (
-                                                        <div key={i} className="flex items-center gap-4 bg-white dark:bg-white/5 p-5 md:p-6 rounded-2xl border border-gray-100 dark:border-white/5 group/item hover:border-teal-500/30 transition-all">
-                                                            <div className={`w-2 h-2 rounded-full ${cap.accent.replace('text-', 'bg-')}`} />
-                                                            <span className="text-sm md:text-base text-gray-600 dark:text-gray-300 font-bold tracking-tight">{item}</span>
-                                                            <Sparkles className="ml-auto w-4 h-4 text-teal-500/20 group-hover/item:text-teal-500 transition-colors" />
+                                                <div className="flex gap-8">
+                                                    {cap.features.map((f, i) => (
+                                                        <div key={i}>
+                                                            <p className={`text-3xl md:text-4xl font-black ${cap.accent} tracking-tighter`}>{f.val}</p>
+                                                            <p className="text-[10px] uppercase tracking-widest font-black text-gray-400 mt-1">{f.label}</p>
                                                         </div>
                                                     ))}
                                                 </div>
                                             </div>
+
+                                            <div className="space-y-4">
+                                                <p className="text-[10px] font-black uppercase tracking-[0.3em] text-teal-500 mb-6">Key Implementations</p>
+                                                {cap.items.map((item, i) => (
+                                                    <div key={i} className="flex items-center gap-4 bg-white dark:bg-white/5 p-4 md:p-6 rounded-2xl border border-gray-100 dark:border-white/5 group/item hover:border-teal-500/30 transition-all">
+                                                        <div className={`w-1.5 h-1.5 rounded-full ${cap.accent.replace('text-', 'bg-')}`} />
+                                                        <span className="text-sm md:text-base text-gray-600 dark:text-gray-300 font-bold tracking-tight">{item}</span>
+                                                        <Sparkles className="ml-auto w-4 h-4 text-teal-500/20 group-hover/item:text-teal-500 transition-colors" />
+                                                    </div>
+                                                ))}
+                                            </div>
                                         </div>
                                     </div>
-                                ))}
-                            </div>
+                                </div>
+                            ))}
                         </div>
 
                         {/* Pagination Dots */}
@@ -324,7 +345,7 @@ const EngineeringHubCaseStudy: React.FC<CaseStudyProps> = ({ onBack, onViewDocs 
                             {capabilities.map((_, i) => (
                                 <button
                                     key={i}
-                                    onClick={() => setActiveIndex(i)}
+                                    onClick={() => scrollToIndex(i)}
                                     className={`h-2.5 transition-all duration-500 rounded-full ${activeIndex === i ? 'w-12 bg-teal-500' : 'w-2.5 bg-gray-200 dark:bg-white/10'}`}
                                 />
                             ))}
@@ -334,10 +355,10 @@ const EngineeringHubCaseStudy: React.FC<CaseStudyProps> = ({ onBack, onViewDocs 
             </section>
 
             {/* --- AI DEEP DIVE --- */}
-            <section className="py-24 md:py-40 bg-dark text-white overflow-hidden relative rounded-[4rem] md:rounded-[6rem] mx-4 lg:mx-12 shadow-2xl">
+            <section className="py-16 md:py-40 bg-dark text-white overflow-hidden relative rounded-[3rem] md:rounded-[6rem] mx-4 lg:mx-12 shadow-2xl">
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-teal-500/5 rounded-full blur-[120px] pointer-events-none opacity-50" />
 
-                <div className="container mx-auto px-12 relative z-10">
+                <div className="container mx-auto px-6 md:px-12 relative z-10">
                     <div className="max-w-6xl mx-auto">
                         <ScrollReveal>
                             <div className="flex flex-col lg:flex-row gap-20 items-center text-left">
@@ -346,7 +367,7 @@ const EngineeringHubCaseStudy: React.FC<CaseStudyProps> = ({ onBack, onViewDocs 
                                         <Cpu size={14} />
                                         AI INFRASTRUCTURE
                                     </div>
-                                    <h2 className="text-4xl md:text-7xl font-black mb-8 leading-[0.85] tracking-tighter">RAG Pipelines</h2>
+                                    <h2 className="text-3xl md:text-7xl font-black mb-6 md:mb-8 leading-[0.85] tracking-tighter">RAG Pipelines</h2>
                                     <p className="text-xl md:text-2xl text-gray-400 leading-tight mb-12 font-bold opacity-80 tracking-tight">
                                         Custom-built retrieval logic for high-fidelity technical assessment generation.
                                     </p>
@@ -417,11 +438,11 @@ const EngineeringHubCaseStudy: React.FC<CaseStudyProps> = ({ onBack, onViewDocs 
             </section>
 
             {/* --- FOOTER --- */}
-            <section className="py-24 md:py-48 bg-teal-500 rounded-[4rem] md:rounded-[6rem] mx-4 md:mx-12 mb-12 shadow-2xl relative overflow-hidden group">
+            <section className="py-16 md:py-48 bg-teal-500 rounded-[3rem] md:rounded-[6rem] mx-4 md:mx-12 mb-12 shadow-2xl relative overflow-hidden group">
                 <div className="container mx-auto px-6 text-center relative z-10">
                     <ScrollReveal>
-                        <h2 className="text-6xl md:text-[10rem] font-black text-dark tracking-tighter mb-12 leading-[0.75]">Full Stack Mastery.</h2>
-                        <p className="max-w-xl mx-auto text-dark/70 text-xl md:text-3xl font-black mb-16 leading-none">
+                        <h2 className="text-4xl md:text-[10rem] font-black text-dark tracking-tighter mb-8 md:mb-12 leading-[0.75]">Full Stack Mastery.</h2>
+                        <p className="max-w-xl mx-auto text-dark/70 text-lg md:text-3xl font-black mb-10 md:mb-16 leading-none">
                             From UI design to cloud infrastructure, I delivered every line.
                         </p>
                     </ScrollReveal>
