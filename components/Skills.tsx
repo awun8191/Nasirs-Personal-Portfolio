@@ -2,13 +2,14 @@ import React from 'react';
 import {
   Code2, Cloud, BrainCircuit, Box, Smartphone, Layout, GitGraph,
   Flame, Globe, Cpu, Bot, Workflow, Container, Github,
-  Infinity, Ship, Server, ArrowRight
+  Infinity, Ship, Server, ArrowRight, X
 } from 'lucide-react';
 import { SKILL_SECTIONS } from '../constants';
 import ScrollReveal from './ScrollReveal';
 import NetworkBackground from './NetworkBackground';
 
 const Skills: React.FC = () => {
+  const [activeSkill, setActiveSkill] = React.useState<any>(null);
 
   const getIcon = (iconName: string, className: string) => {
     // Responsive icon size handled by className usually, or we can just stick to 28 roughly
@@ -211,8 +212,9 @@ const Skills: React.FC = () => {
                     {section.items.map((item, idx) => (
                       <div key={idx} className="flex-shrink-0 w-[80vw] sm:w-[45vw] md:w-auto snap-center md:snap-align-none h-full">
                         {/* NOTE: We removed ScrollReveal from individual cards to prevent scroll jank on mobile */}
-                        <div
-                          className={`group p-7 md:p-10 rounded-3xl md:rounded-[2.5rem] border transition-all duration-300 relative overflow-hidden h-full ${section.theme.card}`}
+                        <button
+                          onClick={() => setActiveSkill({ ...item, theme: section.theme })}
+                          className={`group p-7 md:p-10 rounded-3xl md:rounded-[2.5rem] border transition-all duration-300 relative overflow-hidden h-full text-left w-full ${section.theme.card}`}
                         >
                           {/* Hover gradient overlay */}
                           <div className={`absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500 ${section.theme.accent}`}></div>
@@ -235,7 +237,7 @@ const Skills: React.FC = () => {
                               </p>
                             </div>
                           </div>
-                        </div>
+                        </button>
                       </div>
                     ))}
                   </div>
@@ -247,6 +249,62 @@ const Skills: React.FC = () => {
           </div>
         </section>
       ))}
+
+      {/* --- SKILL MODAL --- */}
+      {activeSkill && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-6">
+          {/* Backdrop */}
+          <div
+            className="absolute inset-0 bg-dark/60 dark:bg-black/80 backdrop-blur-md animate-fade-in"
+            onClick={() => setActiveSkill(null)}
+          ></div>
+
+          {/* Modal Content */}
+          <div className={`relative w-full max-w-2xl bg-white dark:bg-gray-900 rounded-[2.5rem] md:rounded-[3.5rem] overflow-hidden shadow-2xl border border-white/20 animate-scale-in`}>
+            {/* Theme Background Accent */}
+            <div className={`absolute top-0 left-0 w-full h-32 md:h-40 opacity-20 ${activeSkill.theme.accent}`}></div>
+
+            <div className="relative p-8 md:p-12">
+              <div className="flex justify-between items-start mb-10">
+                <div className={`w-20 h-20 md:w-24 md:h-24 rounded-3xl flex items-center justify-center shadow-lg ${activeSkill.theme.iconBg}`}>
+                  {getIcon(activeSkill.icon, "scale-125")}
+                </div>
+                <button
+                  onClick={() => setActiveSkill(null)}
+                  className="p-2 rounded-full bg-dark/5 dark:bg-white/10 hover:bg-dark/10 dark:hover:bg-white/20 transition-colors"
+                >
+                  <X className="text-dark dark:text-white" size={24} />
+                </button>
+              </div>
+
+              <div className="space-y-8">
+                <div>
+                  <h3 className={`text-4xl md:text-5xl font-black mb-4 tracking-tighter ${activeSkill.theme.text}`}>
+                    {activeSkill.name}
+                  </h3>
+                  <div className={`h-1.5 w-16 rounded-full ${activeSkill.theme.accent}`}></div>
+                </div>
+
+                <div className="space-y-6">
+                  <div>
+                    <h4 className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-3">Expertise Detail</h4>
+                    <p className={`text-lg md:text-xl font-medium leading-relaxed ${activeSkill.theme.text} opacity-90`}>
+                      {activeSkill.details}
+                    </p>
+                  </div>
+
+                  <div className="p-6 md:p-8 rounded-3xl bg-dark/5 dark:bg-white/5 border border-dark/5 dark:border-white/10">
+                    <h4 className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-3">Practical Impact</h4>
+                    <p className={`text-base md:text-lg font-medium leading-relaxed ${activeSkill.theme.secondaryText}`}>
+                      {activeSkill.practicality}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 };

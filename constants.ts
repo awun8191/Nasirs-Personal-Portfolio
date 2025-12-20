@@ -3,13 +3,13 @@ import { Project } from './types';
 
 export const HERO_IMAGE = "/image.png";
 
-export const ABOUT_TEXT = "I am a Senior Software Engineer with a deep focus on building scalable systems. My expertise bridges the gap between robust Python backends and fluid Flutter mobile experiences. Recently, I've pivoted towards the cutting edge of AI, specializing in RAG systems and AI Agent development, backed by Nvidia certification.";
+export const ABOUT_TEXT = "I am a Senior Software Engineer with a deep foundation in Python engineering and high-performance system design. While I bridge the gap between robust backends and fluid Flutter mobile experiences, my core strength lies in building scalable, distributed systems and solving complex algorithmic problems. Recently, I've pivoted towards AI Agent development and RAG systems, backed by Nvidia certification.";
 
 export const SKILL_SECTIONS = [
   {
     id: 'core',
     title: "Core Engineering",
-    description: "The foundation of my work lies in writing clean, type-safe, and maintainable code. I specialize in bridging the gap between high-performance backends and fluid mobile experiences.",
+    description: "The foundation of my work lies in writing clean, type-safe, and maintainable code. I specialize in building high-performance systems where every line counts.",
     theme: {
       bg: "bg-white dark:bg-dark",
       text: "text-dark dark:text-white",
@@ -19,16 +19,40 @@ export const SKILL_SECTIONS = [
       accent: "bg-blue-600"
     },
     items: [
-      { name: "Python Development", icon: "python", desc: "FastAPI, Django, Type Hints" },
-      { name: "Flutter & Dart", icon: "flutter", desc: "Cross-platform, BLoC Pattern" },
-      { name: "Clean Architecture", icon: "layout", desc: "SOLID Principles, Modular Design" },
-      { name: "System Design", icon: "git-graph", desc: "Microservices, Event-Driven" }
+      {
+        name: "Python Development",
+        icon: "python",
+        desc: "Scalable Systems, Algorithms, FastAPI",
+        details: "My primary specialization. I build highly scalable, distributed systems and solve complex architectural challenges through rigorous algorithmic problem solving. Expert in Python's asynchronous ecosystem, specifically FastAPI and Pydantic, for building mission-critical backends.",
+        practicality: "Provides the logic and efficiency needed for high-load platforms, ensuring that software doesn't just work, but performs optimally under extreme conditions."
+      },
+      {
+        name: "Flutter & Dart",
+        icon: "flutter",
+        desc: "Cross-platform, BLoC Pattern",
+        details: "Designing pixel-perfect, high-performance mobile experiences for iOS and Android from a single codebase. I utilize the BLoC pattern for predictable state management and complex event-driven logic.",
+        practicality: "Significantly reduces development cycles and maintenance costs while providing a native look and feel that delights users."
+      },
+      {
+        name: "Clean Architecture",
+        icon: "layout",
+        desc: "SOLID Principles, Modular Design",
+        details: "Applying industry-leading architectural patterns to ensure codebases remain maintainable and testable over their entire lifecycle. I focus on keeping business logic decoupled from external dependencies.",
+        practicality: "Minimizes technical debt and allows teams to swap out infrastructure components (like databases or APIs) with minimal impact on the core system."
+      },
+      {
+        name: "System Design",
+        icon: "git-graph",
+        desc: "Microservices, Distributed Systems",
+        details: "Architecting distributed systems that are designed for high availability and fault tolerance. Expertise in designing API gateways, message queues, and optimized data workflows.",
+        practicality: "Ensures that digital platforms can handle massive traffic spikes and remain operational even when individual components fail."
+      }
     ]
   },
   {
     id: 'cloud',
     title: "Cloud Infrastructure",
-    description: "I architect scalable, serverless, and global solutions. My multi-cloud strategy leverages the best services from AWS and GCP to ensure 99.99% uptime and low latency.",
+    description: "I architect resilient, serverless, and globally distributed solutions. My multi-cloud approach leverages the best of AWS and GCP to ensure peak performance and localized low latency.",
     theme: {
       bg: "bg-[#0B1120] dark:bg-[#050914]",
       text: "text-white",
@@ -38,16 +62,40 @@ export const SKILL_SECTIONS = [
       accent: "bg-indigo-500"
     },
     items: [
-      { name: "AWS Ecosystem", icon: "aws", desc: "Lambda, ECS, DynamoDB" },
-      { name: "Global Edge", icon: "cloudflare", desc: "Cloudflare Workers, CDN" },
-      { name: "Firebase", icon: "firebase", desc: "Auth, Firestore, Analytics" },
-      { name: "Google Cloud", icon: "gcp", desc: "Cloud Run, Vertex AI" }
+      {
+        name: "AWS Ecosystem",
+        icon: "aws",
+        desc: "Lambda, ECS, DynamoDB",
+        details: "Deep expertise in AWS serverless and containerized environments. I design workflows that utilize Lambda for event-driven logic and ECS for scalable container orchestration.",
+        practicality: "Provides a highly flexible and cost-effective infrastructure that automatically scales with user demand, reducing operational overhead."
+      },
+      {
+        name: "Global Edge",
+        icon: "cloudflare",
+        desc: "Cloudflare Workers, CDN",
+        details: "Executing logic at the edge to minimize latency and improve security. Utilizing Cloudflare Workers for global deployments and advanced traffic management.",
+        practicality: "Reduces time-to-first-byte for users worldwide while protecting core infrastructure from DDoS attacks and malicious traffic."
+      },
+      {
+        name: "Firebase",
+        icon: "firebase",
+        desc: "Auth, Firestore, Real-time Sync",
+        details: "Building real-time applications with seamless data synchronization. Expertise in Firebase Auth for secure identity management and Firestore for scalable NoSQL storage.",
+        practicality: "Accelerates the development of collaborative, real-time features that keep users engaged and data always up-to-date."
+      },
+      {
+        name: "Google Cloud",
+        icon: "gcp",
+        desc: "Cloud Run, Vertex AI",
+        details: "Leveraging GCP's powerful machine learning and compute services. Expert in deploying containerized apps on Cloud Run and integrating AI models through Vertex AI.",
+        practicality: "Integrates cutting-edge intelligence and high-performance computing directly into application workflows with minimal setup."
+      }
     ]
   },
   {
     id: 'ai',
     title: "AI & Intelligence",
-    description: "Certified by Nvidia, I integrate cutting-edge AI into practical business applications. From RAG pipelines to autonomous agents, I build systems that think.",
+    description: "Certified by Nvidia, I bridge the gap between complex AI research and practical business implementations. I build systems that don't just process data, but understand it.",
     theme: {
       bg: "bg-[#F0FDF4] dark:bg-[#064e3b]/20",
       text: "text-[#14532D] dark:text-[#4ade80]",
@@ -57,16 +105,40 @@ export const SKILL_SECTIONS = [
       accent: "bg-green-600"
     },
     items: [
-      { name: "Nvidia Certified", icon: "nvidia", desc: "Deep Learning Specialist" },
-      { name: "RAG Systems", icon: "brain", desc: "Vector Search, LangChain" },
-      { name: "AI Agents", icon: "bot", desc: "Autonomous Task Execution" },
-      { name: "LLM Integration", icon: "workflow", desc: "Prompt Engineering, Fine-tuning" }
+      {
+        name: "Nvidia Certified",
+        icon: "nvidia",
+        desc: "Deep Learning Practitioner",
+        details: "Formally recognized expertise in designing, training, and deploying deep neural networks. Specialized in optimizing model performance for real-world production environments.",
+        practicality: "Translates advanced AI concepts into tangible products that can automate visual inspection, natural language understanding, and predictive modeling."
+      },
+      {
+        name: "RAG Systems",
+        icon: "brain",
+        desc: "Vector Search, Knowledge Pipelines",
+        details: "Building Retrieval-Augmented Generation systems that connect LLMs to private datasets. Expertise in vector databases, semantic search, and document chunking strategies.",
+        practicality: "Eliminates AI hallucinations by providing models with accurate, context-aware information, making AI reliable for enterprise knowledge management."
+      },
+      {
+        name: "AI Agents",
+        icon: "bot",
+        desc: "Autonomous Multi-Agent Flows",
+        details: "Developing autonomous agents capable of complex task execution and reasoning. I design systems where agents can interact with tools, APIs, and other agents to solve problems.",
+        practicality: "Automates multi-step workflows that previously required manual human intervention, significantly increasing operational efficiency."
+      },
+      {
+        name: "LLM Integration",
+        icon: "workflow",
+        desc: "Prompt Engineering, Optimization",
+        details: "Deep integration of Large Language Models into software products. Focusing on advanced prompt engineering, fine-tuning, and performance monitoring.",
+        practicality: "Enables the creation of intuitive, natural-language interfaces and intelligent features that dramatically enhance the user experience."
+      }
     ]
   },
   {
     id: 'devops',
     title: "DevOps & Delivery",
-    description: "Code is only as good as its delivery pipeline. I implement rigorous CI/CD workflows and containerization strategies to ensure rapid, reliable deployments.",
+    description: "Engineering is more than just code—it's about reliable delivery. I implement robust CI/CD pipelines and container strategies to ensure software is always ready for production.",
     theme: {
       bg: "bg-[#FAFAFA] dark:bg-neutral-900",
       text: "text-dark dark:text-gray-100",
@@ -76,9 +148,27 @@ export const SKILL_SECTIONS = [
       accent: "bg-dark dark:bg-white"
     },
     items: [
-      { name: "Docker & Containers", icon: "docker", desc: "Multi-stage builds, Optimization" },
-      { name: "GitHub Actions", icon: "github", desc: "Automated Testing, CD" },
-      { name: "Orchestration", icon: "ship", desc: "Kubernetes, ECS" }
+      {
+        name: "Docker & Containers",
+        icon: "docker",
+        desc: "Multi-stage builds, Optimization",
+        details: "Streamlining application deployment through containerization. I specialize in creating lightweight, secure Docker images that run consistently across all environments.",
+        practicality: "Eliminates the 'works on my machine' problem and enables rapid, repeatable deployments at any scale."
+      },
+      {
+        name: "GitHub Actions",
+        icon: "github",
+        desc: "Automated Testing, CI/CD",
+        details: "Automating the software development lifecycle. I build pipelines that automatically test, build, and deploy code changes, ensuring high quality and fast feedback loops.",
+        practicality: "Reduces manual effort and prevents regressions, allowing teams to deliver new features to users more frequently and with higher confidence."
+      },
+      {
+        name: "Orchestration",
+        icon: "ship",
+        desc: "AWS ECS, Infrastructure as Code",
+        details: "Managing containerized applications at scale using AWS Elastic Container Service (ECS). Focus on high availability and seamless rolling updates.",
+        practicality: "Provides a reliable foundation for running microservices in production, ensuring that applications stay online even during updates or traffic spikes."
+      }
     ]
   }
 ];
@@ -88,7 +178,7 @@ export const PROJECTS: Project[] = [
     id: 1,
     title: "Engineering Hub",
     category: "Platform Development",
-    image: "https://picsum.photos/id/60/800/600",
+    image: "/projects/engineering-hub.png",
     description: "A comprehensive collaboration platform for engineering teams, featuring real-time blueprint sharing and version control.",
     tags: ["Flutter", "Python", "WebSockets"]
   },
@@ -98,7 +188,7 @@ export const PROJECTS: Project[] = [
     category: "EdTech Solution",
     image: "https://picsum.photos/id/201/800/600",
     description: "An advanced learning management system aimed at university research departments for publishing and peer review.",
-    tags: ["Django", "React", "PostgreSQL"]
+    tags: ["FastAPI", "React", "PostgreSQL"]
   },
   {
     id: 3,
@@ -121,7 +211,7 @@ Your goal is to answer questions about Dauda's skills, experience, and projects 
 
 Here is some information about Dauda:
 - Role: Senior Software Engineer
-- Focus: Scalable systems, Python backends, Flutter mobile apps, AI Agent development, RAG systems.
+- Focus: Python-heavy engineering, scalable systems, algorithmic problem solving, Flutter mobile apps, AI Agent development, RAG systems.
 - Experience: 4+ years.
 - Location: San Francisco, CA.
 
@@ -133,7 +223,7 @@ Skills:
 
 Projects:
 - Engineering Hub: Collaboration platform (Flutter, Python).
-- Academia: EdTech LMS (Django, React).
+- Academia: EdTech LMS (FastAPI, React).
 - RAG Data Pipeline: AI Infrastructure (Python, LangChain, Pinecone).
 
 Contact: nasirdaud2015@gmail.com
