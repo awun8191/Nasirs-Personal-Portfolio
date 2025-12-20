@@ -179,8 +179,8 @@ export const PROJECTS: Project[] = [
     title: "Engineering Hub",
     category: "Platform Development",
     image: "/projects/engineering-hub.png",
-    description: "A comprehensive collaboration platform for engineering teams, featuring real-time blueprint sharing and version control.",
-    tags: ["Flutter", "Python", "WebSockets"]
+    description: "A high-performance engineering collaboration suite featuring secure, serverless AI orchestration, a domain-bounded RAG-lite pipeline, and real-time biometric-secured infrastructure.",
+    tags: ["Flutter", "Firebase", "Gemini", "Cloudflare"]
   },
   {
     id: 2,
@@ -194,9 +194,9 @@ export const PROJECTS: Project[] = [
     id: 3,
     title: "RAG Data Pipeline",
     category: "AI Infrastructure",
-    image: "https://picsum.photos/id/532/800/600",
-    description: "A high-throughput data processing pipeline designed to ingest, chunk, and embed documents for Retrieval-Augmented Generation systems.",
-    tags: ["Python", "LangChain", "Pinecone", "Docker"]
+    image: "/projects/rag-pipeline.png",
+    description: "An institutional-scale ingestion engine that processed 2,000+ PDFs into 1M+ semantic chunks using OpenCV for orientation correction and a hybrid EasyOCR/Gemma 3:27b transcription strategy.",
+    tags: ["Python", "ChromaDB", "Gemma 3", "OpenCV", "Docker"]
   }
 ];
 
@@ -222,9 +222,9 @@ Skills:
 - DevOps: Docker, GitHub Actions, CI/CD.
 
 Projects:
-- Engineering Hub: Collaboration platform (Flutter, Python).
-- Academia: EdTech LMS (FastAPI, React).
-- RAG Data Pipeline: AI Infrastructure (Python, LangChain, Pinecone).
+- Engineering Hub: Collaboration platform with RAG-lite and Gemini orchestration (Flutter, Python, Firebase).
+- Academia: EdTech LMS for research and peer review (FastAPI, React).
+- RAG Data Pipeline: Institutional ingestion of 2,000+ PDFs using OpenCV, ChromaDB, and Gemma 3 (Python, EasyOCR).
 
 Contact: nasirdaud2015@gmail.com
 Socials: LinkedIn, WhatsApp.

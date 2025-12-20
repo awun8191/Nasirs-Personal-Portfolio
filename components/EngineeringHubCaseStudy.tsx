@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import {
-    ArrowLeft, Cpu, Brain,
+    ArrowLeft, ArrowRight, Cpu, Brain,
     Layers,
     FileText, Database, Clock,
     Award, MessageSquareCode, Sparkles,
@@ -12,9 +12,10 @@ import ScrollReveal from './ScrollReveal';
 
 interface CaseStudyProps {
     onBack: () => void;
+    onViewDocs: () => void;
 }
 
-const EngineeringHubCaseStudy: React.FC<CaseStudyProps> = ({ onBack }) => {
+const EngineeringHubCaseStudy: React.FC<CaseStudyProps> = ({ onBack, onViewDocs }) => {
     const [activeIndex, setActiveIndex] = useState(0);
     const [isPaused, setIsPaused] = useState(false);
 
@@ -149,6 +150,14 @@ const EngineeringHubCaseStudy: React.FC<CaseStudyProps> = ({ onBack }) => {
                     >
                         <ArrowLeft size={20} className="group-hover:-translate-x-1 transition-transform" />
                         <span className="text-sm">Back to Portfolio</span>
+                    </button>
+
+                    <button
+                        onClick={onViewDocs}
+                        className="group flex items-center gap-2 text-blue-500 font-black hover:text-blue-600 transition-colors"
+                    >
+                        <span className="text-xs uppercase tracking-widest">Technical Overview</span>
+                        <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                     </button>
 
                     <div className="flex items-center gap-2">
