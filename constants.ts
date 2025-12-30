@@ -201,7 +201,7 @@ export const PROJECTS: Project[] = [
 ];
 
 export const SOCIAL_LINKS = [
-  { platform: "LinkedIn", url: "#", label: "Connect on LinkedIn" },
+  { platform: "LinkedIn", url: "https://www.linkedin.com/in/dauda-nasir-729357361/", label: "Connect on LinkedIn" },
   { platform: "WhatsApp", url: "https://wa.me/2349153002715", label: "09153002715" },
   { platform: "Email", url: "mailto:nasirdaud2015@gmail.com", label: "nasirdaud2015@gmail.com" }
 ];
@@ -213,7 +213,7 @@ Here is some information about Dauda:
 - Role: Senior Software Engineer
 - Focus: Python-heavy engineering, scalable systems, algorithmic problem solving, Flutter mobile apps, AI Agent development, RAG systems.
 - Experience: 4+ years.
-- Location: San Francisco, CA.
+- Location: Lagos, Nigeria.
 
 Skills:
 - Core: Python, Flutter, Dart, Clean Architecture, System Design.
