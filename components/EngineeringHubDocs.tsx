@@ -44,10 +44,10 @@ const EngineeringHubDocs: React.FC<DocsProps> = ({ onBack }) => {
     ];
 
     return (
-        <div className="bg-gray-50 dark:bg-[#050914] min-h-screen transition-colors duration-500 pb-32 text-dark dark:text-gray-100 selection:bg-blue-500/30">
+        <div className="bg-gray-50 dark:bg-black min-h-screen transition-colors duration-500 pb-32 text-dark dark:text-gray-100 selection:bg-blue-500/30">
 
             {/* --- TOP NAV --- */}
-            <nav className="fixed top-0 left-0 w-full z-50 bg-white/80 dark:bg-dark/80 backdrop-blur-xl border-b border-gray-200 dark:border-white/5 py-4">
+            <nav className="fixed top-0 left-0 w-full z-50 bg-white/80 dark:bg-black/80 backdrop-blur-xl border-b border-gray-200 dark:border-white/5 py-4">
                 <div className="container mx-auto px-6 flex justify-between items-center">
                     <button
                         onClick={onBack}
@@ -68,7 +68,7 @@ const EngineeringHubDocs: React.FC<DocsProps> = ({ onBack }) => {
             </nav>
 
             {/* --- HEADER --- */}
-            <header className="pt-40 pb-20 bg-white dark:bg-dark border-b border-gray-200 dark:border-white/5 relative overflow-hidden">
+            <header className="pt-40 pb-20 bg-white dark:bg-black border-b border-gray-200 dark:border-white/5 relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-500/5 rounded-full blur-[120px] -mr-48 -mt-48 pointer-events-none" />
                 <div className="container mx-auto px-6 relative z-10">
                     <ScrollReveal>
