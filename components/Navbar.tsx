@@ -60,7 +60,7 @@ const Navbar: React.FC = () => {
     <nav 
       className={`fixed z-50 transition-all duration-500 ease-out-expo ${
         isScrolled 
-          ? 'top-4 left-4 right-4 md:left-1/2 md:right-auto md:-translate-x-1/2 md:w-[90%] lg:w-[1200px] bg-white/80 dark:bg-dark/80 backdrop-blur-xl shadow-soft dark:shadow-none border border-white/60 dark:border-white/10 rounded-full py-3 px-2' 
+          ? 'top-4 left-4 right-4 md:left-1/2 md:right-auto md:-translate-x-1/2 md:w-[90%] lg:w-[1200px] bg-white/80 dark:bg-black/80 backdrop-blur-xl shadow-soft dark:shadow-none border border-white/60 dark:border-white/10 rounded-full py-3 px-2' 
           : 'top-0 left-0 right-0 py-6 bg-transparent'
       }`}
     >
@@ -137,7 +137,7 @@ const Navbar: React.FC = () => {
     </nav>
 
     {/* Mobile Menu Overlay */}
-    <div className={`fixed inset-0 z-40 bg-white/95 dark:bg-dark/95 backdrop-blur-xl transition-all duration-500 ease-out-expo flex flex-col justify-center items-center space-y-8 ${
+    <div className={`fixed inset-0 z-40 bg-white/95 dark:bg-black/95 backdrop-blur-xl transition-all duration-500 ease-out-expo flex flex-col justify-center items-center space-y-8 ${
         isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'
     }`}>
         {navLinks.map((link, idx) => (

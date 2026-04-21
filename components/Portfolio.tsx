@@ -56,7 +56,7 @@ const ParallaxImage: React.FC<{ src: string; alt: string }> = ({ src, alt }) => 
 
 const Portfolio: React.FC<{ onViewCaseStudy: (id: number) => void }> = ({ onViewCaseStudy }) => {
   return (
-    <section id="work" className="py-24 bg-sage-50 dark:bg-dark relative transition-colors duration-500">
+    <section id="work" className="py-24 bg-sage-50 dark:bg-black relative transition-colors duration-500">
 
       {/* Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -122,14 +122,14 @@ const Portfolio: React.FC<{ onViewCaseStudy: (id: number) => void }> = ({ onView
 
                 <ScrollReveal delay={index * 50} animation="animate-fade-up" className="w-full h-full flex-grow">
                   <div
-                    className="group bg-white dark:bg-gray-800 rounded-[2rem] md:rounded-[2.5rem] overflow-hidden border border-gray-200 dark:border-gray-700 shadow-xl dark:shadow-2xl transition-all duration-500 h-full flex flex-col md:grid md:grid-cols-2"
+                    className="group bg-white dark:bg-black rounded-[2rem] md:rounded-[2.5rem] overflow-hidden border border-gray-200 dark:border-gray-700 shadow-xl dark:shadow-2xl transition-all duration-500 h-full flex flex-col md:grid md:grid-cols-2"
                     style={{
                       // Deeper shadow for better separation in stack
                       boxShadow: '0 20px 40px -5px rgba(0, 0, 0, 0.1), 0 10px 20px -5px rgba(0, 0, 0, 0.04)'
                     }}
                   >
                     {/* Image Section */}
-                    <div className={`relative h-[30vh] md:h-[500px] w-full overflow-hidden bg-gray-100 dark:bg-gray-900 ${index % 2 === 1 ? 'md:order-2' : ''}`}>
+                    <div className={`relative h-[30vh] md:h-[500px] w-full overflow-hidden bg-gray-100 dark:bg-black ${index % 2 === 1 ? 'md:order-2' : ''}`}>
                       <div className="absolute inset-0 bg-dark/5 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none" />
 
                       <ParallaxImage src={project.image} alt={project.title} />
@@ -143,7 +143,7 @@ const Portfolio: React.FC<{ onViewCaseStudy: (id: number) => void }> = ({ onView
                     </div>
 
                     {/* Content Section */}
-                    <div className="p-6 md:p-12 lg:p-16 flex flex-col flex-grow justify-center items-start text-left bg-white dark:bg-gray-800 relative z-30">
+                    <div className="p-6 md:p-12 lg:p-16 flex flex-col flex-grow justify-center items-start text-left bg-white dark:bg-black relative z-30">
                       <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-dark dark:text-white mb-3 md:mb-6 group-hover:text-sage-600 dark:group-hover:text-sage-400 transition-colors">
                         {project.title}
                       </h3>

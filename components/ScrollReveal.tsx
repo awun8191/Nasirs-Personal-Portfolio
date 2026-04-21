@@ -43,6 +43,12 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({
   };
 
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+    if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setIsVisible(true);
+      return;
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
