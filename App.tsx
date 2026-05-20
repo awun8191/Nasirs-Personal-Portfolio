@@ -8,6 +8,7 @@ import Contact from './components/Contact';
 import EngineeringHubCaseStudy from './components/EngineeringHubCaseStudy';
 import EngineeringHubDocs from './components/EngineeringHubDocs';
 import RagPipelineDocs from './components/RagPipelineDocs';
+import CourseGenCaseStudy from './components/CourseGenCaseStudy';
 
 function App() {
   const resolveHashToView = useCallback((rawHash: string) => {
@@ -19,6 +20,8 @@ function App() {
         return 'hub-docs';
       case '/case-study/rag':
         return 'rag-docs';
+      case '/case-study/coursegen':
+        return 'coursegen-docs';
       default:
         return 'portfolio';
     }
@@ -48,7 +51,8 @@ function App() {
       portfolio: '#/',
       'case-study-hub': '#/case-study/hub',
       'hub-docs': '#/case-study/hub/docs',
-      'rag-docs': '#/case-study/rag'
+      'rag-docs': '#/case-study/rag',
+      'coursegen-docs': '#/case-study/coursegen'
     };
 
     const nextHash = routeByView[nextView] ?? '#/';
@@ -76,6 +80,7 @@ function App() {
               onViewCaseStudy={(id) => {
                 if (id === 1) navigateTo('case-study-hub');
                 if (id === 3) navigateTo('rag-docs');
+                if (id === 4) navigateTo('coursegen-docs');
               }}
             />
             <Contact />
@@ -95,6 +100,11 @@ function App() {
       )}
       {view === 'rag-docs' && (
         <RagPipelineDocs
+          onBack={() => navigateTo('portfolio')}
+        />
+      )}
+      {view === 'coursegen-docs' && (
+        <CourseGenCaseStudy
           onBack={() => navigateTo('portfolio')}
         />
       )}
