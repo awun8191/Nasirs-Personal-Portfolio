@@ -202,6 +202,10 @@ const EngineeringHubCaseStudy: React.FC<CaseStudyProps> = ({ onBack, onViewDocs 
                                 <img
                                     src="/projects/engineering-hub-logo.png"
                                     alt="Engineering Hub Logo"
+                                    width="176"
+                                    height="176"
+                                    loading="lazy"
+                                    decoding="async"
                                     className="w-full h-full object-contain relative z-10"
                                 />
                             </div>

@@ -60,7 +60,7 @@ const Navbar: React.FC = () => {
     <nav 
       className={`fixed z-50 transition-all duration-500 ease-out-expo ${
         isScrolled 
-          ? 'top-4 left-4 right-4 md:left-1/2 md:right-auto md:-translate-x-1/2 md:w-[90%] lg:w-[1200px] bg-white/80 dark:bg-black/80 backdrop-blur-xl shadow-soft dark:shadow-none border border-white/60 dark:border-white/10 rounded-full py-3 px-2' 
+          ? 'top-4 left-4 right-4 md:left-1/2 md:right-auto md:-translate-x-1/2 md:w-[90%] lg:w-[1200px] bg-white/80 dark:bg-dark/80 backdrop-blur-xl shadow-soft dark:shadow-none border border-white/60 dark:border-white/10 rounded-full py-3 px-2' 
           : 'top-0 left-0 right-0 py-6 bg-transparent'
       }`}
     >
@@ -106,13 +106,14 @@ const Navbar: React.FC = () => {
              {/* Theme Toggle */}
              <button 
                 onClick={toggleTheme}
+                id="theme-toggle-desktop"
                 className="p-2.5 rounded-full bg-transparent hover:bg-gray-100 dark:hover:bg-white/10 text-dark dark:text-white transition-colors"
                 aria-label="Toggle Dark Mode"
              >
                 {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
              </button>
 
-             <a href="#contact" className="px-6 py-2.5 bg-dark dark:bg-white text-white dark:text-dark rounded-full text-sm font-bold hover:bg-gray-800 dark:hover:bg-gray-200 transition-all shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 duration-300 flex items-center gap-2">
+             <a href="#contact" id="lets-talk-btn-desktop" className="px-6 py-2.5 bg-dark dark:bg-white text-white dark:text-dark rounded-full text-sm font-bold hover:bg-gray-800 dark:hover:bg-gray-200 transition-all shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 duration-300 flex items-center gap-2">
                 <span>Let's Talk</span>
                 <MessageSquare size={14} className="opacity-70" />
              </a>
@@ -122,6 +123,8 @@ const Navbar: React.FC = () => {
         <div className="md:hidden flex items-center gap-3 relative z-50">
             <button 
                 onClick={toggleTheme}
+                id="theme-toggle-mobile"
+                aria-label="Toggle Dark Mode"
                 className="p-2 rounded-full text-dark dark:text-white hover:bg-black/5 dark:hover:bg-white/10 transition-colors"
             >
                 {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
@@ -129,6 +132,8 @@ const Navbar: React.FC = () => {
             <button 
               className="text-dark dark:text-white p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label={isMobileMenuOpen ? "Close Menu" : "Open Menu"}
+              id="mobile-menu-toggle"
             >
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -137,7 +142,7 @@ const Navbar: React.FC = () => {
     </nav>
 
     {/* Mobile Menu Overlay */}
-    <div className={`fixed inset-0 z-40 bg-white/95 dark:bg-black/95 backdrop-blur-xl transition-all duration-500 ease-out-expo flex flex-col justify-center items-center space-y-8 ${
+    <div className={`fixed inset-0 z-40 bg-white/95 dark:bg-dark/95 backdrop-blur-xl transition-all duration-500 ease-out-expo flex flex-col justify-center items-center space-y-8 ${
         isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'
     }`}>
         {navLinks.map((link, idx) => (

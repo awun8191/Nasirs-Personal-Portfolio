@@ -1,8 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
+import { motion, Variants } from 'framer-motion';
 
 interface ScrollRevealProps {
   children: React.ReactNode;
-  animation?: string; // We keep the prop name for compatibility, but map it to transforms
+  animation?: string;
   duration?: string;
   delay?: number;
   className?: string;
@@ -13,79 +14,66 @@ interface ScrollRevealProps {
 const ScrollReveal: React.FC<ScrollRevealProps> = ({ 
   children, 
   animation = 'animate-fade-up', 
-  duration = '0.8s',
   delay = 0,
   className = '',
   threshold = 0.1,
   enableBlur = false
 }) => {
-  const [isVisible, setIsVisible] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
+  // Map old tailwind classes to framer-motion variants
+  const getVariants = (): Variants => {
+    const baseTransition = {
+      type: 'spring' as const,
+      damping: 25,
+      stiffness: 120,
+      mass: 0.8,
+      delay: delay / 1000,
+    };
 
-  // Map the animation names to starting transform states
-  const getInitialState = () => {
     switch (animation) {
-      case 'animate-fade-up': return 'opacity-0 translate-y-8';
-      case 'animate-fade-down': return 'opacity-0 -translate-y-8';
-      case 'animate-slide-in-right': return 'opacity-0 -translate-x-8';
-      case 'animate-slide-in-left': return 'opacity-0 translate-x-8';
-      case 'animate-zoom-in': return 'opacity-0 scale-95';
-      case 'animate-fade-in': return 'opacity-0';
-      default: return 'opacity-0 translate-y-8';
+      case 'animate-fade-up':
+        return {
+          hidden: { opacity: 0, y: 30, filter: enableBlur ? 'blur(8px)' : 'blur(0px)' },
+          visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: baseTransition }
+        };
+      case 'animate-fade-down':
+        return {
+          hidden: { opacity: 0, y: -30, filter: enableBlur ? 'blur(8px)' : 'blur(0px)' },
+          visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: baseTransition }
+        };
+      case 'animate-slide-in-right':
+        return {
+          hidden: { opacity: 0, x: -40, filter: enableBlur ? 'blur(8px)' : 'blur(0px)' },
+          visible: { opacity: 1, x: 0, filter: 'blur(0px)', transition: baseTransition }
+        };
+      case 'animate-slide-in-left':
+        return {
+          hidden: { opacity: 0, x: 40, filter: enableBlur ? 'blur(8px)' : 'blur(0px)' },
+          visible: { opacity: 1, x: 0, filter: 'blur(0px)', transition: baseTransition }
+        };
+      case 'animate-zoom-in':
+        return {
+          hidden: { opacity: 0, scale: 0.9, filter: enableBlur ? 'blur(8px)' : 'blur(0px)' },
+          visible: { opacity: 1, scale: 1, filter: 'blur(0px)', transition: { ...baseTransition, stiffness: 150 } }
+        };
+      case 'animate-fade-in':
+      default:
+        return {
+          hidden: { opacity: 0, filter: enableBlur ? 'blur(8px)' : 'blur(0px)' },
+          visible: { opacity: 1, filter: 'blur(0px)', transition: baseTransition }
+        };
     }
   };
-
-  const getVisibleState = () => {
-    switch (animation) {
-      case 'animate-zoom-in': return 'opacity-100 scale-100';
-      default: return 'opacity-100 translate-y-0 translate-x-0';
-    }
-  };
-
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-    if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      setIsVisible(true);
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect();
-        }
-      },
-      { 
-        threshold,
-        rootMargin: '50px' // Pre-load slightly before it hits view to reduce "pop"
-      }
-    );
-
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
-
-    return () => observer.disconnect();
-  }, [threshold]);
 
   return (
-    <div 
-      ref={ref} 
-      className={`
-        transition-all ease-out-expo
-        gpu-accelerated
-        ${className} 
-        ${isVisible ? getVisibleState() : getInitialState()}
-        ${enableBlur && !isVisible ? 'blur-sm' : 'blur-0'}
-      `}
-      style={{ 
-        transitionDuration: duration,
-        transitionDelay: `${delay}ms`
-      }}
+    <motion.div
+      className={className}
+      variants={getVariants()}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "0px 0px -50px 0px", amount: threshold }}
     >
       {children}
-    </div>
+    </motion.div>
   );
 };
 

@@ -92,26 +92,32 @@ const Terminal: React.FC = () => {
       </div>
 
       {/* Terminal Body */}
-      <div className="p-6 h-[400px] text-green-400 overflow-y-auto custom-scrollbar">
-        {lines.map((line, idx) => (
-          <div key={idx} className="min-h-[1.5em] whitespace-pre-wrap">
-            {line}
-            {idx === lines.findIndex(l => {
-              const scriptLine = script[lines.indexOf(l)];
-              return l.length < (scriptLine?.length ?? -1);
-            }) && isTyping && (
-                <span className="animate-pulse inline-block w-2 h-4 bg-green-400 ml-1 align-middle"></span>
-              )}
-          </div>
-        ))}
-        {!isTyping && (
-          <div className="mt-2 flex items-center">
-            <span className="text-blue-400 mr-2">➜</span>
-            <span className="text-yellow-300 mr-2">~</span>
-            <span className="animate-pulse inline-block w-2 h-4 bg-gray-400"></span>
-          </div>
-        )}
-      </div>
+      <pre 
+        tabIndex={0}
+        aria-label="Interactive Terminal Profile Simulator"
+        className="p-6 h-[400px] text-green-400 overflow-y-auto custom-scrollbar outline-none select-text"
+      >
+        <code>
+          {lines.map((line, idx) => (
+            <div key={idx} className="min-h-[1.5em] whitespace-pre-wrap">
+              {line}
+              {idx === lines.findIndex(l => {
+                const scriptLine = script[lines.indexOf(l)];
+                return l.length < (scriptLine?.length ?? -1);
+              }) && isTyping && (
+                  <span className="animate-pulse inline-block w-2 h-4 bg-green-400 ml-1 align-middle"></span>
+                )}
+            </div>
+          ))}
+          {!isTyping && (
+            <div className="mt-2 flex items-center">
+              <span className="text-blue-400 mr-2">➜</span>
+              <span className="text-yellow-300 mr-2">~</span>
+              <span className="animate-pulse inline-block w-2 h-4 bg-gray-400"></span>
+            </div>
+          )}
+        </code>
+      </pre>
     </div>
   );
 };

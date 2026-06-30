@@ -1,62 +1,42 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { PROJECTS } from '../constants';
 import { ArrowUpRight, Github, FolderOpen } from 'lucide-react';
 import ScrollReveal from './ScrollReveal';
 
-// Internal component for handling parallax logic
+// Internal component for handling parallax logic with Framer Motion
 const ParallaxImage: React.FC<{ src: string; alt: string }> = ({ src, alt }) => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [offset, setOffset] = useState(0);
-
-  useEffect(() => {
-    let rafId: number;
-
-    const updatePosition = () => {
-      if (!containerRef.current) return;
-      const rect = containerRef.current.getBoundingClientRect();
-      const viewportHeight = window.innerHeight;
-
-      // Only calculate if the element is near the viewport
-      if (rect.top < viewportHeight + 100 && rect.bottom > -100) {
-        // Calculate distance from the center of the viewport
-        const elementCenter = rect.top + rect.height / 2;
-        const viewportCenter = viewportHeight / 2;
-        const distanceFromCenter = elementCenter - viewportCenter;
-
-        // Parallax factor
-        setOffset(distanceFromCenter * 0.15);
-      }
-    };
-
-    const loop = () => {
-      updatePosition();
-      rafId = requestAnimationFrame(loop);
-    };
-
-    loop();
-
-    return () => cancelAnimationFrame(rafId);
-  }, []);
+  
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  });
+  
+  // Transform scroll progress to Y translation
+  const y = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
 
   return (
     <div ref={containerRef} className="relative w-full h-full overflow-hidden">
-      <div
+      <motion.div
         className="absolute w-full h-[120%] -top-[10%] left-0 will-change-transform"
-        style={{ transform: `translateY(${offset}px)` }}
+        style={{ y }}
       >
         <img
           src={src}
           alt={alt}
+          loading="lazy"
+          decoding="async"
           className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out-expo"
         />
-      </div>
+      </motion.div>
     </div>
   );
 };
 
 const Portfolio: React.FC<{ onViewCaseStudy: (id: number) => void }> = ({ onViewCaseStudy }) => {
   return (
-    <section id="work" className="py-24 bg-sage-50 dark:bg-black relative transition-colors duration-500">
+    <section id="work" className="py-24 bg-sage-50 dark:bg-dark relative transition-colors duration-500">
 
       {/* Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -122,14 +102,14 @@ const Portfolio: React.FC<{ onViewCaseStudy: (id: number) => void }> = ({ onView
 
                 <ScrollReveal delay={index * 50} animation="animate-fade-up" className="w-full h-full flex-grow">
                   <div
-                    className="group bg-white dark:bg-black rounded-[2rem] md:rounded-[2.5rem] overflow-hidden border border-gray-200 dark:border-gray-700 shadow-xl dark:shadow-2xl transition-all duration-500 h-full flex flex-col md:grid md:grid-cols-2"
+                    className="group bg-white dark:bg-gray-800 rounded-[2rem] md:rounded-[2.5rem] overflow-hidden border border-gray-200 dark:border-gray-700 shadow-xl dark:shadow-2xl transition-all duration-500 h-full flex flex-col md:grid md:grid-cols-2"
                     style={{
                       // Deeper shadow for better separation in stack
                       boxShadow: '0 20px 40px -5px rgba(0, 0, 0, 0.1), 0 10px 20px -5px rgba(0, 0, 0, 0.04)'
                     }}
                   >
                     {/* Image Section */}
-                    <div className={`relative h-[30vh] md:h-[500px] w-full overflow-hidden bg-gray-100 dark:bg-black ${index % 2 === 1 ? 'md:order-2' : ''}`}>
+                    <div className={`relative h-[30vh] md:h-[500px] w-full overflow-hidden bg-gray-100 dark:bg-gray-900 ${index % 2 === 1 ? 'md:order-2' : ''}`}>
                       <div className="absolute inset-0 bg-dark/5 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none" />
 
                       <ParallaxImage src={project.image} alt={project.title} />
@@ -143,7 +123,7 @@ const Portfolio: React.FC<{ onViewCaseStudy: (id: number) => void }> = ({ onView
                     </div>
 
                     {/* Content Section */}
-                    <div className="p-6 md:p-12 lg:p-16 flex flex-col flex-grow justify-center items-start text-left bg-white dark:bg-black relative z-30">
+                    <div className="p-6 md:p-12 lg:p-16 flex flex-col flex-grow justify-center items-start text-left bg-white dark:bg-gray-800 relative z-30">
                       <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-dark dark:text-white mb-3 md:mb-6 group-hover:text-sage-600 dark:group-hover:text-sage-400 transition-colors">
                         {project.title}
                       </h3>

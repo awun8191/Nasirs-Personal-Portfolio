@@ -1,7 +1,7 @@
 
 import { Project } from './types';
 
-export const HERO_IMAGE = "/image.png";
+export const HERO_IMAGE = "/image.webp";
 
 export const ABOUT_TEXT = "I am a Senior Software Engineer with a deep foundation in Python engineering and high-performance system design. While I bridge the gap between robust backends and fluid Flutter mobile experiences, my core strength lies in building scalable, distributed systems and solving complex algorithmic problems. Recently, I've pivoted towards AI Agent development and RAG systems, backed by Nvidia certification.";
 
@@ -178,7 +178,7 @@ export const PROJECTS: Project[] = [
     id: 1,
     title: "Engineering Hub",
     category: "Platform Development",
-    image: "/projects/engineering-hub.png",
+    image: "/projects/engineering-hub.webp",
     description: "A high-performance engineering collaboration suite featuring secure, serverless AI orchestration, a domain-bounded RAG-lite pipeline, and real-time biometric-secured infrastructure.",
     tags: ["Flutter", "Firebase", "Gemini", "Cloudflare"]
   },
@@ -194,17 +194,9 @@ export const PROJECTS: Project[] = [
     id: 3,
     title: "RAG Data Pipeline",
     category: "AI Infrastructure",
-    image: "/projects/rag-pipeline.png",
+    image: "/projects/rag-pipeline.webp",
     description: "An institutional-scale ingestion engine that processed 2,000+ PDFs into 1M+ semantic chunks using OpenCV for orientation correction and a hybrid EasyOCR/Gemma 3:27b transcription strategy.",
     tags: ["Python", "ChromaDB", "Gemma 3", "OpenCV", "Docker"]
-  },
-  {
-    id: 4,
-    title: "CourseGen",
-    category: "AI Pipeline",
-    image: "https://picsum.photos/id/24/800/600",
-    description: "A production-grade educational PDF-to-course pipeline. Converts textbooks and lecture notes through multi-engine OCR, semantic chunking, and ChromaDB embeddings, then uses Gemini RAG to auto-generate structured course outlines and interactive theory/calculation questions. Built with resumability at every stage and multi-provider resilience.",
-    tags: ["Python", "Gemini", "ChromaDB", "Docker", "Firebase"]
   }
 ];
 

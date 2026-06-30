@@ -1,4 +1,6 @@
 import React from 'react';
+import { Linkedin, Github } from 'lucide-react';
+import { motion } from 'framer-motion';
 import ScrollReveal from './ScrollReveal';
 import Terminal from './Terminal';
 
@@ -19,7 +21,7 @@ const About: React.FC = () => {
                 
                 <ScrollReveal delay={200} animation="animate-slide-in-right" className="relative z-10">
                   <h2 className="text-4xl md:text-5xl font-black text-dark dark:text-white uppercase tracking-tight mb-8">
-                      Behind the <br/> Code
+                      About Dauda Nasir
                   </h2>
                 </ScrollReveal>
                 
@@ -28,9 +30,38 @@ const About: React.FC = () => {
                 </ScrollReveal>
 
                 <ScrollReveal delay={400}>
-                   <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed max-w-md">
-                     Passionate about creating digital experiences that live at the intersection of clean design and complex engineering.
-                   </p>
+                   <div className="text-lg text-gray-600 dark:text-gray-300 mb-6 leading-relaxed max-w-md space-y-4">
+                     <p>I am a Senior Software Engineer specializing in Python, Flutter, AI-powered systems, and scalable cloud architecture. My technical focus revolves around high-performance backends and seamless cross-platform applications.</p>
+                     <p>My notable projects include the <strong>Engineering Hub</strong> platform (serving the NUESA community) and institutional-scale <strong>RAG Data Pipelines</strong>.</p>
+                     <p>With an Nvidia certification in deep learning and an engineering background, I bridge the gap between complex AI research and practical business implementations.</p>
+                   </div>
+                </ScrollReveal>
+
+                <ScrollReveal delay={450}>
+                   <div className="flex flex-wrap gap-4 mb-8">
+                     <motion.a 
+                        whileHover={{ scale: 1.02 }} 
+                        whileTap={{ scale: 0.98 }}
+                        href="https://www.linkedin.com/in/dauda-nasir-729357361/" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="px-6 py-3 bg-[#0A66C2] text-white rounded-full font-bold flex items-center gap-2 hover:bg-[#004182] transition-colors shadow-[0_4px_16px_rgba(10,102,194,0.2)] ring-1 ring-inset ring-white/20 focus-visible:ring-2 focus-visible:ring-[#0A66C2] focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-dark outline-none"
+                     >
+                        <Linkedin size={18} />
+                        LinkedIn
+                     </motion.a>
+                     <motion.a 
+                        whileHover={{ scale: 1.02 }} 
+                        whileTap={{ scale: 0.98 }}
+                        href="https://github.com/awun8191" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="px-6 py-3 bg-dark dark:bg-white text-white dark:text-dark rounded-full font-bold flex items-center gap-2 hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors shadow-[0_4px_16px_rgba(0,0,0,0.1)] ring-1 ring-inset ring-black/10 dark:ring-white/20 focus-visible:ring-2 focus-visible:ring-dark focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-dark outline-none"
+                     >
+                        <Github size={18} />
+                        GitHub
+                     </motion.a>
+                   </div>
                 </ScrollReveal>
 
                 <div className="flex gap-8">

@@ -69,6 +69,8 @@ const AIChat: React.FC = () => {
       {/* Toggle Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
+        aria-label={isOpen ? "Close AI Assistant chat" : "Open AI Assistant chat"}
+        id="ai-assistant-toggle"
         className={`fixed bottom-8 right-8 z-50 p-4 rounded-full shadow-xl transition-all duration-300 hover:scale-105 ${
           isOpen ? 'bg-white dark:bg-gray-800 text-dark dark:text-white border border-gray-200 dark:border-gray-700' : 'bg-dark dark:bg-white text-white dark:text-dark'
         }`}
@@ -130,11 +132,15 @@ const AIChat: React.FC = () => {
                 onChange={(e) => setInputValue(e.target.value)}
                 onKeyDown={handleKeyPress}
                 placeholder="Type a message..."
+                aria-label="Message to Dauda's AI Assistant"
+                id="ai-chat-input"
                 className="w-full bg-sage-50 dark:bg-gray-800 border border-transparent focus:border-gray-200 dark:focus:border-gray-600 rounded-full py-3 px-5 pr-12 text-sm text-dark dark:text-white placeholder-gray-400 focus:outline-none transition-colors"
               />
               <button
                 onClick={handleSend}
                 disabled={isLoading}
+                aria-label="Send message"
+                id="ai-chat-send-btn"
                 className="absolute right-2 top-1/2 -translate-y-1/2 p-2 bg-dark dark:bg-white rounded-full text-white dark:text-dark hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <Send size={14} />
