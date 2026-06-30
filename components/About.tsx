@@ -42,7 +42,7 @@ const About: React.FC = () => {
                      <motion.a 
                         whileHover={{ scale: 1.02 }} 
                         whileTap={{ scale: 0.98 }}
-                        href="https://www.linkedin.com/in/dauda-nasir-729357361/" 
+                        href="https://www.linkedin.com/in/nasir-dauda-729357361/" 
                         target="_blank" 
                         rel="noopener noreferrer" 
                         className="px-6 py-3 bg-[#0A66C2] text-white rounded-full font-bold flex items-center gap-2 hover:bg-[#004182] transition-colors shadow-[0_4px_16px_rgba(10,102,194,0.2)] ring-1 ring-inset ring-white/20 focus-visible:ring-2 focus-visible:ring-[#0A66C2] focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-dark outline-none"

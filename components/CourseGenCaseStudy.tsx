@@ -1,17 +1,14 @@
 import React, { useEffect, useState, useCallback, useRef } from 'react';
 import {
-    ArrowLeft, ArrowRight, Cpu, Brain,
+    ArrowLeft, Cpu, Brain,
     Layers,
     FileText, Database, Clock,
-    Award, Sparkles,
+    Sparkles,
     ChevronLeft,
     ChevronRight,
     ShieldCheck,
-    Workflow,
     Loader,
     Bot,
-    BookOpen,
-    Zap,
     Globe,
     Box,
     Terminal
