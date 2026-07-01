@@ -3,7 +3,7 @@ import { Project } from './types';
 
 export const HERO_IMAGE = "/image.webp";
 
-export const ABOUT_TEXT = "I am a Senior Software Engineer with a deep foundation in Python engineering and high-performance system design. While I bridge the gap between robust backends and fluid Flutter mobile experiences, my core strength lies in building scalable, distributed systems and solving complex algorithmic problems. Recently, I've pivoted towards AI Agent development and RAG systems, backed by Nvidia certification.";
+export const ABOUT_TEXT = "I am a Software Engineer with a deep foundation in Python engineering and high-performance system design. While I bridge the gap between robust backends and fluid Flutter mobile experiences, my core strength lies in building scalable, distributed systems and solving complex algorithmic problems. Recently, I've pivoted towards AI Agent development and RAG systems, backed by Nvidia certification.";
 
 export const SKILL_SECTIONS = [
   {
@@ -206,11 +206,11 @@ export const SOCIAL_LINKS = [
   { platform: "Email", url: "mailto:nasirdaud2015@gmail.com", label: "nasirdaud2015@gmail.com" }
 ];
 
-export const SYSTEM_INSTRUCTION = `You are an AI assistant for Dauda Nasir, a Senior Software Engineer.
+export const SYSTEM_INSTRUCTION = `You are an AI assistant for Dauda Nasir, a Software Engineer.
 Your goal is to answer questions about Dauda's skills, experience, and projects in a professional yet engaging tone.
 
 Here is some information about Dauda:
-- Role: Senior Software Engineer
+- Role: Software Engineer
 - Focus: Python-heavy engineering, scalable systems, algorithmic problem solving, Flutter mobile apps, AI Agent development, RAG systems.
 - Experience: 4+ years.
 - Location: Lagos, Nigeria.

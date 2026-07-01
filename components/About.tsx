@@ -31,7 +31,7 @@ const About: React.FC = () => {
 
                 <ScrollReveal delay={400}>
                    <div className="text-lg text-gray-600 dark:text-gray-300 mb-6 leading-relaxed max-w-md space-y-4">
-                     <p>I am a Senior Software Engineer specializing in Python, Flutter, AI-powered systems, and scalable cloud architecture. My technical focus revolves around high-performance backends and seamless cross-platform applications.</p>
+                     <p>I am a Software Engineer specializing in Python, Flutter, AI-powered systems, and scalable cloud architecture. My technical focus revolves around high-performance backends and seamless cross-platform applications.</p>
                      <p>My notable projects include the <strong>Engineering Hub</strong> platform (serving the NUESA community) and institutional-scale <strong>RAG Data Pipelines</strong>.</p>
                      <p>With an Nvidia certification in deep learning and an engineering background, I bridge the gap between complex AI research and practical business implementations.</p>
                    </div>

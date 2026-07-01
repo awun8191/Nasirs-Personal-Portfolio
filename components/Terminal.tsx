@@ -11,7 +11,7 @@ const Terminal: React.FC = () => {
     "> loading profile...",
     "> print(Profile.bio)",
     "----------------------------------------",
-    "ROLE: Senior Software Engineer",
+    "ROLE: Software Engineer",
     "FOCUS: Scalable Systems & AI",
     "STACK: Python, Flutter, TensorFlow, AWS",
     "STATUS: Ready for new challenges...",
