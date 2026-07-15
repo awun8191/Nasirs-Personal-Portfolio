@@ -7,7 +7,7 @@ import {
     FileText, Bot,
     Cloud, Hash,
     BookMarked, Network, Lock,
-    Search, Upload
+    Search, Upload, Layers, Zap, Shield
 } from 'lucide-react';
 import ScrollReveal from './ScrollReveal';
 

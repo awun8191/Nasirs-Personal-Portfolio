@@ -6,7 +6,7 @@ import {
     Sun,
     Activity,
     Box,
-    Bot,
+    Bot, BookOpen,
     Layers, Gauge,
     Disc3, Cog, Wrench,
     BarChart3,

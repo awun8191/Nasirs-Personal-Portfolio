@@ -6,7 +6,7 @@ import {
     Globe, Activity,
     Bot,
     Layers, Zap, Shield,
-    CheckCircle, Smartphone
+    CheckCircle, Smartphone, HardDrive, CreditCard
 } from 'lucide-react';
 import ScrollReveal from './ScrollReveal';
 
