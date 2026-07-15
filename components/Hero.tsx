@@ -34,7 +34,7 @@ const Hero: React.FC = () => {
 
             <ScrollReveal delay={200}>
               <h1 className="text-5xl md:text-8xl font-black text-dark dark:text-white tracking-tighter mb-8 leading-[0.9] drop-shadow-sm text-balance">
-                Dauda Nasir — <br className="md:hidden" /> Python & Flutter Engineer
+                Dauda Nasir - <br className="md:hidden" /> Python & Flutter Engineer
               </h1>
             </ScrollReveal>
 
