@@ -4,9 +4,8 @@ import {
     Terminal,
     Share2,
     Globe, Activity, Box,
-    FileText, Bot, BookOpen,
-    Layers, Zap, Shield,
-    Cloud, Users, Hash,
+    FileText, Bot,
+    Cloud, Hash,
     BookMarked, Network, Lock,
     Search, Upload
 } from 'lucide-react';

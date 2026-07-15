@@ -6,10 +6,12 @@ import {
     Sun,
     Activity,
     Box,
-    FileText, Bot, BookOpen,
+    Bot,
     Layers, Gauge,
     Disc3, Cog, Wrench,
-    BarChart3
+    BarChart3,
+    Terminal,
+    Share2
 } from 'lucide-react';
 import ScrollReveal from './ScrollReveal';
 

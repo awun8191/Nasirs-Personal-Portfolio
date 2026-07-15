@@ -3,7 +3,7 @@ import {
     ArrowLeft, Cpu, Database,
     Terminal,
     Share2,
-    Globe, Activity, Box,
+    Globe, Activity,
     FileText, Bot, BookOpen,
     Layers, Zap, Search, Link2,
     GitBranch, Shield

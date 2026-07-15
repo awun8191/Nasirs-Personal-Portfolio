@@ -3,11 +3,10 @@ import {
     ArrowLeft, Cpu, Database,
     Terminal,
     Share2,
-    Globe, Activity, Box,
-    FileText, Bot, BookOpen,
-    Layers, Zap, CreditCard,
-    Shield, Wifi, HardDrive,
-    CheckCircle, Users, Smartphone
+    Globe, Activity,
+    Bot,
+    Layers, Zap, Shield,
+    CheckCircle, Smartphone
 } from 'lucide-react';
 import ScrollReveal from './ScrollReveal';
 
