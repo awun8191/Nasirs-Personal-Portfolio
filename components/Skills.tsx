@@ -2,7 +2,7 @@ import React from 'react';
 import {
   Code2, Cloud, BrainCircuit, Box, Smartphone, Layout, GitGraph,
   Flame, Globe, Cpu, Bot, Workflow, Container, Github,
-  Infinity, Ship, Server, ArrowRight, X
+  Infinity, Ship, Server, ArrowRight, X, Database, Terminal
 } from 'lucide-react';
 import { SKILL_SECTIONS } from '../constants';
 import ScrollReveal from './ScrollReveal';
@@ -17,9 +17,11 @@ const Skills: React.FC = () => {
     switch (iconName) {
       // Core
       case 'python': return <Code2 {...props} />;
+      case 'java': return <Code2 {...props} />;
       case 'flutter': return <Smartphone {...props} />;
       case 'layout': return <Layout {...props} />;
       case 'git-graph': return <GitGraph {...props} />;
+      case 'database': return <Database {...props} />;
 
       // Cloud
       case 'aws': return <Server {...props} />;
@@ -36,6 +38,7 @@ const Skills: React.FC = () => {
       // DevOps
       case 'docker': return <Container {...props} />;
       case 'github': return <Github {...props} />;
+      case 'terminal': return <Terminal {...props} />;
       case 'infinity': return <Infinity {...props} />;
       case 'ship': return <Ship {...props} />;
 

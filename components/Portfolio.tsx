@@ -157,7 +157,7 @@ const Portfolio: React.FC<{ onViewCaseStudy: (id: number) => void }> = ({ onView
         {/* Footer Link */}
         <div className="mt-12 md:mt-0 text-center relative z-20">
           <ScrollReveal delay={200}>
-            <a href="https://github.com" className="inline-flex items-center gap-2 text-dark dark:text-white font-bold hover:text-sage-600 dark:hover:text-sage-400 transition-colors border-b-2 border-transparent hover:border-sage-600 dark:hover:border-sage-400 pb-1 text-base lg:text-lg">
+            <a href="https://github.com/awun8191" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-dark dark:text-white font-bold hover:text-sage-600 dark:hover:text-sage-400 transition-colors border-b-2 border-transparent hover:border-sage-600 dark:hover:border-sage-400 pb-1 text-base lg:text-lg">
               <Github size={20} />
               <span>Explore full archive on GitHub</span>
             </a>

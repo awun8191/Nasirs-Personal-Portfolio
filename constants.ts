@@ -3,7 +3,7 @@ import { Project } from './types';
 
 export const HERO_IMAGE = "/image.webp";
 
-export const ABOUT_TEXT = "I am a Software Engineer with a deep foundation in Python engineering and high-performance system design. While I bridge the gap between robust backends and fluid Flutter mobile experiences, my core strength lies in building scalable, distributed systems and solving complex algorithmic problems. Recently, I've pivoted towards AI Agent development and RAG systems, backed by Nvidia certification.";
+export const ABOUT_TEXT = "I am a Software Engineer and final year Electrical Engineering student at ABUAD. I build production systems that serve real users, with deep experience in Python backend engineering, Flutter mobile development, and cloud infrastructure. My work spans scalable APIs, AI pipelines, and cross-platform applications. I hold an NVIDIA Deep Learning certification and actively develop RAG systems and AI agents.";
 
 export const SKILL_SECTIONS = [
   {
@@ -27,6 +27,13 @@ export const SKILL_SECTIONS = [
         practicality: "Provides the logic and efficiency needed for high-load platforms, ensuring that software doesn't just work, but performs optimally under extreme conditions."
       },
       {
+        name: "Java Development",
+        icon: "java",
+        desc: "Enterprise Applications, Spring Boot",
+        details: "Building enterprise-grade backend systems with Java. Experienced in object-oriented design patterns, multithreading, and Spring Boot for production services. Actively expanding into the Java ecosystem for fintech applications.",
+        practicality: "Enables integration with enterprise systems and opens opportunities in the Nigerian fintech sector where Java is the dominant backend language."
+      },
+      {
         name: "Flutter & Dart",
         icon: "flutter",
         desc: "Cross-platform, BLoC Pattern",
@@ -39,6 +46,13 @@ export const SKILL_SECTIONS = [
         desc: "SOLID Principles, Modular Design",
         details: "Applying industry-leading architectural patterns to ensure codebases remain maintainable and testable over their entire lifecycle. I focus on keeping business logic decoupled from external dependencies.",
         practicality: "Minimizes technical debt and allows teams to swap out infrastructure components (like databases or APIs) with minimal impact on the core system."
+      },
+      {
+        name: "Database Systems",
+        icon: "database",
+        desc: "PostgreSQL, MySQL, Firestore",
+        details: "Designing and optimizing database schemas for production applications. Experienced with PostgreSQL for relational data, MySQL for transactional workloads, and Firestore for real-time NoSQL storage. Focus on query optimization, indexing strategies, and data integrity.",
+        practicality: "Ensures applications handle data efficiently at scale, with proper normalization, indexing, and backup strategies for production reliability."
       },
       {
         name: "System Design",
@@ -163,6 +177,13 @@ export const SKILL_SECTIONS = [
         practicality: "Reduces manual effort and prevents regressions, allowing teams to deliver new features to users more frequently and with higher confidence."
       },
       {
+        name: "Linux & Networking",
+        icon: "terminal",
+        desc: "Arch Linux, System Administration, TCP/IP",
+        details: "Daily driver of Arch Linux for over 2 years. Deep understanding of Linux systems administration, shell scripting, and networking fundamentals including TCP/IP, DNS, load balancing, and firewall configuration.",
+        practicality: "Provides the underlying infrastructure knowledge needed to deploy and troubleshoot applications in any environment, from cloud VMs to embedded systems."
+      },
+      {
         name: "Orchestration",
         icon: "ship",
         desc: "AWS ECS, Infrastructure as Code",
@@ -184,11 +205,11 @@ export const PROJECTS: Project[] = [
   },
   {
     id: 2,
-    title: "Academia",
-    category: "EdTech Solution",
-    image: "https://picsum.photos/id/201/800/600",
-    description: "An advanced learning management system aimed at university research departments for publishing and peer review.",
-    tags: ["FastAPI", "React", "PostgreSQL"]
+    title: "NUESA Academia",
+    category: "EdTech Platform",
+    image: "https://picsum.photos/id/24/800/600",
+    description: "Digital learning resource management system serving 800 to 1,200 engineering students monthly across 9 departments at ABUAD. Three-layer architecture with FastAPI backend, Cloudflare Workers for direct R2 file operations, Next.js 16 admin portal, and an AI pipeline processing 2,000+ PDFs through OCR to vector embeddings for semantic search and automated course outline/MCQ generation.",
+    tags: ["FastAPI", "Next.js 16", "TypeScript", "Cloudflare Workers", "Redis", "ChromaDB", "Gemini API"]
   },
   {
     id: 3,
@@ -197,6 +218,38 @@ export const PROJECTS: Project[] = [
     image: "/projects/rag-pipeline.webp",
     description: "An institutional-scale ingestion engine that processed 2,000+ PDFs into 1M+ semantic chunks using OpenCV for orientation correction and a hybrid EasyOCR/Gemma 3:27b transcription strategy.",
     tags: ["Python", "ChromaDB", "Gemma 3", "OpenCV", "Docker"]
+  },
+  {
+    id: 4,
+    title: "TRAKS",
+    category: "Community Platform",
+    image: "https://picsum.photos/id/48/800/600",
+    description: "Community incident reporting and SOS platform with semantic search via Cloudflare Vectorize. Features real-time alerts, geolocation with reverse geocoding, community verification (confirm/refute), and vector-based post search.",
+    tags: ["FastAPI", "Firebase", "Cloudflare", "Python"]
+  },
+  {
+    id: 5,
+    title: "AWUN",
+    category: "Field Operations",
+    image: "https://picsum.photos/id/26/800/600",
+    description: "Checkout-first field operations platform for engineering subcontractors. Features closeout templates, real-time field reporting, and Paystack payment integration. Built with a robust test suite of 273 automated tests.",
+    tags: ["FastAPI", "Firebase", "Cloudflare D1", "R2", "Paystack"]
+  },
+  {
+    id: 6,
+    title: "Soiling Detection System",
+    category: "Embedded AI",
+    image: "https://picsum.photos/id/15/800/600",
+    description: "Final year project in Electrical and Electronics Engineering. A two-layer embedded system for solar panel soiling detection: CUSUM control chart on Pi Pico (always-on at 3mW) triggers XGBoost classifier on Pi Zero 2W (99.98% accuracy). Mechanical cleaning via stepper motor. Designed for Nigerian off-grid deployment.",
+    tags: ["C", "Python", "XGBoost", "CUSUM", "Raspberry Pi"]
+  },
+  {
+    id: 7,
+    title: "RAST",
+    category: "AI Research",
+    image: "https://picsum.photos/id/201/800/600",
+    description: "AI research assistant for DOI lookup, PDF analysis, retrieval-augmented generation, and thesis generation with deterministic citation linking. Multi-agent architecture using Google ADK.",
+    tags: ["React", "FastAPI", "Google ADK", "ChromaDB"]
   }
 ];
 
@@ -211,20 +264,23 @@ Your goal is to answer questions about Dauda's skills, experience, and projects 
 
 Here is some information about Dauda:
 - Role: Software Engineer
-- Focus: Python-heavy engineering, scalable systems, algorithmic problem solving, Flutter mobile apps, AI Agent development, RAG systems.
-- Experience: 4+ years.
+- Focus: Python backend engineering, scalable systems, Flutter mobile development, cloud infrastructure, AI Agent development, RAG systems.
+- Background: Final year Electrical Engineering student at ABUAD.
 - Location: Lagos, Nigeria.
 
 Skills:
-- Core: Python, Flutter, Dart, Clean Architecture, System Design.
-- Cloud: AWS, GCP, Firebase, Cloudflare.
-- AI: Nvidia Certified Deep Learning, RAG Systems, AI Agents, LLMs, Vector Databases.
-- DevOps: Docker, GitHub Actions, CI/CD.
+- Core: Python, Java, Flutter, Dart, Database Systems (PostgreSQL, MySQL), Clean Architecture, System Design.
+- Cloud: AWS, GCP, Firebase, Cloudflare (Workers, R2, D1, Vectorize).
+- AI: NVIDIA Certified Deep Learning, RAG Systems, AI Agents, Gemini API, TensorFlow.
+- DevOps: Docker, GitHub Actions, CI/CD, Linux Administration, Networking.
 
 Projects:
-- Engineering Hub: Collaboration platform with RAG-lite and Gemini orchestration (Flutter, Python, Firebase).
-- Academia: EdTech LMS for research and peer review (FastAPI, React).
-- RAG Data Pipeline: Institutional ingestion of 2,000+ PDFs using OpenCV, ChromaDB, and Gemma 3 (Python, EasyOCR).
+- NUESA Academia: Digital learning resource management system for engineering students at ABUAD. 800-1,200 monthly users. FastAPI, Next.js 16, Cloudflare Workers, Redis, ChromaDB, Gemini API.
+- Engineering Hub: Flutter collaboration platform with AI document analysis and RAG pipeline.
+- RAG Data Pipeline: Ingestion of 2,000+ PDFs with OCR, vector embeddings, ChromaDB.
+- TRAKS: Community incident reporting and SOS platform with vector search.
+- AWUN: Field operations platform for subcontractors with Paystack payments.
+- RAST: AI research assistant with DOI lookup, RAG, thesis generation.
 
 Contact: nasirdaud2015@gmail.com
 Socials: LinkedIn, WhatsApp.
