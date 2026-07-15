@@ -5,9 +5,9 @@ import {
     Share2,
     Globe, Activity,
     Bot,
-    Smartphone, Shield,
-    Store, CreditCard, Search,
-    ShoppingBag, Users, Zap
+    Shield,
+    CreditCard, Search,
+    ShoppingBag, Zap
 } from 'lucide-react';
 import ScrollReveal from './ScrollReveal';
 
