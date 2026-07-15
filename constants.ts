@@ -230,10 +230,10 @@ export const PROJECTS: Project[] = [
   {
     id: 5,
     title: "AWUN",
-    category: "Field Operations",
+    category: "Social Commerce",
     image: "https://picsum.photos/id/26/800/600",
-    description: "Checkout-first field operations platform for engineering subcontractors. Features closeout templates, real-time field reporting, and Paystack payment integration. Built with a robust test suite of 273 automated tests.",
-    tags: ["FastAPI", "Firebase", "Cloudflare D1", "R2", "Paystack"]
+    description: "AI-powered social commerce platform enabling vendors to sell via chat with AI storefront creation, payment verification, inventory management, and product discovery. Built for the $50B+ African social commerce market.",
+    tags: ["FastAPI", "Firebase", "Cloudflare D1", "R2", "Paystack", "Workers AI"]
   },
   {
     id: 6,
@@ -279,7 +279,7 @@ Projects:
 - Engineering Hub: Flutter collaboration platform with AI document analysis and RAG pipeline.
 - RAG Data Pipeline: Ingestion of 2,000+ PDFs with OCR, vector embeddings, ChromaDB.
 - TRAKS: Community incident reporting and SOS platform with vector search.
-- AWUN: Field operations platform for subcontractors with Paystack payments.
+- AWUN: AI-powered social commerce platform for African vendors selling via chat. Paystack payments, AI storefront creation, inventory management.
 - RAST: AI research assistant with DOI lookup, RAG, thesis generation.
 
 Contact: nasirdaud2015@gmail.com

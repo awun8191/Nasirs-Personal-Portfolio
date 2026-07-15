@@ -49,21 +49,21 @@ const Portfolio: React.FC<{ onViewCaseStudy: (id: number) => void }> = ({ onView
         {/* Header */}
         <div className="flex flex-col items-center justify-center mb-16 md:mb-24 text-center">
           <ScrollReveal>
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-white/5 border border-gray-100 dark:border-gray-800 text-xs font-bold uppercase tracking-widest text-dark dark:text-white mb-6 shadow-sm">
-              <FolderOpen size={14} className="text-sage-500" />
-              <span>Selected Works</span>
+            <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-dark dark:bg-white text-white dark:text-dark text-xs font-black uppercase tracking-widest mb-6 shadow-lg">
+              <FolderOpen size={14} />
+              <span>Portfolio</span>
             </div>
           </ScrollReveal>
 
           <ScrollReveal delay={200}>
-            <h2 className="text-4xl md:text-5xl font-black text-dark dark:text-white tracking-tight mb-6">
+            <h2 className="text-5xl md:text-7xl lg:text-8xl font-black text-dark dark:text-white tracking-tighter mb-6 leading-[0.85]">
               Featured Projects
             </h2>
           </ScrollReveal>
 
           <ScrollReveal delay={300}>
-            <p className="max-w-xl text-gray-500 dark:text-gray-400 text-lg leading-relaxed">
-              A collection of technical challenges solved with Python, Flutter, and AI.
+            <p className="max-w-2xl text-gray-500 dark:text-gray-400 text-lg md:text-xl leading-relaxed font-medium">
+              Production systems I've built end-to-end — from embedded firmware to cloud AI pipelines.
             </p>
           </ScrollReveal>
         </div>
