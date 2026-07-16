@@ -1,7 +1,7 @@
 
 import { Project } from './types';
 
-export const HERO_IMAGE = "/image.webp";
+export const HERO_IMAGE = "/image.png";
 
 export const ABOUT_TEXT = "I am a Software Engineer and final year Electrical Engineering student at ABUAD. I build production systems that serve real users, with deep experience in Python backend engineering, Flutter mobile development, and cloud infrastructure. My work spans scalable APIs, AI pipelines, and cross-platform applications. I hold an NVIDIA Deep Learning certification and actively develop RAG systems and AI agents.";
 
