@@ -84,7 +84,7 @@ const NuesaAcademiaDocs: React.FC<DocsProps> = ({ onBack }) => {
                                 </div>
 
                                 <p className="text-lg md:text-2xl text-gray-600 dark:text-gray-300 leading-relaxed font-medium mb-12 tracking-tight">
-                                    NUESA Academia is engineered as a <b>three-layer architecture</b> that separates content storage, AI processing, and user-facing delivery into independently scalable tiers — enabling rapid feature iteration without compromising system stability.
+                                    NUESA Academia is engineered as a <b>three-layer architecture</b> that separates content storage, AI processing, and user-facing delivery into independently scalable tiers - enabling rapid feature iteration without compromising system stability.
                                 </p>
 
                                 <div className="grid md:grid-cols-3 gap-6 mb-20">
@@ -120,7 +120,7 @@ const NuesaAcademiaDocs: React.FC<DocsProps> = ({ onBack }) => {
                                         <ul className="space-y-4 text-sm text-blue-100/80 font-medium relative z-10">
                                             <li className="flex gap-3"><span className="text-white font-black">01</span><span>Metadata-filtered vector search scoped to specific courses & departments</span></li>
                                             <li className="flex gap-3"><span className="text-white font-black">02</span><span>Gemini-powered course outline generation: 8–12 modules, 5 learning objectives each</span></li>
-                                            <li className="flex gap-3"><span className="text-white font-black">03</span><span>MCQ bank generation: 20 questions per subtopic — 10 theory + 10 calculation with LaTeX</span></li>
+                                            <li className="flex gap-3"><span className="text-white font-black">03</span><span>MCQ bank generation: 20 questions per subtopic - 10 theory + 10 calculation with LaTeX</span></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -167,7 +167,7 @@ const NuesaAcademiaDocs: React.FC<DocsProps> = ({ onBack }) => {
                                 </div>
 
                                 <p className="text-lg md:text-2xl text-gray-600 dark:text-gray-300 leading-relaxed font-medium mb-12 tracking-tight">
-                                    A 461-line TypeScript Cloudflare Worker acts as the platform's edge compute layer, directly serving R2 file operations and Firestore writes — bypassing the main API for latency-critical operations and reducing backend load by over 40%.
+                                    A 461-line TypeScript Cloudflare Worker acts as the platform's edge compute layer, directly serving R2 file operations and Firestore writes - bypassing the main API for latency-critical operations and reducing backend load by over 40%.
                                 </p>
 
                                 <div className="grid md:grid-cols-2 gap-8">
@@ -186,7 +186,7 @@ const NuesaAcademiaDocs: React.FC<DocsProps> = ({ onBack }) => {
                                             Edge Upload & Firestore Sync
                                         </h4>
                                         <p className="text-sm text-gray-500 leading-relaxed">
-                                            Uploads flow directly from the client to R2 via signed URLs, with the worker writing metadata to Firestore (<code className="text-blue-500">all_courses/{'{code}'}/textbooks/{'{id}'}</code>) in a single atomic operation — eliminating intermediate staging.
+                                            Uploads flow directly from the client to R2 via signed URLs, with the worker writing metadata to Firestore (<code className="text-blue-500">all_courses/{'{code}'}/textbooks/{'{id}'}</code>) in a single atomic operation - eliminating intermediate staging.
                                         </p>
                                     </div>
                                 </div>
@@ -198,7 +198,7 @@ const NuesaAcademiaDocs: React.FC<DocsProps> = ({ onBack }) => {
                                     <div className="relative z-10">
                                         <h3 className="text-2xl font-black text-white uppercase tracking-tight mb-4">Firebase Cloud Functions</h3>
                                         <p className="text-sm text-gray-400 font-medium mb-8 max-w-2xl">
-                                            Three serverless endpoints extend the edge layer: an <b>analytics_trigger</b> (Firestore <code>on_document_written</code> event), and dedicated HTTP endpoints for textbook deletion and metadata updates — providing a complete CRUD surface at the edge.
+                                            Three serverless endpoints extend the edge layer: an <b>analytics_trigger</b> (Firestore <code>on_document_written</code> event), and dedicated HTTP endpoints for textbook deletion and metadata updates - providing a complete CRUD surface at the edge.
                                         </p>
                                         <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
                                             <div>
@@ -232,7 +232,7 @@ const NuesaAcademiaDocs: React.FC<DocsProps> = ({ onBack }) => {
                                 </div>
 
                                 <p className="text-lg md:text-2xl text-gray-600 dark:text-gray-300 leading-relaxed font-medium mb-12 tracking-tight">
-                                    The CourseGen pipeline transforms raw textbook PDFs into structured, pedagogically sound course material through a two-phase AI process — OCR extraction paired with Gemini-powered generation — all orchestrated through Cloudflare's edge infrastructure.
+                                    The CourseGen pipeline transforms raw textbook PDFs into structured, pedagogically sound course material through a two-phase AI process - OCR extraction paired with Gemini-powered generation - all orchestrated through Cloudflare's edge infrastructure.
                                 </p>
 
                                 <div className="grid md:grid-cols-2 gap-8">
@@ -244,7 +244,7 @@ const NuesaAcademiaDocs: React.FC<DocsProps> = ({ onBack }) => {
                                             <h4 className="text-lg font-black text-dark dark:text-white uppercase">OCR Layer</h4>
                                         </div>
                                         <p className="text-sm text-gray-500 leading-relaxed">
-                                            <b>Tesseract</b> provides fast, offline OCR for standard textbook pages. When confidence drops below 85% — common with mathematical notation, tables, or low-resolution scans — the pipeline escalates to <b>Gemini Vision</b> for high-fidelity transcription, ensuring zero silent data loss.
+                                            <b>Tesseract</b> provides fast, offline OCR for standard textbook pages. When confidence drops below 85% - common with mathematical notation, tables, or low-resolution scans - the pipeline escalates to <b>Gemini Vision</b> for high-fidelity transcription, ensuring zero silent data loss.
                                         </p>
                                     </div>
                                     <div className="p-8 rounded-[2.5rem] bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10">
@@ -255,7 +255,7 @@ const NuesaAcademiaDocs: React.FC<DocsProps> = ({ onBack }) => {
                                             <h4 className="text-lg font-black text-dark dark:text-white uppercase">Embedding Pipeline</h4>
                                         </div>
                                         <p className="text-sm text-gray-500 leading-relaxed">
-                                            Transcribed text is chunked and embedded using <b>BGE-M3</b> via Cloudflare Workers AI. A SHA-256 hash deduplication layer prevents redundant embedding calls — identical textbook versions across semesters reuse existing vectors, reducing pipeline costs by up to 60%.
+                                            Transcribed text is chunked and embedded using <b>BGE-M3</b> via Cloudflare Workers AI. A SHA-256 hash deduplication layer prevents redundant embedding calls - identical textbook versions across semesters reuse existing vectors, reducing pipeline costs by up to 60%.
                                         </p>
                                     </div>
                                 </div>
@@ -271,7 +271,7 @@ const NuesaAcademiaDocs: React.FC<DocsProps> = ({ onBack }) => {
                                             <h4 className="text-lg font-black text-dark dark:text-white uppercase">Course Outline Generation</h4>
                                         </div>
                                         <p className="text-sm text-gray-500 leading-relaxed">
-                                            Gemini generates comprehensive course outlines from extracted material — <b>8–12 modules</b> per course, each with <b>5 learning objectives</b>. The syllabus is cross-referenced against the 14,319-line <code className="text-blue-500">courses.json</code> covering 9 engineering departments plus General Studies.
+                                            Gemini generates comprehensive course outlines from extracted material - <b>8–12 modules</b> per course, each with <b>5 learning objectives</b>. The syllabus is cross-referenced against the 14,319-line <code className="text-blue-500">courses.json</code> covering 9 engineering departments plus General Studies.
                                         </p>
                                     </div>
                                     <div className="p-8 rounded-[2.5rem] bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10">
@@ -282,7 +282,7 @@ const NuesaAcademiaDocs: React.FC<DocsProps> = ({ onBack }) => {
                                             <h4 className="text-lg font-black text-dark dark:text-white uppercase">MCQ Bank Generation</h4>
                                         </div>
                                         <p className="text-sm text-gray-500 leading-relaxed">
-                                            Per subtopic, the pipeline generates <b>20 questions</b> — split evenly between <b>10 theory questions</b> and <b>10 calculation questions</b> with full LaTeX rendering. Questions are structured for programmatic validation and can be served via the frontend as timed quizzes or practice sets.
+                                            Per subtopic, the pipeline generates <b>20 questions</b> - split evenly between <b>10 theory questions</b> and <b>10 calculation questions</b> with full LaTeX rendering. Questions are structured for programmatic validation and can be served via the frontend as timed quizzes or practice sets.
                                         </p>
                                     </div>
                                 </div>
@@ -397,7 +397,7 @@ const NuesaAcademiaDocs: React.FC<DocsProps> = ({ onBack }) => {
                                     <div className="space-y-10">
                                         <div>
                                             <p className="font-black text-white uppercase tracking-tight text-lg mb-2">SHA-256 Deduplication</p>
-                                            <p className="text-xs text-gray-500 leading-relaxed font-medium">Every textbook chunk is hashed before embedding — identical content from multi-semester uploads reuses cached vectors, eliminating redundant Gemini API calls and reducing pipeline costs by up to 60%.</p>
+                                            <p className="text-xs text-gray-500 leading-relaxed font-medium">Every textbook chunk is hashed before embedding - identical content from multi-semester uploads reuses cached vectors, eliminating redundant Gemini API calls and reducing pipeline costs by up to 60%.</p>
                                         </div>
                                         <div>
                                             <p className="font-black text-white uppercase tracking-tight text-lg mb-2">Virtual Course Creation</p>
@@ -415,7 +415,7 @@ const NuesaAcademiaDocs: React.FC<DocsProps> = ({ onBack }) => {
                                 <div className="bg-blue-600 rounded-[2.5rem] p-10 text-white shadow-2xl relative overflow-hidden group">
                                     <div className="absolute top-0 right-0 w-40 h-40 bg-white/10 rounded-full blur-3xl -mr-20 -mt-20 group-hover:scale-125 transition-transform duration-700" />
                                     <h3 className="text-2xl font-black tracking-tighter mb-4 relative z-10 leading-none uppercase">Deployment <br />Details</h3>
-                                    <p className="text-blue-100/80 font-bold text-sm mb-6 relative z-10">Live at textbooks-1093886938384.europe-west1.run.app — serving engineering education at ABUAD with sub-200ms p95 response times.</p>
+                                    <p className="text-blue-100/80 font-bold text-sm mb-6 relative z-10">Live at textbooks-1093886938384.europe-west1.run.app - serving engineering education at ABUAD with sub-200ms p95 response times.</p>
                                     <div className="inline-flex items-center gap-3 text-[10px] font-black uppercase tracking-widest px-4 py-2 rounded-full border border-white/20 relative z-10">
                                         Production Release <Share2 size={12} />
                                     </div>

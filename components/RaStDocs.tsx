@@ -57,7 +57,7 @@ const RaStDocs: React.FC<DocsProps> = ({ onBack }) => {
                                 RAST <br /><span className="text-pink-600 dark:text-pink-500">ResearchDoi.</span>
                             </h1>
                             <p className="text-xl md:text-2xl text-gray-500 dark:text-gray-400 font-medium max-w-3xl leading-relaxed tracking-tight">
-                                An AI research assistant for academic DOI lookup, PDF analysis, and RAG-based thesis generation — powered by multi-agent orchestration.
+                                An AI research assistant for academic DOI lookup, PDF analysis, and RAG-based thesis generation - powered by multi-agent orchestration.
                             </p>
                         </div>
                     </ScrollReveal>
@@ -83,7 +83,7 @@ const RaStDocs: React.FC<DocsProps> = ({ onBack }) => {
                                 </div>
 
                                 <p className="text-lg md:text-2xl text-gray-600 dark:text-gray-300 leading-relaxed font-medium mb-12 tracking-tight">
-                                    RAST (ResearchDoi) is a sophisticated AI-powered research assistant engineered to eliminate hallucinated citations and produce publishable-quality academic writing. The system accepts a DOI or paper submission, resolves metadata, analyzes PDF content, and generates structured thesis sections — all through a deterministic multi-agent pipeline.
+                                    RAST (ResearchDoi) is a sophisticated AI-powered research assistant engineered to eliminate hallucinated citations and produce publishable-quality academic writing. The system accepts a DOI or paper submission, resolves metadata, analyzes PDF content, and generates structured thesis sections - all through a deterministic multi-agent pipeline.
                                 </p>
 
                                 <div className="grid md:grid-cols-3 gap-6 mb-20">
@@ -118,7 +118,7 @@ const RaStDocs: React.FC<DocsProps> = ({ onBack }) => {
                                         <h3 className="text-2xl font-black uppercase tracking-tighter mb-6 relative z-10">Output Pipeline</h3>
                                         <ul className="space-y-4 text-sm text-pink-100/80 font-medium relative z-10">
                                             <li className="flex gap-3"><span className="text-white font-black">01</span><span>Thesis section generated with inline citation links</span></li>
-                                            <li className="flex gap-3"><span className="text-white font-black">02</span><span>Deterministic references — every claim traceable to source</span></li>
+                                            <li className="flex gap-3"><span className="text-white font-black">02</span><span>Deterministic references - every claim traceable to source</span></li>
                                             <li className="flex gap-3"><span className="text-white font-black">03</span><span>Structured academic format: abstract, methodology, results</span></li>
                                         </ul>
                                     </div>
@@ -145,21 +145,21 @@ const RaStDocs: React.FC<DocsProps> = ({ onBack }) => {
                                 <div className="space-y-8">
                                     {[
                                         {
-                                            agent: "Agent 1 — DOI Resolution",
+                                            agent: "Agent 1 - DOI Resolution",
                                             icon: <Search size={20} />,
-                                            desc: "Fetches paper metadata from DOI APIs, validates DOI structure and existence, extracts author, title, publication year, and DOI. Acts as the gateway — no invalid reference passes through.",
+                                            desc: "Fetches paper metadata from DOI APIs, validates DOI structure and existence, extracts author, title, publication year, and DOI. Acts as the gateway - no invalid reference passes through.",
                                             items: ["DOI format validation & checksum verification", "Metadata retrieval via CrossRef / DataCite APIs", "Author, title, year, and DOI extraction"]
                                         },
                                         {
-                                            agent: "Agent 2 — PDF Analysis",
+                                            agent: "Agent 2 - PDF Analysis",
                                             icon: <FileText size={20} />,
                                             desc: "Extracts text from academic PDFs using PyMuPDF, intelligently chunks content into semantically coherent sections, and generates structured summaries per section.",
                                             items: ["Full-text extraction with PyMuPDF", "Semantic chunking at section boundaries", "Per-chunk summary generation"]
                                         },
                                         {
-                                            agent: "Agent 3 — RAG Generation",
+                                            agent: "Agent 3 - RAG Generation",
                                             icon: <Bot size={20} />,
-                                            desc: "Retrieves relevant chunks via vector search in ChromaDB, then generates structured academic text with deterministic citation linking — every in-text reference is a verifiable source anchor.",
+                                            desc: "Retrieves relevant chunks via vector search in ChromaDB, then generates structured academic text with deterministic citation linking - every in-text reference is a verifiable source anchor.",
                                             items: ["Vector similarity search over embedded chunks", "Structured academic output (abstract, methodology, results)", "Deterministic citation linking with source anchors"]
                                         }
                                     ].map((layer, i) => (
@@ -173,7 +173,7 @@ const RaStDocs: React.FC<DocsProps> = ({ onBack }) => {
                                             <p className="text-sm text-gray-500 font-medium mb-6 leading-relaxed">{layer.desc}</p>
                                             <ul className="space-y-2 text-sm text-gray-500 font-medium">
                                                 {layer.items.map((item, j) => (
-                                                    <li key={j} className="flex gap-3"><span className="text-pink-500 font-black">—</span><span>{item}</span></li>
+                                                    <li key={j} className="flex gap-3"><span className="text-pink-500 font-black">-</span><span>{item}</span></li>
                                                 ))}
                                             </ul>
                                         </div>
@@ -244,9 +244,9 @@ const RaStDocs: React.FC<DocsProps> = ({ onBack }) => {
                                             Extracted Metadata
                                         </h4>
                                         <ul className="space-y-3 text-sm text-gray-500 font-medium">
-                                            <li className="flex gap-3"><span className="text-pink-500 font-black">—</span><span>Paper title & author list</span></li>
-                                            <li className="flex gap-3"><span className="text-pink-500 font-black">—</span><span>Publication year & journal</span></li>
-                                            <li className="flex gap-3"><span className="text-pink-500 font-black">—</span><span>Canonical DOI & citation count</span></li>
+                                            <li className="flex gap-3"><span className="text-pink-500 font-black">-</span><span>Paper title & author list</span></li>
+                                            <li className="flex gap-3"><span className="text-pink-500 font-black">-</span><span>Publication year & journal</span></li>
+                                            <li className="flex gap-3"><span className="text-pink-500 font-black">-</span><span>Canonical DOI & citation count</span></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -305,7 +305,7 @@ const RaStDocs: React.FC<DocsProps> = ({ onBack }) => {
                                 </div>
 
                                 <p className="text-lg md:text-2xl text-gray-600 dark:text-gray-300 leading-relaxed font-medium mb-12 tracking-tight">
-                                    The RAG Generation Agent is the final stage of the pipeline. It retrieves semantically relevant chunks from ChromaDB via vector similarity search and synthesizes them into structured academic text — complete with deterministic inline citations that link every claim back to its source chunk.
+                                    The RAG Generation Agent is the final stage of the pipeline. It retrieves semantically relevant chunks from ChromaDB via vector similarity search and synthesizes them into structured academic text - complete with deterministic inline citations that link every claim back to its source chunk.
                                 </p>
 
                                 <div className="grid md:grid-cols-2 gap-8 mb-12">
@@ -344,7 +344,7 @@ const RaStDocs: React.FC<DocsProps> = ({ onBack }) => {
                                 </div>
 
                                 <p className="text-lg md:text-2xl text-gray-600 dark:text-gray-300 leading-relaxed font-medium mb-12 tracking-tight">
-                                    The hallmark of RAST is its deterministic citation system — every claim made in generated academic text is associated with a specific source chunk from the analyzed PDF. This eliminates the most common failure mode in academic AI tools: fabricated references.
+                                    The hallmark of RAST is its deterministic citation system - every claim made in generated academic text is associated with a specific source chunk from the analyzed PDF. This eliminates the most common failure mode in academic AI tools: fabricated references.
                                 </p>
 
                                 <div className="grid md:grid-cols-2 gap-8 mb-12">
@@ -354,7 +354,7 @@ const RaStDocs: React.FC<DocsProps> = ({ onBack }) => {
                                             Source Anchoring
                                         </h4>
                                         <p className="text-sm text-gray-500 leading-relaxed">
-                                            Generated text is interleaved with source anchors — each factual claim is tagged with the chunk ID from which it was derived. The final output includes a references section mapping every anchor to its original source.
+                                            Generated text is interleaved with source anchors - each factual claim is tagged with the chunk ID from which it was derived. The final output includes a references section mapping every anchor to its original source.
                                         </p>
                                     </div>
                                     <div className="p-8 rounded-[2.5rem] bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10">

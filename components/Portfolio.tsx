@@ -63,7 +63,7 @@ const Portfolio: React.FC<{ onViewCaseStudy: (id: number) => void }> = ({ onView
 
           <ScrollReveal delay={300}>
             <p className="max-w-2xl text-gray-500 dark:text-gray-400 text-lg md:text-xl leading-relaxed font-medium">
-              Production systems I've built end-to-end — from embedded firmware to cloud AI pipelines.
+              Production systems I've built end-to-end - from embedded firmware to cloud AI pipelines.
             </p>
           </ScrollReveal>
         </div>

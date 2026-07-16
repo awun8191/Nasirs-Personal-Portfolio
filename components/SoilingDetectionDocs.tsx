@@ -90,16 +90,16 @@ const SoilingDetectionDocs: React.FC<DocsProps> = ({ onBack }) => {
                                 <p className="text-lg md:text-2xl text-gray-600 dark:text-gray-300 leading-relaxed font-medium mb-12 tracking-tight">
                                     The system employs a dual-layer wake architecture that separates always-on anomaly detection from
                                     high-accuracy classification. Layer 1 runs continuously at ~3mW on a Raspberry Pi Pico RP2040;
-                                    Layer 2 remains powered OFF and boots only when Layer 1 triggers — a deliberate design that
+                                    Layer 2 remains powered OFF and boots only when Layer 1 triggers - a deliberate design that
                                     eliminates false-positive-driven mechanical cleaning cycles.
                                 </p>
 
                                 <div className="grid md:grid-cols-2 gap-6 mb-20">
                                     {[
-                                        { title: "Ultra-Low Power", desc: "Always-on CUSUM layer at ~3mW — suitable for battery-backed solar installations." },
+                                        { title: "Ultra-Low Power", desc: "Always-on CUSUM layer at ~3mW - suitable for battery-backed solar installations." },
                                         { title: "False-Positive Immunity", desc: "Two-stage wake architecture prevents unnecessary cleaning from transient sensor noise." },
                                         { title: "High Precision", desc: "XGBoost classifier achieves 99.98% accuracy on triggered events before mechanical actuation." },
-                                        { title: "Cost-Effective", desc: "Complete system at ~$170 USD — viable for distributed off-grid African solar deployments." }
+                                        { title: "Cost-Effective", desc: "Complete system at ~$170 USD - viable for distributed off-grid African solar deployments." }
                                     ].map((goal, i) => (
                                         <div key={i} className="p-6 rounded-2xl bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10">
                                             <p className="text-[10px] font-black uppercase tracking-widest text-amber-500 mb-2">Design Goal</p>
@@ -118,17 +118,17 @@ const SoilingDetectionDocs: React.FC<DocsProps> = ({ onBack }) => {
                                             <div className="absolute top-0 right-0 w-32 h-32 bg-amber-500/5 rounded-full blur-2xl -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-1000" />
                                             <h3 className="text-2xl font-black text-dark dark:text-white uppercase tracking-tighter mb-6 relative z-10">Layer 1: CUSUM Trigger</h3>
                                             <ul className="space-y-4 text-sm text-gray-500 font-medium relative z-10">
-                                                <li className="flex gap-3"><span className="text-amber-500 font-black">01</span><span>CUSUM control chart on Raspberry Pi Pico RP2040 — always-on at ~3mW</span></li>
+                                                <li className="flex gap-3"><span className="text-amber-500 font-black">01</span><span>CUSUM control chart on Raspberry Pi Pico RP2040 - always-on at ~3mW</span></li>
                                                 <li className="flex gap-3"><span className="text-amber-500 font-black">02</span><span>Composite Soiling Index (CSI) computed from 5 environmental features weighted by Cohen's d</span></li>
-                                                <li className="flex gap-3"><span className="text-amber-500 font-black">03</span><span>Features: temperature, humidity, irradiance, panel current — 87.3% event recall</span></li>
+                                                <li className="flex gap-3"><span className="text-amber-500 font-black">03</span><span>Features: temperature, humidity, irradiance, panel current - 87.3% event recall</span></li>
                                             </ul>
                                         </div>
                                         <div className="md:w-1/2 p-10 rounded-[2.5rem] bg-amber-600 text-white relative overflow-hidden group">
                                             <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-1000" />
                                             <h3 className="text-2xl font-black uppercase tracking-tighter mb-6 relative z-10">Layer 2: XGBoost</h3>
                                             <ul className="space-y-4 text-sm text-amber-100/80 font-medium relative z-10">
-                                                <li className="flex gap-3"><span className="text-white font-black">01</span><span>XGBoost classifier on Raspberry Pi Zero 2W — normally powered OFF (deep sleep)</span></li>
-                                                <li className="flex gap-3"><span className="text-white font-black">02</span><span>Boots only when CUSUM triggers — 99.98% accuracy on triggered events</span></li>
+                                                <li className="flex gap-3"><span className="text-white font-black">01</span><span>XGBoost classifier on Raspberry Pi Zero 2W - normally powered OFF (deep sleep)</span></li>
+                                                <li className="flex gap-3"><span className="text-white font-black">02</span><span>Boots only when CUSUM triggers - 99.98% accuracy on triggered events</span></li>
                                                 <li className="flex gap-3"><span className="text-white font-black">03</span><span>Decision-tree ensemble validates soiling event before activating mechanical cleaning</span></li>
                                             </ul>
                                         </div>
@@ -147,8 +147,8 @@ const SoilingDetectionDocs: React.FC<DocsProps> = ({ onBack }) => {
                                             </thead>
                                             <tbody className="text-sm text-gray-600 dark:text-gray-400 font-medium">
                                                 {[
-                                                    { mode: "False-Positive Trigger", strat: "Two-Layer Wake — XGBoost validates CUSUM alerts before mechanical actuation" },
-                                                    { mode: "Sensor Drift / Noise", strat: "Cohen's d weighted CSI — statistical effect-size weighting desensitizes to baseline drift" },
+                                                    { mode: "False-Positive Trigger", strat: "Two-Layer Wake - XGBoost validates CUSUM alerts before mechanical actuation" },
+                                                    { mode: "Sensor Drift / Noise", strat: "Cohen's d weighted CSI - statistical effect-size weighting desensitizes to baseline drift" },
                                                     { mode: "Power Drain Idle", strat: "Layer 2 deep-sleep at near-zero draw; only Layer 1 always-on at ~3mW" },
                                                     { mode: "Mechanical Wear from Redundant Cycles", strat: "99.98% classifier precision ensures cleaning runs only on genuine soiling events" }
                                                 ].map((row, i) => (
@@ -264,7 +264,7 @@ const SoilingDetectionDocs: React.FC<DocsProps> = ({ onBack }) => {
 
                                 <p className="text-lg md:text-2xl text-gray-600 dark:text-gray-300 leading-relaxed font-medium mb-12 tracking-tight">
                                     The XGBoost classifier was trained on the public <b>HKUST Solar Panel Soiling Dataset</b>,
-                                    collected from 60 monitoring stations across Hong Kong's subtropical climate — yielding
+                                    collected from 60 monitoring stations across Hong Kong's subtropical climate - yielding
                                     46,293 station-days of labeled environmental and performance data with rainfall-based
                                     soiling ground truth.
                                 </p>
@@ -273,7 +273,7 @@ const SoilingDetectionDocs: React.FC<DocsProps> = ({ onBack }) => {
                                     {[
                                         { title: "60 Stations", desc: "Distributed monitoring sites across Hong Kong's diverse microclimates." },
                                         { title: "46,293 Station-Days", desc: "Dense temporal coverage capturing seasonal and weather-driven soiling dynamics." },
-                                        { title: "Rainfall Proxy", desc: "Labels derived from rainfall events — natural cleaning provides ground truth for soiling state transitions." }
+                                        { title: "Rainfall Proxy", desc: "Labels derived from rainfall events - natural cleaning provides ground truth for soiling state transitions." }
                                     ].map((point, i) => (
                                         <div key={i} className="p-6 rounded-2xl bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10">
                                             <p className="text-[10px] font-black uppercase tracking-widest text-amber-500 mb-2">Training Data</p>
@@ -357,7 +357,7 @@ const SoilingDetectionDocs: React.FC<DocsProps> = ({ onBack }) => {
                                         </div>
                                         <div>
                                             <p className="font-black text-white uppercase tracking-tight text-lg mb-2">Statistical Rigor Before ML</p>
-                                            <p className="text-xs text-gray-500 leading-relaxed font-medium">CUSUM control chart with Cohen's d weighting provides a statistically grounded trigger — ML only validates, never hallucinates a cleaning event from noise.</p>
+                                            <p className="text-xs text-gray-500 leading-relaxed font-medium">CUSUM control chart with Cohen's d weighting provides a statistically grounded trigger - ML only validates, never hallucinates a cleaning event from noise.</p>
                                         </div>
                                         <div>
                                             <p className="font-black text-white uppercase tracking-tight text-lg mb-2">Off-Grid Economics</p>
@@ -371,7 +371,7 @@ const SoilingDetectionDocs: React.FC<DocsProps> = ({ onBack }) => {
                                 <div className="bg-amber-600 rounded-[2.5rem] p-10 text-white shadow-2xl relative overflow-hidden group">
                                     <div className="absolute top-0 right-0 w-40 h-40 bg-white/10 rounded-full blur-3xl -mr-20 -mt-20 group-hover:scale-125 transition-transform duration-700" />
                                     <h3 className="text-2xl font-black tracking-tighter mb-4 relative z-10 leading-none uppercase">Final Year <br />Project</h3>
-                                    <p className="text-amber-100/80 font-bold text-sm mb-6 relative z-10">Electrical &amp; Electronics Engineering — ABUAD. A production-grade embedded AI system for autonomous solar panel maintenance in distributed off-grid deployments.</p>
+                                    <p className="text-amber-100/80 font-bold text-sm mb-6 relative z-10">Electrical &amp; Electronics Engineering - ABUAD. A production-grade embedded AI system for autonomous solar panel maintenance in distributed off-grid deployments.</p>
                                     <div className="inline-flex items-center gap-3 text-[10px] font-black uppercase tracking-widest px-4 py-2 rounded-full border border-white/20 relative z-10">
                                         Research Publication <BookOpen size={12} />
                                     </div>

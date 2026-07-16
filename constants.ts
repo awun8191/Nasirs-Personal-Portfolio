@@ -152,7 +152,7 @@ export const SKILL_SECTIONS = [
   {
     id: 'devops',
     title: "DevOps & Delivery",
-    description: "Engineering is more than just code—it's about reliable delivery. I implement robust CI/CD pipelines and container strategies to ensure software is always ready for production.",
+    description: "Engineering is more than just code-it's about reliable delivery. I implement robust CI/CD pipelines and container strategies to ensure software is always ready for production.",
     theme: {
       bg: "bg-[#FAFAFA] dark:bg-neutral-900",
       text: "text-dark dark:text-gray-100",

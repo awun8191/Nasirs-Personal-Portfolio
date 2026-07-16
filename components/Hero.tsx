@@ -26,10 +26,7 @@ const Hero: React.FC = () => {
           {/* Left Content */}
           <div className="lg:col-span-7 pb-12">
             <ScrollReveal delay={100} animation="animate-fade-down">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 dark:bg-white/5 backdrop-blur-sm rounded-full mb-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.2)] ring-1 ring-inset ring-black/5 dark:ring-white/10">
-                  <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-                  <span className="text-xs font-bold tracking-widest uppercase text-dark dark:text-white">Available for projects</span>
-              </div>
+              <div className="h-10"></div>
             </ScrollReveal>
 
             <ScrollReveal delay={200}>

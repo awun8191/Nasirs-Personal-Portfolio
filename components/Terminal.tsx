@@ -86,7 +86,7 @@ const Terminal: React.FC = () => {
         </div>
         <div className="flex items-center text-gray-400 gap-2 text-xs">
           <TerminalIcon size={12} />
-          <span>dauda_profile.py — zsh</span>
+          <span>dauda_profile.py - zsh</span>
         </div>
         <div className="w-10"></div> {/* Spacer for centering */}
       </div>

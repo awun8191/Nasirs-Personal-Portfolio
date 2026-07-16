@@ -269,7 +269,7 @@ const TraksDocs: React.FC<DocsProps> = ({ onBack }) => {
                                             <ul className="space-y-4 text-sm text-gray-500 font-medium relative z-10">
                                                 <li className="flex gap-3"><span className="text-orange-500 font-black">01</span><span>User reports incident with location via FastAPI</span></li>
                                                 <li className="flex gap-3"><span className="text-orange-500 font-black">02</span><span>Reverse geocoding enriches coordinate data</span></li>
-                                                <li className="flex gap-3"><span className="text-orange-500 font-black">03</span><span>Community verifies — confirms or refutes</span></li>
+                                                <li className="flex gap-3"><span className="text-orange-500 font-black">03</span><span>Community verifies - confirms or refutes</span></li>
                                                 <li className="flex gap-3"><span className="text-orange-500 font-black">04</span><span>Verified incidents indexed into Vectorize for semantic search</span></li>
                                             </ul>
                                         </div>
@@ -277,10 +277,10 @@ const TraksDocs: React.FC<DocsProps> = ({ onBack }) => {
                                             <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-1000" />
                                             <h3 className="text-2xl font-black uppercase tracking-tighter mb-6 relative z-10">Service Layers</h3>
                                             <ul className="space-y-4 text-sm text-orange-100/80 font-medium relative z-10">
-                                                <li className="flex gap-3"><span className="text-white font-black">01</span><span>FastAPI Backend — Core pipeline orchestration</span></li>
-                                                <li className="flex gap-3"><span className="text-white font-black">02</span><span>Cloudflare Workers — Edge logic & API routing</span></li>
-                                                <li className="flex gap-3"><span className="text-white font-black">03</span><span>Firebase — Auth & real-time Firestore storage</span></li>
-                                                <li className="flex gap-3"><span className="text-white font-black">04</span><span>Cloudflare R2 — Incident media & file storage</span></li>
+                                                <li className="flex gap-3"><span className="text-white font-black">01</span><span>FastAPI Backend - Core pipeline orchestration</span></li>
+                                                <li className="flex gap-3"><span className="text-white font-black">02</span><span>Cloudflare Workers - Edge logic & API routing</span></li>
+                                                <li className="flex gap-3"><span className="text-white font-black">03</span><span>Firebase - Auth & real-time Firestore storage</span></li>
+                                                <li className="flex gap-3"><span className="text-white font-black">04</span><span>Cloudflare R2 - Incident media & file storage</span></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -351,7 +351,7 @@ const TraksDocs: React.FC<DocsProps> = ({ onBack }) => {
                                     <div className="space-y-10">
                                         <div>
                                             <p className="font-black text-white uppercase tracking-tight text-lg mb-2">Community Trust</p>
-                                            <p className="text-xs text-gray-500 leading-relaxed font-medium">Verification is decentralized — no single moderator controls what gets flagged. The confirm/refute ratio ensures democratic information quality.</p>
+                                            <p className="text-xs text-gray-500 leading-relaxed font-medium">Verification is decentralized - no single moderator controls what gets flagged. The confirm/refute ratio ensures democratic information quality.</p>
                                         </div>
                                         <div>
                                             <p className="font-black text-white uppercase tracking-tight text-lg mb-2">Real-Time Edge</p>
