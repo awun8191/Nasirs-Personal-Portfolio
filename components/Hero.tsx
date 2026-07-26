@@ -52,7 +52,8 @@ const Hero: React.FC = () => {
                 </motion.a>
                 {/* Updated Download CV button for better visibility/glassy feel */}
                 <motion.a 
-                  href="#contact" 
+                  href="/Dauda_Nasir_Omotola_CV.pdf" 
+                  download
                   whileHover={{ scale: 1.02 }} 
                   whileTap={{ scale: 0.98 }}
                   className="px-8 py-4 bg-white/30 dark:bg-white/5 backdrop-blur-md text-dark dark:text-white rounded-full font-bold flex items-center gap-2 hover:bg-white/50 dark:hover:bg-white/10 transition-colors shadow-[0_4px_16px_rgba(0,0,0,0.05)] ring-1 ring-inset ring-white/40 dark:ring-white/10 z-20 focus-visible:ring-2 focus-visible:ring-sage-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-dark outline-none"
