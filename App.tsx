@@ -93,6 +93,7 @@ function App() {
           <Navbar />
           <main>
             <Hero />
+            <About />
             <Portfolio
               onViewCaseStudy={(id) => {
                 if (id === 1) navigate('case-study-hub');
@@ -104,7 +105,6 @@ function App() {
                 if (id === 7) navigate('rast-docs');
               }}
             />
-            <About />
             <Skills />
             <Contact />
           </main>
