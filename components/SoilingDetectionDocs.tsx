@@ -114,7 +114,7 @@ const SoilingDetectionDocs: React.FC<DocsProps> = ({ onBack }) => {
                             <div className="space-y-12">
                                 <ScrollReveal>
                                     <div className="flex flex-col md:flex-row gap-8">
-                                        <div className="md:w-1/2 p-10 rounded-[2.5rem] bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10 relative overflow-hidden group">
+                                        <div className="md:w-1/2 p-10 rounded-2xl bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10 relative overflow-hidden group">
                                             <div className="absolute top-0 right-0 w-32 h-32 bg-amber-500/5 rounded-full blur-2xl -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-1000" />
                                             <h3 className="text-2xl font-black text-dark dark:text-white uppercase tracking-tighter mb-6 relative z-10">Layer 1: CUSUM Trigger</h3>
                                             <ul className="space-y-4 text-sm text-gray-500 font-medium relative z-10">
@@ -123,7 +123,7 @@ const SoilingDetectionDocs: React.FC<DocsProps> = ({ onBack }) => {
                                                 <li className="flex gap-3"><span className="text-amber-500 font-black">03</span><span>Features: temperature, humidity, irradiance, panel current - 87.3% event recall</span></li>
                                             </ul>
                                         </div>
-                                        <div className="md:w-1/2 p-10 rounded-[2.5rem] bg-amber-600 text-white relative overflow-hidden group">
+                                        <div className="md:w-1/2 p-10 rounded-2xl bg-amber-600 text-white relative overflow-hidden group">
                                             <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-1000" />
                                             <h3 className="text-2xl font-black uppercase tracking-tighter mb-6 relative z-10">Layer 2: XGBoost</h3>
                                             <ul className="space-y-4 text-sm text-amber-100/80 font-medium relative z-10">
@@ -137,7 +137,7 @@ const SoilingDetectionDocs: React.FC<DocsProps> = ({ onBack }) => {
 
                                 {/* FAILURE MODE MITIGATION TABLE */}
                                 <ScrollReveal>
-                                    <div className="p-1 rounded-[2.5rem] bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 overflow-hidden shadow-2xl">
+                                    <div className="p-1 rounded-2xl bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 overflow-hidden shadow-2xl">
                                         <table className="w-full text-left border-collapse">
                                             <thead>
                                                 <tr className="border-b border-gray-200 dark:border-white/5">
@@ -183,7 +183,7 @@ const SoilingDetectionDocs: React.FC<DocsProps> = ({ onBack }) => {
                                 </p>
 
                                 <div className="grid md:grid-cols-2 gap-8">
-                                    <div className="p-8 rounded-[2.5rem] bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10">
+                                    <div className="p-8 rounded-2xl bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10">
                                         <h4 className="text-xl font-black text-dark dark:text-white uppercase mb-4 flex items-center gap-2">
                                             <Disc3 className="text-amber-500" size={20} />
                                             Linear Carriage
@@ -194,7 +194,7 @@ const SoilingDetectionDocs: React.FC<DocsProps> = ({ onBack }) => {
                                             positioning and adjustable traversal speed for different panel sizes.
                                         </p>
                                     </div>
-                                    <div className="p-8 rounded-[2.5rem] bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10">
+                                    <div className="p-8 rounded-2xl bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10">
                                         <h4 className="text-xl font-black text-dark dark:text-white uppercase mb-4 flex items-center gap-2">
                                             <Wrench className="text-amber-500" size={20} />
                                             Rotating Brush
@@ -209,7 +209,7 @@ const SoilingDetectionDocs: React.FC<DocsProps> = ({ onBack }) => {
                             </ScrollReveal>
 
                             <ScrollReveal>
-                                <div className="p-10 rounded-[3rem] bg-gray-950 border border-white/5 relative overflow-hidden">
+                                <div className="p-10 rounded-2xl bg-gray-950 border border-white/5 relative overflow-hidden">
                                     <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-amber-500/5 rounded-full blur-[100px] -mr-32 -mt-32" />
                                     <div className="relative z-10">
                                         <h3 className="text-2xl font-black text-white uppercase tracking-tight mb-8">Sensor Suite</h3>
@@ -285,7 +285,7 @@ const SoilingDetectionDocs: React.FC<DocsProps> = ({ onBack }) => {
                             </ScrollReveal>
 
                             <ScrollReveal>
-                                <div className="p-10 rounded-[3rem] bg-gray-950 border border-white/5 relative overflow-hidden">
+                                <div className="p-10 rounded-2xl bg-gray-950 border border-white/5 relative overflow-hidden">
                                     <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-amber-500/5 rounded-full blur-[100px] -mr-32 -mt-32" />
                                     <div className="relative z-10">
                                         <h3 className="text-2xl font-black text-white uppercase tracking-tight mb-8">System Performance</h3>
@@ -331,7 +331,7 @@ const SoilingDetectionDocs: React.FC<DocsProps> = ({ onBack }) => {
                                         { label: "DC Motor", val: "JGA25-370", icon: <Zap size={24} /> },
                                         { label: "Protocol", val: "GPIO / I²C", icon: <Share2 size={24} /> }
                                     ].map((t, k) => (
-                                        <div key={k} className="p-6 rounded-3xl bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10 group hover:border-amber-500/30 transition-all text-center">
+                                        <div key={k} className="p-6 rounded-3xl bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10 group hover:border-amber-500/30 transition-colors text-center">
                                             <div className="p-3 rounded-2xl bg-gray-50 dark:bg-white/5 inline-flex text-gray-400 group-hover:text-amber-500 transition-colors mb-4">
                                                 {t.icon}
                                             </div>
@@ -348,7 +348,7 @@ const SoilingDetectionDocs: React.FC<DocsProps> = ({ onBack }) => {
                     <aside className="lg:w-1/3">
                         <div className="sticky top-32 space-y-12">
                             <ScrollReveal delay={400}>
-                                <div className="bg-dark rounded-[2.5rem] border border-white/10 p-10 shadow-3xl">
+                                <div className="bg-dark rounded-2xl border border-white/10 p-10 shadow-3xl">
                                     <h3 className="text-sm font-black uppercase tracking-widest text-amber-500 mb-8">Design Philosophy</h3>
                                     <div className="space-y-10">
                                         <div>
@@ -368,7 +368,7 @@ const SoilingDetectionDocs: React.FC<DocsProps> = ({ onBack }) => {
                             </ScrollReveal>
 
                             <ScrollReveal delay={600}>
-                                <div className="bg-amber-600 rounded-[2.5rem] p-10 text-white shadow-2xl relative overflow-hidden group">
+                                <div className="bg-amber-600 rounded-2xl p-10 text-white shadow-2xl relative overflow-hidden group">
                                     <div className="absolute top-0 right-0 w-40 h-40 bg-white/10 rounded-full blur-3xl -mr-20 -mt-20 group-hover:scale-125 transition-transform duration-700" />
                                     <h3 className="text-2xl font-black tracking-tighter mb-4 relative z-10 leading-none uppercase">Final Year <br />Project</h3>
                                     <p className="text-amber-100/80 font-bold text-sm mb-6 relative z-10">Electrical &amp; Electronics Engineering - ABUAD. A production-grade embedded AI system for autonomous solar panel maintenance in distributed off-grid deployments.</p>

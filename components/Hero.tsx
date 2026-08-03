@@ -7,7 +7,7 @@ import NetworkBackground from './NetworkBackground';
 
 const Hero: React.FC = () => {
   return (
-    <section className="relative min-h-screen bg-gradient-to-tl from-yellow-400 via-orange-100 to-white dark:from-yellow-900/20 dark:via-[#151a15] dark:to-[#151a15] flex flex-col pt-32 overflow-hidden rounded-b-[4rem] transition-colors duration-500">
+    <section className="relative min-h-[100dvh] bg-gradient-to-tl from-yellow-400 via-orange-100 to-white dark:from-yellow-900/20 dark:via-[#151a15] dark:to-[#151a15] flex flex-col pt-24 overflow-hidden rounded-b-2xl transition-colors duration-500">
       
       {/* Interactive Background - Updated to Gold/Yellow color */}
       <NetworkBackground color="234, 179, 8" count={50} className="z-0 opacity-40 dark:opacity-20" />
@@ -77,7 +77,7 @@ const Hero: React.FC = () => {
                  decoding="sync"
                  width="1000"
                  height="1491"
-                 className="w-full h-full object-cover object-center rounded-t-[3rem] drop-shadow-2xl mask-image-b grayscale hover:grayscale-0 transition-all duration-700"
+                 className="w-full h-full object-cover object-center rounded-t-[3rem] drop-shadow-2xl mask-image-b grayscale hover:grayscale-0 transition-[filter] duration-700"
                />
              </ScrollReveal>
 

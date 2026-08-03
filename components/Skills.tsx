@@ -169,12 +169,6 @@ const Skills: React.FC = () => {
 
               {/* Text Content - Sticky for large screens */}
               <div className="lg:w-2/5 lg:sticky lg:top-32 w-full">
-                <ScrollReveal delay={100} animation={index % 2 === 0 ? 'animate-slide-in-right' : 'animate-slide-in-left'}>
-                  <div className={`inline-flex items-center gap-2 mb-6 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest backdrop-blur-md border border-white/10 ${section.id === 'cloud' ? 'bg-white/10 text-white' : 'bg-dark/5 dark:bg-white/10 text-dark dark:text-white'}`}>
-                    <span className={`w-2 h-2 rounded-full ${section.theme.accent}`}></span>
-                    Expertise 0{index + 1}
-                  </div>
-                </ScrollReveal>
 
                 <ScrollReveal delay={200} animation="animate-fade-up">
                   <h2 className={`text-5xl md:text-8xl font-black mb-8 tracking-tighter leading-[0.9] ${section.theme.text}`}>
@@ -217,7 +211,7 @@ const Skills: React.FC = () => {
                         {/* NOTE: We removed ScrollReveal from individual cards to prevent scroll jank on mobile */}
                         <button
                           onClick={() => setActiveSkill({ ...item, theme: section.theme })}
-                          className={`group p-7 md:p-10 rounded-3xl md:rounded-[2.5rem] border transition-all duration-300 relative overflow-hidden h-full text-left w-full ${section.theme.card}`}
+                          className={`group p-7 md:p-10 rounded-3xl md:rounded-2xl border transition-shadow duration-300 relative overflow-hidden h-full text-left w-full ${section.theme.card}`}
                         >
                           {/* Hover gradient overlay */}
                           <div className={`absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500 ${section.theme.accent}`}></div>
@@ -227,7 +221,7 @@ const Skills: React.FC = () => {
                               <div className={`w-14 h-14 md:w-16 md:h-16 rounded-2xl flex items-center justify-center transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6 shadow-sm ${section.theme.iconBg}`}>
                                 {getIcon(item.icon, "")}
                               </div>
-                              <ArrowRight className={`hidden md:block opacity-0 -translate-x-4 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-300 ${section.theme.text}`} size={24} />
+                              <ArrowRight className={`hidden md:block opacity-0 -translate-x-4 group-hover:translate-x-0 group-hover:opacity-100 transition-[opacity,transform] duration-300 ${section.theme.text}`} size={24} />
                             </div>
 
                             <div>
@@ -263,7 +257,7 @@ const Skills: React.FC = () => {
           ></div>
 
           {/* Modal Content */}
-          <div className={`relative w-full max-w-2xl bg-white dark:bg-gray-900 rounded-[2.5rem] md:rounded-[3.5rem] overflow-hidden shadow-2xl border border-white/20 animate-scale-in`}>
+          <div className={`relative w-full max-w-2xl bg-white dark:bg-gray-900 rounded-xl md:rounded-2xl overflow-hidden shadow-2xl border border-white/20 animate-scale-in`}>
             {/* Theme Background Accent */}
             <div className={`absolute top-0 left-0 w-full h-32 md:h-40 opacity-20 ${activeSkill.theme.accent}`}></div>
 

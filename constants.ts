@@ -157,7 +157,7 @@ export const SKILL_SECTIONS = [
       bg: "bg-[#FAFAFA] dark:bg-neutral-900",
       text: "text-dark dark:text-gray-100",
       secondaryText: "text-gray-500 dark:text-gray-400",
-      card: "bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 hover:border-dark dark:hover:border-gray-500 hover:shadow-none transition-all duration-200",
+      card: "bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 hover:border-dark dark:hover:border-gray-500 hover:shadow-none transition-shadow duration-200",
       iconBg: "bg-gray-100 dark:bg-gray-700 text-dark dark:text-white",
       accent: "bg-dark dark:bg-white"
     },
@@ -207,7 +207,7 @@ export const PROJECTS: Project[] = [
     id: 2,
     title: "NUESA Academia",
     category: "EdTech Platform",
-    image: "https://picsum.photos/id/24/800/600",
+    image: "/projects/nuesa-academia.jpg",
     description: "Digital learning resource management system serving 800 to 1,200 engineering students monthly across 9 departments at ABUAD. Three-layer architecture with FastAPI backend, Cloudflare Workers for direct R2 file operations, Next.js 16 admin portal, and an AI pipeline processing 2,000+ PDFs through OCR to vector embeddings for semantic search and automated course outline/MCQ generation.",
     tags: ["FastAPI", "Next.js 16", "TypeScript", "Cloudflare Workers", "Redis", "ChromaDB", "Gemini API"]
   },
@@ -223,7 +223,7 @@ export const PROJECTS: Project[] = [
     id: 4,
     title: "TRAKS",
     category: "Community Platform",
-    image: "https://picsum.photos/id/48/800/600",
+    image: "/projects/traks-app.png",
     description: "Community incident reporting and SOS platform with semantic search via Cloudflare Vectorize. Features real-time alerts, geolocation with reverse geocoding, community verification (confirm/refute), and vector-based post search.",
     tags: ["FastAPI", "Firebase", "Cloudflare", "Python"]
   },
@@ -231,7 +231,7 @@ export const PROJECTS: Project[] = [
     id: 5,
     title: "AWUN",
     category: "Social Commerce",
-    image: "https://picsum.photos/id/26/800/600",
+    image: "/projects/awun.png",
     description: "AI-powered social commerce platform enabling vendors to sell via chat with AI storefront creation, payment verification, inventory management, and product discovery. Built for the $50B+ African social commerce market.",
     tags: ["FastAPI", "Firebase", "Cloudflare D1", "R2", "Paystack", "Workers AI"]
   },

@@ -53,9 +53,18 @@ const AwunDocs: React.FC<DocsProps> = ({ onBack }) => {
                             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-orange-700 text-white text-[10px] font-black uppercase tracking-widest mb-6">
                                 Project Specification
                             </div>
-                            <h1 className="text-5xl md:text-8xl font-black text-dark dark:text-white tracking-tighter mb-8 leading-[0.85]">
-                                AWUN <br /><span className="text-orange-700 dark:text-orange-600">Social Commerce.</span>
-                            </h1>
+                            <div className="flex items-center gap-6 mb-8">
+                                <img
+                                    src="/projects/awun.png"
+                                    alt="AWUN Logo"
+                                    width="96"
+                                    height="96"
+                                    className="w-20 h-20 md:w-24 md:h-24 object-contain drop-shadow-lg"
+                                />
+                                <h1 className="text-5xl md:text-8xl font-black text-dark dark:text-white tracking-tighter leading-[0.85]">
+                                    AWUN <br /><span className="text-orange-700 dark:text-orange-600">Social Commerce.</span>
+                                </h1>
+                            </div>
                             <p className="text-xl md:text-2xl text-gray-500 dark:text-gray-400 font-medium max-w-3xl leading-relaxed tracking-tight">
                                 AI-powered social commerce platform for the next billion sellers. FastAPI backend, Firebase Auth, Cloudflare D1 + R2 for storage, Gemini for CSV parsing, and a multimodal RAG system for product search.
                             </p>
@@ -104,7 +113,7 @@ const AwunDocs: React.FC<DocsProps> = ({ onBack }) => {
                             {/* DATA FLOW */}
                             <ScrollReveal>
                                 <div className="flex flex-col md:flex-row gap-8">
-                                    <div className="md:w-1/2 p-10 rounded-[2.5rem] bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10 relative overflow-hidden group">
+                                    <div className="md:w-1/2 p-10 rounded-2xl bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10 relative overflow-hidden group">
                                         <div className="absolute top-0 right-0 w-32 h-32 bg-orange-700/5 rounded-full blur-2xl -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-1000" />
                                         <h3 className="text-2xl font-black text-dark dark:text-white uppercase tracking-tighter mb-6 relative z-10">Catalogue Ingestion</h3>
                                         <ul className="space-y-4 text-sm text-gray-500 font-medium relative z-10">
@@ -113,7 +122,7 @@ const AwunDocs: React.FC<DocsProps> = ({ onBack }) => {
                                             <li className="flex gap-3"><span className="text-orange-700 font-black">03</span><span>Products stored in D1 (structured fields) with images uploaded to R2</span></li>
                                         </ul>
                                     </div>
-                                    <div className="md:w-1/2 p-10 rounded-[2.5rem] bg-orange-700 text-white relative overflow-hidden group">
+                                    <div className="md:w-1/2 p-10 rounded-2xl bg-orange-700 text-white relative overflow-hidden group">
                                         <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-1000" />
                                         <h3 className="text-2xl font-black uppercase tracking-tighter mb-6 relative z-10">Transaction Flow</h3>
                                         <ul className="space-y-4 text-sm text-orange-100/80 font-medium relative z-10">
@@ -127,7 +136,7 @@ const AwunDocs: React.FC<DocsProps> = ({ onBack }) => {
 
                             {/* ARCHITECTURE TABLE */}
                             <ScrollReveal>
-                                <div className="p-1 rounded-[2.5rem] bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 overflow-hidden shadow-2xl">
+                                <div className="p-1 rounded-2xl bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 overflow-hidden shadow-2xl">
                                     <table className="w-full text-left border-collapse">
                                         <thead>
                                             <tr className="border-b border-gray-200 dark:border-white/5">
@@ -176,7 +185,7 @@ const AwunDocs: React.FC<DocsProps> = ({ onBack }) => {
                                 </p>
 
                                 <div className="grid md:grid-cols-2 gap-8 mb-12">
-                                    <div className="p-8 rounded-[2.5rem] bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10">
+                                    <div className="p-8 rounded-2xl bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10">
                                         <h4 className="text-xl font-black text-dark dark:text-white uppercase mb-4 flex items-center gap-2">
                                             <Zap className="text-orange-700" size={20} />
                                             Spreadsheet Ingestion
@@ -185,7 +194,7 @@ const AwunDocs: React.FC<DocsProps> = ({ onBack }) => {
                                             Vendors upload CSV or XLSX files with arbitrary column layouts. Gemini parses the header row, identifies product fields (name, price, category, stock), and maps them to the platform's schema. The parsed output is validated and stored in D1 with the original file saved to R2 for audit.
                                         </p>
                                     </div>
-                                    <div className="p-8 rounded-[2.5rem] bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10">
+                                    <div className="p-8 rounded-2xl bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10">
                                         <h4 className="text-xl font-black text-dark dark:text-white uppercase mb-4 flex items-center gap-2">
                                             <Bot className="text-orange-700" size={20} />
                                             Chat Log Parsing
@@ -278,7 +287,7 @@ const AwunDocs: React.FC<DocsProps> = ({ onBack }) => {
                                         { label: "Multimodal Search", val: "RAG Pipeline", icon: <Search size={24} /> },
                                         { label: "Infrastructure", val: "Cloudflare", icon: <Globe size={24} /> }
                                     ].map((t, k) => (
-                                        <div key={k} className="p-6 rounded-3xl bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10 group hover:border-orange-700/30 transition-all text-center">
+                                        <div key={k} className="p-6 rounded-3xl bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10 group hover:border-orange-700/30 transition-colors text-center">
                                             <div className="p-3 rounded-2xl bg-gray-50 dark:bg-white/5 inline-flex text-gray-400 group-hover:text-orange-700 transition-colors mb-4">
                                                 {t.icon}
                                             </div>
@@ -295,7 +304,7 @@ const AwunDocs: React.FC<DocsProps> = ({ onBack }) => {
                     <aside className="lg:w-1/3">
                         <div className="sticky top-32 space-y-12">
                             <ScrollReveal delay={400}>
-                                <div className="bg-dark rounded-[2.5rem] border border-white/10 p-10 shadow-3xl">
+                                <div className="bg-dark rounded-2xl border border-white/10 p-10 shadow-3xl">
                                     <h3 className="text-sm font-black uppercase tracking-widest text-orange-700 mb-8">System Architecture</h3>
                                     <div className="space-y-10">
                                         <div>
@@ -315,7 +324,7 @@ const AwunDocs: React.FC<DocsProps> = ({ onBack }) => {
                             </ScrollReveal>
 
                             <ScrollReveal delay={600}>
-                                <div className="bg-orange-700 rounded-[2.5rem] p-10 text-white shadow-2xl relative overflow-hidden group">
+                                <div className="bg-orange-700 rounded-2xl p-10 text-white shadow-2xl relative overflow-hidden group">
                                     <div className="absolute top-0 right-0 w-40 h-40 bg-white/10 rounded-full blur-3xl -mr-20 -mt-20 group-hover:scale-125 transition-transform duration-700" />
                                     <h3 className="text-2xl font-black tracking-tighter mb-4 relative z-10 leading-none uppercase">Full Stack <br />Social Commerce</h3>
                                     <p className="text-orange-100/80 font-bold text-sm mb-6 relative z-10">FastAPI + Firebase Auth + Cloudflare D1/R2 + Gemini CSV parsing + multimodal RAG search + Paystack webhooks.</p>

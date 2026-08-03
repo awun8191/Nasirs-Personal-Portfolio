@@ -147,7 +147,7 @@ const EngineeringHubDocs: React.FC<DocsProps> = ({ onBack }) => {
                                     </div>
 
                                     {/* Visual Placeholder for docs - Styled Content */}
-                                    <div className="p-8 md:p-12 rounded-[3rem] bg-gray-950 border border-white/5 relative overflow-hidden group shadow-3xl">
+                                    <div className="p-8 md:p-12 rounded-2xl bg-gray-950 border border-white/5 relative overflow-hidden group shadow-3xl">
                                         <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-blue-500/5 rounded-full blur-[80px] -mr-20 -mt-20 group-hover:scale-110 transition-transform duration-1000" />
 
                                         <div className="relative z-10 grid md:grid-cols-3 gap-10 items-center text-center">
@@ -185,7 +185,7 @@ const EngineeringHubDocs: React.FC<DocsProps> = ({ onBack }) => {
                                         { label: "Security", val: "App Check", icon: <Shield size={24} /> },
                                         { label: "Hosting", val: "Firebase Hosting", icon: <Globe size={24} /> }
                                     ].map((t, k) => (
-                                        <div key={k} className="p-6 rounded-3xl bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10 group hover:border-blue-500/30 transition-all text-center">
+                                        <div key={k} className="p-6 rounded-3xl bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10 group hover:border-blue-500/30 transition-colors text-center">
                                             <div className="p-3 rounded-2xl bg-gray-50 dark:bg-white/5 inline-flex text-gray-400 group-hover:text-blue-500 transition-colors mb-4">
                                                 {t.icon}
                                             </div>
@@ -204,7 +204,7 @@ const EngineeringHubDocs: React.FC<DocsProps> = ({ onBack }) => {
 
                             {/* IDIOSYNCRASIES HIGHLIGHT */}
                             <ScrollReveal delay={400}>
-                                <div className="bg-dark rounded-[2.5rem] border border-white/10 p-10 shadow-3xl relative overflow-hidden">
+                                <div className="bg-dark rounded-2xl border border-white/10 p-10 shadow-3xl relative overflow-hidden">
                                     <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-full blur-2xl -mr-16 -mt-16" />
                                     <h3 className="text-sm font-black uppercase tracking-widest text-blue-500 mb-8">Technical Sophistication</h3>
 
@@ -227,7 +227,7 @@ const EngineeringHubDocs: React.FC<DocsProps> = ({ onBack }) => {
 
                             {/* ARCHITECTURE OUTCOME */}
                             <ScrollReveal delay={600}>
-                                <div className="bg-blue-600 rounded-[2.5rem] p-10 text-white shadow-2xl relative overflow-hidden group cursor-pointer active:scale-95 transition-transform">
+                                <div className="bg-blue-600 rounded-2xl p-10 text-white shadow-2xl relative overflow-hidden group cursor-pointer active:scale-95 transition-transform">
                                     <div className="absolute top-0 right-0 w-40 h-40 bg-white/10 rounded-full blur-3xl -mr-20 -mt-20 group-hover:scale-125 transition-transform duration-700" />
                                     <h3 className="text-2xl font-black tracking-tighter mb-4 relative z-10 leading-none uppercase">Architectural <br />Outcome</h3>
                                     <p className="text-blue-100/80 font-bold text-sm mb-6 relative z-10 leading-relaxed">A sustainable, high-scale system that delivers AI value without infrastructure inflation.</p>

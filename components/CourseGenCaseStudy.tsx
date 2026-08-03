@@ -224,7 +224,7 @@ const CourseGenCaseStudy: React.FC<CaseStudyProps> = ({ onBack }) => {
                                     { step: "04", label: "Generate", desc: "RAG outlines + Q&A" }
                                 ].map((s, i) => (
                                     <div key={i} className="text-center">
-                                        <div className="w-12 h-12 md:w-20 md:h-20 rounded-2xl md:rounded-[2rem] bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center mx-auto mb-3 md:mb-4">
+                                        <div className="w-12 h-12 md:w-20 md:h-20 rounded-2xl md:rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center mx-auto mb-3 md:mb-4">
                                             <span className="text-lg md:text-3xl font-black text-indigo-600 dark:text-indigo-400">{s.step}</span>
                                         </div>
                                         <p className="text-sm md:text-xl font-black text-dark dark:text-white uppercase tracking-tight">{s.label}</p>
@@ -253,13 +253,13 @@ const CourseGenCaseStudy: React.FC<CaseStudyProps> = ({ onBack }) => {
                             <div className="flex gap-4">
                                 <button
                                     onClick={prevSlide}
-                                    className="w-16 h-16 rounded-full border border-gray-200 dark:border-white/10 flex items-center justify-center text-dark dark:text-white hover:bg-indigo-500 hover:border-indigo-500 hover:text-white transition-all transform active:scale-90"
+                                    className="w-16 h-16 rounded-full border border-gray-200 dark:border-white/10 flex items-center justify-center text-dark dark:text-white hover:bg-indigo-500 hover:border-indigo-500 hover:text-white transition-colors transform active:scale-90"
                                 >
                                     <ChevronLeft size={24} />
                                 </button>
                                 <button
                                     onClick={nextSlide}
-                                    className="w-16 h-16 rounded-full border border-gray-200 dark:border-white/10 flex items-center justify-center text-dark dark:text-white hover:bg-indigo-500 hover:border-indigo-500 hover:text-white transition-all transform active:scale-90"
+                                    className="w-16 h-16 rounded-full border border-gray-200 dark:border-white/10 flex items-center justify-center text-dark dark:text-white hover:bg-indigo-500 hover:border-indigo-500 hover:text-white transition-colors transform active:scale-90"
                                 >
                                     <ChevronRight size={24} />
                                 </button>
@@ -279,12 +279,12 @@ const CourseGenCaseStudy: React.FC<CaseStudyProps> = ({ onBack }) => {
                         >
                             {capabilities.map((cap, idx) => (
                                 <div key={idx} className="w-full flex-shrink-0 px-2 md:px-0 snap-center">
-                                    <div className="max-w-5xl mx-auto p-6 md:p-16 rounded-[2.5rem] md:rounded-[4rem] bg-gray-50 dark:bg-gray-950 border border-gray-100 dark:border-white/5 shadow-2xl relative overflow-hidden group">
+                                    <div className="max-w-5xl mx-auto p-6 md:p-16 rounded-2xl md:rounded-2xl bg-gray-50 dark:bg-gray-950 border border-gray-100 dark:border-white/5 shadow-2xl relative overflow-hidden group">
                                         <div className={`absolute top-0 right-0 w-[400px] h-[400px] ${cap.bgAccent} rounded-full blur-[100px] -mr-40 -mt-40 opacity-50 group-hover:scale-110 transition-transform duration-1000`} />
 
                                         <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 items-center">
                                             <div>
-                                                <div className="w-20 h-20 md:w-24 md:h-24 rounded-[2rem] bg-white dark:bg-dark border border-gray-100 dark:border-white/10 flex items-center justify-center shadow-xl mb-10">
+                                                <div className="w-20 h-20 md:w-24 md:h-24 rounded-xl bg-white dark:bg-dark border border-gray-100 dark:border-white/10 flex items-center justify-center shadow-xl mb-10">
                                                     <cap.icon className={cap.accent} size={40} />
                                                 </div>
                                                 <h3 className="text-2xl md:text-5xl font-black text-dark dark:text-white mb-4 md:mb-6 uppercase tracking-tighter leading-none">{cap.title}</h3>
@@ -305,7 +305,7 @@ const CourseGenCaseStudy: React.FC<CaseStudyProps> = ({ onBack }) => {
                                             <div className="space-y-4">
                                                 <p className="text-[10px] font-black uppercase tracking-[0.3em] text-indigo-500 mb-6">Key Implementations</p>
                                                 {cap.items.map((item, i) => (
-                                                    <div key={i} className="flex items-center gap-4 bg-white dark:bg-white/5 p-4 md:p-6 rounded-2xl border border-gray-100 dark:border-white/5 group/item hover:border-indigo-500/30 transition-all">
+                                                    <div key={i} className="flex items-center gap-4 bg-white dark:bg-white/5 p-4 md:p-6 rounded-2xl border border-gray-100 dark:border-white/5 group/item hover:border-indigo-500/30 transition-colors">
                                                         <div className={`w-1.5 h-1.5 rounded-full ${cap.accent.replace('text-', 'bg-')}`} />
                                                         <span className="text-sm md:text-base text-gray-600 dark:text-gray-300 font-bold tracking-tight">{item}</span>
                                                         <Sparkles className="ml-auto w-4 h-4 text-indigo-500/20 group-hover/item:text-indigo-500 transition-colors" />
@@ -324,7 +324,7 @@ const CourseGenCaseStudy: React.FC<CaseStudyProps> = ({ onBack }) => {
                                 <button
                                     key={i}
                                     onClick={() => scrollToIndex(i)}
-                                    className={`h-2.5 transition-all duration-500 rounded-full ${activeIndex === i ? 'w-12 bg-indigo-500' : 'w-2.5 bg-gray-200 dark:bg-white/10'}`}
+                                    className={`h-2.5 transition-[width,background-color] duration-500 rounded-full ${activeIndex === i ? 'w-12 bg-indigo-500' : 'w-2.5 bg-gray-200 dark:bg-white/10'}`}
                                 />
                             ))}
                         </div>
@@ -333,7 +333,7 @@ const CourseGenCaseStudy: React.FC<CaseStudyProps> = ({ onBack }) => {
             </section>
 
             {/* --- RESILIENCY DEEP DIVE --- */}
-            <section className="py-16 md:py-40 bg-dark text-white overflow-hidden relative rounded-[3rem] md:rounded-[6rem] mx-4 lg:mx-12 shadow-2xl">
+            <section className="py-16 md:py-40 bg-dark text-white overflow-hidden relative rounded-3xl md:rounded-3xl mx-4 lg:mx-12 shadow-2xl">
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-indigo-500/5 rounded-full blur-[120px] pointer-events-none opacity-50" />
 
                 <div className="container mx-auto px-6 md:px-12 relative z-10">
@@ -363,7 +363,7 @@ const CourseGenCaseStudy: React.FC<CaseStudyProps> = ({ onBack }) => {
                                 </div>
 
                                 <div className="lg:w-1/2 w-full">
-                                    <div className="relative aspect-square md:aspect-video rounded-[3rem] overflow-hidden border border-white/10 bg-black group shadow-3xl">
+                                    <div className="relative aspect-square md:aspect-video rounded-3xl overflow-hidden border border-white/10 bg-black group shadow-3xl">
                                         <div className="absolute inset-0 flex items-center justify-center p-10">
                                             <div className="space-y-4 w-full max-sm:max-w-[200px]">
                                                 {[
@@ -372,7 +372,7 @@ const CourseGenCaseStudy: React.FC<CaseStudyProps> = ({ onBack }) => {
                                                     { label: "API Keys: Round-robin with exhaustion detection", icon: <Loader size={16} /> },
                                                     { label: "Progress: Checkpointed at every stage", icon: <Clock size={16} /> }
                                                 ].map((step, k) => (
-                                                    <div key={k} className="flex items-center gap-4 bg-white/5 p-4 rounded-2xl border border-white/5 hover:bg-white/10 transition-all">
+                                                    <div key={k} className="flex items-center gap-4 bg-white/5 p-4 rounded-2xl border border-white/5 hover:bg-white/10 transition-colors">
                                                         <div className="w-10 h-10 rounded-xl bg-indigo-500 flex items-center justify-center text-dark shadow-sm">
                                                             {step.icon}
                                                         </div>
@@ -410,7 +410,7 @@ const CourseGenCaseStudy: React.FC<CaseStudyProps> = ({ onBack }) => {
                         ].map((stat, i) => (
                             <ScrollReveal key={i} delay={i * 100}>
                                 <div className="text-center group">
-                                    <div className="aspect-square rounded-[2rem] md:rounded-[3rem] bg-gray-50 dark:bg-white/5 border border-gray-100 dark:border-white/10 flex items-center justify-center mb-6 group-hover:border-indigo-500/30 transition-all shadow-xl">
+                                    <div className="aspect-square rounded-xl md:rounded-3xl bg-gray-50 dark:bg-white/5 border border-gray-100 dark:border-white/10 flex items-center justify-center mb-6 group-hover:border-indigo-500/30 transition-colors shadow-xl">
                                         <div className="text-center">
                                             <p className={`text-4xl md:text-7xl font-black ${i === 0 ? 'text-indigo-600 dark:text-indigo-400' : 'text-dark dark:text-white'} tracking-tighter`}>{stat.value}</p>
                                             <p className="text-[10px] font-black uppercase tracking-widest text-gray-400 mt-2">{stat.label}</p>
@@ -444,7 +444,7 @@ const CourseGenCaseStudy: React.FC<CaseStudyProps> = ({ onBack }) => {
                                 { label: "Deployment", val: "Docker + EC2", icon: <Box size={24} /> },
                                 { label: "Edge", val: "Cloudflare", icon: <Globe size={24} /> }
                             ].map((t, k) => (
-                                <div key={k} className="p-6 rounded-3xl bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10 group hover:border-indigo-500/30 transition-all text-center">
+                                <div key={k} className="p-6 rounded-3xl bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10 group hover:border-indigo-500/30 transition-colors text-center">
                                     <div className="p-3 rounded-2xl bg-gray-50 dark:bg-white/5 inline-flex text-gray-400 group-hover:text-indigo-500 transition-colors mb-4">
                                         {t.icon}
                                     </div>
@@ -458,7 +458,7 @@ const CourseGenCaseStudy: React.FC<CaseStudyProps> = ({ onBack }) => {
             </section>
 
             {/* --- FOOTER CTA --- */}
-            <section className="py-16 md:py-48 bg-indigo-600 rounded-[3rem] md:rounded-[6rem] mx-4 md:mx-12 mb-12 shadow-2xl relative overflow-hidden">
+            <section className="py-16 md:py-48 bg-indigo-600 rounded-3xl md:rounded-3xl mx-4 md:mx-12 mb-12 shadow-2xl relative overflow-hidden">
                 <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-violet-500/30 to-transparent pointer-events-none" />
                 <div className="container mx-auto px-6 text-center relative z-10">
                     <ScrollReveal>
@@ -473,7 +473,7 @@ const CourseGenCaseStudy: React.FC<CaseStudyProps> = ({ onBack }) => {
                     <ScrollReveal delay={300}>
                         <button
                             onClick={onBack}
-                            className="px-16 py-8 bg-white text-indigo-600 rounded-[2.5rem] font-black text-xl hover:scale-105 active:scale-95 transition-all shadow-2xl"
+                            className="px-16 py-8 bg-white text-indigo-600 rounded-2xl font-black text-xl hover:scale-105 active:scale-95 transition-colors shadow-2xl"
                         >
                             Return to Portfolio
                         </button>

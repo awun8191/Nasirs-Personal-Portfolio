@@ -197,10 +197,10 @@ const EngineeringHubCaseStudy: React.FC<CaseStudyProps> = ({ onBack, onViewDocs 
                 <div className="container mx-auto px-6 relative z-10 text-center">
                     <ScrollReveal>
                         <div className="flex justify-center mb-10">
-                            <div className="w-32 h-32 md:w-44 md:h-44 p-4 bg-dark dark:bg-gray-900 rounded-[2.5rem] shadow-2xl border border-white/10 relative group">
-                                <div className="absolute inset-0 bg-teal-500/20 rounded-[2.5rem] blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                            <div className="w-32 h-32 md:w-44 md:h-44 p-4 bg-dark dark:bg-gray-900 rounded-2xl shadow-2xl border border-white/10 relative group">
+                                <div className="absolute inset-0 bg-teal-500/20 rounded-2xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                                 <img
-                                    src="/projects/engineering-hub-logo.png"
+                                    src="/projects/engineering-hub-logo.svg"
                                     alt="Engineering Hub Logo"
                                     width="176"
                                     height="176"
@@ -278,13 +278,13 @@ const EngineeringHubCaseStudy: React.FC<CaseStudyProps> = ({ onBack, onViewDocs 
                             <div className="flex gap-4">
                                 <button
                                     onClick={prevSlide}
-                                    className="w-16 h-16 rounded-full border border-gray-200 dark:border-white/10 flex items-center justify-center text-dark dark:text-white hover:bg-teal-500 hover:border-teal-500 hover:text-white transition-all transform active:scale-90"
+                                    className="w-16 h-16 rounded-full border border-gray-200 dark:border-white/10 flex items-center justify-center text-dark dark:text-white hover:bg-teal-500 hover:border-teal-500 hover:text-white transition-colors transform active:scale-90"
                                 >
                                     <ChevronLeft size={24} />
                                 </button>
                                 <button
                                     onClick={nextSlide}
-                                    className="w-16 h-16 rounded-full border border-gray-200 dark:border-white/10 flex items-center justify-center text-dark dark:text-white hover:bg-teal-500 hover:border-teal-500 hover:text-white transition-all transform active:scale-90"
+                                    className="w-16 h-16 rounded-full border border-gray-200 dark:border-white/10 flex items-center justify-center text-dark dark:text-white hover:bg-teal-500 hover:border-teal-500 hover:text-white transition-colors transform active:scale-90"
                                 >
                                     <ChevronRight size={24} />
                                 </button>
@@ -304,13 +304,13 @@ const EngineeringHubCaseStudy: React.FC<CaseStudyProps> = ({ onBack, onViewDocs 
                         >
                             {capabilities.map((cap, idx) => (
                                 <div key={idx} className="w-full flex-shrink-0 px-2 md:px-0 snap-center">
-                                    <div className="max-w-5xl mx-auto p-6 md:p-16 rounded-[2.5rem] md:rounded-[4rem] bg-gray-50 dark:bg-gray-950 border border-gray-100 dark:border-white/5 shadow-2xl relative overflow-hidden group">
+                                    <div className="max-w-5xl mx-auto p-6 md:p-16 rounded-2xl md:rounded-2xl bg-gray-50 dark:bg-gray-950 border border-gray-100 dark:border-white/5 shadow-2xl relative overflow-hidden group">
                                         {/* bg gradient accent */}
                                         <div className={`absolute top-0 right-0 w-[400px] h-[400px] ${cap.bgAccent} rounded-full blur-[100px] -mr-40 -mt-40 opacity-50 group-hover:scale-110 transition-transform duration-1000`} />
 
                                         <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 items-center">
                                             <div>
-                                                <div className="w-20 h-20 md:w-24 md:h-24 rounded-[2rem] bg-white dark:bg-dark border border-gray-100 dark:border-white/10 flex items-center justify-center shadow-xl mb-10">
+                                                <div className="w-20 h-20 md:w-24 md:h-24 rounded-xl bg-white dark:bg-dark border border-gray-100 dark:border-white/10 flex items-center justify-center shadow-xl mb-10">
                                                     <cap.icon className={cap.accent} size={40} />
                                                 </div>
                                                 <h3 className="text-2xl md:text-5xl font-black text-dark dark:text-white mb-4 md:mb-6 uppercase tracking-tighter leading-none">{cap.title}</h3>
@@ -331,7 +331,7 @@ const EngineeringHubCaseStudy: React.FC<CaseStudyProps> = ({ onBack, onViewDocs 
                                             <div className="space-y-4">
                                                 <p className="text-[10px] font-black uppercase tracking-[0.3em] text-teal-500 mb-6">Key Implementations</p>
                                                 {cap.items.map((item, i) => (
-                                                    <div key={i} className="flex items-center gap-4 bg-white dark:bg-white/5 p-4 md:p-6 rounded-2xl border border-gray-100 dark:border-white/5 group/item hover:border-teal-500/30 transition-all">
+                                                    <div key={i} className="flex items-center gap-4 bg-white dark:bg-white/5 p-4 md:p-6 rounded-2xl border border-gray-100 dark:border-white/5 group/item hover:border-teal-500/30 transition-colors">
                                                         <div className={`w-1.5 h-1.5 rounded-full ${cap.accent.replace('text-', 'bg-')}`} />
                                                         <span className="text-sm md:text-base text-gray-600 dark:text-gray-300 font-bold tracking-tight">{item}</span>
                                                         <Sparkles className="ml-auto w-4 h-4 text-teal-500/20 group-hover/item:text-teal-500 transition-colors" />
@@ -350,7 +350,7 @@ const EngineeringHubCaseStudy: React.FC<CaseStudyProps> = ({ onBack, onViewDocs 
                                 <button
                                     key={i}
                                     onClick={() => scrollToIndex(i)}
-                                    className={`h-2.5 transition-all duration-500 rounded-full ${activeIndex === i ? 'w-12 bg-teal-500' : 'w-2.5 bg-gray-200 dark:bg-white/10'}`}
+                                    className={`h-2.5 transition-colors duration-500 rounded-full ${activeIndex === i ? 'w-12 bg-teal-500' : 'w-2.5 bg-gray-200 dark:bg-white/10'}`}
                                 />
                             ))}
                         </div>
@@ -359,7 +359,7 @@ const EngineeringHubCaseStudy: React.FC<CaseStudyProps> = ({ onBack, onViewDocs 
             </section>
 
             {/* --- AI DEEP DIVE --- */}
-            <section className="py-16 md:py-40 bg-dark text-white overflow-hidden relative rounded-[3rem] md:rounded-[6rem] mx-4 lg:mx-12 shadow-2xl">
+            <section className="py-16 md:py-40 bg-dark text-white overflow-hidden relative rounded-2xl md:rounded-3xl mx-4 lg:mx-12 shadow-2xl">
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-teal-500/5 rounded-full blur-[120px] pointer-events-none opacity-50" />
 
                 <div className="container mx-auto px-6 md:px-12 relative z-10">
@@ -389,7 +389,7 @@ const EngineeringHubCaseStudy: React.FC<CaseStudyProps> = ({ onBack, onViewDocs 
                                 </div>
 
                                 <div className="lg:w-1/2 w-full">
-                                    <div className="relative aspect-square md:aspect-video rounded-[3rem] overflow-hidden border border-white/10 bg-black group shadow-3xl">
+                                    <div className="relative aspect-square md:aspect-video rounded-2xl overflow-hidden border border-white/10 bg-black group shadow-3xl">
                                         <div className="absolute inset-0 flex items-center justify-center p-10">
                                             <div className="space-y-6 w-full max-sm:max-w-[200px]">
                                                 {[
@@ -398,7 +398,7 @@ const EngineeringHubCaseStudy: React.FC<CaseStudyProps> = ({ onBack, onViewDocs 
                                                     { label: "Retrieval", icon: <Database size={20} /> },
                                                     { label: "Generation", icon: <MessageSquareCode size={20} /> }
                                                 ].map((step, k) => (
-                                                    <div key={k} className="flex items-center gap-4 bg-white/5 p-4 rounded-2xl border border-white/5 hover:bg-white/10 transition-all">
+                                                    <div key={k} className="flex items-center gap-4 bg-white/5 p-4 rounded-2xl border border-white/5 hover:bg-white/10 transition-colors">
                                                         <div className="w-10 h-10 rounded-xl bg-teal-500 flex items-center justify-center text-dark shadow-sm">
                                                             {step.icon}
                                                         </div>
@@ -430,7 +430,7 @@ const EngineeringHubCaseStudy: React.FC<CaseStudyProps> = ({ onBack, onViewDocs 
                         {themes.map((theme, i) => (
                             <ScrollReveal key={i} delay={i * 50}>
                                 <div className="group cursor-default">
-                                    <div className={`aspect-square rounded-[2rem] md:rounded-[3rem] mb-6 transition-all duration-700 group-hover:scale-105 shadow-xl ${theme.bg}`} />
+                                    <div className={`aspect-square rounded-xl md:rounded-2xl mb-6 transition-colors duration-700 group-hover:scale-105 shadow-xl ${theme.bg}`} />
                                     <p className="font-black text-[11px] uppercase tracking-widest text-dark dark:text-white opacity-40 group-hover:opacity-100 transition-opacity">
                                         {theme.name}
                                     </p>
@@ -442,7 +442,7 @@ const EngineeringHubCaseStudy: React.FC<CaseStudyProps> = ({ onBack, onViewDocs 
             </section>
 
             {/* --- FOOTER --- */}
-            <section className="py-16 md:py-48 bg-teal-500 rounded-[3rem] md:rounded-[6rem] mx-4 md:mx-12 mb-12 shadow-2xl relative overflow-hidden group">
+            <section className="py-16 md:py-48 bg-teal-500 rounded-2xl md:rounded-3xl mx-4 md:mx-12 mb-12 shadow-2xl relative overflow-hidden group">
                 <div className="container mx-auto px-6 text-center relative z-10">
                     <ScrollReveal>
                         <h2 className="text-4xl md:text-[10rem] font-black text-dark tracking-tighter mb-8 md:mb-12 leading-[0.75]">Full Stack Mastery.</h2>
@@ -454,7 +454,7 @@ const EngineeringHubCaseStudy: React.FC<CaseStudyProps> = ({ onBack, onViewDocs 
                     <ScrollReveal delay={300}>
                         <button
                             onClick={onBack}
-                            className="px-16 py-8 bg-dark text-white rounded-[2.5rem] font-black text-xl hover:scale-105 active:scale-95 transition-all shadow-2xl"
+                            className="px-16 py-8 bg-dark text-white rounded-2xl font-black text-xl hover:scale-105 active:scale-95 transition-colors shadow-2xl"
                         >
                             Return to Portfolio
                         </button>

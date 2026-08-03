@@ -1,14 +1,19 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
+import { motion, useMotionValue, useSpring } from 'framer-motion';
 
 interface TiltCardProps {
   children: React.ReactNode;
   className?: string;
 }
 
-const TiltCard: React.FC<TiltCardProps> = ({ children, className = "" }) => {
+const TiltCard: React.FC<TiltCardProps> = ({ children, className = '' }) => {
   const ref = useRef<HTMLDivElement>(null);
-  const [rotation, setRotation] = useState({ x: 0, y: 0 });
-  const [isHovering, setIsHovering] = useState(false);
+
+  const rotateX = useMotionValue(0);
+  const rotateY = useMotionValue(0);
+
+  const springX = useSpring(rotateX, { stiffness: 200, damping: 20 });
+  const springY = useSpring(rotateY, { stiffness: 200, damping: 20 });
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!ref.current) return;
@@ -16,23 +21,17 @@ const TiltCard: React.FC<TiltCardProps> = ({ children, className = "" }) => {
     const rect = ref.current.getBoundingClientRect();
     const width = rect.width;
     const height = rect.height;
-    
-    // Calculate mouse position relative to center of card
+
     const mouseX = e.clientX - rect.left - width / 2;
     const mouseY = e.clientY - rect.top - height / 2;
 
-    // Calculate rotation (adjust divisor to change sensitivity)
-    const rotateY = (mouseX / width) * 20; // Max rotation deg
-    const rotateX = (mouseY / height) * -20; // Invert X axis for natural feel
-
-    setRotation({ x: rotateX, y: rotateY });
+    rotateY.set((mouseX / width) * 20);
+    rotateX.set((mouseY / height) * -20);
   };
 
-  const handleMouseEnter = () => setIsHovering(true);
-  
   const handleMouseLeave = () => {
-    setIsHovering(false);
-    setRotation({ x: 0, y: 0 }); // Reset position
+    rotateX.set(0);
+    rotateY.set(0);
   };
 
   return (
@@ -40,19 +39,21 @@ const TiltCard: React.FC<TiltCardProps> = ({ children, className = "" }) => {
       ref={ref}
       className={`perspective-1000 ${className}`}
       onMouseMove={handleMouseMove}
-      onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <div
-        className="transition-transform duration-100 ease-out preserve-3d"
+      <motion.div
+        className="preserve-3d"
         style={{
-          transform: isHovering 
-            ? `rotateX(${rotation.x}deg) rotateY(${rotation.y}deg) scale(1.02)` 
-            : 'rotateX(0deg) rotateY(0deg) scale(1)',
+          transformStyle: 'preserve-3d',
+          rotateX: springX,
+          rotateY: springY,
+          scale: 1,
         }}
+        whileHover={{ scale: 1.02 }}
+        transition={{ type: 'spring', stiffness: 200, damping: 20 }}
       >
         {children}
-      </div>
+      </motion.div>
     </div>
   );
 };

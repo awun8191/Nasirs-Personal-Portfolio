@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { PROJECTS } from '../constants';
-import { ArrowUpRight, Github, FolderOpen } from 'lucide-react';
+import { ArrowUpRight, Github } from 'lucide-react';
 import ScrollReveal from './ScrollReveal';
 
 // Internal component for handling parallax logic with Framer Motion
@@ -48,12 +48,6 @@ const Portfolio: React.FC<{ onViewCaseStudy: (id: number) => void }> = ({ onView
 
         {/* Header */}
         <div className="flex flex-col items-center justify-center mb-16 md:mb-24 text-center">
-          <ScrollReveal>
-            <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-dark dark:bg-white text-white dark:text-dark text-xs font-black uppercase tracking-widest mb-6 shadow-lg">
-              <FolderOpen size={14} />
-              <span>Portfolio</span>
-            </div>
-          </ScrollReveal>
 
           <ScrollReveal delay={200}>
             <h2 className="text-5xl md:text-7xl lg:text-8xl font-black text-dark dark:text-white tracking-tighter mb-6 leading-[0.85]">
@@ -102,14 +96,14 @@ const Portfolio: React.FC<{ onViewCaseStudy: (id: number) => void }> = ({ onView
 
                 <ScrollReveal delay={index * 50} animation="animate-fade-up" className="w-full h-full flex-grow">
                   <div
-                    className="group bg-white dark:bg-gray-800 rounded-[2rem] md:rounded-[2.5rem] overflow-hidden border border-gray-200 dark:border-gray-700 shadow-xl dark:shadow-2xl transition-all duration-500 h-full flex flex-col md:grid md:grid-cols-2"
+                    className="group bg-white dark:bg-gray-800 rounded-xl md:rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 shadow-xl dark:shadow-2xl transition-colors duration-500 h-full flex flex-col md:grid md:grid-cols-2"
                     style={{
                       // Deeper shadow for better separation in stack
                       boxShadow: '0 20px 40px -5px rgba(0, 0, 0, 0.1), 0 10px 20px -5px rgba(0, 0, 0, 0.04)'
                     }}
                   >
                     {/* Image Section */}
-                    <div className={`relative h-[30vh] md:h-[500px] w-full overflow-hidden bg-gray-100 dark:bg-gray-900 ${index % 2 === 1 ? 'md:order-2' : ''}`}>
+                    <div className={`relative h-[30vh] md:h-full w-full overflow-hidden bg-gray-100 dark:bg-gray-900 ${index % 2 === 1 ? 'md:order-2' : ''}`}>
                       <div className="absolute inset-0 bg-dark/5 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none" />
 
                       <ParallaxImage src={project.image} alt={project.title} />
@@ -142,7 +136,7 @@ const Portfolio: React.FC<{ onViewCaseStudy: (id: number) => void }> = ({ onView
 
                       <button
                         onClick={() => onViewCaseStudy(project.id)}
-                        className="w-full md:w-auto px-6 py-3.5 lg:px-8 lg:py-4 bg-dark dark:bg-white text-white dark:text-dark rounded-full font-bold shadow-xl hover:bg-sage-600 dark:hover:bg-gray-200 hover:scale-[1.02] active:scale-95 transition-all duration-300 flex items-center justify-center gap-2 group/btn text-sm lg:text-base">
+                        className="w-full md:w-auto px-6 py-3.5 lg:px-8 lg:py-4 bg-dark dark:bg-white text-white dark:text-dark rounded-full font-bold shadow-xl hover:bg-sage-600 dark:hover:bg-gray-200 hover:scale-[1.02] active:scale-95 transition-colors flex items-center justify-center gap-2 group/btn text-sm lg:text-base">
                         View Case Study
                         <ArrowUpRight size={16} className="group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
                       </button>

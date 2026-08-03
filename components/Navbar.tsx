@@ -58,7 +58,7 @@ const Navbar: React.FC = () => {
   return (
     <>
     <nav 
-      className={`fixed z-50 transition-all duration-500 ease-out-expo ${
+      className={`fixed z-50 transition-[background,box-shadow,border,top,left,right] duration-500 ease-out-expo ${
         isScrolled 
           ? 'top-4 left-4 right-4 md:left-1/2 md:right-auto md:-translate-x-1/2 md:w-[90%] lg:w-[1200px] bg-white/80 dark:bg-dark/80 backdrop-blur-xl shadow-soft dark:shadow-none border border-white/60 dark:border-white/10 rounded-full py-3 px-2' 
           : 'top-0 left-0 right-0 py-6 bg-transparent'
@@ -68,7 +68,7 @@ const Navbar: React.FC = () => {
         
         {/* Logo */}
         <a href="#" className="flex items-center gap-2 group relative z-50">
-           <div className={`w-9 h-9 rounded-full flex items-center justify-center font-black text-lg transition-all duration-300 ${
+           <div className={`w-9 h-9 rounded-full flex items-center justify-center font-black text-lg transition-colors duration-300 ${
                isScrolled ? 'bg-dark text-white dark:bg-white dark:text-dark' : 'bg-dark text-white dark:bg-white dark:text-dark'
            }`}>
              D
@@ -82,14 +82,14 @@ const Navbar: React.FC = () => {
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-1">
-          <div className={`flex items-center gap-1 px-1.5 py-1.5 rounded-full transition-all duration-500 ${
+          <div className={`flex items-center gap-1 px-1.5 py-1.5 rounded-full transition-[background,border-color] duration-500 ${
             isScrolled ? 'bg-gray-100/0 border border-transparent' : 'bg-white/40 dark:bg-black/20 backdrop-blur-md border border-white/40 dark:border-white/10'
           }`}>
               {navLinks.map((link) => (
                 <a 
                   key={link.name} 
                   href={link.href} 
-                  className={`px-5 py-2 text-sm font-bold rounded-full transition-all duration-300 ${
+                  className={`px-5 py-2 text-sm font-bold rounded-full transition-colors duration-300 ${
                     isScrolled 
                       ? 'text-gray-600 dark:text-gray-300 hover:text-dark dark:hover:text-white hover:bg-gray-100 dark:hover:bg-white/10' 
                       : 'text-gray-800 dark:text-gray-200 hover:text-dark dark:hover:text-white hover:bg-white dark:hover:bg-black/20'
@@ -113,7 +113,7 @@ const Navbar: React.FC = () => {
                 {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
              </button>
 
-             <a href="#contact" id="lets-talk-btn-desktop" className="px-6 py-2.5 bg-dark dark:bg-white text-white dark:text-dark rounded-full text-sm font-bold hover:bg-gray-800 dark:hover:bg-gray-200 transition-all shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 duration-300 flex items-center gap-2">
+             <a href="#contact" id="lets-talk-btn-desktop" className="px-6 py-2.5 bg-dark dark:bg-white text-white dark:text-dark rounded-full text-sm font-bold hover:bg-gray-800 dark:hover:bg-gray-200 transition-[background,shadow,transform] shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 duration-300 flex items-center gap-2">
                 <span>Let's Talk</span>
                 <MessageSquare size={14} className="opacity-70" />
              </a>
@@ -142,7 +142,7 @@ const Navbar: React.FC = () => {
     </nav>
 
     {/* Mobile Menu Overlay */}
-    <div className={`fixed inset-0 z-40 bg-white/95 dark:bg-dark/95 backdrop-blur-xl transition-all duration-500 ease-out-expo flex flex-col justify-center items-center space-y-8 ${
+    <div className={`fixed inset-0 z-40 bg-white/95 dark:bg-dark/95 backdrop-blur-xl transition-[opacity,visibility] duration-500 ease-out-expo flex flex-col justify-center items-center space-y-8 ${
         isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'
     }`}>
         {navLinks.map((link, idx) => (
@@ -150,7 +150,7 @@ const Navbar: React.FC = () => {
               key={link.name} 
               href={link.href}
               onClick={() => setIsMobileMenuOpen(false)}
-              className={`text-3xl font-black text-dark dark:text-white hover:text-sage-500 transition-all duration-300 transform ${
+              className={`text-3xl font-black text-dark dark:text-white hover:text-sage-500 transition-[transform,opacity,color] duration-300 transform ${
                   isMobileMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
               }`}
               style={{ transitionDelay: `${100 + idx * 50}ms` }}
@@ -161,7 +161,7 @@ const Navbar: React.FC = () => {
          <a 
             href="#contact" 
             onClick={() => setIsMobileMenuOpen(false)}
-            className={`mt-8 px-8 py-4 bg-dark dark:bg-white text-white dark:text-dark rounded-full text-lg font-bold transition-all duration-300 transform ${
+            className={`mt-8 px-8 py-4 bg-dark dark:bg-white text-white dark:text-dark rounded-full text-lg font-bold transition-[transform,opacity] duration-300 transform ${
                  isMobileMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
             }`}
             style={{ transitionDelay: '300ms' }}

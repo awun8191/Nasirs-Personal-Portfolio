@@ -52,9 +52,18 @@ const TraksDocs: React.FC<DocsProps> = ({ onBack }) => {
                             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-orange-600 text-white text-[10px] font-black uppercase tracking-widest mb-6">
                                 Project Specification
                             </div>
-                            <h1 className="text-5xl md:text-8xl font-black text-dark dark:text-white tracking-tighter mb-8 leading-[0.85]">
-                                TRAKS <br /><span className="text-orange-600 dark:text-orange-500">Platform.</span>
-                            </h1>
+                            <div className="flex items-center gap-6 mb-8">
+                                <img
+                                    src="/projects/traks-logo.png"
+                                    alt="TRAKS Logo"
+                                    width="96"
+                                    height="96"
+                                    className="w-20 h-20 md:w-24 md:h-24 object-contain drop-shadow-lg"
+                                />
+                                <h1 className="text-5xl md:text-8xl font-black text-dark dark:text-white tracking-tighter leading-[0.85]">
+                                    TRAKS <br /><span className="text-orange-600 dark:text-orange-500">Platform.</span>
+                                </h1>
+                            </div>
                             <p className="text-xl md:text-2xl text-gray-500 dark:text-gray-400 font-medium max-w-3xl leading-relaxed tracking-tight">
                                 A community-powered incident reporting and SOS platform with real-time alerts, geolocation, and semantic search.
                             </p>
@@ -119,7 +128,7 @@ const TraksDocs: React.FC<DocsProps> = ({ onBack }) => {
 
                                 <div className="space-y-12">
                                     <div className="flex flex-col md:flex-row gap-8">
-                                        <div className="md:w-1/2 p-10 rounded-[2.5rem] bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10 relative overflow-hidden group">
+                                        <div className="md:w-1/2 p-10 rounded-2xl bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10 relative overflow-hidden group">
                                             <div className="absolute top-0 right-0 w-32 h-32 bg-orange-500/5 rounded-full blur-2xl -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-1000" />
                                             <h3 className="text-2xl font-black text-dark dark:text-white uppercase tracking-tighter mb-6 relative z-10">Reporting Flow</h3>
                                             <ul className="space-y-4 text-sm text-gray-500 font-medium relative z-10">
@@ -128,7 +137,7 @@ const TraksDocs: React.FC<DocsProps> = ({ onBack }) => {
                                                 <li className="flex gap-3"><span className="text-orange-500 font-black">03</span><span>Report enters community verification queue</span></li>
                                             </ul>
                                         </div>
-                                        <div className="md:w-1/2 p-10 rounded-[2.5rem] bg-orange-600 text-white relative overflow-hidden group">
+                                        <div className="md:w-1/2 p-10 rounded-2xl bg-orange-600 text-white relative overflow-hidden group">
                                             <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-1000" />
                                             <h3 className="text-2xl font-black uppercase tracking-tighter mb-6 relative z-10">SOS Mode</h3>
                                             <ul className="space-y-4 text-sm text-orange-100/80 font-medium relative z-10">
@@ -159,7 +168,7 @@ const TraksDocs: React.FC<DocsProps> = ({ onBack }) => {
                                 </p>
 
                                 <div className="grid md:grid-cols-2 gap-8">
-                                    <div className="p-8 rounded-[2.5rem] bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10">
+                                    <div className="p-8 rounded-2xl bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10">
                                         <h4 className="text-xl font-black text-dark dark:text-white uppercase mb-4 flex items-center gap-2">
                                             <CheckCircle className="text-orange-500" size={20} />
                                             Confirm Mechanism
@@ -168,7 +177,7 @@ const TraksDocs: React.FC<DocsProps> = ({ onBack }) => {
                                             Community members near the incident location can <b>confirm</b> a report, adding credibility weight. Each confirmation is tied to the user's proximity and reputation, ensuring that only relevant, trustworthy validations affect incident status.
                                         </p>
                                     </div>
-                                    <div className="p-8 rounded-[2.5rem] bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10">
+                                    <div className="p-8 rounded-2xl bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10">
                                         <h4 className="text-xl font-black text-dark dark:text-white uppercase mb-4 flex items-center gap-2">
                                             <AlertTriangle className="text-orange-500" size={20} />
                                             Refute Mechanism
@@ -180,7 +189,7 @@ const TraksDocs: React.FC<DocsProps> = ({ onBack }) => {
                                 </div>
 
                                 {/* MITIGATION TABLE */}
-                                <div className="p-1 rounded-[2.5rem] bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 overflow-hidden shadow-2xl">
+                                <div className="p-1 rounded-2xl bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 overflow-hidden shadow-2xl">
                                     <table className="w-full text-left border-collapse">
                                         <thead>
                                             <tr className="border-b border-gray-200 dark:border-white/5">
@@ -223,7 +232,7 @@ const TraksDocs: React.FC<DocsProps> = ({ onBack }) => {
                                 </p>
 
                                 <div className="grid md:grid-cols-2 gap-8">
-                                    <div className="p-8 rounded-[2.5rem] bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10">
+                                    <div className="p-8 rounded-2xl bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10">
                                         <h4 className="text-xl font-black text-dark dark:text-white uppercase mb-4 flex items-center gap-2">
                                             <Zap className="text-orange-500" size={20} />
                                             Vector Embedding Pipeline
@@ -232,7 +241,7 @@ const TraksDocs: React.FC<DocsProps> = ({ onBack }) => {
                                             Incident descriptions and metadata are converted into vector embeddings and stored in Cloudflare Vectorize. Queries are matched against the vector index using cosine similarity, returning the most semantically relevant incidents regardless of exact keyword overlap.
                                         </p>
                                     </div>
-                                    <div className="p-8 rounded-[2.5rem] bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10">
+                                    <div className="p-8 rounded-2xl bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10">
                                         <h4 className="text-xl font-black text-dark dark:text-white uppercase mb-4 flex items-center gap-2">
                                             <Activity className="text-orange-500" size={20} />
                                             Sub-500ms Retrieval
@@ -263,7 +272,7 @@ const TraksDocs: React.FC<DocsProps> = ({ onBack }) => {
 
                                 <div className="space-y-12">
                                     <div className="flex flex-col md:flex-row gap-8">
-                                        <div className="md:w-1/2 p-10 rounded-[2.5rem] bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10 relative overflow-hidden group">
+                                        <div className="md:w-1/2 p-10 rounded-2xl bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10 relative overflow-hidden group">
                                             <div className="absolute top-0 right-0 w-32 h-32 bg-orange-500/5 rounded-full blur-2xl -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-1000" />
                                             <h3 className="text-2xl font-black text-dark dark:text-white uppercase tracking-tighter mb-6 relative z-10">Data Flow</h3>
                                             <ul className="space-y-4 text-sm text-gray-500 font-medium relative z-10">
@@ -273,7 +282,7 @@ const TraksDocs: React.FC<DocsProps> = ({ onBack }) => {
                                                 <li className="flex gap-3"><span className="text-orange-500 font-black">04</span><span>Verified incidents indexed into Vectorize for semantic search</span></li>
                                             </ul>
                                         </div>
-                                        <div className="md:w-1/2 p-10 rounded-[2.5rem] bg-orange-600 text-white relative overflow-hidden group">
+                                        <div className="md:w-1/2 p-10 rounded-2xl bg-orange-600 text-white relative overflow-hidden group">
                                             <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-1000" />
                                             <h3 className="text-2xl font-black uppercase tracking-tighter mb-6 relative z-10">Service Layers</h3>
                                             <ul className="space-y-4 text-sm text-orange-100/80 font-medium relative z-10">
@@ -287,7 +296,7 @@ const TraksDocs: React.FC<DocsProps> = ({ onBack }) => {
                                 </div>
 
                                 {/* STATS SECTION */}
-                                <div className="p-10 rounded-[3rem] bg-gray-950 border border-white/5 relative overflow-hidden">
+                                <div className="p-10 rounded-2xl bg-gray-950 border border-white/5 relative overflow-hidden">
                                     <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-orange-500/5 rounded-full blur-[100px] -mr-32 -mt-32" />
                                     <div className="relative z-10">
                                         <h3 className="text-2xl font-black text-white uppercase tracking-tight mb-8">Platform Statistics</h3>
@@ -329,7 +338,7 @@ const TraksDocs: React.FC<DocsProps> = ({ onBack }) => {
                                         { label: "Runtime", val: "Python 3.11", icon: <FileText size={24} /> },
                                         { label: "Location", val: "Geolocation API", icon: <Globe size={24} /> }
                                     ].map((t, k) => (
-                                        <div key={k} className="p-6 rounded-3xl bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10 group hover:border-orange-500/30 transition-all text-center">
+                                        <div key={k} className="p-6 rounded-3xl bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10 group hover:border-orange-500/30 transition-colors text-center">
                                             <div className="p-3 rounded-2xl bg-gray-50 dark:bg-white/5 inline-flex text-gray-400 group-hover:text-orange-500 transition-colors mb-4">
                                                 {t.icon}
                                             </div>
@@ -346,7 +355,7 @@ const TraksDocs: React.FC<DocsProps> = ({ onBack }) => {
                     <aside className="lg:w-1/3">
                         <div className="sticky top-32 space-y-12">
                             <ScrollReveal delay={400}>
-                                <div className="bg-dark rounded-[2.5rem] border border-white/10 p-10 shadow-3xl">
+                                <div className="bg-dark rounded-2xl border border-white/10 p-10 shadow-3xl">
                                     <h3 className="text-sm font-black uppercase tracking-widest text-orange-500 mb-8">System Integrity</h3>
                                     <div className="space-y-10">
                                         <div>
@@ -362,7 +371,7 @@ const TraksDocs: React.FC<DocsProps> = ({ onBack }) => {
                             </ScrollReveal>
 
                             <ScrollReveal delay={600}>
-                                <div className="bg-orange-600 rounded-[2.5rem] p-10 text-white shadow-2xl relative overflow-hidden group">
+                                <div className="bg-orange-600 rounded-2xl p-10 text-white shadow-2xl relative overflow-hidden group">
                                     <div className="absolute top-0 right-0 w-40 h-40 bg-white/10 rounded-full blur-3xl -mr-20 -mt-20 group-hover:scale-125 transition-transform duration-700" />
                                     <h3 className="text-2xl font-black tracking-tighter mb-4 relative z-10 leading-none uppercase">Architectural <br />Summary</h3>
                                     <p className="text-orange-100/80 font-bold text-sm mb-6 relative z-10">A distributed, community-trusted incident reporting ecosystem designed for speed, accuracy, and democratic information verification.</p>

@@ -11,7 +11,7 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="py-24 bg-dark rounded-t-[4rem] relative overflow-hidden mt-12">
+    <section id="contact" className="py-24 bg-dark rounded-t-2xl relative overflow-hidden mt-12">
 
       <div className="container mx-auto px-6 max-w-5xl relative z-10">
 
@@ -32,7 +32,7 @@ const Contact: React.FC = () => {
             <ScrollReveal delay={300} animation="animate-slide-in-right">
               <a
                 href="mailto:nasirdaud2015@gmail.com"
-                className="inline-flex items-center gap-3 text-white border-b border-white/20 pb-2 hover:border-white transition-all text-xl font-bold"
+                className="inline-flex items-center gap-3 text-white border-b border-white/20 pb-2 hover:border-white transition-colors text-xl font-bold"
               >
                 nasirdaud2015@gmail.com <ArrowUpRight size={20} />
               </a>
@@ -44,7 +44,7 @@ const Contact: React.FC = () => {
               <ScrollReveal key={link.platform} delay={400 + (index * 100)} animation="animate-slide-in-left">
                 <a
                   href={link.url}
-                  className="group flex items-center justify-between p-6 rounded-[2rem] bg-white/5 border border-white/10 hover:bg-white hover:border-white transition-all duration-300 hover:scale-[1.02]"
+                  className="group flex items-center justify-between p-6 rounded-xl bg-white/5 border border-white/10 hover:bg-white hover:border-white transition-colors duration-300 hover:scale-[1.02] active:scale-[0.98]"
                 >
                   <div className="flex items-center gap-4 text-white group-hover:text-dark">
                     {getIcon(link.platform)}

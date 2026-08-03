@@ -71,7 +71,7 @@ const AIChat: React.FC = () => {
         onClick={() => setIsOpen(!isOpen)}
         aria-label={isOpen ? "Close AI Assistant chat" : "Open AI Assistant chat"}
         id="ai-assistant-toggle"
-        className={`fixed bottom-8 right-8 z-50 p-4 rounded-full shadow-xl transition-all duration-300 hover:scale-105 ${
+        className={`fixed bottom-8 right-8 z-50 p-4 rounded-full shadow-xl transition-colors duration-300 hover:scale-105 ${
           isOpen ? 'bg-white dark:bg-gray-800 text-dark dark:text-white border border-gray-200 dark:border-gray-700' : 'bg-dark dark:bg-white text-white dark:text-dark'
         }`}
       >
@@ -80,7 +80,7 @@ const AIChat: React.FC = () => {
 
       {/* Chat Window */}
       {isOpen && (
-        <div className="fixed bottom-24 right-6 md:right-8 w-[90vw] md:w-[380px] h-[500px] bg-white dark:bg-gray-900 shadow-soft rounded-[2rem] z-50 flex flex-col overflow-hidden animate-in slide-in-from-bottom-10 fade-in duration-300 border border-gray-100 dark:border-gray-800">
+        <div className="fixed bottom-24 right-6 md:right-8 w-[90vw] md:w-[380px] h-[500px] bg-white dark:bg-gray-900 shadow-soft rounded-xl z-50 flex flex-col overflow-hidden animate-in slide-in-from-bottom-10 fade-in duration-300 border border-gray-100 dark:border-gray-800">
           
           {/* Header */}
           <div className="p-5 border-b border-gray-100 dark:border-gray-800 bg-white dark:bg-gray-900 flex items-center space-x-3">
@@ -89,7 +89,7 @@ const AIChat: React.FC = () => {
             </div>
             <div>
               <h3 className="text-dark dark:text-white font-bold text-sm">Assistant</h3>
-              <p className="text-[10px] text-gray-500 dark:text-gray-400 font-medium uppercase tracking-wider">Online • Gemini 3 Flash</p>
+              <p className="text-[10px] text-gray-500 dark:text-gray-400 font-medium uppercase tracking-wider">Online</p>
             </div>
           </div>
 

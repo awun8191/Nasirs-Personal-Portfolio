@@ -104,7 +104,7 @@ const RaStDocs: React.FC<DocsProps> = ({ onBack }) => {
                             {/* ARCHITECTURE FLOW */}
                             <ScrollReveal>
                                 <div className="flex flex-col md:flex-row gap-8">
-                                    <div className="md:w-1/2 p-10 rounded-[2.5rem] bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10 relative overflow-hidden group">
+                                    <div className="md:w-1/2 p-10 rounded-2xl bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10 relative overflow-hidden group">
                                         <div className="absolute top-0 right-0 w-32 h-32 bg-pink-500/5 rounded-full blur-2xl -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-1000" />
                                         <h3 className="text-2xl font-black text-dark dark:text-white uppercase tracking-tighter mb-6 relative z-10">Input Pipeline</h3>
                                         <ul className="space-y-4 text-sm text-gray-500 font-medium relative z-10">
@@ -113,7 +113,7 @@ const RaStDocs: React.FC<DocsProps> = ({ onBack }) => {
                                             <li className="flex gap-3"><span className="text-pink-500 font-black">03</span><span>PDF routed to text extraction pipeline (PyMuPDF)</span></li>
                                         </ul>
                                     </div>
-                                    <div className="md:w-1/2 p-10 rounded-[2.5rem] bg-pink-600 text-white relative overflow-hidden group">
+                                    <div className="md:w-1/2 p-10 rounded-2xl bg-pink-600 text-white relative overflow-hidden group">
                                         <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-1000" />
                                         <h3 className="text-2xl font-black uppercase tracking-tighter mb-6 relative z-10">Output Pipeline</h3>
                                         <ul className="space-y-4 text-sm text-pink-100/80 font-medium relative z-10">
@@ -163,9 +163,9 @@ const RaStDocs: React.FC<DocsProps> = ({ onBack }) => {
                                             items: ["Vector similarity search over embedded chunks", "Structured academic output (abstract, methodology, results)", "Deterministic citation linking with source anchors"]
                                         }
                                     ].map((layer, i) => (
-                                        <div key={i} className="p-8 rounded-[2.5rem] bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10 hover:border-pink-500/30 transition-all group">
+                                        <div key={i} className="p-8 rounded-2xl bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10 hover:border-pink-500/30 transition-colors group">
                                             <div className="flex items-center gap-3 mb-6">
-                                                <div className="p-2 rounded-xl bg-pink-600/10 text-pink-500 group-hover:bg-pink-600 group-hover:text-white transition-all">
+                                                <div className="p-2 rounded-xl bg-pink-600/10 text-pink-500 group-hover:bg-pink-600 group-hover:text-white transition-colors">
                                                     {layer.icon}
                                                 </div>
                                                 <h3 className="text-xl font-black text-dark dark:text-white uppercase tracking-tight">{layer.agent}</h3>
@@ -183,7 +183,7 @@ const RaStDocs: React.FC<DocsProps> = ({ onBack }) => {
 
                             {/* ARCHITECTURE DIAGRAM TABLE */}
                             <ScrollReveal>
-                                <div className="p-1 rounded-[2.5rem] bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 overflow-hidden shadow-2xl">
+                                <div className="p-1 rounded-2xl bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 overflow-hidden shadow-2xl">
                                     <table className="w-full text-left border-collapse">
                                         <thead>
                                             <tr className="border-b border-gray-200 dark:border-white/5">
@@ -227,7 +227,7 @@ const RaStDocs: React.FC<DocsProps> = ({ onBack }) => {
                                 </p>
 
                                 <div className="grid md:grid-cols-2 gap-8">
-                                    <div className="p-8 rounded-[2.5rem] bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10">
+                                    <div className="p-8 rounded-2xl bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10">
                                         <h4 className="text-xl font-black text-dark dark:text-white uppercase mb-4 flex items-center gap-2">
                                             <Shield className="text-pink-500" size={20} />
                                             Validation Pipeline
@@ -238,7 +238,7 @@ const RaStDocs: React.FC<DocsProps> = ({ onBack }) => {
                                             <li className="flex gap-3"><span className="text-pink-500 font-black">03</span><span>DataCite fallback for cross-referencing</span></li>
                                         </ul>
                                     </div>
-                                    <div className="p-8 rounded-[2.5rem] bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10">
+                                    <div className="p-8 rounded-2xl bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10">
                                         <h4 className="text-xl font-black text-dark dark:text-white uppercase mb-4 flex items-center gap-2">
                                             <Database className="text-pink-500" size={20} />
                                             Extracted Metadata
@@ -270,7 +270,7 @@ const RaStDocs: React.FC<DocsProps> = ({ onBack }) => {
                                 </p>
 
                                 <div className="grid md:grid-cols-2 gap-8">
-                                    <div className="p-8 rounded-[2.5rem] bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10">
+                                    <div className="p-8 rounded-2xl bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10">
                                         <h4 className="text-xl font-black text-dark dark:text-white uppercase mb-4 flex items-center gap-2">
                                             <Layers className="text-pink-500" size={20} />
                                             Text Extraction
@@ -279,7 +279,7 @@ const RaStDocs: React.FC<DocsProps> = ({ onBack }) => {
                                             PyMuPDF extracts full-text content with high fidelity, preserving section structure, equation formatting, and reference markers. The extraction pipeline handles multi-column layouts, headers, footers, and footnotes.
                                         </p>
                                     </div>
-                                    <div className="p-8 rounded-[2.5rem] bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10">
+                                    <div className="p-8 rounded-2xl bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10">
                                         <h4 className="text-xl font-black text-dark dark:text-white uppercase mb-4 flex items-center gap-2">
                                             <Zap className="text-pink-500" size={20} />
                                             Semantic Chunking
@@ -309,7 +309,7 @@ const RaStDocs: React.FC<DocsProps> = ({ onBack }) => {
                                 </p>
 
                                 <div className="grid md:grid-cols-2 gap-8 mb-12">
-                                    <div className="p-8 rounded-[2.5rem] bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10">
+                                    <div className="p-8 rounded-2xl bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10">
                                         <h4 className="text-xl font-black text-dark dark:text-white uppercase mb-4 flex items-center gap-2">
                                             <Database className="text-pink-500" size={20} />
                                             Vector Retrieval
@@ -318,7 +318,7 @@ const RaStDocs: React.FC<DocsProps> = ({ onBack }) => {
                                             Paper chunks embedded via Google Gemini API and stored in ChromaDB. The retriever scores relevance using cosine similarity and returns the top-k chunks most pertinent to the requested thesis section.
                                         </p>
                                     </div>
-                                    <div className="p-8 rounded-[2.5rem] bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10">
+                                    <div className="p-8 rounded-2xl bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10">
                                         <h4 className="text-xl font-black text-dark dark:text-white uppercase mb-4 flex items-center gap-2">
                                             <Link2 className="text-pink-500" size={20} />
                                             Citation Linking
@@ -348,7 +348,7 @@ const RaStDocs: React.FC<DocsProps> = ({ onBack }) => {
                                 </p>
 
                                 <div className="grid md:grid-cols-2 gap-8 mb-12">
-                                    <div className="p-8 rounded-[2.5rem] bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10">
+                                    <div className="p-8 rounded-2xl bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10">
                                         <h4 className="text-xl font-black text-dark dark:text-white uppercase mb-4 flex items-center gap-2">
                                             <Link2 className="text-pink-500" size={20} />
                                             Source Anchoring
@@ -357,7 +357,7 @@ const RaStDocs: React.FC<DocsProps> = ({ onBack }) => {
                                             Generated text is interleaved with source anchors - each factual claim is tagged with the chunk ID from which it was derived. The final output includes a references section mapping every anchor to its original source.
                                         </p>
                                     </div>
-                                    <div className="p-8 rounded-[2.5rem] bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10">
+                                    <div className="p-8 rounded-2xl bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10">
                                         <h4 className="text-xl font-black text-dark dark:text-white uppercase mb-4 flex items-center gap-2">
                                             <Activity className="text-pink-500" size={20} />
                                             Audit Trail
@@ -368,7 +368,7 @@ const RaStDocs: React.FC<DocsProps> = ({ onBack }) => {
                                     </div>
                                 </div>
 
-                                <div className="p-1 rounded-[2.5rem] bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 overflow-hidden shadow-2xl">
+                                <div className="p-1 rounded-2xl bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 overflow-hidden shadow-2xl">
                                     <table className="w-full text-left border-collapse">
                                         <thead>
                                             <tr className="border-b border-gray-200 dark:border-white/5">
@@ -397,7 +397,7 @@ const RaStDocs: React.FC<DocsProps> = ({ onBack }) => {
                         {/* --- STATS --- */}
                         <section id="stats" className="scroll-mt-32">
                             <ScrollReveal>
-                                <div className="p-10 rounded-[3rem] bg-gray-950 border border-white/5 relative overflow-hidden">
+                                <div className="p-10 rounded-2xl bg-gray-950 border border-white/5 relative overflow-hidden">
                                     <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-pink-500/5 rounded-full blur-[100px] -mr-32 -mt-32" />
                                     <div className="relative z-10">
                                         <h3 className="text-2xl font-black text-white uppercase tracking-tight mb-8">System Statistics</h3>
@@ -439,7 +439,7 @@ const RaStDocs: React.FC<DocsProps> = ({ onBack }) => {
                                         { label: "Language", val: "Python 3.12", icon: <Activity size={24} /> },
                                         { label: "Server", val: "Uvicorn", icon: <Globe size={24} /> }
                                     ].map((t, k) => (
-                                        <div key={k} className="p-6 rounded-3xl bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10 group hover:border-pink-500/30 transition-all text-center">
+                                        <div key={k} className="p-6 rounded-3xl bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10 group hover:border-pink-500/30 transition-colors text-center">
                                             <div className="p-3 rounded-2xl bg-gray-50 dark:bg-white/5 inline-flex text-gray-400 group-hover:text-pink-500 transition-colors mb-4">
                                                 {t.icon}
                                             </div>
@@ -456,7 +456,7 @@ const RaStDocs: React.FC<DocsProps> = ({ onBack }) => {
                     <aside className="lg:w-1/3">
                         <div className="sticky top-32 space-y-12">
                             <ScrollReveal delay={400}>
-                                <div className="bg-dark rounded-[2.5rem] border border-white/10 p-10 shadow-3xl">
+                                <div className="bg-dark rounded-2xl border border-white/10 p-10 shadow-3xl">
                                     <h3 className="text-sm font-black uppercase tracking-widest text-pink-500 mb-8">System Integrity</h3>
                                     <div className="space-y-10">
                                         <div>
@@ -472,7 +472,7 @@ const RaStDocs: React.FC<DocsProps> = ({ onBack }) => {
                             </ScrollReveal>
 
                             <ScrollReveal delay={600}>
-                                <div className="bg-pink-600 rounded-[2.5rem] p-10 text-white shadow-2xl relative overflow-hidden group">
+                                <div className="bg-pink-600 rounded-2xl p-10 text-white shadow-2xl relative overflow-hidden group">
                                     <div className="absolute top-0 right-0 w-40 h-40 bg-white/10 rounded-full blur-3xl -mr-20 -mt-20 group-hover:scale-125 transition-transform duration-700" />
                                     <h3 className="text-2xl font-black tracking-tighter mb-4 relative z-10 leading-none uppercase">Architectural <br />Summary</h3>
                                     <p className="text-pink-100/80 font-bold text-sm mb-6 relative z-10">A multi-agent academic assistant that treats citation integrity as a first-class constraint rather than an afterthought.</p>

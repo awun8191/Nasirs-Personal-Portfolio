@@ -32,7 +32,7 @@ const About: React.FC = () => {
                 <ScrollReveal delay={400}>
                    <div className="text-lg text-gray-600 dark:text-gray-300 mb-6 leading-relaxed max-w-md space-y-4">
                      <p>I am a Software Engineer specializing in Python, Flutter, AI-powered systems, and scalable cloud architecture. My technical focus revolves around high-performance backends and seamless cross-platform applications.</p>
-                     <p>My notable projects include the <strong>Engineering Hub</strong> platform (serving the NUESA community) and institutional-scale <strong>RAG Data Pipelines</strong>.</p>
+                     <p>My notable projects include the <strong>Engineering Hub</strong> platform (serving the NUESA community) and <strong>RAG Data Pipelines</strong>.</p>
                      <p>With an Nvidia certification in deep learning and an engineering background, I bridge the gap between complex AI research and practical business implementations.</p>
                    </div>
                 </ScrollReveal>
@@ -66,13 +66,13 @@ const About: React.FC = () => {
 
                 <div className="flex gap-8">
                     <ScrollReveal delay={500} animation="animate-zoom-in">
-                        <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
+                        <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
                             <div className="text-3xl font-black text-dark dark:text-white">4+</div>
                             <div className="text-sm font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Years Exp</div>
                         </div>
                     </ScrollReveal>
                     <ScrollReveal delay={600} animation="animate-zoom-in">
-                        <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
+                        <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
                             <div className="text-3xl font-black text-dark dark:text-white">20+</div>
                             <div className="text-sm font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Projects</div>
                         </div>

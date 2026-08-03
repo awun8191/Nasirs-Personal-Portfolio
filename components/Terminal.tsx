@@ -95,7 +95,7 @@ const Terminal: React.FC = () => {
       <pre 
         tabIndex={0}
         aria-label="Interactive Terminal Profile Simulator"
-        className="p-6 h-[400px] text-green-400 overflow-y-auto custom-scrollbar outline-none select-text"
+        className="p-6 min-h-[250px] max-h-[400px] text-green-400 overflow-y-auto custom-scrollbar outline-none select-text"
       >
         <code>
           {lines.map((line, idx) => (

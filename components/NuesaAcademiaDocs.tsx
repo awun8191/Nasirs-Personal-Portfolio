@@ -57,6 +57,11 @@ const NuesaAcademiaDocs: React.FC<DocsProps> = ({ onBack }) => {
                             <h1 className="text-5xl md:text-8xl font-black text-dark dark:text-white tracking-tighter mb-8 leading-[0.85]">
                                 NUESA <br /><span className="text-blue-600 dark:text-blue-500">Academia.</span>
                             </h1>
+                            <img
+                                src="/projects/nuesa-academia.jpg"
+                                alt="NUESA Academia Platform"
+                                className="w-full max-w-3xl rounded-2xl shadow-2xl border border-gray-200 dark:border-white/10 mb-8 object-cover"
+                            />
                             <p className="text-xl md:text-2xl text-gray-500 dark:text-gray-400 font-medium max-w-3xl leading-relaxed tracking-tight">
                                 A digital learning resource management system serving 800–1,200 engineering students monthly at ABUAD with a three-tier architecture spanning edge delivery, AI content pipelines, and real-time generation.
                             </p>
@@ -105,7 +110,7 @@ const NuesaAcademiaDocs: React.FC<DocsProps> = ({ onBack }) => {
                             {/* PHASE A & B */}
                             <ScrollReveal>
                                 <div className="flex flex-col md:flex-row gap-8">
-                                    <div className="md:w-1/2 p-10 rounded-[2.5rem] bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10 relative overflow-hidden group">
+                                    <div className="md:w-1/2 p-10 rounded-2xl bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10 relative overflow-hidden group">
                                         <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 rounded-full blur-2xl -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-1000" />
                                         <h3 className="text-2xl font-black text-dark dark:text-white uppercase tracking-tighter mb-6 relative z-10">Phase A: OCR & Vectors</h3>
                                         <ul className="space-y-4 text-sm text-gray-500 font-medium relative z-10">
@@ -114,7 +119,7 @@ const NuesaAcademiaDocs: React.FC<DocsProps> = ({ onBack }) => {
                                             <li className="flex gap-3"><span className="text-blue-500 font-black">03</span><span>ChromaDB vector ingestion with Firestore course-code namespacing for scoped retrieval</span></li>
                                         </ul>
                                     </div>
-                                    <div className="md:w-1/2 p-10 rounded-[2.5rem] bg-blue-600 text-white relative overflow-hidden group">
+                                    <div className="md:w-1/2 p-10 rounded-2xl bg-blue-600 text-white relative overflow-hidden group">
                                         <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-1000" />
                                         <h3 className="text-2xl font-black uppercase tracking-tighter mb-6 relative z-10">Phase B: Retrieval + Generation</h3>
                                         <ul className="space-y-4 text-sm text-blue-100/80 font-medium relative z-10">
@@ -128,7 +133,7 @@ const NuesaAcademiaDocs: React.FC<DocsProps> = ({ onBack }) => {
 
                             {/* MITIGATION TABLE */}
                             <ScrollReveal>
-                                <div className="p-1 rounded-[2.5rem] bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 overflow-hidden shadow-2xl">
+                                <div className="p-1 rounded-2xl bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 overflow-hidden shadow-2xl">
                                     <table className="w-full text-left border-collapse">
                                         <thead>
                                             <tr className="border-b border-gray-200 dark:border-white/5">
@@ -171,7 +176,7 @@ const NuesaAcademiaDocs: React.FC<DocsProps> = ({ onBack }) => {
                                 </p>
 
                                 <div className="grid md:grid-cols-2 gap-8">
-                                    <div className="p-8 rounded-[2.5rem] bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10">
+                                    <div className="p-8 rounded-2xl bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10">
                                         <h4 className="text-xl font-black text-dark dark:text-white uppercase mb-4 flex items-center gap-2">
                                             <Search className="text-blue-500" size={20} />
                                             Direct R2 File Search
@@ -180,7 +185,7 @@ const NuesaAcademiaDocs: React.FC<DocsProps> = ({ onBack }) => {
                                             The worker performs efficient object listing and retrieval directly against the <b>study-materials</b> R2 bucket (public at study-materials.nuesaabuad.ng), enabling instant file discovery without round-tripping through the FastAPI backend.
                                         </p>
                                     </div>
-                                    <div className="p-8 rounded-[2.5rem] bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10">
+                                    <div className="p-8 rounded-2xl bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10">
                                         <h4 className="text-xl font-black text-dark dark:text-white uppercase mb-4 flex items-center gap-2">
                                             <Upload className="text-blue-500" size={20} />
                                             Edge Upload & Firestore Sync
@@ -193,7 +198,7 @@ const NuesaAcademiaDocs: React.FC<DocsProps> = ({ onBack }) => {
                             </ScrollReveal>
 
                             <ScrollReveal>
-                                <div className="p-10 rounded-[3rem] bg-gray-950 border border-white/5 relative overflow-hidden">
+                                <div className="p-10 rounded-2xl bg-gray-950 border border-white/5 relative overflow-hidden">
                                     <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-blue-500/5 rounded-full blur-[100px] -mr-32 -mt-32" />
                                     <div className="relative z-10">
                                         <h3 className="text-2xl font-black text-white uppercase tracking-tight mb-4">Firebase Cloud Functions</h3>
@@ -236,7 +241,7 @@ const NuesaAcademiaDocs: React.FC<DocsProps> = ({ onBack }) => {
                                 </p>
 
                                 <div className="grid md:grid-cols-2 gap-8">
-                                    <div className="p-8 rounded-[2.5rem] bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10">
+                                    <div className="p-8 rounded-2xl bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10">
                                         <div className="flex items-center gap-3 mb-4">
                                             <div className="p-2 rounded-xl bg-blue-50 dark:bg-blue-500/10 text-blue-500">
                                                 <FileText size={20} />
@@ -247,7 +252,7 @@ const NuesaAcademiaDocs: React.FC<DocsProps> = ({ onBack }) => {
                                             <b>Tesseract</b> provides fast, offline OCR for standard textbook pages. When confidence drops below 85% - common with mathematical notation, tables, or low-resolution scans - the pipeline escalates to <b>Gemini Vision</b> for high-fidelity transcription, ensuring zero silent data loss.
                                         </p>
                                     </div>
-                                    <div className="p-8 rounded-[2.5rem] bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10">
+                                    <div className="p-8 rounded-2xl bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10">
                                         <div className="flex items-center gap-3 mb-4">
                                             <div className="p-2 rounded-xl bg-blue-50 dark:bg-blue-500/10 text-blue-500">
                                                 <Network size={20} />
@@ -263,7 +268,7 @@ const NuesaAcademiaDocs: React.FC<DocsProps> = ({ onBack }) => {
 
                             <ScrollReveal>
                                 <div className="grid md:grid-cols-2 gap-8">
-                                    <div className="p-8 rounded-[2.5rem] bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10">
+                                    <div className="p-8 rounded-2xl bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10">
                                         <div className="flex items-center gap-3 mb-4">
                                             <div className="p-2 rounded-xl bg-blue-50 dark:bg-blue-500/10 text-blue-500">
                                                 <BookMarked size={20} />
@@ -274,7 +279,7 @@ const NuesaAcademiaDocs: React.FC<DocsProps> = ({ onBack }) => {
                                             Gemini generates comprehensive course outlines from extracted material - <b>8–12 modules</b> per course, each with <b>5 learning objectives</b>. The syllabus is cross-referenced against the 14,319-line <code className="text-blue-500">courses.json</code> covering 9 engineering departments plus General Studies.
                                         </p>
                                     </div>
-                                    <div className="p-8 rounded-[2.5rem] bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10">
+                                    <div className="p-8 rounded-2xl bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10">
                                         <div className="flex items-center gap-3 mb-4">
                                             <div className="p-2 rounded-xl bg-blue-50 dark:bg-blue-500/10 text-blue-500">
                                                 <Zap size={20} />
@@ -301,7 +306,7 @@ const NuesaAcademiaDocs: React.FC<DocsProps> = ({ onBack }) => {
                                     </h2>
                                 </div>
 
-                                <div className="p-10 rounded-[3rem] bg-gray-950 border border-white/5 relative overflow-hidden mb-12">
+                                <div className="p-10 rounded-2xl bg-gray-950 border border-white/5 relative overflow-hidden mb-12">
                                     <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-500/5 rounded-full blur-[100px] -mr-32 -mt-32" />
                                     <div className="relative z-10">
                                         <h3 className="text-2xl font-black text-white uppercase tracking-tight mb-8">Ingestion & Usage</h3>
@@ -375,7 +380,7 @@ const NuesaAcademiaDocs: React.FC<DocsProps> = ({ onBack }) => {
                                         { label: "Dedup", val: "SHA-256 Hashing", icon: <Hash size={24} /> },
                                         { label: "Deploy", val: "Cloud Run + Workers", icon: <Box size={24} /> }
                                     ].map((t, k) => (
-                                        <div key={k} className="p-6 rounded-3xl bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10 group hover:border-blue-500/30 transition-all text-center">
+                                        <div key={k} className="p-6 rounded-3xl bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10 group hover:border-blue-500/30 transition-colors text-center">
                                             <div className="p-3 rounded-2xl bg-gray-50 dark:bg-white/5 inline-flex text-gray-400 group-hover:text-blue-500 transition-colors mb-4">
                                                 {t.icon}
                                             </div>
@@ -392,7 +397,7 @@ const NuesaAcademiaDocs: React.FC<DocsProps> = ({ onBack }) => {
                     <aside className="lg:w-1/3">
                         <div className="sticky top-32 space-y-12">
                             <ScrollReveal delay={400}>
-                                <div className="bg-dark rounded-[2.5rem] border border-white/10 p-10 shadow-3xl">
+                                <div className="bg-dark rounded-2xl border border-white/10 p-10 shadow-3xl">
                                     <h3 className="text-sm font-black uppercase tracking-widest text-blue-500 mb-8">System Integrity</h3>
                                     <div className="space-y-10">
                                         <div>
@@ -412,7 +417,7 @@ const NuesaAcademiaDocs: React.FC<DocsProps> = ({ onBack }) => {
                             </ScrollReveal>
 
                             <ScrollReveal delay={600}>
-                                <div className="bg-blue-600 rounded-[2.5rem] p-10 text-white shadow-2xl relative overflow-hidden group">
+                                <div className="bg-blue-600 rounded-2xl p-10 text-white shadow-2xl relative overflow-hidden group">
                                     <div className="absolute top-0 right-0 w-40 h-40 bg-white/10 rounded-full blur-3xl -mr-20 -mt-20 group-hover:scale-125 transition-transform duration-700" />
                                     <h3 className="text-2xl font-black tracking-tighter mb-4 relative z-10 leading-none uppercase">Deployment <br />Details</h3>
                                     <p className="text-blue-100/80 font-bold text-sm mb-6 relative z-10">Live at textbooks-1093886938384.europe-west1.run.app - serving engineering education at ABUAD with sub-200ms p95 response times.</p>
