@@ -70,8 +70,8 @@ export default {
           '50%': { transform: 'translateY(-20px)' },
         },
         'floatUp': {
-          '0%': { top: '110%', transform: 'rotate(0deg)' },
-          '100%': { top: '-20%', transform: 'rotate(180deg)' },
+          '0%': { transform: 'translateY(0) rotate(0deg)' },
+          '100%': { transform: 'translateY(-130vh) rotate(180deg)' },
         },
         'fadeIn': {
           '0%': { opacity: '0' },

@@ -169,7 +169,7 @@ const CourseGenCaseStudy: React.FC<CaseStudyProps> = ({ onBack }) => {
 
                 <div className="container mx-auto px-6 relative z-10 text-center">
                     <ScrollReveal delay={200}>
-                        <h1 className="text-6xl md:text-9xl font-black text-dark dark:text-white tracking-tighter mb-6 leading-[0.85]">
+                        <h1 className="text-5xl md:text-7xl font-black text-dark dark:text-white tracking-tighter mb-6 leading-[0.85]">
                             Course<span className="text-indigo-600 dark:text-indigo-400">Gen</span>
                         </h1>
                     </ScrollReveal>
@@ -253,12 +253,16 @@ const CourseGenCaseStudy: React.FC<CaseStudyProps> = ({ onBack }) => {
                             <div className="flex gap-4">
                                 <button
                                     onClick={prevSlide}
+                                    aria-label="Previous slide"
+                                    title="Previous slide"
                                     className="w-16 h-16 rounded-full border border-gray-200 dark:border-white/10 flex items-center justify-center text-dark dark:text-white hover:bg-indigo-500 hover:border-indigo-500 hover:text-white transition-colors transform active:scale-90"
                                 >
                                     <ChevronLeft size={24} />
                                 </button>
                                 <button
                                     onClick={nextSlide}
+                                    aria-label="Next slide"
+                                    title="Next slide"
                                     className="w-16 h-16 rounded-full border border-gray-200 dark:border-white/10 flex items-center justify-center text-dark dark:text-white hover:bg-indigo-500 hover:border-indigo-500 hover:text-white transition-colors transform active:scale-90"
                                 >
                                     <ChevronRight size={24} />

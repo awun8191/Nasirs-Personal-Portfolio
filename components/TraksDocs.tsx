@@ -60,7 +60,7 @@ const TraksDocs: React.FC<DocsProps> = ({ onBack }) => {
                                     height="96"
                                     className="w-20 h-20 md:w-24 md:h-24 object-contain drop-shadow-lg"
                                 />
-                                <h1 className="text-5xl md:text-8xl font-black text-dark dark:text-white tracking-tighter leading-[0.85]">
+                                <h1 className="text-5xl md:text-7xl font-black text-dark dark:text-white tracking-tighter leading-[0.85]">
                                     TRAKS <br /><span className="text-orange-600 dark:text-orange-500">Platform.</span>
                                 </h1>
                             </div>

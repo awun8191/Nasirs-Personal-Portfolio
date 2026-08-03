@@ -52,7 +52,7 @@ const RagPipelineDocs: React.FC<DocsProps> = ({ onBack }) => {
                             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-green-600 text-white text-[10px] font-black uppercase tracking-widest mb-6">
                                 Project Specification
                             </div>
-                            <h1 className="text-5xl md:text-8xl font-black text-dark dark:text-white tracking-tighter mb-8 leading-[0.85]">
+                            <h1 className="text-5xl md:text-7xl font-black text-dark dark:text-white tracking-tighter mb-8 leading-[0.85]">
                                 RAG Data <br /><span className="text-green-600 dark:text-green-500">Pipeline.</span>
                             </h1>
                             <p className="text-xl md:text-2xl text-gray-500 dark:text-gray-400 font-medium max-w-3xl leading-relaxed tracking-tight">

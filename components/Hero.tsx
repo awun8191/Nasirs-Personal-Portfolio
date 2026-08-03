@@ -82,7 +82,7 @@ const Hero: React.FC = () => {
              </ScrollReveal>
 
              {/* Tech Stack Floating Card */}
-             <ScrollReveal delay={600} animation="animate-fade-up" className="absolute bottom-[10%] -left-8 z-20">
+             <ScrollReveal delay={600} animation="animate-fade-up" className="absolute bottom-[10%] left-4 md:-left-8 z-20">
                <motion.div 
                  whileHover={{ y: -5 }}
                  className="bg-white/80 dark:bg-dark/80 backdrop-blur-md p-6 rounded-3xl shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1),inset_0_1px_0_rgba(255,255,255,0.2)] ring-1 ring-inset ring-black/5 dark:ring-white/10 max-w-xs transition-shadow duration-300"

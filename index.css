@@ -45,3 +45,37 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+/* --- Global visible focus ring (keyboard accessibility) --- */
+/* Replace the site-wide `outline-none` with a consistent, high-contrast ring. */
+:focus-visible {
+  outline: 2px solid var(--focus-ring, #8A9F8A);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* --- Smooth scroll: desktop only --- */
+/* Global CSS smooth-scroll + sticky content = rubber-band feel on mobile.
+   Desktop keeps smooth anchor navigation; mobile uses native instant scroll. */
+@media (max-width: 767px) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* --- Reduced motion (accessibility) --- */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  canvas {
+    display: none;
+  }
+}

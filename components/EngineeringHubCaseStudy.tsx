@@ -213,7 +213,7 @@ const EngineeringHubCaseStudy: React.FC<CaseStudyProps> = ({ onBack, onViewDocs 
                     </ScrollReveal>
 
                     <ScrollReveal delay={200}>
-                        <h1 className="text-6xl md:text-9xl font-black text-dark dark:text-white tracking-tighter mb-6 leading-[0.85]">
+                        <h1 className="text-5xl md:text-7xl font-black text-dark dark:text-white tracking-tighter mb-6 leading-[0.85]">
                             Engineering Hub
                         </h1>
                     </ScrollReveal>
@@ -278,12 +278,16 @@ const EngineeringHubCaseStudy: React.FC<CaseStudyProps> = ({ onBack, onViewDocs 
                             <div className="flex gap-4">
                                 <button
                                     onClick={prevSlide}
+                                    aria-label="Previous slide"
+                                    title="Previous slide"
                                     className="w-16 h-16 rounded-full border border-gray-200 dark:border-white/10 flex items-center justify-center text-dark dark:text-white hover:bg-teal-500 hover:border-teal-500 hover:text-white transition-colors transform active:scale-90"
                                 >
                                     <ChevronLeft size={24} />
                                 </button>
                                 <button
                                     onClick={nextSlide}
+                                    aria-label="Next slide"
+                                    title="Next slide"
                                     className="w-16 h-16 rounded-full border border-gray-200 dark:border-white/10 flex items-center justify-center text-dark dark:text-white hover:bg-teal-500 hover:border-teal-500 hover:text-white transition-colors transform active:scale-90"
                                 >
                                     <ChevronRight size={24} />

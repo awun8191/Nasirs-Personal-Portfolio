@@ -10,6 +10,26 @@ import NetworkBackground from './NetworkBackground';
 
 const Skills: React.FC = () => {
   const [activeSkill, setActiveSkill] = React.useState<any>(null);
+  const closeBtnRef = React.useRef<HTMLButtonElement>(null);
+
+  // Modal a11y: Esc to close, body scroll lock, focus the close button on open,
+  // return focus to the trigger on close.
+  React.useEffect(() => {
+    if (!activeSkill) return;
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setActiveSkill(null);
+    };
+
+    document.addEventListener('keydown', onKeyDown);
+    document.body.style.overflow = 'hidden';
+    closeBtnRef.current?.focus();
+
+    return () => {
+      document.removeEventListener('keydown', onKeyDown);
+      document.body.style.overflow = 'unset';
+    };
+  }, [activeSkill]);
 
   const getIcon = (iconName: string, className: string) => {
     // Responsive icon size handled by className usually, or we can just stick to 28 roughly
@@ -107,7 +127,7 @@ const Skills: React.FC = () => {
           {/* AI: Neural Network Pulse & Expansion */}
           {section.id === 'ai' && (
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-              <NetworkBackground color="22, 163, 74" count={80} className="opacity-25" />
+              <NetworkBackground color="22, 163, 74" count={45} className="opacity-25" />
               <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: 'radial-gradient(#000 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
 
               {/* Pulsing Synapses */}
@@ -155,7 +175,7 @@ const Skills: React.FC = () => {
                     top: '110%', // Start below screen
                     animation: `floatUp ${15 + Math.random() * 15}s infinite linear`,
                     animationDelay: `-${Math.random() * 20}s`,
-                    transform: `scale(${0.5 + Math.random() * 0.5}) rotate(${Math.random() * 360}deg)`
+                    // scale/rotate handled inside the floatUp keyframe via transform
                   }}
                 ></div>
               ))}
@@ -171,7 +191,7 @@ const Skills: React.FC = () => {
               <div className="lg:w-2/5 lg:sticky lg:top-32 w-full">
 
                 <ScrollReveal delay={200} animation="animate-fade-up">
-                  <h2 className={`text-5xl md:text-8xl font-black mb-8 tracking-tighter leading-[0.9] ${section.theme.text}`}>
+                  <h2 className={`text-5xl md:text-7xl font-black mb-8 tracking-tighter leading-[0.9] ${section.theme.text}`}>
                     {section.title}
                   </h2>
                 </ScrollReveal>
@@ -249,7 +269,12 @@ const Skills: React.FC = () => {
 
       {/* --- SKILL MODAL --- */}
       {activeSkill && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-6">
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-6"
+          role="dialog"
+          aria-modal="true"
+          aria-label={activeSkill.name}
+        >
           {/* Backdrop */}
           <div
             className="absolute inset-0 bg-dark/60 dark:bg-black/80 backdrop-blur-md animate-fade-in"
@@ -267,7 +292,9 @@ const Skills: React.FC = () => {
                   {getIcon(activeSkill.icon, "scale-125")}
                 </div>
                 <button
+                  ref={closeBtnRef}
                   onClick={() => setActiveSkill(null)}
+                  aria-label="Close skill details"
                   className="p-2 rounded-full bg-dark/5 dark:bg-white/10 hover:bg-dark/10 dark:hover:bg-white/20 transition-colors"
                 >
                   <X className="text-dark dark:text-white" size={24} />
@@ -284,14 +311,14 @@ const Skills: React.FC = () => {
 
                 <div className="space-y-6">
                   <div>
-                    <h4 className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-3">Expertise Detail</h4>
+                    <h4 className="text-xs font-bold uppercase tracking-widest text-gray-600 mb-3">Expertise Detail</h4>
                     <p className={`text-lg md:text-xl font-medium leading-relaxed ${activeSkill.theme.text} opacity-90`}>
                       {activeSkill.details}
                     </p>
                   </div>
 
                   <div className="p-6 md:p-8 rounded-3xl bg-dark/5 dark:bg-white/5 border border-dark/5 dark:border-white/10">
-                    <h4 className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-3">Practical Impact</h4>
+                    <h4 className="text-xs font-bold uppercase tracking-widest text-gray-600 mb-3">Practical Impact</h4>
                     <p className={`text-base md:text-lg font-medium leading-relaxed ${activeSkill.theme.secondaryText}`}>
                       {activeSkill.practicality}
                     </p>

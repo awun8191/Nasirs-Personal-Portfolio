@@ -76,7 +76,7 @@ const EngineeringHubDocs: React.FC<DocsProps> = ({ onBack }) => {
                             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-blue-500 text-white text-[10px] font-black uppercase tracking-widest mb-6">
                                 Technical Specification
                             </div>
-                            <h1 className="text-5xl md:text-8xl font-black text-dark dark:text-white tracking-tighter mb-8 leading-[0.85]">
+                            <h1 className="text-5xl md:text-7xl font-black text-dark dark:text-white tracking-tighter mb-8 leading-[0.85]">
                                 Engineering Hub <br /><span className="text-blue-600 dark:text-blue-500">Internal Specs.</span>
                             </h1>
                             <p className="text-xl md:text-2xl text-gray-500 dark:text-gray-400 font-medium max-w-3xl leading-relaxed tracking-tight">

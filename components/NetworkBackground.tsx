@@ -19,8 +19,14 @@ const NetworkBackground: React.FC<Props> = ({
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    let width = canvas.width = canvas.parentElement?.offsetWidth || window.innerWidth;
-    let height = canvas.height = canvas.parentElement?.offsetHeight || window.innerHeight;
+    // Respect prefers-reduced-motion: don't start the animation loop at all
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion) return;
+
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    let width = canvas.width = (canvas.parentElement?.offsetWidth || window.innerWidth) * dpr;
+    let height = canvas.height = (canvas.parentElement?.offsetHeight || window.innerHeight) * dpr;
+    ctx.scale(dpr, dpr);
 
     const particles: { x: number; y: number; vx: number; vy: number }[] = [];
 
@@ -34,8 +40,10 @@ const NetworkBackground: React.FC<Props> = ({
     }
 
     let animationFrameId: number;
+    let isVisible = true;
 
     const animate = () => {
+      if (!isVisible) return;
       ctx.clearRect(0, 0, width, height);
       
       // Update and draw particles
@@ -74,14 +82,27 @@ const NetworkBackground: React.FC<Props> = ({
     };
 
     const handleResize = () => {
-      width = canvas.width = canvas.parentElement?.offsetWidth || window.innerWidth;
-      height = canvas.height = canvas.parentElement?.offsetHeight || window.innerHeight;
+      width = canvas.width = (canvas.parentElement?.offsetWidth || window.innerWidth) * dpr;
+      height = canvas.height = (canvas.parentElement?.offsetHeight || window.innerHeight) * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     };
+
+    // Pause the loop when the canvas scrolls out of view (biggest battery win)
+    const observer = new IntersectionObserver((entries) => {
+      isVisible = entries[0].isIntersecting;
+      if (isVisible) {
+        cancelAnimationFrame(animationFrameId);
+        animate();
+      }
+    }, { threshold: 0.05 });
+
+    observer.observe(canvas);
 
     window.addEventListener('resize', handleResize);
     animate();
 
     return () => {
+      observer.disconnect();
       window.removeEventListener('resize', handleResize);
       cancelAnimationFrame(animationFrameId);
     };

@@ -41,6 +41,16 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({
           hidden: { opacity: 0, y: 30, filter: enableBlur ? 'blur(8px)' : 'blur(0px)' },
           visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: baseTransition },
         };
+      case 'animate-fade-up-soft':
+        // Understated reveal: no spring, no blur — used for content surfaces
+        return {
+          hidden: { opacity: 0, y: 16 },
+          visible: {
+            opacity: 1,
+            y: 0,
+            transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1], delay: delay / 1000 },
+          },
+        };
       case 'animate-fade-down':
         return {
           hidden: { opacity: 0, y: -30, filter: enableBlur ? 'blur(8px)' : 'blur(0px)' },

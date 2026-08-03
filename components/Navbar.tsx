@@ -31,12 +31,11 @@ const Navbar: React.FC = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-        if (window.scrollY > 20 && !isScrolled) setIsScrolled(true);
-        if (window.scrollY <= 20 && isScrolled) setIsScrolled(false);
+      setIsScrolled(window.scrollY > 20);
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [isScrolled]);
+  }, []);
 
   // Lock body scroll when mobile menu is open
   useEffect(() => {

@@ -28,9 +28,3 @@ export enum Section {
   WORK = 'work',
   CONTACT = 'contact'
 }
-
-export interface ChatMessage {
-  role: 'user' | 'model';
-  text: string;
-  timestamp: Date;
-}
