@@ -1,86 +1,46 @@
 /** @type {import('tailwindcss').Config} */
+// Digital Atelier / Engineer's Chronicle - token map.
+// Single source of truth: CSS custom properties in src/index.css (section 1 of DESIGN-SYSTEM.md).
 export default {
-  content: [
-    "./index.html",
-    "./index.tsx",
-    "./App.tsx",
-    "./components/**/*.tsx",
-  ],
-  darkMode: 'class',
+  content: ["./index.html", "./src/**/*.{ts,tsx}"],
   theme: {
     extend: {
-      fontFamily: {
-        sans: [
-          '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto',
-          'Helvetica Neue', 'Arial', 'sans-serif',
-        ],
-      },
       colors: {
-        sage: {
-          50: '#F5F7F5',
-          100: '#E8EDE8',
-          200: '#d0e6d0',
-          300: '#B8C8B8',
-          500: '#8A9F8A',
-          800: '#2d382d',
-          900: '#1A1D1A',
-          950: '#0d100d',
-        },
-        dark: '#0F0F0F',
+        canvas: "var(--color-canvas)",
+        surface: "var(--color-surface)",
+        "surface-raised": "var(--color-surface-raised)",
+        walnut: "var(--color-walnut)",
+        "walnut-light": "var(--color-walnut-light)",
+        primary: "var(--color-text-primary)",
+        secondary: "var(--color-text-secondary)",
+        muted: "var(--color-text-muted)",
+        accent: "var(--color-accent)",
+        "accent-hot": "var(--color-accent-hot)",
+        "accent-edge": "var(--color-accent-edge)",
+        hairline: "var(--color-hairline)",
+        "tag-bg": "rgba(232, 163, 61, 0.12)",
+        "tag-border": "rgba(232, 163, 61, 0.35)",
       },
       borderRadius: {
-        '4xl': '2rem',
-        '5xl': '2.5rem',
+        surface: "var(--radius-lg)",
+        small: "var(--radius-sm)",
+        pill: "var(--radius-pill)",
       },
       boxShadow: {
-        'soft': '0 20px 40px -15px rgba(0, 0, 0, 0.05)',
+        card: "var(--shadow-card)",
+        lift: "var(--shadow-lift)",
+        "bloom-sm": "var(--shadow-bloom-sm)",
+        "bloom-md": "var(--shadow-bloom-md)",
+        "bloom-lg": "var(--shadow-bloom-lg)",
+      },
+      fontFamily: {
+        serif: ["Spectral", "Georgia", "serif"],
+        sans: ["General Sans", "system-ui", "sans-serif"],
+        mono: ["JetBrains Mono", "ui-monospace", "SFMono-Regular", "monospace"],
       },
       transitionTimingFunction: {
-        'out-expo': 'cubic-bezier(0.19, 1, 0.22, 1)',
-      },
-      animation: {
-        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-        'blob': 'blob 7s infinite',
-        'ping-slow': 'ping 3s cubic-bezier(0, 0, 0.2, 1) infinite',
-        'spin-slow': 'spin 12s linear infinite',
-        'fade-in': 'fadeIn 0.3s ease-out forwards',
-        'scale-in': 'scaleIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards',
-      },
-      keyframes: {
-        blob: {
-          '0%': { transform: 'translate(0px, 0px) scale(1)' },
-          '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
-          '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
-          '100%': { transform: 'translate(0px, 0px) scale(1)' },
-        },
-        matrixRain: {
-          '0%': { transform: 'translateY(-100%)' },
-          '100%': { transform: 'translateY(100vh)' },
-        },
-        stream: {
-          '0%': { transform: 'translateX(-100%) skewY(12deg)' },
-          '100%': { transform: 'translateX(100%) skewY(12deg)' },
-        },
-        gridMove: {
-          '0%': { transform: 'perspective(500px) rotateX(60deg) translateY(0)' },
-          '100%': { transform: 'perspective(500px) rotateX(60deg) translateY(80px)' },
-        },
-        float: {
-          '0%, 100%': { transform: 'translateY(0)' },
-          '50%': { transform: 'translateY(-20px)' },
-        },
-        'floatUp': {
-          '0%': { transform: 'translateY(0) rotate(0deg)' },
-          '100%': { transform: 'translateY(-130vh) rotate(180deg)' },
-        },
-        'fadeIn': {
-          '0%': { opacity: '0' },
-          '100%': { opacity: '1' },
-        },
-        'scaleIn': {
-          '0%': { opacity: '0', transform: 'scale(0.9) translateY(20px)' },
-          '100%': { opacity: '1', transform: 'scale(1) translateY(0)' },
-        },
+        expo: "var(--ease-expo)",
+        ui: "var(--ease-ui)",
       },
     },
   },

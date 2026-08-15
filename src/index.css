@@ -1,0 +1,285 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   Digital Atelier / Engineer's Chronicle
+   Tokens from docs/DESIGN-SYSTEM.md section 1 (evening atelier).
+   Dark only for v1. One accent family: amber.
+   ============================================================ */
+
+:root {
+  /* Color (1.1) */
+  --color-canvas: #1a120c;
+  --color-surface: #241812;
+  --color-surface-raised: #2e1e14;
+  --color-walnut: #4a3226;
+  --color-walnut-light: #5c4033;
+  --color-text-primary: #f3e8d3;
+  --color-text-secondary: #c9b79e;
+  --color-text-muted: #a98b6f;
+  --color-accent: #e8a33d;
+  --color-accent-hot: #ffd9a0;
+  --color-accent-edge: #c96f4a;
+  --color-hairline: rgba(243, 232, 211, 0.1);
+  --color-bloom: rgba(255, 217, 160, 0.35);
+
+  /* Radius (1.2) */
+  --radius-lg: 26px;
+  --radius-sm: 14px;
+  --radius-pill: 999px;
+
+  /* Shadow and bloom (1.3) */
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.35);
+  --shadow-lift: 0 2px 4px rgba(0, 0, 0, 0.3), 0 12px 32px rgba(0, 0, 0, 0.4);
+  --shadow-bloom-sm: 0 0 12px var(--color-bloom), 0 0 32px rgba(232, 163, 61, 0.1);
+  --shadow-bloom-md: 0 0 20px var(--color-bloom), 0 0 48px rgba(232, 163, 61, 0.14);
+  --shadow-bloom-lg: 0 0 28px var(--color-bloom), 0 0 64px rgba(232, 163, 61, 0.18);
+
+  /* Motion (4) */
+  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-ui: cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* ------------------------------------------------------------
+   Fonts (2.3). Self-hosted woff2 in /public/fonts, no CDN calls.
+   ------------------------------------------------------------ */
+@font-face {
+  font-family: "Spectral";
+  src: url("/fonts/spectral-400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Spectral";
+  src: url("/fonts/spectral-400-italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Spectral";
+  src: url("/fonts/spectral-500.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Spectral";
+  src: url("/fonts/spectral-600.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "General Sans";
+  src: url("/fonts/general-sans-400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "General Sans";
+  src: url("/fonts/general-sans-500.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "General Sans";
+  src: url("/fonts/general-sans-600.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("/fonts/jetbrains-mono-400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("/fonts/jetbrains-mono-500.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("/fonts/jetbrains-mono-700.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ------------------------------------------------------------
+   Base
+   ------------------------------------------------------------ */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-canvas);
+    color: var(--color-text-primary);
+    /* Layered lamplight against a dim room (1.5). Never a page-wide warm wash. */
+    background-image:
+      radial-gradient(1200px 800px at 70% -10%, rgba(255, 217, 160, 0.07), transparent 60%),
+      radial-gradient(900px 600px at 10% 100%, rgba(201, 111, 74, 0.05), transparent 60%);
+    background-attachment: fixed;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Floating nav never covers anchor targets (3.1) */
+  [id] {
+    scroll-margin-top: 96px;
+  }
+
+  ::selection {
+    background: rgba(232, 163, 61, 0.3);
+    color: var(--color-text-primary);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+    box-shadow: var(--shadow-bloom-sm);
+  }
+}
+
+/* ------------------------------------------------------------
+   Components
+   ------------------------------------------------------------ */
+@layer components {
+  /* Fixed film grain over the whole page (1.5). Static, reduced-motion safe. */
+  .grain {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    pointer-events: none;
+    opacity: 0.04;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* Heroes use 100dvh with svh fallback (3.2) */
+  .hero-min {
+    min-height: 100svh;
+    min-height: 100dvh;
+  }
+
+  /* Hero background slot (3.2). Reserved for the warm interior image later.
+     For v1 it carries the breathing lamp glow + radial gradients only. */
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  .hero-bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(900px 600px at 75% 15%, rgba(255, 217, 160, 0.1), transparent 60%),
+      radial-gradient(700px 520px at 12% 85%, rgba(201, 111, 74, 0.09), transparent 60%);
+  }
+  .hero-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    transform-origin: top;
+    background: radial-gradient(1000px 720px at 70% 4%, rgba(255, 217, 160, 0.1), transparent 55%);
+    animation: glow-breathe 9s ease-in-out infinite alternate;
+  }
+
+  /* Ambient light cursor (4.4) */
+  .ambient-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 480px;
+    height: 480px;
+    z-index: 40;
+    border-radius: 50%;
+    pointer-events: none;
+    mix-blend-mode: screen;
+    background: radial-gradient(circle, rgba(232, 163, 61, 0.14), rgba(232, 163, 61, 0.04) 40%, transparent 70%);
+    opacity: 0;
+    will-change: transform, opacity;
+  }
+
+  /* Large metric figures (3.6) */
+  .metric-num {
+    font-variant-numeric: lining-nums tabular-nums;
+  }
+
+  /* Amber underline that grows on hover (4.3). Bloom via box-shadow, never a flat swap. */
+  .link-underline {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 300ms var(--ease-ui), color 300ms var(--ease-ui);
+  }
+  .link-underline:hover {
+    background-size: 100% 1px;
+  }
+
+  /* Workbench tool cards: quiet lift + lamp bloom on hover (4.3) */
+  .tool-card {
+    transition: transform 300ms var(--ease-ui), box-shadow 300ms var(--ease-ui);
+  }
+  .tool-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lift), var(--shadow-bloom-md);
+  }
+
+  /* Press feedback for buttons (4.1) */
+  .pressable {
+    transition: transform 120ms var(--ease-ui), box-shadow 300ms var(--ease-ui);
+  }
+  .pressable:active {
+    transform: scale(0.97);
+  }
+}
+
+/* ------------------------------------------------------------
+   Keyframes
+   ------------------------------------------------------------ */
+@keyframes glow-breathe {
+  from {
+    opacity: 0.05;
+  }
+  to {
+    opacity: 0.12;
+  }
+}
+
+/* ------------------------------------------------------------
+   Reduced motion (4.5)
+   ------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  .hero-bg::after {
+    animation: none;
+    opacity: 0.08;
+  }
+  .ambient-cursor {
+    display: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
