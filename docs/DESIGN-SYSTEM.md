@@ -1,11 +1,11 @@
-# Design System: Swiss International + Brutalism Accents
+# Design System: Swiss International (Pure)
 
 Portfolio redesign v2. Buildable spec derived from `docs/DESIGN-DIRECTION.md` (branch `redesign-v2`, updated 2026-08-15).
 
 - Source of truth: `docs/DESIGN-DIRECTION.md`
 - Stack: React 19 + Vite + Tailwind + Framer Motion, GitHub Pages deploy
 - Audience: recruiters, hiring managers, collaborators, clients
-- Concept: Swiss International Style base (strict grid, massive type, discipline, sharp edges) with brutalist accents (hard offset shadows, thick borders, raw bold type). NOT neo-brutalism, NOT the old dark atelier.
+- Concept: pure Swiss International Style (strict grid, massive type, discipline, sharp edges, flat surfaces, hairline rules). NO brutalist accents: no hard shadows, no thick borders. NOT neo-brutalism, NOT the old dark atelier.
 
 ## 0. How to read this document
 
@@ -22,7 +22,7 @@ One light theme. White dominant, ink text, one blue accent family. No dark mode 
 | Token | Value | Role |
 |---|---|---|
 | `--color-canvas` | `#FFFFFF` | White canvas. Page base |
-| `--color-surface` | `#FFFFFF` | Cards sit on the same white; separation comes from the 2px ink border and hard shadow, not a tint |
+| `--color-surface` | `#FFFFFF` | Cards sit on the same white; separation comes from the 1px hairline border, not a tint |
 | `--color-surface-tint` | `#F4F7FB` | Reserved hover fill if ever needed (currently unused) |
 | `--color-ink` | `#111111` | Near-black primary text (never pure black) |
 | `--color-ink-soft` | `#3F3F46` | Secondary text, long body copy |
@@ -31,6 +31,8 @@ One light theme. White dominant, ink text, one blue accent family. No dark mode 
 | `--color-accent-bright` | `#3B82F6` | Hover / large fills |
 | `--color-accent-deep` | `#1D4ED8` | Small blue text (tags) that must pass AA |
 | `--color-hairline` | `rgba(17, 17, 17, 0.14)` | 1px dividers |
+| `--color-card-border` | `rgba(17, 17, 17, 0.18)` | 1px card outline |
+| `--color-card-border-hover` | `rgba(17, 17, 17, 0.5)` | Card outline on hover (border deepens, no shadow) |
 | `--color-tag-bg` | `rgba(37, 99, 235, 0.06)` | Tag pill background |
 | `--color-tag-border` | `rgba(37, 99, 235, 0.25)` | Tag pill border |
 
@@ -39,7 +41,7 @@ Rules:
 - One accent family only: blue. No amber, no warm browns, no second color.
 - Text-level accent is `#2563EB` (AA on white for normal text). `#3B82F6` is for large text and fills only (fails AA at small sizes). `#1D4ED8` is the AA-safe small-text blue.
 - Ink is `#111111`, never `#000000` (a11y discipline).
-- White cards sit on a white canvas; differentiation is border + hard shadow, never a gray tint.
+- White cards sit on a white canvas; differentiation is the 1px hairline border, never a gray tint and never a shadow.
 
 Contrast (WCAG AA):
 
@@ -63,20 +65,19 @@ Contrast (WCAG AA):
 
 The old 26/14/999 squircle system is gone (2026-08-15). No element uses a pill or large radius.
 
-### 1.3 Shadow and border system
+### 1.3 Border system (hairline rules, no shadows)
 
-Brutalist hard offset shadows replace soft drop shadows and glow.
+There are NO shadows in this system. Brutalist hard offset shadows were removed 2026-08-15. Surfaces separate from the canvas with 1px hairlines; hover deepens the border, never adds elevation.
 
 | Token | Value | Use |
 |---|---|---|
-| `--shadow-hard-sm` | `3px 3px 0 rgba(17,17,17,0.9)` | Buttons, small interactive |
-| `--shadow-hard` | `4px 4px 0 rgba(17,17,17,0.9)` | Resting cards |
-| `--shadow-hard-lg` | `6px 6px 0 rgba(17,17,17,0.9)` | Hovered cards (lift) |
-| `--shadow-hard-accent` | `4px 4px 0 rgba(37,99,235,0.9)` | Reserved (blue shadow moments) |
+| `--color-hairline` | `rgba(17,17,17,0.14)` | Section dividers, Workbench rules, flow strip rules |
+| `--color-card-border` | `rgba(17,17,17,0.18)` | Resting card outline (1px) |
+| `--color-card-border-hover` | `rgba(17,17,17,0.5)` | Hovered card outline (1px, deepened) |
 
-Borders: cards and buttons use `2px solid var(--color-ink)`. Tags use 1px tag-border. Section dividers are 1px hairlines.
+Borders: cards use `1px solid var(--color-card-border)`. Buttons use `1px solid var(--color-card-border)`. Tags use 1px tag-border. Section dividers are 1px hairlines. Nothing is 2px.
 
-Hover behavior: `.hard-card` translates -2px on both axes and swaps to `--shadow-hard-lg` (200ms `--ease-ui`). This is the hard shadow lift that replaced the amber bloom.
+Hover behavior: `.swiss-card` translates up 2px (`translateY(-2px)`) and swaps the border to `--color-card-border-hover` (200ms `--ease-ui`). This is the quiet hover that replaced the hard shadow lift.
 
 ### 1.4 Spacing
 
@@ -94,7 +95,7 @@ Rhythm:
 
 ### 1.5 Texture
 
-None. No grain, no radial gradients, no glow layers, no ambient cursor. Flat white canvas, ink rules, hard shadows. The discipline IS the texture.
+None. No grain, no radial gradients, no glow layers, no ambient cursor, no shadows. Flat white canvas, ink hairlines, the grid. The discipline IS the texture.
 
 ## 2. Typography
 
@@ -142,7 +143,7 @@ Swiss bar, not a floating pill:
 - Content: wordmark left (JetBrains Mono 500, `DAUDA NASIR.` with blue period), links right
 - Links (mono, uppercase, `0.75rem`, ink-soft): `ABOUT`, `WORKBENCH`, `PROJECTS`, `CONTACT`. Anchor to sections, `scroll-margin-top: 88px`
 - Active/hover: accent blue text + 2px growing underline (`link-underline`)
-- Mobile: wordmark + a MENU button (2px ink border, `shadow-hard-sm`, 44px min target). Tapping opens a full-screen white overlay with bold sans links at `clamp(2.5rem, 10vw, 4rem)`, staggered entrance, close button top right
+- Mobile: wordmark + a MENU button (1px hairline border, 44px min target). Tapping opens a full-screen white overlay with bold sans links at `clamp(2.5rem, 10vw, 4rem)`, staggered entrance, close button top right
 - Nav is the ONLY fixed element on the homepage
 
 ### 3.2 Hero
@@ -166,14 +167,14 @@ Swiss grid: index column left, statement right.
 NOT a bento grid. NOT cards. A ruled index list.
 
 - Section grid: index `02 / WORKBENCH` left, kicker `SYSTEMS I BUILD` + headline right
-- Each tool is a row: `border-top: 2px ink`, grid `[10rem | 1fr | auto]`: index number (mono), name (General Sans bold, 2xl-2rem) + domain tags + real note (ink-soft), status line right (mono, muted)
+- Each tool is a row: `border-top: 1px hairline`, grid `[10rem | 1fr | auto]`: index number (mono), name (General Sans bold, 2xl-2rem) + domain tags + real note (ink-soft), status line right (mono, muted)
 - Name goes accent blue on hover (200ms)
 - The five tools (locked): Python, Flutter, FastAPI, Cloudflare / GCP, AI Systems
-- List closes with a 2px ink bottom rule
+- List closes with a 1px hairline bottom rule
 
 ### 3.5 Project entries (The Work)
 
-Swiss grid, index numbers 01-06, large type, hard shadow hover. Entries never feel like a journal timeline; they are a disciplined index of shipped systems.
+Structured 12-column Swiss grid, index numbers 01-06, uniform gutters, hairline cards. Entries never feel like a journal timeline; they are a disciplined index of shipped systems.
 
 Common anatomy (all variants):
 
@@ -185,15 +186,18 @@ Common anatomy (all variants):
 - Stack tags: mono pills, accent-deep on tag-bg
 - EXPLORE PROJECT: mono link, accent blue (white on the chapter band), underline grows, arrow nudges. 44px hit area
 
-Variants in the grid (`md:grid-cols-12`):
+Grid (12 fixed columns, ONE gap value `gap-6` = 24px everywhere, no orphan columns):
 
-1. Small (Soiling Detection System, TRAKS): `md:col-span-6` card
-2. Medium (Engineering Hub): `md:col-span-6` card + real flow strip (Flutter Client -> FastAPI API -> PostgreSQL -> Gemini)
-3. Large (NUESA Academia): `md:col-span-12` full-width spread, dashboard image on the right in a 2px ink frame
-4. Compact (RAG Data Pipeline): `md:col-span-6` card with big `1M+` metric
-5. Chapter (AWUN): `md:col-span-12` full-width blue band, capstone treatment
+1. Soiling Detection System: `md:col-span-7` small card
+2. TRAKS: `md:col-span-5` small card (7+5 = 12, paired row)
+3. Engineering Hub: `md:col-span-8` medium card + real flow strip (Flutter Client -> FastAPI API -> PostgreSQL -> Gemini)
+4. RAG Data Pipeline: `md:col-span-4` compact card (8+4 = 12, paired row) with big `1M+` metric
+5. NUESA Academia: `md:col-span-12` full-width spread, dashboard image on the right in a hairline frame
+6. AWUN: `md:col-span-12` full-width blue band, capstone treatment
 
-Card style: `border-2 border-ink`, `bg-surface`, `shadow-hard`, radius `4px`, hover lifts with `shadow-hard-lg` (translate -2px, 200ms). The hard shadow is the hover feedback; there is no glow.
+The section header shares the same 12-column grid and closes with a hairline rule, so index, headline, and cards align.
+
+Card style: `border: 1px solid var(--color-card-border)`, `bg-surface`, radius `4px`, flat (no shadow). Hover: `.swiss-card` translates up 2px and deepens the border to `--color-card-border-hover` (200ms). No shadow, no glow.
 
 ### 3.6 Metrics display (large numbers as composition)
 
@@ -240,9 +244,9 @@ One discipline: Swiss minimal. Nothing bounces, nothing glows, nothing draws its
 
 ### 4.2 Hover
 
-- Cards: hard shadow lift, `translate(-2px, -2px)` + `--shadow-hard-lg`, 200ms
+- Cards: border deepens (hairline -> `--color-card-border-hover`) + `translateY(-2px)`, 200ms
 - Links: 2px underline grows (background-size 0 -> 100%), color to accent
-- Buttons: `--shadow-hard-sm` resting, press `scale(0.97)`
+- Buttons: border deepens to `--color-card-border-hover`, press `scale(0.97)`
 - Workbench rows: name to accent blue
 
 ### 4.3 Ambient cursor
@@ -254,7 +258,7 @@ None. Removed 2026-08-15. The system cursor is the cursor.
 Global `prefers-reduced-motion: reduce`:
 
 - All reveals become opacity-only, 300ms max, no translate
-- Hover blooms (hard shadows, underlines) still allowed but no transforms
+- Hover (border deepens, underlines) still allowed but no transforms
 - CSS: a media query short-circuits durations; Framer Motion uses `useReducedMotion()` for JS-driven values
 
 ## 5. Mobile behavior (under 768px)
@@ -268,7 +272,7 @@ Global `prefers-reduced-motion: reduce`:
 | Projects | Single column. All cards full width; large/chapter bands reduce padding to 24-32px |
 | AWUN | Stacked. Flow row hidden, facts in a 1-col stack, chips wrap |
 | Closing | Contact links stack vertically, full-width tap targets |
-| All | Touch targets min 44x44px. No hover-dependent interactions; active state = shadow + scale 0.97 |
+| All | Touch targets min 44x44px. No hover-dependent interactions; active state = border deepen + scale 0.97 |
 
 ## 6. Page-by-page layout
 
@@ -282,12 +286,11 @@ Section order (locked): Hero -> About -> Workbench -> Projects (AWUN chapter ins
 4. Hairline divider
 5. Workbench: `02 / WORKBENCH`, ruled tool list
 6. Hairline divider
-7. Projects: `03 / PROJECTS`, kicker THE WORK, grid of six:
-   - Small: Soiling Detection System (01), TRAKS (02)
-   - Medium: Engineering Hub (03) with flow strip
-   - Large: NUESA Academia (04) full-width with dashboard image
-   - Compact: RAG Data Pipeline (05)
-   - Chapter: AWUN (06) full-width blue band
+7. Projects: `03 / PROJECTS`, kicker THE WORK, grid of six on a 12-col Swiss grid (uniform gap-6, no orphan columns):
+   - Soiling Detection System (01) span 7 + TRAKS (02) span 5 - paired row
+   - Engineering Hub (03) span 8 with flow strip + RAG Data Pipeline (04) span 4 - paired row
+   - NUESA Academia (05) span 12 full-width with dashboard image
+   - AWUN (06) span 12 full-width blue band
 8. Hairline divider
 9. Closing: `04 / CONTACT`, sign-off, contact row, status line
 
@@ -352,8 +355,8 @@ Deferred. Screenshots and diagrams will be sourced from repo docs when built.
 - [ ] No em dashes anywhere in copy or code comments
 - [ ] One accent family (blue) everywhere; no second accent color
 - [ ] Radius values only from the scale: 0 / 2 / 4px. No squircles, no pills
-- [ ] Hard offset shadows (ink), never soft glow or bloom
-- [ ] All interactive hover states use hard shadow lift / underline, never flat color swaps
+- [ ] Hairline borders only (1px). No shadows anywhere, no 2px borders
+- [ ] All interactive hover states use border deepen / underline, never elevation or shadows
 - [ ] All text passes AA contrast (tokens in section 1.1)
 - [ ] No scroll cues ("scroll down" affordances)
 - [ ] No fake-precise numbers. Metrics come only from `src/data/site.ts`

@@ -3,10 +3,11 @@
 @tailwind utilities;
 
 /* ============================================================
-   Swiss International + brutalism accents
+   Swiss International (pure)
    Tokens from docs/DESIGN-SYSTEM.md section 1.
    White canvas, ink text, one blue accent family. Sharp geometry,
-   thick borders, hard offset shadows. No serif, no grain, no glow.
+   hairline borders, flat surfaces, no hard shadows. The grid and
+   the type carry the page, not decoration.
    ============================================================ */
 
 :root {
@@ -28,11 +29,11 @@
   --radius-sm: 2px;
   --radius-lg: 4px;
 
-  /* Shadow (1.3): brutalist hard offset shadows, ink-colored. */
-  --shadow-hard-sm: 3px 3px 0 rgba(17, 17, 17, 0.9);
-  --shadow-hard: 4px 4px 0 rgba(17, 17, 17, 0.9);
-  --shadow-hard-lg: 6px 6px 0 rgba(17, 17, 17, 0.9);
-  --shadow-hard-accent: 4px 4px 0 rgba(37, 99, 235, 0.9);
+  /* Border (1.3): hairline rules only. No shadows anywhere.
+     Cards separate from the canvas with a 1px hairline; hover
+     deepens the border, never adds elevation. */
+  --color-card-border: rgba(17, 17, 17, 0.18);
+  --color-card-border-hover: rgba(17, 17, 17, 0.5);
 
   /* Motion (4) */
   --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
@@ -151,18 +152,19 @@
     background-size: 100% 2px;
   }
 
-  /* Brutalist card: thick border + hard shadow; hover lifts the shadow (4.3) */
-  .hard-card {
-    transition: transform 200ms var(--ease-ui), box-shadow 200ms var(--ease-ui);
+  /* Swiss card: 1px hairline border, flat surface. Hover deepens
+     the border and nudges up 2px; no shadow, no elevation (3.5) */
+  .swiss-card {
+    transition: transform 200ms var(--ease-ui), border-color 200ms var(--ease-ui);
   }
-  .hard-card:hover {
-    transform: translate(-2px, -2px);
-    box-shadow: var(--shadow-hard-lg);
+  .swiss-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--color-card-border-hover);
   }
 
   /* Press feedback for buttons (4.1) */
   .pressable {
-    transition: transform 120ms var(--ease-ui), box-shadow 200ms var(--ease-ui);
+    transition: transform 120ms var(--ease-ui), border-color 200ms var(--ease-ui);
   }
   .pressable:active {
     transform: scale(0.97);

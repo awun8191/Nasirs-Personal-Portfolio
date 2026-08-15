@@ -98,12 +98,12 @@ function FlowStrip({ layers }: { layers: string[] }) {
   );
 }
 
-// Standard Swiss project card. Sharp corners, thick border, hard shadow
-// that lifts on hover (hard shadow replaces the old amber bloom).
+// Standard Swiss project card. Hairline border, flat surface, no shadow.
+// Hover deepens the border and nudges up 2px (.swiss-card in index.css).
 function ProjectCard({ entry, index }: { entry: ProjectEntry; index: number }) {
   return (
     <Reveal>
-      <article className="hard-card flex h-full flex-col border-2 border-ink bg-surface p-6 shadow-hard md:p-8">
+      <article className="swiss-card flex h-full flex-col border border-card-border bg-surface p-6 md:p-8">
         <div className="flex items-baseline justify-between gap-4">
           <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
             {String(index + 1).padStart(2, "0")}
@@ -151,11 +151,11 @@ function ProjectCard({ entry, index }: { entry: ProjectEntry; index: number }) {
   );
 }
 
-// NUESA carries the verified dashboard image; the card is a full-bleed spread.
+// NUESA carries the verified dashboard image; the card is a full-width spread.
 function LargeCard({ entry, index }: { entry: ProjectEntry; index: number }) {
   return (
     <Reveal>
-      <article className="hard-card flex h-full flex-col border-2 border-ink bg-surface shadow-hard md:p-10">
+      <article className="swiss-card flex h-full flex-col border border-card-border bg-surface md:p-10">
         <div className="flex items-baseline justify-between gap-4 p-6 md:p-0">
           <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
             {String(index + 1).padStart(2, "0")}
@@ -185,7 +185,7 @@ function LargeCard({ entry, index }: { entry: ProjectEntry; index: number }) {
           </div>
           {entry.visual && (
             <figure className="md:flex-1">
-              <div className="overflow-hidden rounded-sm border-2 border-ink">
+              <div className="overflow-hidden rounded-sm border border-card-border">
                 <img
                   src={entry.visual.src}
                   alt={entry.visual.alt}
@@ -204,12 +204,12 @@ function LargeCard({ entry, index }: { entry: ProjectEntry; index: number }) {
   );
 }
 
-// AWUN: the capstone chapter. Blue band, no user metrics (none exist).
+// AWUN: the capstone chapter. Flat blue band, no border, no shadow.
 // System facts and chapter index only. The one saturated accent moment.
 function ChapterCard({ entry, index }: { entry: ProjectEntry; index: number }) {
   return (
     <Reveal>
-      <article className="hard-card relative flex h-full flex-col border-2 border-ink bg-accent p-8 text-white shadow-hard md:p-14">
+      <article className="flex h-full flex-col bg-accent p-8 text-white md:p-14">
         <div className="flex items-baseline justify-between gap-4">
           <p className="font-mono text-xs uppercase tracking-[0.2em] text-white/90">
             {String(index + 1).padStart(2, "0")}
@@ -262,16 +262,39 @@ function ChapterCard({ entry, index }: { entry: ProjectEntry; index: number }) {
   );
 }
 
-// Projects (3.5): six verified projects in a Swiss grid with index numbers.
-// Order and metrics match the data module exactly. AWUN closes as the chapter.
+// Projects (3.5): six verified projects on a structured 12-col Swiss grid.
+//
+// Grid rationale (the composition is deliberate, not masonry):
+//   - 12 fixed columns, ONE gap value (24px) everywhere, no orphan columns.
+//   - Pair 1: Soiling (7) + TRAKS (5)  - two small entries, asymmetric split.
+//   - Pair 2: Engineering Hub (8) + RAG (4) - the medium (flow strip) gets
+//     more width, the compact entry less.
+//   - Full width: NUESA (12) large spread with the dashboard image, then
+//     AWUN (12) chapter band as the capstone close.
+//   - Index numbers 01-06 follow display order, so they always read top-left
+//     to bottom-right.
+// Order and metrics match the data module; AWUN closes as the chapter.
+const DISPLAY_ORDER = ["soiling", "traks", "engineering-hub", "rag", "nuesa", "awun"] as const;
+
+const GRID_SPANS: Record<string, string> = {
+  soiling: "md:col-span-7",
+  traks: "md:col-span-5",
+  "engineering-hub": "md:col-span-8",
+  rag: "md:col-span-4",
+  nuesa: "md:col-span-12",
+  awun: "md:col-span-12",
+};
+
 export default function Projects() {
   return (
     <section id="projects" className="py-[clamp(96px,12vw,160px)]">
       <div className="mx-auto w-full max-w-[1200px] px-6 md:px-10">
         <Reveal>
-          <div className="grid gap-6 md:grid-cols-[10rem_1fr] md:gap-12">
-            <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted">03 / Projects</p>
-            <div>
+          <div className="grid gap-6 md:grid-cols-12 md:gap-6">
+            <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted md:col-span-3">
+              03 / Projects
+            </p>
+            <div className="md:col-span-9">
               <p className="font-mono text-xs uppercase tracking-[0.18em] text-accent">
                 The Work
               </p>
@@ -282,12 +305,13 @@ export default function Projects() {
           </div>
         </Reveal>
 
-        <div className="mt-14 grid grid-cols-1 gap-6 md:mt-20 md:grid-cols-12 md:gap-8">
-          {PROJECTS.map((entry, i) => {
-            const span =
-              entry.variant === "large" || entry.variant === "chapter"
-                ? "md:col-span-12"
-                : "md:col-span-6";
+        <div aria-hidden className="mt-10 border-t border-card-border md:mt-14" />
+
+        <div className="mt-10 grid grid-cols-1 gap-6 md:mt-14 md:grid-cols-12 md:gap-6">
+          {DISPLAY_ORDER.map((id, i) => {
+            const entry = PROJECTS.find((p) => p.id === id);
+            if (!entry) return null;
+            const span = GRID_SPANS[id];
             return (
               <div key={entry.id} className={span}>
                 {entry.variant === "large" ? (

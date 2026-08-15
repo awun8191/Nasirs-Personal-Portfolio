@@ -6,14 +6,14 @@ Last updated: 2026-08-15
 
 ## 1. Vision
 
-A Swiss International Style portfolio with brutalist accents. Clean grid, massive typography, discipline, sharp edges. Most developer portfolios hide behind dark bento templates and decorative gradients; this one states the facts in huge type on a white field and lets the work carry the page.
+A pure Swiss International Style portfolio. Clean grid, massive typography, discipline, sharp edges, flat surfaces. Most developer portfolios hide behind dark bento templates and decorative gradients; this one states the facts in huge type on a white field and lets the work carry the page.
 
-The composition is Swiss first: strict grid, index numbers, one accent color, enormous type. Brutalist details make it stand out: hard offset shadows, thick borders, raw bold type moments. This is NOT neo-brutalism (no clashing color blocks everywhere), and NOT the previous dark atelier direction (abandoned 2026-08-15).
+The composition is Swiss first and only: strict grid, index numbers, one accent color, enormous type, hairline rules, no shadows. The grid and the typography carry the page; nothing is decorated. This is NOT neo-brutalism (no clashing color blocks, no hard shadows, no thick borders), and NOT the previous dark atelier direction (abandoned 2026-08-15).
 
 - Surface: white canvas, near-black ink, one confident blue accent
 - Underneath: real verified metrics, real systems, exact copy, disciplined type
 
-The page looks expensive because it is quiet and precise, not because it glows.
+The page looks expensive because it is quiet and precise, not because it glows or because it shouts with shadows.
 
 ## 2. No Quote
 
@@ -21,7 +21,7 @@ There is no quote on the homepage. The Plato quote and its attribution were remo
 
 ## 3. Aesthetic Language
 
-Approved aesthetics in play: Swiss / International Style (base), classic Brutalism (accents only). NOT neo-brutalism: no clashing color blocks everywhere, no playful chunky borders on every element. Swiss discipline owns the layout; the brutalist details are the punctuation.
+Approved aesthetic: Swiss / International Style, pure. No brutalist accents. NOT neo-brutalism: no hard offset shadows, no thick chunky borders, no playful elements. Swiss discipline owns everything; the grid, the type, and the hairline rules are the entire ornament.
 
 ### Palette
 
@@ -33,6 +33,7 @@ Approved aesthetics in play: Swiss / International Style (base), classic Brutali
 - Accent bright `#3B82F6` - hover and large-fill moments
 - Accent deep `#1D4ED8` - small blue text that must pass AA (tags)
 - Hairline `rgba(17,17,17,0.14)` - 1px dividers
+- Card border `rgba(17,17,17,0.18)` - 1px card outline, deepens to `rgba(17,17,17,0.5)` on hover
 
 No amber, no warm browns, no dark palette. The accent family is blue, full stop.
 
@@ -43,7 +44,7 @@ All corners are sharp or near-sharp. The previous 26/14/999 squircle system is r
 - Large surfaces (cards, project entries, chapter band): 4px radius
 - Small elements (tags, buttons): 2px radius
 - Default: 0px (nav, hairlines, list rows)
-- Brutalist accent: thick 2px ink borders on cards and buttons, hard offset shadows (3-6px solid ink) instead of soft drop shadows or glow
+- Surfaces are flat: 1px hairline borders only, no shadows anywhere
 
 ### Typography (two voices)
 
@@ -56,7 +57,7 @@ All corners are sharp or near-sharp. The previous 26/14/999 squircle system is r
 - No grain overlay (Swiss is clean; removed 2026-08-15)
 - No radial gradients, no lamp glow, no breathing light
 - No ambient cursor glow (removed 2026-08-15). The cursor is the system cursor
-- The page is flat white with ink rules and hard shadows. That is the texture
+- No shadows. The page is flat white with ink hairline rules and the grid. That is the texture
 
 ## 4. The Two Design Systems
 
@@ -78,21 +79,29 @@ All corners are sharp or near-sharp. The previous 26/14/999 squircle system is r
 1. Hero (The Poster): full viewport white field, content anchored toward the bottom. Subtitle ABOVE the name in mono: `FULL STACK SOFTWARE DEVELOPER`. The name `DAUDA NASIR` in giant bold blue, two lines, tight leading. Nothing else. No quote, no image, no buttons
 2. About: index `01 / ABOUT`, the direct statement (his words): "My name is Dauda Nasir. I'm an Electrical and Electronics Engineering graduate and a software developer." / "I build products. I'm a product-minded developer."
 3. The Workbench (Systems I Build): index `02 / WORKBENCH`. Ruled list of tools (Python, Flutter, FastAPI, Cloudflare / GCP, AI Systems) with real notes and status lines. Not cards, not bento
-4. Projects (The Work): index `03 / PROJECTS`. Six verified projects in a sharp grid with index numbers 01-06, large type, hard shadow on hover. AWUN closes the section as a full-width blue chapter band
+4. Projects (The Work): index `03 / PROJECTS`. Six verified projects on a structured 12-column Swiss grid with index numbers 01-06, uniform gutters, deliberate spans (7/5, 8/4, then two full-width statements). AWUN closes the section as a full-width blue chapter band
 5. Closing: index `04 / CONTACT`. Sign-off, EMAIL / GITHUB / LINKEDIN / CV links, mono status line
 
 ## 6. The Projects Grid
 
-Six projects, sharp Swiss grid, index numbers 01-06, all metrics verified (section 7):
+Six projects on a structured 12-column Swiss grid, index numbers 01-06 (following display order, top-left to bottom-right), all metrics verified (section 7):
 
-1. Soiling Detection System (2024) - small card
-2. TRAKS (2024) - small card
-3. Engineering Hub (2024) - medium card with real flow strip
-4. NUESA Academia (2024/2025) - large full-width spread with the dashboard image
-5. RAG Data Pipeline (2025) - compact card
-6. AWUN (2025/2026) - full-width blue chapter band, capstone
+- 01 Soiling Detection System (2024) - span 7
+- 02 TRAKS (2024) - span 5
+- 03 Engineering Hub (2024) - span 8 (medium, real flow strip gets the width)
+- 04 RAG Data Pipeline (2025) - span 4 (compact)
+- 05 NUESA Academia (2024/2025) - span 12, full-width spread with the dashboard image
+- 06 AWUN (2025/2026) - span 12, full-width blue chapter band, capstone
 
-Each card: index number, year, title, one line, verified metrics, stack tags, EXPLORE PROJECT link. Cards are sharp (4px), bordered 2px ink, hard offset shadow that lifts on hover (the hard shadow replaces the old amber bloom).
+Grid rules:
+
+- ONE gap value everywhere: `gap-6` (24px), mobile and desktop. No mixed gutters
+- Spans pair deliberately: 7+5 and 8+4 both total 12, so no orphan columns ever appear
+- Full-width entries (NUESA, AWUN) are the two closing statements, so the scaled composition reads small -> medium/compact -> large -> capstone
+- Section header shares the same 12-column grid and is closed with a hairline rule, so the index, headline, and cards all align
+- Mobile (under 768px): clean single column, one gap value, aligned padding, touch targets >= 44px
+
+Each card: index number, year, title, one line, verified metrics, stack tags, EXPLORE PROJECT link. Cards are flat white with a 1px hairline border (`rgba(17,17,17,0.18)`); hover deepens the border to `rgba(17,17,17,0.5)` and nudges up 2px. No shadows.
 
 ### Project lineup (confirmed scope)
 
@@ -136,7 +145,7 @@ The AWUN case study is a progressive reveal (deferred page). The homepage band i
 ## 9. Motion Rules
 
 - Reveals: short rise + fade, 500-700ms, custom expo curve, once per element, one beat at a time
-- Hover: hard shadow lifts (translate -2px + shadow grows to 6px), links grow a 2px ink/blue underline
+- Hover: card border deepens (hairline -> 0.5 ink) with a 2px upward nudge, links grow a 2px ink/blue underline. No shadows, no lifts
 - No timeline drawing, no milestone dots, no breathing, no marquee
 - No window scroll listeners. Framer Motion `whileInView` / `useReducedMotion` only
 - Everything honors prefers-reduced-motion (opacity-only reveals, 300ms max, no transforms)
@@ -150,15 +159,16 @@ The AWUN case study is a progressive reveal (deferred page). The homepage band i
 
 ## 11. Decisions (locked)
 
-- [x] Direction: Swiss International + brutalist accents, white/blue. Atelier/chronicle abandoned (2026-08-15)
+- [x] Direction: Swiss International, pure (no brutalism accents). Atelier/chronicle abandoned (2026-08-15); brutalist shadows/borders removed (2026-08-15)
 - [x] Quote: removed entirely. No replacement
 - [x] Palette: white canvas, ink text, blue accent family only
 - [x] Geometry: sharp (0-4px). Squircle system removed
+- [x] Surfaces: flat, hairline 1px borders, no shadows
 - [x] Typography: General Sans + JetBrains Mono only. Spectral dropped
 - [x] Texture: no grain, no glow, no ambient cursor
 - [x] Hero: subtitle above name, giant blue name, bottom-anchored, nothing else
 - [x] Section flow: Hero -> About -> Workbench -> Projects -> Closing
-- [x] Projects: six verified entries, index numbers, hard shadow hover
+- [x] Projects: six verified entries on a structured 12-col grid (7/5, 8/4, 12, 12), one gap value, no orphan columns
 - [x] Engineering Hub metrics: 250 downloads (real number)
 - [x] AWUN metrics: none exist, none shown
 - [ ] Case studies: still deferred (EXPLORE links point to future routes)
