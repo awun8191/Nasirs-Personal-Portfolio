@@ -18,7 +18,7 @@ export default function Nav() {
   return (
     <>
       <header className="fixed inset-x-4 top-4 z-30">
-        <div className="mx-auto flex h-14 max-w-[1200px] items-center justify-between rounded-surface border border-hairline bg-[rgba(26,18,12,0.72)] px-5 backdrop-blur-md md:px-6">
+        <div className="mx-auto flex h-14 max-w-[1200px] items-center justify-between rounded-surface border border-hairline bg-[rgba(0,0,0,0.5)] px-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-xl backdrop-saturate-150 md:px-6">
           <a
             href="#hero"
             data-bloom

@@ -28,9 +28,9 @@ Dark mode values (evening atelier):
 
 | Token | Value | Role |
 |---|---|---|
-| `--color-canvas` | `#1A120C` | Espresso. Page base, dim desaturated room |
-| `--color-surface` | `#241812` | Raised surface, cards sit one step off the canvas |
-| `--color-surface-raised` | `#2E1E14` | Hover / elevated states |
+| `--color-canvas` | `#000000` | PURE black. Page base, the room at night (decided 2026-08-15) |
+| `--color-surface` | `#0B0A08` | Barely-warm near-black. Cards sit one quiet step off the canvas |
+| `--color-surface-raised` | `#12100C` | Hover / elevated states, one more quiet step |
 | `--color-walnut` | `#4A3226` | Warm wood tones for large surfaces and borders |
 | `--color-walnut-light` | `#5C4033` | Lighter wood, dividers between cards |
 | `--color-text-primary` | `#F3E8D3` | Warm cream, primary text |
@@ -63,19 +63,20 @@ Light mode values (daylight workshop), same token names:
 Rules:
 
 - One accent family only: amber. Hot amber is the core, amber is the body, terracotta is the edge. Nothing else gets color.
-- Never use pure black or pure white. Canvas is never `#000` / `#FFF`.
+- Dark canvas is pure black `#000000` by decision. Derived surfaces stay in the barely-warm near-black range (`#0B0A08` / `#12100C`) so the amber and lamp light own the warmth. Never use pure white.
 - Text-level accent in light mode is the deep amber `#A8651C`, NOT `#E8A33D` (that fails contrast on cream). `#E8A33D` in light mode is a fill color only, always behind dark text.
 
 Contrast (WCAG AA):
 
 | Pair | Ratio | Verdict |
 |---|---|---|
-| cream `#F3E8D3` on espresso `#1A120C` | ~16:1 | Pass |
-| amber `#E8A33D` on espresso `#1A120C` (dark, large display) | ~8:1 | Pass |
+| cream `#F3E8D3` on pure black `#000000` | ~17.3:1 | Pass |
+| cream `#F3E8D3` on surface `#0B0A08` | ~16.3:1 | Pass |
+| amber `#E8A33D` on pure black `#000000` (dark, large display) | ~9.7:1 | Pass |
 | deep amber `#A8651C` on cream `#F4EBD8` (light, large display) | ~3.9:1 | Pass AA large text, do not use for body text |
 | espresso `#1A120C` text on amber `#E8A33D` button fill | ~8.6:1 | Pass |
-| sepia `#A98B6F` on espresso (dark captions) | ~5.5:1 | Pass AA normal |
-| hot amber `#FFD9A0` on espresso (dark tags) | ~7.9:1 | Pass |
+| sepia `#A98B6F` on pure black (dark captions) | ~6.6:1 | Pass AA normal |
+| hot amber `#FFD9A0` on pure black (dark tags) | ~15.7:1 | Pass |
 | `#C96F4A` on cream (light tags) | ~3.05:1 | Large text only. For small mono tags use `#8A3A20` text on a `#C96F4A`/12 tint |
 
 Tag color spec (AA-safe):
@@ -131,11 +132,12 @@ Grain (fixed overlay, pure CSS, no image file):
 - Opacity `0.04`, `pointer-events: none`, `position: fixed`, `inset: 0`, `z-index: 50`, `mix-blend-mode: overlay`
 - Does not move on scroll. Reduced-motion safe (static, no animation).
 
-Layered lighting (lamplight against a dim room, never a page-wide warm wash):
+Layered lighting (lamplight against pure black, never a page-wide warm wash):
 
-- Body background: espresso base plus two fixed radial gradients:
-  - `radial-gradient(1200px 800px at 70% -10%, rgba(255, 217, 160, 0.07), transparent 60%)` (hot core, top right)
-  - `radial-gradient(900px 600px at 10% 100%, rgba(201, 111, 74, 0.05), transparent 60%)` (terracotta edge, bottom left)
+- Body background: pure black base plus two fixed radial gradients:
+  - `radial-gradient(1200px 800px at 70% -10%, rgba(255, 217, 160, 0.05), transparent 60%)` (hot core, top right)
+  - `radial-gradient(900px 600px at 10% 100%, rgba(201, 111, 74, 0.035), transparent 60%)` (terracotta edge, bottom left)
+  - Opacities are tuned for the black base (2026-08-15): same perceived glow, quieter fill. The amber and lamp light pop MORE on pure black.
 - Breathing glow: one dedicated layer behind the hero, `opacity` animates `0.05 -> 0.10` over `8s-12s` ease-in-out alternate, `transform-origin: top`, `pointer-events: none`. This is the ONLY breathing animation on the site. Disabled under reduced motion.
 
 ## 2. Typography
@@ -158,9 +160,8 @@ No other families on the site. No system font fallbacks visible in practice; dec
 | Hero attribution | JetBrains Mono 400 | `0.75rem` | `1.4` | `0.22em` | Uppercase. `PLATO, REPUBLIC, BOOK II` |
 | Section kicker | JetBrains Mono 400 | `0.75rem` | `1.4` | `0.18em` | Uppercase, accent color |
 | Section headline | Spectral 500 | `clamp(2rem, 4.5vw, 3.75rem)` | `1.05` | `-0.01em` | Chronicle voice |
-| Ledger statement | Spectral 400 | `clamp(1.5rem, 3vw, 2.25rem)` | `1.3` | `0` | Serif statement in the Ledger |
+| Ledger statement | Spectral 400 | `clamp(2rem, 4.5vw, 3.75rem)` | `1.15` | `-0.01em` | About section: one direct statement, serif display, max ~34ch |
 | Body | General Sans 400 | `1.0625rem` | `1.65` | `0` | Paragraphs, max 68ch |
-| Ledger metadata | JetBrains Mono 400 | `0.875rem` | `1.6` | `0.02em` | Mono metadata column |
 | Metric number | Spectral 500 | `clamp(3rem, 8vw, 6rem)` | `0.95` | `-0.02em` | `font-variant-numeric: lining-nums tabular-nums` |
 | Metric label | JetBrains Mono 400 | `0.75rem` | `1.4` | `0.14em` | Uppercase, muted |
 | Tag | JetBrains Mono 400 | `0.6875rem` | `1.3` | `0.1em` | Uppercase, tag colors per section 1.1 |
@@ -183,9 +184,9 @@ No other families on the site. No system font fallbacks visible in practice; dec
 Floating pill bar, not a full-width header:
 
 - Container: `max-width 1200px`, centered, `position: fixed`, top `16px`, left/right `16px`, `border-radius: 26px` (large squircle)
-- Surface: `backdrop-filter: blur(16px)`, bg `rgba(26, 18, 12, 0.72)` (dark) / `rgba(244, 235, 216, 0.78)` (light), 1px hairline border
+- Surface: frosted glass. `backdrop-filter: blur(24px) saturate(1.5)`, bg `rgba(0, 0, 0, 0.50)` over the pure black base, 1px hairline border, plus a 1px inner top highlight `inset 0 1px 0 rgba(255,255,255,0.08)` for the glass edge. Light mode (deferred): `rgba(244, 235, 216, 0.78)`
 - Content: wordmark left (JetBrains Mono 500, `DAUDA NASIR` or `DN` monogram), links right
-- Links (mono, uppercase, `0.75rem`): `LEDGER`, `WORKBENCH`, `CHRONICLE`, `CONTACT`. Anchor to sections, `scroll-margin-top: 96px` so the floating bar never covers targets
+- Links (mono, uppercase, `0.75rem`): `ABOUT`, `WORKBENCH`, `CHRONICLE`, `CONTACT`. Anchor to sections, `scroll-margin-top: 96px` so the floating bar never covers targets
 - Active/hover: hot amber text + `--shadow-bloom-sm` + hairline amber underline
 - Mobile: wordmark + a `MENU` pill button (44px min target). Tapping opens a full-screen overlay (canvas color, grain, serif links at `clamp(2rem, 8vw, 3rem)`, staggered entrance). Close button top right
 - Nav is the ONLY fixed element on the homepage
@@ -200,14 +201,14 @@ Floating pill bar, not a full-width header:
 - Entrance: quote rises + unblurs over 800ms expo-out; attribution follows 120ms later (see motion spec)
 - The quote is locked: "The beginning is the most important part of any work." Nothing replaces it
 
-### 3.3 Ledger (who I am)
+### 3.3 Ledger / About (who I am)
 
-- Section header: kicker `THE ENGINEER'S LEDGER` + serif headline `Who I Am`
-- Two-column grid on desktop: mono metadata left (column 1, ~280px), serif statement right
-- Metadata fields (mono, ledger style): `NAME / DAUDA NASIR`, `DISCIPLINE / ELECTRICAL + ELECTRONICS ENGINEERING`, `ROLE / FULL-STACK DEVELOPER`, `ORIGIN / ABUAD, NIGERIA`, `FOCUS / HARDWARE TELEMETRY + SCALABLE BACKENDS + AI SYSTEMS`
-- Statement (Spectral, the narrative): bridging low-level hardware and telemetry with scalable backends and modern AI systems. Copy lives in content slots (section 7)
-- Ruled lines: hairline horizontal rules between metadata rows; a full-width hairline under the section header
-- Entry number top right in mono: `ENTRY 001`
+One direct statement, no cards, no ledger furniture. DECIDED 2026-08-15: straight to the point, minimal.
+
+- Section: single serif display statement, `Spectral 400`, `clamp(2rem, 4.5vw, 3.75rem)`, `leading 1.15`, `tracking -0.01em`, max ~34ch
+- Copy (his words, polished): "My name is Dauda Nasir. I'm an Electrical and Electronics Engineering graduate and a software developer." / "I build products. I'm a product-minded developer."
+- No metadata table, no Entry 001, no ruled ledger rows, no section heading or kicker. Generous whitespace, `py clamp(96px, 12vw, 160px)`, same container as every section
+- Section id stays `ledger` (nav link label is `ABOUT`; href `#ledger` keeps working)
 
 ### 3.4 Workbench (SYSTEMS I BUILD)
 
@@ -339,7 +340,7 @@ Explicit collapse rules per section:
 |---|---|
 | Nav | Wordmark + MENU pill. Full-screen overlay menu with serif links, staggered entrance, close button |
 | Hero | `min-height: 100svh`. Quote clamp to `2.75rem` floor, left-aligned, attribution below. Breathing glow stays |
-| Ledger | Single column. Metadata rows on top (hairline ruled), serif statement below. Entry number stays top right |
+| Ledger / About | Single column. One direct serif statement, generous whitespace, no metadata rows |
 | Workbench | Single column stack, tools full-width, notes below name, stagger removed |
 | Chronicle | Single column. Year inline above title (small variant pattern for ALL entries). Metrics band wraps to 2-col grid. Large/chapter entries keep full-bleed visual but reduce padding to 24px |
 | Timeline | Progress line hidden or moved to a 2px left rail, milestones become small dots |
@@ -356,7 +357,7 @@ Section order (locked): Hero -> Ledger -> Workbench -> Chronicle -> AWUN chapter
 
 1. Hero: 100dvh, quote + attribution, breathing glow, grain
 2. Hairline divider
-3. Ledger: kicker + headline, metadata column + serif statement, `ENTRY 001`
+3. Ledger / About: one direct serif statement, no metadata table, no Entry 001
 4. Hairline divider
 5. Workbench: kicker + headline, staggered tool cards
 6. Hairline divider
@@ -399,12 +400,12 @@ Copy and imagery needed per slot. Metrics marked TODO-CONFIRM must be verified w
 | Quote | "The beginning is the most important part of any work." | LOCKED |
 | Attribution | PLATO, REPUBLIC, BOOK II | LOCKED |
 
-### Ledger
+### Ledger / About
 
 | Slot | Content | Status |
 |---|---|---|
-| Statement | Bridging low-level hardware and telemetry with scalable backends and modern AI systems (expand with EE + full-stack story) | Needs final copy |
-| Metadata | NAME, DISCIPLINE, ROLE, ORIGIN, FOCUS fields | Needs final copy |
+| Statement 1 | My name is Dauda Nasir. I'm an Electrical and Electronics Engineering graduate and a software developer. | LOCKED (his words, polished) |
+| Statement 2 | I build products. I'm a product-minded developer. | LOCKED (his words, polished) |
 
 ### Workbench (tool notes, real and specific)
 

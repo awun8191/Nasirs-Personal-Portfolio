@@ -9,10 +9,11 @@
    ============================================================ */
 
 :root {
-  /* Color (1.1) */
-  --color-canvas: #1a120c;
-  --color-surface: #241812;
-  --color-surface-raised: #2e1e14;
+  /* Color (1.1). Canvas is PURE black (decided 2026-08-15); surfaces
+     sit in the barely-warm near-black range so amber and lamp light pop. */
+  --color-canvas: #000000;
+  --color-surface: #0b0a08;
+  --color-surface-raised: #12100c;
   --color-walnut: #4a3226;
   --color-walnut-light: #5c4033;
   --color-text-primary: #f3e8d3;
@@ -126,10 +127,11 @@
   body {
     background-color: var(--color-canvas);
     color: var(--color-text-primary);
-    /* Layered lamplight against a dim room (1.5). Never a page-wide warm wash. */
+    /* Layered lamplight against pure black (1.5). Never a page-wide warm wash.
+       Opacities recomputed for black base: same perceived glow, quieter fill. */
     background-image:
-      radial-gradient(1200px 800px at 70% -10%, rgba(255, 217, 160, 0.07), transparent 60%),
-      radial-gradient(900px 600px at 10% 100%, rgba(201, 111, 74, 0.05), transparent 60%);
+      radial-gradient(1200px 800px at 70% -10%, rgba(255, 217, 160, 0.05), transparent 60%),
+      radial-gradient(900px 600px at 10% 100%, rgba(201, 111, 74, 0.035), transparent 60%);
     background-attachment: fixed;
     -webkit-font-smoothing: antialiased;
   }
@@ -186,15 +188,15 @@
     position: absolute;
     inset: 0;
     background-image:
-      radial-gradient(900px 600px at 75% 15%, rgba(255, 217, 160, 0.1), transparent 60%),
-      radial-gradient(700px 520px at 12% 85%, rgba(201, 111, 74, 0.09), transparent 60%);
+      radial-gradient(900px 600px at 75% 15%, rgba(255, 217, 160, 0.08), transparent 60%),
+      radial-gradient(700px 520px at 12% 85%, rgba(201, 111, 74, 0.07), transparent 60%);
   }
   .hero-bg::after {
     content: "";
     position: absolute;
     inset: 0;
     transform-origin: top;
-    background: radial-gradient(1000px 720px at 70% 4%, rgba(255, 217, 160, 0.1), transparent 55%);
+    background: radial-gradient(1000px 720px at 70% 4%, rgba(255, 217, 160, 0.08), transparent 55%);
     animation: glow-breathe 9s ease-in-out infinite alternate;
   }
 
