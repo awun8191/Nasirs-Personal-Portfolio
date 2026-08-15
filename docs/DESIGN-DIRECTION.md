@@ -31,14 +31,26 @@ Not retro for its own sake. The atelier metaphor must not drift into a vintage p
 
 ### Palette
 
-- Espresso `#2A1C14` - primary canvas
+- Espresso `#1A120C` - primary canvas. Near-black, dim room base so light sources read as emitting, not ambient tint
 - Roasted walnut `#4A3226` / `#5C4033` - surfaces and cards
 - Warm cream `#F3E8D3` - primary text
-- Amber glow `#E8A33D` - the single accent: quote, CTAs, cursor light
-- Terracotta `#C96F4A` - secondary accent: tags, timeline markers
+- Hot amber `#FFD9A0` - glow cores, emphasized text, hover states. The hot near-white core of the lamp light
+- Amber glow `#E8A33D` - the primary accent: quote, CTAs, cursor light
+- Terracotta `#C96F4A` - secondary accent: tags, timeline markers, the saturated orange edge of the light
 - Sepia `#A98B6F` - muted text and captions
 
+Lighting model: warm mid-century lamp light. A hot, near-white-amber core (`#FFD9A0`) that fades into saturated orange (`#C96F4A`) at the edges, glowing against a dim, desaturated room (`#1A120C`). The light emits, it does not tint the whole page warm.
+
 Two modes, same tokens: espresso-dark "evening atelier" and cream-paper "daylight workshop". Final mode strategy pending confirmation (dark only, light only, or toggle).
+
+### Geometry (squircle, not sharp)
+
+All containers, cards, buttons, and nav elements use rounded/squircle geometry. No hard rectangular borders.
+
+- Large surfaces (nav bar, workbench tool cards, chronicle project entries, contact buttons): ~26px radius
+- Smaller elements (tags, small cards, input fields): ~14px radius
+- Pills and buttons: fully rounded (999px)
+- Exception: hairline section dividers (1px rules between page sections) stay sharp. The fix targets boxy card/container edges, not structural rules
 
 ### Typography (three-voice system)
 
@@ -50,7 +62,8 @@ Two modes, same tokens: espresso-dark "evening atelier" and cream-paper "dayligh
 ### Texture and light
 
 - Grain: fixed, pointer-events-none, ~4% opacity film grain over the page
-- Warm radial lighting: layered radial gradients in amber and terracotta, low opacity, slow breathing cycle (8-12s), like lamplight
+- Warm radial lighting: layered radial gradients, hot amber core fading to saturated orange at the edges, low opacity, slow breathing cycle (8-12s), like lamplight against a dim room. The page base stays dark and desaturated; the light emits from specific sources, it does not wash the whole page
+- Interactive bloom: cards, links, and buttons cast a soft glow (box-shadow bloom) on hover/focus rather than a flat color swap. Mimics actual lamp bloom
 - Ambient light cursor: soft amber halo that lerps behind the pointer. Barely noticeable while moving. Becomes perceptible on interaction, gently illuminating the hovered region (cards, diagrams). Not a conventional glow effect. Desktop only. Disabled under prefers-reduced-motion
 
 ## 4. The Two Design Systems
@@ -170,7 +183,7 @@ The AWUN case study is a progressive reveal:
 
 - Reveals: gentle rise + blur fade, 700-900ms, custom expo curve, one beat at a time
 - Timeline: warm progress line that draws on scroll, milestones click into place
-- Hover: quiet lift, amber underline on links
+- Hover: quiet lift, amber underline on links, soft box-shadow bloom on cards and buttons (lamp bloom, not flat color swap)
 - No bouncing, no marquee spam, no showcase effects
 - Everything honors prefers-reduced-motion
 - Ambient light cursor is the only cursor treatment
