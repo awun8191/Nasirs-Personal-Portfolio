@@ -3,22 +3,17 @@
 // Do not add figures that are not in this module.
 
 export const NAV_LINKS = [
-  { label: "Ledger", href: "#ledger" },
+  { label: "About", href: "#ledger" },
   { label: "Workbench", href: "#workbench" },
   { label: "Chronicle", href: "#chronicle" },
   { label: "Contact", href: "#contact" },
 ];
 
-export const LEDGER_METADATA = [
-  { field: "NAME", value: "DAUDA NASIR" },
-  { field: "DISCIPLINE", value: "ELECTRICAL + ELECTRONICS ENGINEERING" },
-  { field: "ROLE", value: "FULL-STACK DEVELOPER" },
-  { field: "ORIGIN", value: "ABUAD, NIGERIA" },
-  { field: "FOCUS", value: "HARDWARE TELEMETRY + SCALABLE BACKENDS + AI SYSTEMS" },
+// About (3.3): one direct statement. His words, polished. No metadata rows.
+export const LEDGER_STATEMENT = [
+  "My name is Dauda Nasir. I'm an Electrical and Electronics Engineering graduate and a software developer.",
+  "I build products. I'm a product-minded developer.",
 ];
-
-export const LEDGER_STATEMENT =
-  "I am an Electrical and Electronics Engineer and full-stack developer from ABUAD. I bridge low-level hardware and telemetry with scalable backends and modern AI systems: milliwatt sensors, million-chunk retrieval pipelines, platforms serving thousands of students.";
 
 export type Tool = {
   name: string;
