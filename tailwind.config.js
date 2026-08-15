@@ -1,5 +1,5 @@
 /** @type {import('tailwindcss').Config} */
-// Digital Atelier / Engineer's Chronicle - token map.
+// Swiss International + brutalism accents - token map.
 // Single source of truth: CSS custom properties in src/index.css (section 1 of DESIGN-SYSTEM.md).
 export default {
   content: ["./index.html", "./src/**/*.{ts,tsx}"],
@@ -8,33 +8,29 @@ export default {
       colors: {
         canvas: "var(--color-canvas)",
         surface: "var(--color-surface)",
-        "surface-raised": "var(--color-surface-raised)",
-        walnut: "var(--color-walnut)",
-        "walnut-light": "var(--color-walnut-light)",
-        primary: "var(--color-text-primary)",
-        secondary: "var(--color-text-secondary)",
-        muted: "var(--color-text-muted)",
+        "surface-tint": "var(--color-surface-tint)",
+        ink: "var(--color-ink)",
+        "ink-soft": "var(--color-ink-soft)",
+        muted: "var(--color-muted)",
         accent: "var(--color-accent)",
-        "accent-hot": "var(--color-accent-hot)",
-        "accent-edge": "var(--color-accent-edge)",
+        "accent-bright": "var(--color-accent-bright)",
+        "accent-deep": "var(--color-accent-deep)",
         hairline: "var(--color-hairline)",
-        "tag-bg": "rgba(232, 163, 61, 0.12)",
-        "tag-border": "rgba(232, 163, 61, 0.35)",
+        "tag-bg": "var(--color-tag-bg)",
+        "tag-border": "var(--color-tag-border)",
       },
       borderRadius: {
-        surface: "var(--radius-lg)",
-        small: "var(--radius-sm)",
-        pill: "var(--radius-pill)",
+        sharp: "0px",
+        sm: "var(--radius-sm)",
+        lg: "var(--radius-lg)",
       },
       boxShadow: {
-        card: "var(--shadow-card)",
-        lift: "var(--shadow-lift)",
-        "bloom-sm": "var(--shadow-bloom-sm)",
-        "bloom-md": "var(--shadow-bloom-md)",
-        "bloom-lg": "var(--shadow-bloom-lg)",
+        "hard-sm": "var(--shadow-hard-sm)",
+        hard: "var(--shadow-hard)",
+        "hard-lg": "var(--shadow-hard-lg)",
+        "hard-accent": "var(--shadow-hard-accent)",
       },
       fontFamily: {
-        serif: ["Spectral", "Georgia", "serif"],
         sans: ["General Sans", "system-ui", "sans-serif"],
         mono: ["JetBrains Mono", "ui-monospace", "SFMono-Regular", "monospace"],
       },

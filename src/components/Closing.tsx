@@ -1,28 +1,32 @@
 import Reveal from "./Reveal";
 import { CONTACTS, CLOSING_SIGN_OFF, STATUS_LINE } from "../data/site";
 
-// Closing (3.9): warm sign-off, contact row, mono status line. End clean.
+// Closing (3.9): Swiss sign-off, contact row, mono status line. End clean.
 export default function Closing() {
   return (
     <section id="contact" className="py-[clamp(96px,12vw,160px)]">
       <div className="mx-auto w-full max-w-[1200px] px-6 md:px-10">
         <Reveal>
-          <p className="font-mono text-xs uppercase tracking-[0.18em] text-accent">Closing</p>
-          <p className="mt-6 max-w-[24ch] font-serif text-[clamp(1.5rem,3vw,2.25rem)] leading-[1.3] text-primary">
-            {CLOSING_SIGN_OFF}
-          </p>
+          <div className="grid gap-6 md:grid-cols-[10rem_1fr] md:gap-12">
+            <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted">04 / Contact</p>
+            <div>
+              <p className="font-mono text-xs uppercase tracking-[0.18em] text-accent">Closing</p>
+              <p className="mt-4 max-w-[24ch] font-sans text-[clamp(2rem,4.5vw,3.5rem)] font-bold leading-[1.05] tracking-[-0.02em] text-ink">
+                {CLOSING_SIGN_OFF}
+              </p>
+            </div>
+          </div>
         </Reveal>
 
         <Reveal delay={0.08}>
-          <div className="mt-14 flex flex-col gap-1 md:flex-row md:flex-wrap md:gap-x-12 md:gap-y-2">
+          <div className="mt-14 flex flex-col gap-2 md:flex-row md:flex-wrap md:gap-x-12 md:gap-y-3">
             {CONTACTS.map((contact) => (
               <a
                 key={contact.label}
                 href={contact.href}
-                data-bloom
                 target={contact.href.startsWith("http") ? "_blank" : undefined}
                 rel={contact.href.startsWith("http") ? "noreferrer" : undefined}
-                className="flex min-h-11 items-center font-mono text-xs uppercase tracking-[0.18em] text-accent link-underline"
+                className="flex min-h-11 items-center font-mono text-sm uppercase tracking-[0.18em] text-ink link-underline hover:text-accent"
               >
                 {contact.label}
               </a>
