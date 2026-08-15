@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { NAV_LINKS } from "../data/site";
 import { EASE_EXPO } from "./Reveal";
 
 // Swiss bar (3.1). Fixed, white, hairline bottom border, sharp corners.
-// Mobile: wordmark + MENU button, full-screen overlay with bold sans links.
+// Mobile: wordmark + animated arrow button, full-screen overlay with bold sans links.
 export default function Nav() {
   const [open, setOpen] = useState(false);
+  const reduce = useReducedMotion();
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -21,9 +22,9 @@ export default function Nav() {
         <div className="mx-auto flex h-16 max-w-[1200px] items-center justify-between px-6 md:px-10">
           <a
             href="#hero"
-            className="font-mono text-sm font-medium uppercase tracking-[0.18em] text-ink link-underline"
+            className="font-mono text-sm font-medium tracking-[0.18em] text-ink"
           >
-            Dauda Nasir<span className="text-accent">.</span>
+            raregazzetto<span className="text-accent">.</span>
           </a>
 
           <nav className="hidden items-center gap-8 md:flex" aria-label="Primary">
@@ -40,12 +41,27 @@ export default function Nav() {
 
           <button
             type="button"
-            className="pressable flex h-11 items-center rounded-sm border border-card-border bg-canvas px-4 font-mono text-xs uppercase tracking-[0.18em] text-ink hover:border-card-border-hover md:hidden"
+            className="pressable flex h-11 w-11 items-center justify-center rounded-sm border border-card-border bg-canvas text-ink hover:border-card-border-hover hover:text-accent md:hidden"
             aria-expanded={open}
             aria-controls="mobile-menu"
-            onClick={() => setOpen(true)}
+            aria-label={open ? "Close menu" : "Open menu"}
+            onClick={() => setOpen((v) => !v)}
           >
-            Menu
+            <motion.svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.75"
+              strokeLinecap="square"
+              strokeLinejoin="miter"
+              aria-hidden="true"
+              animate={{ rotate: open ? 90 : 0 }}
+              transition={{ duration: reduce ? 0 : 0.25, ease: EASE_EXPO }}
+            >
+              <path d="M9 6l6 6-6 6" />
+            </motion.svg>
           </button>
         </div>
       </header>
@@ -64,8 +80,8 @@ export default function Nav() {
             transition={{ duration: 0.25, ease: EASE_EXPO }}
           >
             <div className="flex h-16 items-center justify-between px-6">
-              <span className="font-mono text-sm font-medium uppercase tracking-[0.18em] text-ink">
-                Dauda Nasir<span className="text-accent">.</span>
+              <span className="font-mono text-sm font-medium tracking-[0.18em] text-ink">
+                raregazzetto<span className="text-accent">.</span>
               </span>
               <button
                 type="button"

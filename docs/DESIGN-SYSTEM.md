@@ -141,10 +141,10 @@ Spectral serif is DROPPED (2026-08-15). No serif anywhere. Fontshare license per
 Swiss bar, not a floating pill:
 
 - Container: `max-width 1200px` centered inside a `position: fixed` full-width bar at top, `height 64px`, sharp corners (0), `border-bottom: 1px hairline`, background `rgba(255,255,255,0.9)` with `backdrop-blur`
-- Content: wordmark left (JetBrains Mono 500, `DAUDA NASIR.` with blue period), links right
+- Content: wordmark left (JetBrains Mono 500, lowercase `raregazzetto.` with blue period, letter-spaced `0.18em`), links right
 - Links (mono, uppercase, `0.75rem`, ink-soft): `ABOUT`, `WORKBENCH`, `PROJECTS`, `CONTACT`. Anchor to sections, `scroll-margin-top: 88px`
 - Active/hover: accent blue text + 2px growing underline (`link-underline`)
-- Mobile: wordmark + a MENU button (1px hairline border, 44px min target). Tapping opens a full-screen white overlay with bold sans links at `clamp(2.5rem, 10vw, 4rem)`, staggered entrance, close button top right
+- Mobile: wordmark + a square 44px arrow button (1px hairline border). The button is a stroke-based chevron-right SVG (`M9 6l6 6-6 6`, 1.75px stroke, `currentColor`) that rotates 90deg to point DOWN when the overlay opens and back to right when closed (250ms EASE_EXPO, instant under reduced-motion). Tapping opens a full-screen white overlay with bold sans links at `clamp(2.5rem, 10vw, 4rem)`, staggered entrance, close button top right
 - Nav is the ONLY fixed element on the homepage
 
 ### 3.2 Hero
