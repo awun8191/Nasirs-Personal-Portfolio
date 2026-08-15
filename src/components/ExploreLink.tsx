@@ -1,20 +1,21 @@
 // The invitation (3.5): mono link, underline grows, arrow nudges on hover.
-// light variant for the AWUN blue band. 44px hit area via the after pseudo.
+// tone: default = accent on white; tint = accent-deep on tinted fields;
+// light = white on the filled blue band / ink card. 44px hit area via the after pseudo.
 export default function ExploreLink({
   href,
   label = "Explore Project",
-  light = false,
+  tone = "default",
 }: {
   href: string;
   label?: string;
-  light?: boolean;
+  tone?: "default" | "tint" | "light";
 }) {
+  const color =
+    tone === "light" ? "text-white" : tone === "tint" ? "text-accent-deep" : "text-accent";
   return (
     <a
       href={href}
-      className={`group relative inline-flex items-center gap-2 py-2 font-mono text-xs uppercase tracking-[0.14em] link-underline after:absolute after:inset-x-0 after:-inset-y-[6px] after:content-[''] ${
-        light ? "text-white" : "text-accent"
-      }`}
+      className={`group relative inline-flex items-center gap-2 py-2 font-mono text-xs uppercase tracking-[0.14em] link-underline after:absolute after:inset-x-0 after:-inset-y-[6px] after:content-[''] ${color}`}
     >
       {label}
       <span
