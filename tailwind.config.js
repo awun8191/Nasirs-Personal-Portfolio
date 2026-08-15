@@ -1,5 +1,5 @@
 /** @type {import('tailwindcss').Config} */
-// Swiss International + brutalism accents - token map.
+// Swiss International (pure) - token map.
 // Single source of truth: CSS custom properties in src/index.css (section 1 of DESIGN-SYSTEM.md).
 export default {
   content: ["./index.html", "./src/**/*.{ts,tsx}"],
@@ -16,6 +16,8 @@ export default {
         "accent-bright": "var(--color-accent-bright)",
         "accent-deep": "var(--color-accent-deep)",
         hairline: "var(--color-hairline)",
+        "card-border": "var(--color-card-border)",
+        "card-border-hover": "var(--color-card-border-hover)",
         "tag-bg": "var(--color-tag-bg)",
         "tag-border": "var(--color-tag-border)",
       },
@@ -23,12 +25,6 @@ export default {
         sharp: "0px",
         sm: "var(--radius-sm)",
         lg: "var(--radius-lg)",
-      },
-      boxShadow: {
-        "hard-sm": "var(--shadow-hard-sm)",
-        hard: "var(--shadow-hard)",
-        "hard-lg": "var(--shadow-hard-lg)",
-        "hard-accent": "var(--shadow-hard-accent)",
       },
       fontFamily: {
         sans: ["General Sans", "system-ui", "sans-serif"],

@@ -40,7 +40,7 @@ export default function Nav() {
 
           <button
             type="button"
-            className="pressable flex h-11 items-center rounded-sm border-2 border-ink bg-canvas px-4 font-mono text-xs uppercase tracking-[0.18em] text-ink shadow-hard-sm md:hidden"
+            className="pressable flex h-11 items-center rounded-sm border border-card-border bg-canvas px-4 font-mono text-xs uppercase tracking-[0.18em] text-ink hover:border-card-border-hover md:hidden"
             aria-expanded={open}
             aria-controls="mobile-menu"
             onClick={() => setOpen(true)}
@@ -69,7 +69,7 @@ export default function Nav() {
               </span>
               <button
                 type="button"
-                className="pressable flex h-11 w-11 items-center justify-center rounded-sm border-2 border-ink bg-canvas font-mono text-sm text-ink shadow-hard-sm"
+                className="pressable flex h-11 w-11 items-center justify-center rounded-sm border border-card-border bg-canvas font-mono text-sm text-ink hover:border-card-border-hover"
                 aria-label="Close menu"
                 onClick={() => setOpen(false)}
               >

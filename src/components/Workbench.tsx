@@ -24,7 +24,7 @@ export default function Workbench() {
         <div className="mt-14 md:mt-20">
           {TOOLS.map((tool, i) => (
             <Reveal key={tool.name} delay={0.04 * (i % 2)}>
-              <article className="group grid gap-4 border-t-2 border-ink py-6 md:grid-cols-[10rem_1fr_auto] md:gap-12 md:py-8">
+              <article className="group grid gap-4 border-t border-hairline py-6 md:grid-cols-[10rem_1fr_auto] md:gap-12 md:py-8">
                 <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted">
                   {String(i + 1).padStart(2, "0")}
                 </p>
@@ -54,7 +54,7 @@ export default function Workbench() {
               </article>
             </Reveal>
           ))}
-          <div className="border-t-2 border-ink" aria-hidden />
+          <div className="border-t border-hairline" aria-hidden />
         </div>
       </div>
     </section>
