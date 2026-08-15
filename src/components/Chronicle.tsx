@@ -6,22 +6,24 @@ import ExploreLink from "./ExploreLink";
 import { CHRONICLE_ENTRIES, AWUN_FACTS, AWUN_CHAPTERS, AWUN_FLOW } from "../data/site";
 import type { ChronicleEntry, Metric } from "../data/site";
 
-function scrollToEntry(id: string) {
-  document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+function scrollToEntry(id: string, behavior: ScrollBehavior) {
+  document.getElementById(id)?.scrollIntoView({ behavior, block: "start" });
 }
 
 // Timeline milestone dot (4.2): terracotta ring, blooms when the entry is in view.
+// The 12px visual dot stays; an ::after inset region carries the 44px touch target (5).
 function Milestone({ id }: { id: string }) {
   const ref = useRef<HTMLButtonElement>(null);
   const inView = useInView(ref, { amount: 0.4 });
+  const reduce = useReducedMotion();
 
   return (
     <button
       ref={ref}
       type="button"
       aria-label={`Scroll to ${id}`}
-      onClick={() => scrollToEntry(id)}
-      className={`mt-2 h-3 w-3 rounded-full border transition-all duration-300 ease-ui ${
+      onClick={() => scrollToEntry(id, reduce ? "auto" : "smooth")}
+      className={`relative mt-2 h-3 w-3 rounded-full border transition-all duration-300 ease-ui after:absolute after:-inset-[18px] after:rounded-full after:content-[''] ${
         inView
           ? "scale-100 border-accent-hot bg-accent-hot shadow-bloom-sm"
           : "scale-95 border-accent-edge bg-surface"
