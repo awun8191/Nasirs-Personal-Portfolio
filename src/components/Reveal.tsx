@@ -9,7 +9,7 @@ type RevealProps = {
   className?: string;
 };
 
-// Slow restraint reveal (4.1): rise + blur fade, 700-900ms expo-out, once.
+// Swiss minimal reveal (4.1): short rise + fade, 500-700ms expo-out, once.
 // Reduced motion: opacity-only, max 300ms.
 export default function Reveal({ children, delay = 0, className }: RevealProps) {
   const reduce = useReducedMotion();
@@ -17,11 +17,11 @@ export default function Reveal({ children, delay = 0, className }: RevealProps) 
   return (
     <motion.div
       className={className}
-      initial={reduce ? { opacity: 0 } : { opacity: 0, y: 24, filter: "blur(8px)" }}
-      whileInView={reduce ? { opacity: 1 } : { opacity: 1, y: 0, filter: "blur(0px)" }}
-      viewport={{ once: true, margin: "-80px" }}
+      initial={reduce ? { opacity: 0 } : { opacity: 0, y: 16 }}
+      whileInView={reduce ? { opacity: 1 } : { opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-60px" }}
       transition={{
-        duration: reduce ? 0.3 : 0.8,
+        duration: reduce ? 0.3 : 0.6,
         ease: EASE_EXPO,
         delay,
       }}

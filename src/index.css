@@ -3,39 +3,36 @@
 @tailwind utilities;
 
 /* ============================================================
-   Digital Atelier / Engineer's Chronicle
-   Tokens from docs/DESIGN-SYSTEM.md section 1 (evening atelier).
-   Dark only for v1. One accent family: amber.
+   Swiss International + brutalism accents
+   Tokens from docs/DESIGN-SYSTEM.md section 1.
+   White canvas, ink text, one blue accent family. Sharp geometry,
+   thick borders, hard offset shadows. No serif, no grain, no glow.
    ============================================================ */
 
 :root {
-  /* Color (1.1). Canvas is PURE black (decided 2026-08-15); surfaces
-     sit in the barely-warm near-black range so amber and lamp light pop. */
-  --color-canvas: #000000;
-  --color-surface: #0b0a08;
-  --color-surface-raised: #12100c;
-  --color-walnut: #4a3226;
-  --color-walnut-light: #5c4033;
-  --color-text-primary: #f3e8d3;
-  --color-text-secondary: #c9b79e;
-  --color-text-muted: #a98b6f;
-  --color-accent: #e8a33d;
-  --color-accent-hot: #ffd9a0;
-  --color-accent-edge: #c96f4a;
-  --color-hairline: rgba(243, 232, 211, 0.1);
-  --color-bloom: rgba(255, 217, 160, 0.35);
+  /* Color (1.1). White dominant canvas, near-black ink, blue accent. */
+  --color-canvas: #ffffff;
+  --color-surface: #ffffff;
+  --color-surface-tint: #f4f7fb;
+  --color-ink: #111111;
+  --color-ink-soft: #3f3f46;
+  --color-muted: #6b7280;
+  --color-accent: #2563eb;
+  --color-accent-bright: #3b82f6;
+  --color-accent-deep: #1d4ed8;
+  --color-hairline: rgba(17, 17, 17, 0.14);
+  --color-tag-bg: rgba(37, 99, 235, 0.06);
+  --color-tag-border: rgba(37, 99, 235, 0.25);
 
-  /* Radius (1.2) */
-  --radius-lg: 26px;
-  --radius-sm: 14px;
-  --radius-pill: 999px;
+  /* Radius (1.2): sharp or near-sharp. No squircles, no pills. */
+  --radius-sm: 2px;
+  --radius-lg: 4px;
 
-  /* Shadow and bloom (1.3) */
-  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.35);
-  --shadow-lift: 0 2px 4px rgba(0, 0, 0, 0.3), 0 12px 32px rgba(0, 0, 0, 0.4);
-  --shadow-bloom-sm: 0 0 12px var(--color-bloom), 0 0 32px rgba(232, 163, 61, 0.1);
-  --shadow-bloom-md: 0 0 20px var(--color-bloom), 0 0 48px rgba(232, 163, 61, 0.14);
-  --shadow-bloom-lg: 0 0 28px var(--color-bloom), 0 0 64px rgba(232, 163, 61, 0.18);
+  /* Shadow (1.3): brutalist hard offset shadows, ink-colored. */
+  --shadow-hard-sm: 3px 3px 0 rgba(17, 17, 17, 0.9);
+  --shadow-hard: 4px 4px 0 rgba(17, 17, 17, 0.9);
+  --shadow-hard-lg: 6px 6px 0 rgba(17, 17, 17, 0.9);
+  --shadow-hard-accent: 4px 4px 0 rgba(37, 99, 235, 0.9);
 
   /* Motion (4) */
   --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
@@ -44,35 +41,9 @@
 
 /* ------------------------------------------------------------
    Fonts (2.3). Self-hosted woff2 in /public/fonts, no CDN calls.
+   General Sans is the only display/body family. JetBrains Mono
+   carries labels, index numbers, and data. No serif on the site.
    ------------------------------------------------------------ */
-@font-face {
-  font-family: "Spectral";
-  src: url("/fonts/spectral-400.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Spectral";
-  src: url("/fonts/spectral-400-italic.woff2") format("woff2");
-  font-weight: 400;
-  font-style: italic;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Spectral";
-  src: url("/fonts/spectral-500.woff2") format("woff2");
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Spectral";
-  src: url("/fonts/spectral-600.woff2") format("woff2");
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
 @font-face {
   font-family: "General Sans";
   src: url("/fonts/general-sans-400.woff2") format("woff2");
@@ -91,6 +62,13 @@
   font-family: "General Sans";
   src: url("/fonts/general-sans-600.woff2") format("woff2");
   font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "General Sans";
+  src: url("/fonts/general-sans-700.woff2") format("woff2");
+  font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
@@ -126,30 +104,23 @@
 
   body {
     background-color: var(--color-canvas);
-    color: var(--color-text-primary);
-    /* Layered lamplight against pure black (1.5). Never a page-wide warm wash.
-       Opacities recomputed for black base: same perceived glow, quieter fill. */
-    background-image:
-      radial-gradient(1200px 800px at 70% -10%, rgba(255, 217, 160, 0.05), transparent 60%),
-      radial-gradient(900px 600px at 10% 100%, rgba(201, 111, 74, 0.035), transparent 60%);
-    background-attachment: fixed;
+    color: var(--color-ink);
     -webkit-font-smoothing: antialiased;
   }
 
-  /* Floating nav never covers anchor targets (3.1) */
+  /* Fixed header never covers anchor targets */
   [id] {
-    scroll-margin-top: 96px;
+    scroll-margin-top: 88px;
   }
 
   ::selection {
-    background: rgba(232, 163, 61, 0.3);
-    color: var(--color-text-primary);
+    background: var(--color-accent);
+    color: #ffffff;
   }
 
   :focus-visible {
     outline: 2px solid var(--color-accent);
     outline-offset: 2px;
-    box-shadow: var(--shadow-bloom-sm);
   }
 }
 
@@ -157,63 +128,10 @@
    Components
    ------------------------------------------------------------ */
 @layer components {
-  /* Fixed film grain over the whole page (1.5). Static, reduced-motion safe. */
-  .grain {
-    position: fixed;
-    inset: 0;
-    z-index: 50;
-    pointer-events: none;
-    opacity: 0.04;
-    mix-blend-mode: overlay;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  }
-
   /* Heroes use 100dvh with svh fallback (3.2) */
   .hero-min {
     min-height: 100svh;
     min-height: 100dvh;
-  }
-
-  /* Hero background slot (3.2). Reserved for the warm interior image later.
-     For v1 it carries the breathing lamp glow + radial gradients only. */
-  .hero-bg {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    overflow: hidden;
-    pointer-events: none;
-  }
-  .hero-bg::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-image:
-      radial-gradient(900px 600px at 75% 15%, rgba(255, 217, 160, 0.08), transparent 60%),
-      radial-gradient(700px 520px at 12% 85%, rgba(201, 111, 74, 0.07), transparent 60%);
-  }
-  .hero-bg::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    transform-origin: top;
-    background: radial-gradient(1000px 720px at 70% 4%, rgba(255, 217, 160, 0.08), transparent 55%);
-    animation: glow-breathe 9s ease-in-out infinite alternate;
-  }
-
-  /* Ambient light cursor (4.4) */
-  .ambient-cursor {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 480px;
-    height: 480px;
-    z-index: 40;
-    border-radius: 50%;
-    pointer-events: none;
-    mix-blend-mode: screen;
-    background: radial-gradient(circle, rgba(232, 163, 61, 0.14), rgba(232, 163, 61, 0.04) 40%, transparent 70%);
-    opacity: 0;
-    will-change: transform, opacity;
   }
 
   /* Large metric figures (3.6) */
@@ -221,30 +139,30 @@
     font-variant-numeric: lining-nums tabular-nums;
   }
 
-  /* Amber underline that grows on hover (4.3). Bloom via box-shadow, never a flat swap. */
+  /* Swiss underline that grows on hover (4.3) */
   .link-underline {
     background-image: linear-gradient(currentColor, currentColor);
-    background-size: 0% 1px;
+    background-size: 0% 2px;
     background-position: 0 100%;
     background-repeat: no-repeat;
-    transition: background-size 300ms var(--ease-ui), color 300ms var(--ease-ui);
+    transition: background-size 250ms var(--ease-ui), color 250ms var(--ease-ui);
   }
   .link-underline:hover {
-    background-size: 100% 1px;
+    background-size: 100% 2px;
   }
 
-  /* Workbench tool cards: quiet lift + lamp bloom on hover (4.3) */
-  .tool-card {
-    transition: transform 300ms var(--ease-ui), box-shadow 300ms var(--ease-ui);
+  /* Brutalist card: thick border + hard shadow; hover lifts the shadow (4.3) */
+  .hard-card {
+    transition: transform 200ms var(--ease-ui), box-shadow 200ms var(--ease-ui);
   }
-  .tool-card:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-lift), var(--shadow-bloom-md);
+  .hard-card:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: var(--shadow-hard-lg);
   }
 
   /* Press feedback for buttons (4.1) */
   .pressable {
-    transition: transform 120ms var(--ease-ui), box-shadow 300ms var(--ease-ui);
+    transition: transform 120ms var(--ease-ui), box-shadow 200ms var(--ease-ui);
   }
   .pressable:active {
     transform: scale(0.97);
@@ -252,28 +170,9 @@
 }
 
 /* ------------------------------------------------------------
-   Keyframes
-   ------------------------------------------------------------ */
-@keyframes glow-breathe {
-  from {
-    opacity: 0.05;
-  }
-  to {
-    opacity: 0.12;
-  }
-}
-
-/* ------------------------------------------------------------
    Reduced motion (4.5)
    ------------------------------------------------------------ */
 @media (prefers-reduced-motion: reduce) {
-  .hero-bg::after {
-    animation: none;
-    opacity: 0.08;
-  }
-  .ambient-cursor {
-    display: none;
-  }
   html {
     scroll-behavior: auto;
   }

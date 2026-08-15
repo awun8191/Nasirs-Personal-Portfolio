@@ -1,16 +1,16 @@
-// Verified content for the Chronicle homepage.
+// Verified content for the Swiss portfolio homepage.
 // Every number here is real and confirmed. See docs/DESIGN-SYSTEM.md section 7.
 // Do not add figures that are not in this module.
 
 export const NAV_LINKS = [
-  { label: "About", href: "#ledger" },
+  { label: "About", href: "#about" },
   { label: "Workbench", href: "#workbench" },
-  { label: "Chronicle", href: "#chronicle" },
+  { label: "Projects", href: "#projects" },
   { label: "Contact", href: "#contact" },
 ];
 
 // About (3.3): one direct statement. His words, polished. No metadata rows.
-export const LEDGER_STATEMENT = [
+export const ABOUT_STATEMENT = [
   "My name is Dauda Nasir. I'm an Electrical and Electronics Engineering graduate and a software developer.",
   "I build products. I'm a product-minded developer.",
 ];
@@ -26,7 +26,7 @@ export const TOOLS: Tool[] = [
   {
     name: "Python",
     tags: ["BACKEND", "AI", "DATA"],
-    note: "The workhorse behind the AI systems in this chronicle. The RAG pipeline that turned 2,000+ PDFs into 1M+ semantic chunks is Python end to end.",
+    note: "The workhorse behind the AI systems here. The RAG pipeline that turned 2,000+ PDFs into 1M+ semantic chunks is Python end to end.",
     status: "ACTIVE TOOL",
   },
   {
@@ -38,7 +38,7 @@ export const TOOLS: Tool[] = [
   {
     name: "FastAPI",
     tags: ["HIGH-PERFORMANCE APIS"],
-    note: "Async, typed, measurable. Every API in this chronicle runs on it, including TRAKS vector search that answers in under 500ms.",
+    note: "Async, typed, measurable. Every API in this portfolio runs on it, including TRAKS vector search that answers in under 500ms.",
     status: "PRODUCTION",
   },
   {
@@ -60,7 +60,7 @@ export type Metric = {
   label: string;
 };
 
-export type ChronicleEntry = {
+export type ProjectEntry = {
   id: string;
   year: string;
   title: string;
@@ -73,7 +73,7 @@ export type ChronicleEntry = {
   visual?: { src: string; alt: string; caption: string };
 };
 
-export const CHRONICLE_ENTRIES: ChronicleEntry[] = [
+export const PROJECTS: ProjectEntry[] = [
   {
     id: "soiling",
     year: "2024",
@@ -174,6 +174,6 @@ export const CONTACTS = [
 ];
 
 export const CLOSING_SIGN_OFF =
-  "Every system begins with a single line. Every chronicle with a first entry.";
+  "Every system begins with a single line.";
 
 export const STATUS_LINE = "STATUS / OPEN TO COLLABORATION";
