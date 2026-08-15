@@ -19,9 +19,9 @@ export default function App() {
         <Hero />
         <Hairline />
         <About />
-        <Hairline />
+        {/* Workbench is the black band: it carries its own white/10 top and
+            bottom hairlines, so no App-level Hairline sits around it. */}
         <Workbench />
-        <Hairline />
         <Projects />
         <Hairline />
         <Closing />

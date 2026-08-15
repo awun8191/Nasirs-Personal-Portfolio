@@ -41,6 +41,7 @@ Rules:
 - Text-level accent is `#2563EB` (AA on white for normal text). `#3B82F6` is for large text and fills only (fails AA at small sizes). `#1D4ED8` is the AA-safe small-text blue.
 - Ink is `#111111`, never `#000000` (a11y discipline).
 - Card variety rule (3.5): card fields alternate WHITE and BLACK only, arranged in a diagonal rhythm (Soiling and RAG are ink, TRAKS / Engineering Hub / NUESA are paper). No tinted fields, no accent strips, no gray shading, no shadows. Blue appears on cards only in index numbers, text accents, and links; the one filled blue surface is the AWUN chapter band (frozen).
+- Section rhythm rule (set 2026-08-15): the Workbench section is a full-bleed ink band between the white About and white Projects sections (white -> white -> ink -> white -> white). It inverts to light-on-dark text with its own white/10 top/bottom hairlines; see 3.4. It is a section field, not a dark mode toggle: the page stays light-only.
 
 Contrast (WCAG AA):
 
@@ -54,7 +55,9 @@ Contrast (WCAG AA):
 | white/90 on accent `#2563EB` (band body) | ~4.5:1 | Pass AA normal |
 | white on ink `#111111` (ink card) | ~18.9:1 | Pass |
 | white/85 on ink `#111111` (ink card body) | ~15.8:1 | Pass |
-| accent-bright `#3B82F6` on ink `#111111` (ink index) | ~5.1:1 | Pass AA normal |
+| white/70 on ink `#111111` (Workbench index/status, ink meta) | ~12:1 | Pass |
+| white/90 on ink `#111111` (Workbench tags) | ~16:1 | Pass |
+| accent-bright `#3B82F6` on ink `#111111` (ink index, Workbench kicker/hover) | ~5.1:1 | Pass AA normal |
 
 ### 1.2 Radius (sharp geometry)
 
@@ -165,13 +168,17 @@ Swiss grid: index column left, statement right.
 
 ### 3.4 Workbench (SYSTEMS I BUILD)
 
-NOT a bento grid. NOT cards. A ruled index list.
+NOT a bento grid. NOT cards. A ruled index list. THE BLACK BAND of the page (section rhythm, set 2026-08-15).
 
-- Section grid: index `02 / WORKBENCH` left, kicker `SYSTEMS I BUILD` + headline right
-- Each tool is a row: `border-top: 1px hairline`, grid `[10rem | 1fr | auto]`: index number (mono), name (General Sans bold, 2xl-2rem) + domain tags + real note (ink-soft), status line right (mono, muted)
-- Name goes accent blue on hover (200ms)
+- Full-bleed ink band: the `<section>` itself is `background: #111111` (edge to edge, not just the inner container) with its own `border-top/bottom: 1px rgba(255,255,255,0.10)` hairlines, so the divider reads on both the white section above and the white section below. No App-level hairline sits around it.
+- Section vertical padding: `clamp(96px, 12vw, 160px)` (same rhythm as every other section, so the band reads as a deliberate section, not a strip).
+- Section grid: index `02 / WORKBENCH` left (mono, `text-white/70`), kicker `SYSTEMS I BUILD` (mono, `accent-bright` #3B82F6) + headline right (`text-white`).
+- Each tool is a row: `border-top: 1px rgba(255,255,255,0.20)`, grid `[10rem | 1fr | auto]`: index number (mono, white/70), name (General Sans bold, 2xl-2rem, white) + domain tags + real note (`white/85`), status line right (mono, white/70).
+- Name goes `accent-bright` on hover (200ms), matching the ink-card hover language.
+- Tags on ink: `border: 1px rgba(255,255,255,0.40)`, `text: rgba(255,255,255,0.90)` (the light Tag treatment, same as ink cards and the AWUN chapter). No tag-bg fill on ink.
 - The five tools (locked): Python, Flutter, FastAPI, Cloudflare / GCP, AI Systems
-- List closes with a 1px hairline bottom rule
+- List closes with a 1px `rgba(255,255,255,0.20)` bottom rule.
+- Only the background + text color mapping changes vs a white section; content, tool list, and notes are identical.
 
 ### 3.5 Project entries (The Work)
 
@@ -289,16 +296,14 @@ Section order (locked): Hero -> About -> Workbench -> Projects (AWUN chapter ins
 1. Hero: 100dvh, subtitle above name, giant blue name, bottom-anchored, white field
 2. Hairline divider
 3. About: `01 / ABOUT`, direct statement
-4. Hairline divider
-5. Workbench: `02 / WORKBENCH`, ruled tool list
-6. Hairline divider
-7. Projects: `03 / PROJECTS`, kicker THE WORK, grid of six on a 12-col Swiss grid (uniform gap-6, no orphan columns):
+4. Workbench: `02 / WORKBENCH`, the full-bleed ink band (white -> white -> ink -> white -> white rhythm). Carries its own white/10 top and bottom hairlines; no App-level Hairline around it.
+5. Projects: `03 / PROJECTS`, kicker THE WORK, grid of six on a 12-col Swiss grid (uniform gap-6, no orphan columns):
    - Soiling Detection System (01) span 7 + TRAKS (02) span 5 - paired row
    - Engineering Hub (03) span 8 with flow strip + RAG Data Pipeline (04) span 4 - paired row
    - NUESA Academia (05) span 12 full-width with dashboard image
    - AWUN (06) span 12 full-width blue band
-8. Hairline divider
-9. Closing: `04 / CONTACT`, sign-off, contact row, status line
+6. Hairline divider
+7. Closing: `04 / CONTACT`, sign-off, contact row, status line
 
 ### 6.2 Case study template (one template, 8 sections)
 
