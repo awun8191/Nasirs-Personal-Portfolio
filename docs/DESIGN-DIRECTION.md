@@ -198,8 +198,8 @@ The AWUN case study is a progressive reveal:
 
 ## 11. Open Decisions (before build)
 
-- [ ] Mode strategy: espresso-dark only, cream-light only, or toggle
-- [ ] Hero visual: real photo of a warm interior or generated image
-- [ ] Confirm Engineering Hub real metrics (downloads, questions, conversion)
-- [ ] Confirm AWUN real metrics if any
-- [ ] Chronicle order and scale assignment final pass
+- [x] Mode strategy: DARK FIRST (evening atelier). Light "daylight workshop" mode deferred, revisit after v1 ships
+- [x] Hero visual: blank reserved background for now, Nasir supplies the interior image later. Hero layout must reserve the space so the image drops in without layout change
+- [x] Engineering Hub metrics: use 250 downloads (BuildVerse context, real number)
+- [ ] Confirm AWUN real metrics if any (none published yet, do not invent)
+- [x] Chronicle order and scale assignment: confirmed (early work small, Engineering Hub medium, NUESA large, RAG smaller, AWUN chapter)

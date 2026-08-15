@@ -22,7 +22,7 @@ Build order: tokens -> typography -> motion primitives -> components -> pages.
 
 ### 1.1 Color
 
-One semantic token set shared by both modes. Values differ per mode; names never do. Dark mode is "evening atelier", light mode is "daylight workshop". Default to dark (the lamp-bloom story is the flagship); light is a first-class mode, not an afterthought.
+One semantic token set shared by both modes. Values differ per mode; names never do. Dark mode is "evening atelier", light mode is "daylight workshop". DECIDED 2026-08-15: build DARK FIRST (evening atelier is the flagship). Light mode tokens are documented below and deferred; ship dark-only for v1, revisit light after launch.
 
 Dark mode values (evening atelier):
 
@@ -193,10 +193,10 @@ Floating pill bar, not a full-width header:
 ### 3.2 Hero
 
 - `min-height: 100dvh` with `100svh` fallback, `display: grid`, place-items center-left
-- Content: the Plato quote only, plus the mono attribution beneath. No kicker, no badges, no scroll cue, no image required
+- Content: the Plato quote only, plus the mono attribution beneath. No kicker, no badges, no scroll cue
+- DECIDED 2026-08-15: hero background stays BLANK for v1 (breathing glow layer + grain + radial gradients only). Nasir will supply the warm interior image later; the layout must reserve the image zone so it drops in without layout change. Implement the background as a dedicated layer/slot (e.g. an absolutely-positioned `<div>` behind the quote) that can receive the image later
 - Quote text: cream, with `--color-accent-hot` used for ONE word or phrase max (e.g. "beginning"), not sprinkled
 - Attribution: `PLATO, REPUBLIC, BOOK II` in mono, muted color, letter-spaced
-- Background: the breathing glow layer + grain + the two radial gradients
 - Entrance: quote rises + unblurs over 800ms expo-out; attribution follows 120ms later (see motion spec)
 - The quote is locked: "The beginning is the most important part of any work." Nothing replaces it
 
@@ -422,7 +422,7 @@ Copy and imagery needed per slot. Metrics marked TODO-CONFIRM must be verified w
 |---|---|---|---|
 | Soiling Detection System | 2024 | 3mW continuous monitoring; 99.98% XGBoost accuracy; two-layer CUSUM + classifier (verified in repo README) | CONFIRMED |
 | TRAKS | 2024 | Vector search under 500ms; real-time alerts; geolocation + reverse geocoding | CONFIRMED (from design direction; re-verify exact figures in repo) |
-| Engineering Hub | 2024 | 250 downloads (BuildVerse context); 500+ downloads / 130K+ questions / 27% conversion NOT confirmed | TODO-CONFIRM |
+| Engineering Hub | 2024 | 250 downloads (BuildVerse context, REAL figure confirmed by Nasir 2026-08-15); 500+ / 130K+ / 27% example figures NOT used | CONFIRMED |
 | NUESA Academia | 2024/2025 | 800-1,200 students monthly; 9 departments; 2,000+ PDFs; 461-line Cloudflare Worker; 40% backend load reduction; up to 60% pipeline cost reduction; 20 questions per subtopic | CONFIRMED (verify exact copy in repo docs) |
 | RAG Data Pipeline | 2025 | 2,000+ PDFs; 1M+ semantic chunks; OpenCV orientation correction; EasyOCR / Gemma 3:27b transcription | CONFIRMED (verify exact copy in repo docs) |
 | AWUN | 2025/2026 | Live platform; AI storefront creation; payment verification; inventory. No published user/transaction numbers | TODO-CONFIRM (do not invent) |
@@ -460,9 +460,9 @@ Copy and imagery needed per slot. Metrics marked TODO-CONFIRM must be verified w
 
 Carried from the design direction (section 11), resolved or flagged:
 
-1. Mode strategy: this spec designs BOTH modes and defaults to dark (the lamp story needs a dim room). Toggle is optional; if a toggle ships, it must persist and respect `prefers-color-scheme` as the initial value. Confirm with Nasir before build.
-2. Hero visual: typographic hero is the default (no image needed). The design direction lists a real warm-interior photo as an alternative. Decide before the build phase.
-3. Engineering Hub metrics: 500+ / 130K+ / 27% are unconfirmed. The 250-downloads figure is referenced as "BuildVerse context" in the design direction but is not verifiable in the Engineering Hub repo at this time. ALL Engineering Hub download metrics are TODO-CONFIRM.
+1. Mode strategy: DECIDED 2026-08-15 - dark only for v1 (evening atelier flagship). Light mode deferred, revisit after launch.
+2. Hero visual: DECIDED 2026-08-15 - blank reserved background for v1. Nasir supplies the interior image later; hero has a dedicated background slot ready for it.
+3. Engineering Hub metrics: DECIDED 2026-08-15 - use 250 downloads (real, BuildVerse context). The 500+ / 130K+ / 27% example figures are NOT used.
 4. AWUN metrics: none published. Do not invent. The AWUN page can lead with system facts (5 chapters, infra cost model) instead of user counts.
 5. Chronicle scale order: the design direction lists Soiling/TRAKS small, Engineering Hub medium, NUESA large, RAG smaller, AWUN chapter. Confirmed in this spec; final pass belongs to Nasir before content freeze.
 6. Fonts: Spectral and General Sans chosen over Newsreader and Outfit on taste-gate grounds. Both are self-hostable and license-clean (Spectral OFL, General Sans Fontshare free commercial). If Nasir objects, the fallback pair is Spectral + Sora (Sora clears the same gate; Newsreader and Outfit do not).
