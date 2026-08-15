@@ -22,9 +22,11 @@ One light theme. White dominant, ink text, one blue accent family. No dark mode 
 | Token | Value | Role |
 |---|---|---|
 | `--color-canvas` | `#FFFFFF` | White canvas. Page base |
-| `--color-surface` | `#FFFFFF` | Cards sit on the same white; separation comes from the 1px hairline border, not a tint |
-| `--color-surface-tint` | `#F4F7FB` | Reserved hover fill if ever needed (currently unused) |
-| `--color-ink` | `#111111` | Near-black primary text (never pure black) |
+| `--color-surface` | `#FFFFFF` | White card field (TRAKS strip card, fallback surface) |
+| `--color-surface-tint` | `#F4F7FB` | Cool neutral card field. NUESA full-width spread (image frame reads against it) |
+| `--color-tint-50` | `#EFF6FF` | Lightest blue card field. Soiling card (ink text, AA pass) |
+| `--color-tint-100` | `#DBEAFE` | Deeper blue card field. Engineering Hub card (ink text, AA pass) |
+| `--color-ink` | `#111111` | Near-black primary text (never pure black); also the ink card field |
 | `--color-ink-soft` | `#3F3F46` | Secondary text, long body copy |
 | `--color-muted` | `#6B7280` | Captions, mono labels, index numbers |
 | `--color-accent` | `#2563EB` | THE accent. Name, index numbers, links, CTAs |
@@ -41,19 +43,25 @@ Rules:
 - One accent family only: blue. No amber, no warm browns, no second color.
 - Text-level accent is `#2563EB` (AA on white for normal text). `#3B82F6` is for large text and fills only (fails AA at small sizes). `#1D4ED8` is the AA-safe small-text blue.
 - Ink is `#111111`, never `#000000` (a11y discipline).
-- White cards sit on a white canvas; differentiation is the 1px hairline border, never a gray tint and never a shadow.
+- Card variety rule (3.5): cards differ by FIELD COLOR within the white/blue/ink family (white, tint-50, tint-100, surface-tint, ink, accent band). Differentiation is field color plus the 1px hairline border, never a gray shading and never a shadow.
 
 Contrast (WCAG AA):
 
 | Pair | Ratio | Verdict |
 |---|---|---|
 | ink `#111111` on white `#FFFFFF` | ~18.3:1 | Pass |
+| ink `#111111` on tint-50 `#EFF6FF` | ~17.3:1 | Pass |
+| ink `#111111` on tint-100 `#DBEAFE` | ~15.5:1 | Pass |
+| ink `#111111` on surface-tint `#F4F7FB` | ~17.5:1 | Pass |
 | ink-soft `#3F3F46` on white | ~10.2:1 | Pass |
+| ink-soft `#3F3F46` on tint-50 / tint-100 | ~9.6:1 / ~8.6:1 | Pass |
 | muted `#6B7280` on white | ~4.8:1 | Pass AA normal |
 | accent `#2563EB` on white | ~5.2:1 | Pass AA normal |
-| accent-deep `#1D4ED8` on white | ~7.4:1 | Pass |
+| accent-deep `#1D4ED8` on tint-50 / tint-100 | ~6.2:1 / ~5.5:1 | Pass |
 | white on accent `#2563EB` (chapter band) | ~5.2:1 | Pass AA normal |
 | white/90 on accent `#2563EB` (band body) | ~4.5:1 | Pass AA normal |
+| white on ink `#111111` (ink card) | ~18.9:1 | Pass |
+| accent-bright `#3B82F6` on ink `#111111` (ink index) | ~5.1:1 | Pass AA normal |
 
 ### 1.2 Radius (sharp geometry)
 
@@ -178,7 +186,7 @@ Structured 12-column Swiss grid, index numbers 01-06, uniform gutters, hairline 
 
 Common anatomy (all variants):
 
-- Index number: JetBrains Mono, accent blue, `01`-`06` (top-left)
+- Index number: JetBrains Mono, `01`-`06` (top-left). Color follows the field: accent on white, accent-deep on blue/cool tints, accent-bright on ink
 - Year: JetBrains Mono, muted (top-right)
 - Title: General Sans 700 headline
 - One-line why-care: General Sans body, ink-soft
@@ -188,16 +196,25 @@ Common anatomy (all variants):
 
 Grid (12 fixed columns, ONE gap value `gap-6` = 24px everywhere, no orphan columns):
 
-1. Soiling Detection System: `md:col-span-7` small card
-2. TRAKS: `md:col-span-5` small card (7+5 = 12, paired row)
-3. Engineering Hub: `md:col-span-8` medium card + real flow strip (Flutter Client -> FastAPI API -> PostgreSQL -> Gemini)
-4. RAG Data Pipeline: `md:col-span-4` compact card (8+4 = 12, paired row) with big `1M+` metric
-5. NUESA Academia: `md:col-span-12` full-width spread, dashboard image on the right in a hairline frame
+1. Soiling Detection System: `md:col-span-7` small card, tint-50 field
+2. TRAKS: `md:col-span-5` small card, white field + 3px accent top strip (5+7 = 12, paired row)
+3. Engineering Hub: `md:col-span-8` medium card, tint-100 field + real flow strip (Flutter Client -> FastAPI API -> PostgreSQL -> Gemini)
+4. RAG Data Pipeline: `md:col-span-4` compact card, ink field with big `1M+` metric in white (8+4 = 12, paired row)
+5. NUESA Academia: `md:col-span-12` full-width spread, surface-tint field, dashboard image on the right in a hairline frame
 6. AWUN: `md:col-span-12` full-width blue band, capstone treatment
 
 The section header shares the same 12-column grid and closes with a hairline rule, so index, headline, and cards align.
 
-Card style: `border: 1px solid var(--color-card-border)`, `bg-surface`, radius `4px`, flat (no shadow). Hover: `.swiss-card` translates up 2px and deepens the border to `--color-card-border-hover` (200ms). No shadow, no glow.
+Card style: every card carries the same 1px hairline border, 4px radius, flat (no shadow), and the same `.swiss-card` hover (2px rise + border deepen). What changes per card is the FIELD COLOR (variety rule, added 2026-08-15 after Nasir's "too bland and monotonous" critique):
+
+- `tint-50` (`#EFF6FF`): lightest blue field, ink text (Soiling)
+- white + 3px accent top strip: signal card, ink text (TRAKS)
+- `tint-100` (`#DBEAFE`): deeper blue field, ink text (Engineering Hub)
+- ink (`#111111`): inverted field, white text + accent-bright index (RAG)
+- `surface-tint` (`#F4F7FB`): cool neutral field, ink text (NUESA spread)
+- accent `#2563EB`: the filled band, white text (AWUN, kept as the one saturated moment)
+
+Variety lives ONLY in the field color and the text tone it implies. Grid spans, gutters, hairlines, radii, and motion stay identical across every card, so the section reads as one disciplined grid with deliberate color rhythm (light -> white+strip -> deeper tint -> ink -> cool -> blue). No shadows, no thick borders, no new hue families.
 
 ### 3.6 Metrics display (large numbers as composition)
 

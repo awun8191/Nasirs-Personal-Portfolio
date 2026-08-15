@@ -9,6 +9,8 @@ export default {
         canvas: "var(--color-canvas)",
         surface: "var(--color-surface)",
         "surface-tint": "var(--color-surface-tint)",
+        "tint-50": "var(--color-tint-50)",
+        "tint-100": "var(--color-tint-100)",
         ink: "var(--color-ink)",
         "ink-soft": "var(--color-ink-soft)",
         muted: "var(--color-muted)",
