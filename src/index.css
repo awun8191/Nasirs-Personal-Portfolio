@@ -14,11 +14,9 @@
   /* Color (1.1). White dominant canvas, near-black ink, blue accent. */
   --color-canvas: #ffffff;
   --color-surface: #ffffff;
-  --color-surface-tint: #f4f7fb;
-  /* Blue tints (3.5 variety rule): card fields within the blue family.
-     tint-50 = lightest field, tint-100 = deeper field. Both keep ink text. */
-  --color-tint-50: #eff6ff;
-  --color-tint-100: #dbeafe;
+  /* Card fields (3.5 white/black alternation rule): white paper or ink only.
+     No tinted fields, no accent strips. Blue appears only in text accents,
+     index numbers, links, and the frozen AWUN chapter band. */
   --color-ink: #111111;
   --color-ink-soft: #3f3f46;
   --color-muted: #6b7280;

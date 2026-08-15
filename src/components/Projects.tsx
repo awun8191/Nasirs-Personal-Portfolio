@@ -4,24 +4,27 @@ import { PROJECTS, AWUN_FACTS, AWUN_CHAPTERS, AWUN_FLOW } from "../data/site";
 import type { ProjectEntry, Metric } from "../data/site";
 
 // ---------------------------------------------------------------------------
-// Card treatments (3.5 variety rule)
+// Card treatments (3.5 white/black alternation rule)
 //
-// Every entry gets a DISTINCT surface treatment within the white/blue/ink
-// system so the section reads as designed, not as six identical white boxes.
+// The section alternates WHITE and BLACK cards in a diagonal rhythm:
+// Soiling (black) -> TRAKS (white) -> Engineering Hub (white) -> RAG (black),
+// then NUESA (white) and AWUN (the frozen blue chapter band). Black travels
+// top-left to bottom-right across the paired rows; white holds the middle.
 // The 12-col grid, the 24px gutters, and the hairline discipline never change;
-// only the field color and text tone differ per card. No shadows anywhere.
+// only the field color and text tone differ per card. No shadows, no tinted
+// fields, no accent strips anywhere.
 //
-//   soiling          -> tint         blue-50 field, ink text (light tint)
-//   traks            -> strip        white field + 3px accent top strip
-//   engineering-hub  -> tint-strong  blue-100 field, ink text + flow strip
-//   rag              -> ink          near-black field, white/blue text
-//   nuesa            -> surface-tint cool neutral field (image spread)
-//   awun             -> chapter      solid accent blue band (capstone, kept)
+//   soiling          -> ink    near-black field, white/blue text
+//   traks            -> paper  white field, ink text (blue strip removed)
+//   engineering-hub  -> paper  white field, ink text + flow strip
+//   rag              -> ink    near-black field, white/blue text
+//   nuesa            -> paper  white field (image spread)
+//   awun             -> chapter solid accent blue band (capstone, frozen)
 // ---------------------------------------------------------------------------
 
-type Tone = "default" | "tint" | "light";
+type Tone = "default" | "light";
 
-type Treatment = "tint" | "strip" | "tint-strong" | "ink" | "surface-tint";
+type Treatment = "paper" | "ink";
 
 type TreatmentStyle = {
   card: string;
@@ -33,29 +36,13 @@ type TreatmentStyle = {
 };
 
 const TREATMENT_STYLE: Record<Treatment, TreatmentStyle> = {
-  tint: {
-    card: "border border-card-border bg-tint-50",
-    index: "text-accent-deep",
-    meta: "text-ink-soft",
-    title: "text-ink",
-    line: "text-ink-soft",
-    tone: "tint",
-  },
-  strip: {
+  paper: {
     card: "border border-card-border bg-surface",
     index: "text-accent",
     meta: "text-muted",
     title: "text-ink",
     line: "text-ink-soft",
     tone: "default",
-  },
-  "tint-strong": {
-    card: "border border-card-border bg-tint-100",
-    index: "text-accent-deep",
-    meta: "text-ink-soft",
-    title: "text-ink",
-    line: "text-ink-soft",
-    tone: "tint",
   },
   ink: {
     card: "border border-white/20 bg-ink hover:border-white/40",
@@ -65,22 +52,13 @@ const TREATMENT_STYLE: Record<Treatment, TreatmentStyle> = {
     line: "text-white/85",
     tone: "light",
   },
-  "surface-tint": {
-    card: "border border-card-border bg-surface-tint",
-    index: "text-accent-deep",
-    meta: "text-ink-soft",
-    title: "text-ink",
-    line: "text-ink-soft",
-    tone: "tint",
-  },
 };
 
 const CARD_TREATMENT: Record<string, Treatment> = {
-  soiling: "tint",
-  traks: "strip",
-  "engineering-hub": "tint-strong",
+  soiling: "ink",
+  traks: "paper",
+  "engineering-hub": "paper",
   rag: "ink",
-  nuesa: "surface-tint",
 };
 
 function Tag({ label, light = false }: { label: string; light?: boolean }) {
@@ -97,7 +75,7 @@ function Tag({ label, light = false }: { label: string; light?: boolean }) {
   );
 }
 
-function MetricInline({ metric, light = false, tint = false }: { metric: Metric; light?: boolean; tint?: boolean }) {
+function MetricInline({ metric, light = false }: { metric: Metric; light?: boolean }) {
   return (
     <span className="inline-flex flex-wrap items-baseline gap-x-2">
       <span
@@ -109,7 +87,7 @@ function MetricInline({ metric, light = false, tint = false }: { metric: Metric;
       </span>
       <span
         className={`font-mono text-[0.6875rem] uppercase tracking-[0.14em] ${
-          light ? "text-white/80" : tint ? "text-ink-soft" : "text-muted"
+          light ? "text-white/80" : "text-muted"
         }`}
       >
         {metric.label}
@@ -118,7 +96,7 @@ function MetricInline({ metric, light = false, tint = false }: { metric: Metric;
   );
 }
 
-function MetricBig({ metric, light = false, tint = false }: { metric: Metric; light?: boolean; tint?: boolean }) {
+function MetricBig({ metric, light = false }: { metric: Metric; light?: boolean }) {
   return (
     <div>
       <div
@@ -130,7 +108,7 @@ function MetricBig({ metric, light = false, tint = false }: { metric: Metric; li
       </div>
       <div
         className={`mt-2 font-mono text-xs uppercase tracking-[0.14em] ${
-          light ? "text-white/80" : tint ? "text-ink-soft" : "text-muted"
+          light ? "text-white/80" : "text-muted"
         }`}
       >
         {metric.label}
@@ -139,7 +117,7 @@ function MetricBig({ metric, light = false, tint = false }: { metric: Metric; li
   );
 }
 
-function MetricBand({ metrics, light = false, tint = false }: { metrics: Metric[]; light?: boolean; tint?: boolean }) {
+function MetricBand({ metrics, light = false }: { metrics: Metric[]; light?: boolean }) {
   return (
     <div className="grid grid-cols-3 gap-x-6 gap-y-6">
       {metrics.map((m) => (
@@ -153,7 +131,7 @@ function MetricBand({ metrics, light = false, tint = false }: { metrics: Metric[
           </div>
           <div
             className={`mt-2 font-mono text-[0.6875rem] uppercase tracking-[0.12em] ${
-              light ? "text-white/80" : tint ? "text-ink-soft" : "text-muted"
+              light ? "text-white/80" : "text-muted"
             }`}
           >
             {m.label}
@@ -165,19 +143,13 @@ function MetricBand({ metrics, light = false, tint = false }: { metrics: Metric[
 }
 
 // Real architecture flow for Engineering Hub (client -> API -> data).
-function FlowStrip({ layers, tint = false }: { layers: string[]; tint?: boolean }) {
+function FlowStrip({ layers }: { layers: string[] }) {
   return (
-    <div
-      className={`flex flex-wrap items-center gap-x-3 gap-y-2 font-mono text-[0.6875rem] uppercase tracking-[0.1em] ${
-        tint ? "text-ink-soft" : "text-muted"
-      }`}
-    >
+    <div className="flex flex-wrap items-center gap-x-3 gap-y-2 font-mono text-[0.6875rem] uppercase tracking-[0.1em] text-muted">
       {layers.map((layer, i) => (
         <span key={layer} className="contents">
           <span>{layer}</span>
-          {i < layers.length - 1 && (
-            <span className={tint ? "text-accent-deep" : "text-accent"}>→</span>
-          )}
+          {i < layers.length - 1 && <span className="text-accent">→</span>}
         </span>
       ))}
     </div>
@@ -197,8 +169,6 @@ function ProjectCard({
 }) {
   const s = TREATMENT_STYLE[treatment];
   const light = s.tone === "light";
-  const tint = s.tone === "tint";
-  const isStrip = treatment === "strip";
 
   return (
     <Reveal className="h-full">
@@ -206,7 +176,6 @@ function ProjectCard({
         data-card={entry.id}
         className={`swiss-card flex h-full flex-col overflow-hidden border ${s.card}`}
       >
-        {isStrip && <div aria-hidden className="h-[3px] w-full shrink-0 bg-accent" />}
         <div className="flex flex-1 flex-col p-6 md:p-8">
           <div className="flex items-baseline justify-between gap-4">
             <p className={`font-mono text-xs uppercase tracking-[0.2em] ${s.index}`}>
@@ -229,7 +198,6 @@ function ProjectCard({
           {entry.id === "engineering-hub" && (
             <div className="mt-6 border-t border-hairline pt-4">
               <FlowStrip
-                tint={tint}
                 layers={["Flutter Client", "FastAPI API", "PostgreSQL", "Gemini"]}
               />
             </div>
@@ -237,10 +205,10 @@ function ProjectCard({
 
           <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
             {entry.metrics.length === 1 ? (
-              <MetricBig metric={entry.metrics[0]} light={light} tint={tint} />
+              <MetricBig metric={entry.metrics[0]} light={light} />
             ) : (
               entry.metrics.map((m) => (
-                <MetricInline key={m.label} metric={m} light={light} tint={tint} />
+                <MetricInline key={m.label} metric={m} light={light} />
               ))
             )}
             {entry.subLine && (
@@ -265,10 +233,10 @@ function ProjectCard({
   );
 }
 
-// NUESA carries the verified dashboard image; the card is a full-width spread
-// on the cool neutral field, so the image frame reads against a tint.
+// NUESA carries the verified dashboard image; the card is a full-width white
+// spread, so the image frame reads clean against the paper field.
 function LargeCard({ entry, index }: { entry: ProjectEntry; index: number }) {
-  const s = TREATMENT_STYLE["surface-tint"];
+  const s = TREATMENT_STYLE["paper"];
 
   return (
     <Reveal className="h-full">
@@ -291,7 +259,7 @@ function LargeCard({ entry, index }: { entry: ProjectEntry; index: number }) {
               {entry.line}
             </p>
             <div className="mt-8">
-              <MetricBand metrics={entry.metrics} tint />
+              <MetricBand metrics={entry.metrics} />
             </div>
             <div className="mt-6 flex flex-wrap gap-2">
               {entry.tags.map((tag) => (
@@ -392,8 +360,11 @@ function ChapterCard({ entry, index }: { entry: ProjectEntry; index: number }) {
 //     AWUN (12) chapter band as the capstone close.
 //   - Index numbers 01-06 follow display order, so they always read top-left
 //     to bottom-right.
-//   - Treatments: each card has its own field color (see CARD_TREATMENT),
-//     while the grid, gutters, and hairline borders stay uniform.
+//   - Treatments (white/black alternation rule): black at Soiling (top-left)
+//     and RAG (bottom-right of the pair block), white on TRAKS, Engineering
+//     Hub, and the NUESA spread, AWUN frozen as the blue chapter. Black moves
+//     diagonally across the paired rows; whites hold the middle; blue closes.
+//     Grid spans, gutters, and hairline borders stay uniform.
 // Order and metrics match the data module; AWUN closes as the chapter.
 const DISPLAY_ORDER = ["soiling", "traks", "engineering-hub", "rag", "nuesa", "awun"] as const;
 
@@ -443,7 +414,7 @@ export default function Projects() {
                   <ProjectCard
                     entry={entry}
                     index={i}
-                    treatment={CARD_TREATMENT[id] ?? "tint"}
+                    treatment={CARD_TREATMENT[id] ?? "paper"}
                   />
                 )}
               </div>
