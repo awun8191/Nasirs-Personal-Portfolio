@@ -4,10 +4,12 @@
 export default function ExploreLink({
   href,
   label = "Explore Project",
+  ariaLabel,
   tone = "default",
 }: {
   href: string;
   label?: string;
+  ariaLabel?: string;
   tone?: "default" | "tint" | "light";
 }) {
   const color =
@@ -15,6 +17,7 @@ export default function ExploreLink({
   return (
     <a
       href={href}
+      aria-label={ariaLabel}
       className={`group relative inline-flex items-center gap-2 py-2 font-mono text-xs uppercase tracking-[0.14em] link-underline after:absolute after:inset-x-0 after:-inset-y-[6px] after:content-[''] ${color}`}
     >
       {label}

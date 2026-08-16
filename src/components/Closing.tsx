@@ -24,8 +24,15 @@ export default function Closing() {
               <a
                 key={contact.label}
                 href={contact.href}
-                target={contact.href.startsWith("http") ? "_blank" : undefined}
-                rel={contact.href.startsWith("http") ? "noreferrer" : undefined}
+                target={contact.href.startsWith("http") || contact.href.endsWith(".pdf") ? "_blank" : undefined}
+                rel={contact.href.startsWith("http") || contact.href.endsWith(".pdf") ? "noopener noreferrer" : undefined}
+                aria-label={
+                  contact.label === "Email"
+                    ? "Send email to Dauda Nasir"
+                    : contact.label === "CV"
+                    ? "Download Dauda Nasir CV (PDF)"
+                    : `Visit Dauda Nasir on ${contact.label}`
+                }
                 className="flex min-h-11 items-center font-mono text-sm uppercase tracking-[0.18em] text-ink link-underline hover:text-accent"
               >
                 {contact.label}

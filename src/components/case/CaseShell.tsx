@@ -1,9 +1,15 @@
+import { useEffect } from "react";
 import Nav from "../Nav";
 import Closing from "../Closing";
 import Reveal from "../Reveal";
 import { CASE_STUDIES } from "../../data/caseStudies";
 import type { CaseStudy } from "../../data/caseStudies";
 import { DiagramSlot } from "./primitives";
+
+const DEFAULT_TITLE = "Dauda Nasir - Full Stack Software Developer";
+const DEFAULT_DESC =
+  "Dauda Nasir is an Electrical and Electronics Engineer and full-stack software developer from ABUAD. Bridging low-level hardware and telemetry with scalable backends and modern AI systems.";
+const DEFAULT_CANONICAL = "https://raregazzetto.me/";
 
 // ---------------------------------------------------------------------------
 // Shared shell for all six case study pages (CASE-STUDY-SYSTEM.md section 1).
@@ -17,6 +23,7 @@ function BackLink() {
   return (
     <a
       href="/#projects"
+      aria-label="Back to projects overview"
       className="relative inline-flex min-h-11 items-center gap-2 py-2 font-mono text-xs uppercase tracking-[0.18em] text-muted link-underline hover:text-accent after:absolute after:inset-x-0 after:-inset-y-[10px] after:content-['']"
     >
       ← Back to Projects
@@ -73,6 +80,7 @@ function NextProject({ next }: { next: CaseStudy }) {
       </span>
       <a
         href={`/projects/${next.slug}`}
+        aria-label={`Read next project case study: ${next.title}`}
         className="group relative inline-flex items-baseline gap-2 py-2 font-sans text-xl font-bold tracking-[-0.01em] text-ink link-underline hover:text-case-accent-deep after:absolute after:inset-x-0 after:-inset-y-[10px] after:content-[''] md:text-2xl"
       >
         {next.title}
@@ -99,6 +107,23 @@ export default function CaseShell({
 }) {
   const study = CASE_STUDIES[slug];
   const next = CASE_STUDIES[study.nextSlug];
+
+  useEffect(() => {
+    document.title = `${study.title} — Dauda Nasir | Case Study`;
+    const descMeta = document.querySelector('meta[name="description"]');
+    if (descMeta) descMeta.setAttribute("content", study.description);
+
+    let canonical = document.querySelector('link[rel="canonical"]');
+    if (canonical) {
+      canonical.setAttribute("href", `https://raregazzetto.me/projects/${study.slug}`);
+    }
+
+    return () => {
+      document.title = DEFAULT_TITLE;
+      if (descMeta) descMeta.setAttribute("content", DEFAULT_DESC);
+      if (canonical) canonical.setAttribute("href", DEFAULT_CANONICAL);
+    };
+  }, [study]);
 
   return (
     <div className={study.accentClass}>

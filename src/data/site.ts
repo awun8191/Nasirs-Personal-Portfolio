@@ -110,7 +110,7 @@ export type Metric = {
 
 export type ProjectEntry = {
   id: string;
-  year: string;
+  year?: string;
   title: string;
   line: string;
   metrics: Metric[];
@@ -127,7 +127,6 @@ export type ProjectEntry = {
 export const PROJECTS: ProjectEntry[] = [
   {
     id: "engineering-hub",
-    year: "2024 / 2025",
     title: "Engineering Hub",
     line: "An interactive learning platform and adaptive quiz engine for engineering students across the faculty.",
     metrics: [
@@ -157,7 +156,6 @@ export const PROJECTS: ProjectEntry[] = [
   },
   {
     id: "queen-brique",
-    year: "2024 / 2025",
     title: "QueenBrique",
     line: "Digital platform and storefront for sustainable brick manufacturing, engineered with React and hosted on Cloudflare.",
     metrics: [
@@ -176,7 +174,6 @@ export const PROJECTS: ProjectEntry[] = [
   },
   {
     id: "elegant-radiance-luxe",
-    year: "2024 / 2025",
     title: "Elegant Radiance Luxe",
     line: "Full-stack luxury beauty e-commerce store. React client on Cloudflare with a FastAPI backend running on Google Cloud Run and Firebase authentication.",
     metrics: [
@@ -195,7 +192,6 @@ export const PROJECTS: ProjectEntry[] = [
   },
   {
     id: "rag",
-    year: "2025",
     title: "RAG Data Pipeline",
     line: "Institutional AI ingestion infrastructure: 2,000+ academic PDFs parsed into 1M+ semantic chunks with OpenCV orientation correction and hybrid OCR.",
     metrics: [
@@ -214,7 +210,6 @@ export const PROJECTS: ProjectEntry[] = [
   },
   {
     id: "nuesa-website",
-    year: "2024 / 2025",
     title: "NUESA Engineering Portal",
     line: "Official web portal for the Faculty of Engineering at ABUAD. Built with React, the integrated digital library runs on Cloudflare and streams course textbooks obtained from Academia.",
     metrics: [
@@ -233,11 +228,9 @@ export const PROJECTS: ProjectEntry[] = [
   },
   {
     id: "nuesa",
-    year: "2024 / 2025",
     title: "NUESA Academia Engine",
     line: "Digital learning backend for the Faculty of Engineering at ABUAD. A 461-line Cloudflare Worker streams PDFs straight to R2 with Redis caching and Gemini syllabus indexing.",
     metrics: [
-      { value: "1,200+", label: "MONTHLY USERS" },
       { value: "9", label: "DEPARTMENTS" },
       { value: "2,000+", label: "DOCUMENTS" },
     ],
@@ -252,7 +245,6 @@ export const PROJECTS: ProjectEntry[] = [
   },
   {
     id: "awun",
-    year: "2025 / 2026",
     title: "AWUN",
     line: "AI social commerce. A storefront created by machine intelligence, payments verified, inventory managed, all inside chat.",
     metrics: [

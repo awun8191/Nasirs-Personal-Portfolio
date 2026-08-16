@@ -121,9 +121,6 @@ function ShowcaseRow({
               <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
                 {String(index + 1).padStart(2, "0")} / PROJECT
               </p>
-              <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted">
-                {entry.year}
-              </p>
             </div>
 
             <h3 className="mt-4 font-sans text-3xl font-bold leading-tight tracking-[-0.02em] text-ink transition-colors duration-200 group-hover:text-accent sm:text-4xl md:text-[2.5rem]">
@@ -159,7 +156,8 @@ function ShowcaseRow({
                 <a
                   href={entry.playStoreUrl}
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
+                  aria-label={`View ${entry.title} on Google Play Store`}
                   className="group/link relative inline-flex items-center gap-1.5 py-2 font-mono text-xs uppercase tracking-[0.16em] text-accent link-underline hover:text-accent-deep"
                 >
                   Play Store
@@ -175,7 +173,8 @@ function ShowcaseRow({
                 <a
                   href={entry.liveUrl}
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
+                  aria-label={`Visit live website for ${entry.title}`}
                   className="group/link relative inline-flex items-center gap-1.5 py-2 font-mono text-xs uppercase tracking-[0.16em] text-accent link-underline hover:text-accent-deep"
                 >
                   Live Site
@@ -188,7 +187,11 @@ function ShowcaseRow({
                 </a>
               )}
               {entry.href && !entry.href.startsWith("http") && (
-                <ExploreLink href={entry.href} label="Case Study" />
+                <ExploreLink
+                  href={entry.href}
+                  label="Case Study"
+                  ariaLabel={`Read the ${entry.title} case study`}
+                />
               )}
             </div>
           </div>
@@ -203,7 +206,8 @@ function ShowcaseRow({
               <a
                 href={targetUrl}
                 target={entry.liveUrl || entry.playStoreUrl ? "_blank" : undefined}
-                rel={entry.liveUrl || entry.playStoreUrl ? "noreferrer" : undefined}
+                rel={entry.liveUrl || entry.playStoreUrl ? "noopener noreferrer" : undefined}
+                aria-label={`Open ${entry.title} ${entry.liveUrl ? "live site" : "case study"}`}
                 className="group/img block overflow-hidden"
               >
                 <img
@@ -235,9 +239,6 @@ function ChapterCard({ entry, index }: { entry: ProjectEntry; index: number }) {
             <div className="flex items-baseline justify-between gap-4">
               <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
                 {String(index + 1).padStart(2, "0")} / THE CAPSTONE
-              </p>
-              <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted">
-                {entry.year}
               </p>
             </div>
 
@@ -279,7 +280,8 @@ function ChapterCard({ entry, index }: { entry: ProjectEntry; index: number }) {
                 <a
                   href={entry.liveUrl}
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
+                  aria-label={`Visit live platform for ${entry.title}`}
                   className="group/link relative inline-flex items-center gap-1.5 py-2 font-mono text-xs uppercase tracking-[0.16em] text-accent link-underline hover:text-accent-deep"
                 >
                   Live Platform
@@ -294,6 +296,7 @@ function ChapterCard({ entry, index }: { entry: ProjectEntry; index: number }) {
               <ExploreLink
                 href={entry.href}
                 label="Explore the Documentary"
+                ariaLabel={`Read the documentary and case study for ${entry.title}`}
               />
             </div>
           </div>
@@ -303,7 +306,8 @@ function ChapterCard({ entry, index }: { entry: ProjectEntry; index: number }) {
               <a
                 href={entry.liveUrl || entry.href}
                 target={entry.liveUrl ? "_blank" : undefined}
-                rel={entry.liveUrl ? "noreferrer" : undefined}
+                rel={entry.liveUrl ? "noopener noreferrer" : undefined}
+                aria-label={`Open ${entry.title} ${entry.liveUrl ? "live platform" : "case study"}`}
                 className="group/cap block overflow-hidden"
               >
                 <img

@@ -91,7 +91,7 @@ export const soilingStudy: CaseStudy = {
   accentClass: "case-amber",
   kicker: "EMBEDDED AI / HARDWARE + ML",
   title: "Soiling Detection System",
-  meta: "2024 / FINAL YEAR PROJECT / PROTOTYPE BUILT",
+  meta: "FINAL YEAR PROJECT / PROTOTYPE BUILT",
   description:
     "An off-grid, sensor-only system that keeps solar panels clean in Harmattan dust. A Raspberry Pi Pico runs an always-on CUSUM trigger; a Pi Zero 2 W wakes only on alarm to confirm soiling with XGBoost, then drives a cleaning carriage across the panel.",
   hero: {
@@ -253,7 +253,7 @@ export const traksStudy: CaseStudy = {
   accentClass: "case-red",
   kicker: "COMMUNITY SAFETY PLATFORM",
   title: "TRAKS",
-  meta: "2024 / INCIDENT REPORTING + SOS / V2.3.0-STABLE",
+  meta: "INCIDENT REPORTING + SOS / V2.3.0-STABLE",
   description:
     "A community-powered incident reporting and SOS platform. Users report incidents with their location, reverse geocoding enriches the report with address metadata, and the community collectively verifies reports instead of a centralized moderation team. Verified incidents become searchable by meaning through Cloudflare Vectorize.",
   hero: {
@@ -378,7 +378,7 @@ export const engineeringHubStudy: CaseStudy = {
   accentClass: "case-violet",
   kicker: "ADAPTIVE STUDY PLATFORM",
   title: "Engineering Hub",
-  meta: "2024 / WEB + ANDROID / LIVE",
+  meta: "WEB + ANDROID / LIVE",
   description:
     "An adaptive study platform for engineering students. Uses Bayesian Knowledge Tracing and spaced repetition to schedule exactly what a student should see next: question banks, flashcards, quizzes, schedules and learning analytics in one mobile-first workflow.",
   hero: {
@@ -526,7 +526,7 @@ export const elegantRadianceStudy: CaseStudy = {
   accentClass: "case-rose",
   kicker: "HYBRID CLOUD E-COMMERCE DOSSIER",
   title: "Elegant Radiance Luxe",
-  meta: "2024 / 2025 / SINGLE-VENDOR COMMERCE / CLOUD RUN + CLOUDFLARE D1",
+  meta: "SINGLE-VENDOR COMMERCE / CLOUD RUN + CLOUDFLARE D1",
   description:
     "A zero-maintenance, single-vendor luxury beauty e-commerce platform built on a hybrid cloud topology. A Python FastAPI monolith on Google Cloud Run handles business logic and Paystack verification, while an authenticated TypeScript Data Worker interfaces natively with Cloudflare D1 SQL, and an asynchronous Cloudflare Queue and Images pipeline processes high-resolution product media.",
   hero: {
@@ -691,7 +691,7 @@ export const ragStudy: CaseStudy = {
   accentClass: "case-cyan",
   kicker: "AI INFRASTRUCTURE MANIFEST",
   title: "RAG Data Pipeline",
-  meta: "2025 / INGESTION + RETRIEVAL / V1.4.2-STABLE",
+  meta: "INGESTION + RETRIEVAL / V1.4.2-STABLE",
   description:
     "A high-throughput, semantically aware ingestion engine designed for deterministic RAG at scale. 2,000+ PDFs become 1M+ semantic chunks through hybrid OCR and BGE-M3 embeddings, and retrieval is deliberately scoped to known domains so AI output stays reproducible.",
   hero: {
@@ -813,6 +813,7 @@ export const ragStudy: CaseStudy = {
   ],
   links: {
     live: null,
+    api: null,
     github: null,
   },
   nextSlug: "nuesa-academia",
@@ -826,7 +827,7 @@ export const nuesaStudy: CaseStudy = {
   accentClass: "case-green",
   kicker: "INSTITUTIONAL STUDY MATERIALS",
   title: "NUESA Academia",
-  meta: "2024 / 2025 / DIGITAL TEXTBOOK REPOSITORY / LIVE",
+  meta: "DIGITAL TEXTBOOK REPOSITORY / LIVE",
   description:
     "The digital textbook, handout and past-question repository of the NUESA chapter at ABUAD. Search, upload, management and coverage analytics over a portable FastAPI boundary and a private Cloudflare data service.",
   hero: {
@@ -924,22 +925,19 @@ export const nuesaStudy: CaseStudy = {
     {
       index: "07",
       title: "Performance",
-      body: "Verified constraints render as-is. Live usage and latency figures await owner measurement.",
+      body: "Verified platform constraints and repository operational benchmarks.",
       tables: [
         {
           id: "Performance",
-          title: "PERFORMANCE / USAGE (PENDING)",
+          title: "PERFORMANCE / OPERATIONAL BENCHMARKS",
           rows: [
-            { key: "MonthlyActiveStudents", label: "MONTHLY ACTIVE STUDENTS", value: "950", pending: true },
-            { key: "PdfsProcessedPerDay", label: "PDFS PROCESSED PER DAY", value: "40", pending: true },
-            { key: "SearchLatencyP95", label: "SEARCH LATENCY P95", value: "320 ms", pending: true },
-            { key: "OcrThroughput", label: "OCR THROUGHPUT", value: "12 PDFS/HR", pending: true },
+            { key: "TotalDepartments", label: "ACADEMIC DEPARTMENTS", value: "9" },
+            { key: "TotalCourses", label: "SYLLABUS COURSES", value: "426" },
+            { key: "TotalPdfs", label: "VERIFIED PDF REPOSITORY", value: "2,111" },
             { key: "UploadSuccessRate", label: "UPLOAD SUCCESS RATE", value: "99.2%", pending: true },
             { key: "AnalyticsCacheHitRate", label: "ANALYTICS CACHE HIT RATE", value: "85%", pending: true },
-            { key: "MonthlySearchQueries", label: "MONTHLY SEARCH QUERIES", value: "18,000", pending: true },
             { key: "Uptime90d", label: "UPTIME (90 DAYS)", value: "99.9%", pending: true },
             { key: "PageLoad", label: "PAGE LOAD (SPA, CDN)", value: "1.4 s", pending: true },
-            { key: "ActiveContributors", label: "ACTIVE CONTRIBUTORS / UPLOADERS", value: "25", pending: true },
           ],
         },
       ],
@@ -978,7 +976,7 @@ export const awunStudy: CaseStudy = {
   accentClass: "case-terracotta",
   kicker: "AI SOCIAL COMMERCE / THE CAPSTONE",
   title: "AWUN",
-  meta: "2025 / 2026 / VENDOR-FIRST SOCIAL COMMERCE / LIVE",
+  meta: "VENDOR-FIRST SOCIAL COMMERCE / LIVE",
   description:
     "AI social commerce for Nigerian side-hustle sellers. A vendor manages a catalog, generates checkout links, shares them over WhatsApp, and the buyer pays on a public no-login page via Paystack. Storefront creation by machine intelligence, payments verified, inventory managed, all inside chat. AWUN publishes system facts only; no user metrics.",
   hero: {

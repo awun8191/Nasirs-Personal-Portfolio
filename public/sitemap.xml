@@ -2,7 +2,42 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://raregazzetto.me/</loc>
-    <lastmod>2026-04-20</lastmod>
+    <lastmod>2026-08-16</lastmod>
     <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://raregazzetto.me/projects/engineering-hub</loc>
+    <lastmod>2026-08-16</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://raregazzetto.me/projects/elegant-radiance-luxe</loc>
+    <lastmod>2026-08-16</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://raregazzetto.me/projects/rag-data-pipeline</loc>
+    <lastmod>2026-08-16</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://raregazzetto.me/projects/nuesa-academia</loc>
+    <lastmod>2026-08-16</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://raregazzetto.me/projects/awun</loc>
+    <lastmod>2026-08-16</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://raregazzetto.me/projects/soiling-detection</loc>
+    <lastmod>2026-08-16</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://raregazzetto.me/projects/traks</loc>
+    <lastmod>2026-08-16</lastmod>
+    <priority>0.8</priority>
   </url>
 </urlset>
