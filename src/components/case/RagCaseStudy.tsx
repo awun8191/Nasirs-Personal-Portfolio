@@ -1,5 +1,5 @@
 import CaseShell, { HeroDiagram } from "./CaseShell";
-import { Section, HeroMetric } from "./primitives";
+import { Section, HeroMetric, CaseLinksSection } from "./primitives";
 import { ragStudy } from "../../data/caseStudies";
 
 // ---------------------------------------------------------------------------
@@ -17,7 +17,7 @@ export default function RagCaseStudy() {
         <section className="case-ink-hero mt-10 -mx-6 px-6 py-[clamp(56px,8vw,88px)] md:-mx-10 md:px-10">
           <div className="flex items-start justify-between gap-6">
             <div className="flex flex-col gap-4">
-              <p className="font-mono text-[clamp(0.875rem,2vw,1.125rem)] uppercase tracking-[0.18em] text-case-accent">
+              <p className="font-mono text-[clamp(1.1875rem,2vw,1.375rem)] font-bold uppercase tracking-[0.18em] text-case-accent">
                 {study.kicker}
               </p>
               <h1 className="font-sans text-[clamp(2.5rem,6vw,4.5rem)] font-bold leading-[1.02] tracking-[-0.02em] text-white">
@@ -28,7 +28,7 @@ export default function RagCaseStudy() {
               </p>
             </div>
             {study.hero?.versionBadge && (
-              <span className="hidden shrink-0 rounded-sm border border-case-accent/60 px-2 py-1 font-mono text-[0.6875rem] uppercase tracking-[0.14em] text-case-accent md:inline">
+              <span className="hidden shrink-0 rounded-sm border border-case-accent/60 px-2 py-1 font-mono text-[0.6875rem] uppercase tracking-[0.14em] text-white/90 md:inline">
                 {study.hero.versionBadge}
               </span>
             )}
@@ -42,7 +42,7 @@ export default function RagCaseStudy() {
             ))}
           </div>
           {study.hero?.versionBadge && (
-            <span className="mt-6 inline-block rounded-sm border border-case-accent/60 px-2 py-1 font-mono text-[0.6875rem] uppercase tracking-[0.14em] text-case-accent md:hidden">
+            <span className="mt-6 inline-block rounded-sm border border-case-accent/60 px-2 py-1 font-mono text-[0.6875rem] uppercase tracking-[0.14em] text-white/90 md:hidden">
               {study.hero.versionBadge}
             </span>
           )}
@@ -75,7 +75,8 @@ export default function RagCaseStudy() {
           {/* 08 FAILURE MODES: matrix */}
           <Section key="08" section={study.sections[7]} />
 
-          <Section key="09" section={study.sections[8]} />
+          {/* 09 LINKS: pending placeholders driven by links.live/github nulls */}
+          <CaseLinksSection key="09" section={study.sections[8]} links={study.links} />
         </>
       }
     />

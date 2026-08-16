@@ -36,7 +36,7 @@ export default function SoilingCaseStudy() {
       hero={
         <section className="case-ink-hero mt-10 -mx-6 px-6 py-[clamp(56px,8vw,88px)] md:-mx-10 md:px-10">
           <div className="flex flex-col gap-4">
-            <p className="font-mono text-[clamp(0.875rem,2vw,1.125rem)] uppercase tracking-[0.18em] text-case-accent">
+            <p className="font-mono text-[clamp(1.1875rem,2vw,1.375rem)] font-bold uppercase tracking-[0.18em] text-case-accent">
               {study.kicker}
             </p>
             <h1 className="font-sans text-[clamp(2.5rem,6vw,4.5rem)] font-bold leading-[1.02] tracking-[-0.02em] text-white">
@@ -51,7 +51,7 @@ export default function SoilingCaseStudy() {
           </div>
           <div className="mt-10 grid gap-8 md:grid-cols-2 md:gap-6">
             {study.hero?.headlineMetrics?.map((m) => (
-              <HeroMetric key={m.key} metric={m} light />
+              <HeroMetric key={m.key} metric={m} light accent />
             ))}
           </div>
           <HeroDiagram study={study} />

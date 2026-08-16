@@ -1,5 +1,5 @@
 import CaseShell, { CaseHeader, HeroDiagram } from "./CaseShell";
-import { Section, Chip, DiagramSlot, HeroMetric } from "./primitives";
+import { Section, Chip, DiagramSlot, HeroMetric, CaseLinksSection } from "./primitives";
 import { traksStudy } from "../../data/caseStudies";
 
 // ---------------------------------------------------------------------------
@@ -16,11 +16,13 @@ export default function TraksCaseStudy() {
       slug={study.slug}
       hero={
         <section className="mt-10">
-          <div className="flex flex-col gap-8 md:flex-row md:items-start md:gap-12">
-            {/* SOS square motif: flat red square, white mono SOS */}
+          <div className="flex items-start gap-6 md:items-start md:gap-12">
+            {/* SOS square motif: flat red square, white mono SOS.
+                Mobile (spec 7): 48px left of the kicker. Desktop (spec 6.2):
+                64px left of the title block. */}
             <div
               aria-hidden
-              className="flex h-16 w-16 shrink-0 items-center justify-center rounded-sm bg-case-accent"
+              className="flex h-12 w-12 shrink-0 items-center justify-center rounded-sm bg-case-accent md:h-16 md:w-16"
             >
               <span className="font-mono text-lg font-bold tracking-[0.1em] text-white">
                 SOS
@@ -124,8 +126,8 @@ export default function TraksCaseStudy() {
           <Section key="07" section={study.sections[6]} />
           <Section key="08" section={study.sections[7]} />
 
-          {/* 09 LINKS: pending placeholders */}
-          <Section key="09" section={study.sections[8]} />
+          {/* 09 LINKS: pending placeholders driven by links.live/github nulls */}
+          <CaseLinksSection key="09" section={study.sections[8]} links={study.links} />
         </>
       }
     />

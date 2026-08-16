@@ -1,5 +1,11 @@
 import { Fragment } from "react";
-import type { CaseMetric, DiagramSlot, CaseTable, CaseSection } from "../../data/caseStudies";
+import type {
+  CaseMetric,
+  CaseLinks,
+  DiagramSlot,
+  CaseTable,
+  CaseSection,
+} from "../../data/caseStudies";
 
 // ---------------------------------------------------------------------------
 // Shared primitives for the six case study pages.
@@ -234,17 +240,29 @@ export function MonoBlock({ title, lines }: { title: string; lines: string[] }) 
 }
 
 // Tile grid (spec 6.2 stack): hairline-bordered mono tiles.
-export function TileGrid({ tiles }: { tiles: string[] }) {
+// note: when present, the last tile spans the full row as a distinct
+// "plus one" band (e.g. the TRAKS Flutter client tile) and the note
+// renders beneath as the attribution line (dossier 3.2).
+export function TileGrid({ tiles, note }: { tiles: string[]; note?: string }) {
   return (
-    <div className="grid grid-cols-2 gap-px border border-card-border bg-card-border md:grid-cols-4">
-      {tiles.map((tile) => (
-        <div
-          key={tile}
-          className="flex min-h-11 items-center bg-canvas px-3 py-2 font-mono text-[0.6875rem] uppercase tracking-[0.1em] text-ink-soft"
-        >
-          {tile}
-        </div>
-      ))}
+    <div>
+      <div className="grid grid-cols-2 gap-px border border-card-border bg-card-border md:grid-cols-4">
+        {tiles.map((tile, i) => (
+          <div
+            key={tile}
+            className={`flex min-h-11 items-center bg-canvas px-3 py-2 font-mono text-[0.6875rem] uppercase tracking-[0.1em] text-ink-soft ${
+              note && i === tiles.length - 1 ? "col-span-2 md:col-span-4" : ""
+            }`}
+          >
+            {tile}
+          </div>
+        ))}
+      </div>
+      {note && (
+        <p className="mt-3 font-mono text-[0.6875rem] uppercase tracking-[0.14em] text-muted">
+          {note}
+        </p>
+      )}
     </div>
   );
 }
@@ -262,19 +280,96 @@ export function Shelf({ items }: { items: string[] }) {
   );
 }
 
+// Link rows (spec 9): each defined link renders as a mono link when the URL
+// exists, or as a [URL PENDING] mono row when null. Only keys present in the
+// study's links object render (live / checkout / api / github / paper).
+const LINK_ROWS: { key: keyof CaseLinks; label: string }[] = [
+  { key: "live", label: "Live Site" },
+  { key: "checkout", label: "Checkout" },
+  { key: "api", label: "API" },
+  { key: "github", label: "GitHub" },
+  { key: "paper", label: "Paper" },
+];
+
+export function CaseLinks({ links }: { links: CaseLinks }) {
+  const rows = LINK_ROWS.filter((row) => row.key in links);
+  return (
+    <div className="mt-6 flex flex-col gap-3 md:flex-row md:flex-wrap md:gap-x-10 md:gap-y-3">
+      {rows.map(({ key, label }) => {
+        const href = links[key];
+        if (!href) {
+          return (
+            <span
+              key={key}
+              className="inline-flex items-center gap-2 py-2 font-mono text-sm uppercase tracking-[0.14em] text-muted"
+            >
+              {label} [URL PENDING]
+            </span>
+          );
+        }
+        return (
+          <a
+            key={key}
+            href={href}
+            target="_blank"
+            rel="noreferrer"
+            className="relative inline-flex items-center gap-2 py-2 font-mono text-sm uppercase tracking-[0.14em] text-case-accent-deep link-underline after:absolute after:inset-x-0 after:-inset-y-[10px] after:content-['']"
+          >
+            {label} →
+          </a>
+        );
+      })}
+    </div>
+  );
+}
+
+// Full Links section (spec 9): index, title, body, then the link rows.
+export function CaseLinksSection({
+  section,
+  links,
+}: {
+  section: CaseSection;
+  links: CaseLinks;
+}) {
+  return (
+    <section>
+      <div className="border-t border-hairline pt-6">
+        <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted">
+          {section.index}
+        </p>
+        <h2 className="mt-3 font-sans text-2xl font-bold leading-tight tracking-[-0.01em] text-ink md:text-3xl">
+          {section.title}
+        </h2>
+        {section.body && (
+          <p className="mt-6 max-w-[68ch] font-sans text-[1.0625rem] leading-[1.6] text-ink-soft">
+            {section.body}
+          </p>
+        )}
+        <CaseLinks links={links} />
+      </div>
+    </section>
+  );
+}
+
 // Big hero metric (spec 1.3 header pattern): giant number + mono label.
+// accent: render the number in the page accent instead of white (used on
+// ink heroes where the spec calls for an accent headline number, e.g.
+// Soiling 6.1 "Giant amber numbers"; 3.76:1 at display size passes
+// large-text AA on ink).
 export function HeroMetric({
   metric,
   light = false,
+  accent = false,
 }: {
   metric: CaseMetric;
   light?: boolean;
+  accent?: boolean;
 }) {
   return (
     <div>
       <div
         className={`metric-num font-sans text-[clamp(2.75rem,6vw,4.5rem)] font-bold leading-[0.95] tracking-[-0.02em] ${
-          light ? "text-white" : "text-ink"
+          light ? (accent ? "text-case-accent" : "text-white") : "text-ink"
         }`}
       >
         {metric.value}
@@ -376,7 +471,7 @@ export function Section({
         )}
         {section.tiles && (
           <div className="mt-8">
-            <TileGrid tiles={section.tiles} />
+            <TileGrid tiles={section.tiles} note={section.tilesNote} />
           </div>
         )}
         {section.shelf && (

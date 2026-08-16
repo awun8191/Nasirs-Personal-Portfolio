@@ -49,6 +49,7 @@ export type CaseSection = {
   matrix?: { label: string; value: string }[];
   ruled?: { label: string; value: string }[];
   tiles?: string[];
+  tilesNote?: string;
   shelf?: string[];
 };
 
@@ -327,7 +328,10 @@ export const traksStudy: CaseStudy = {
         "CLOUDFLARE R2",
         "PYTHON 3.11",
         "GEOLOCATION API",
+        "FLUTTER CLIENT",
       ],
+      tilesNote:
+        "FLUTTER CLIENT: ANDROID-FIRST APP / CONFIRMED IN DESIGN-SYSTEM + OWNER (NOT OLD-SITE STACK GRID)",
     },
     {
       index: "08",

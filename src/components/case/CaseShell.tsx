@@ -12,11 +12,12 @@ import { DiagramSlot } from "./primitives";
 // ---------------------------------------------------------------------------
 
 // Back link (1.2): mono, uppercase, muted, accent on hover, 44px hit area.
+// min-h-11 keeps the visible box 44px on mobile (spec 7 touch targets).
 function BackLink() {
   return (
     <a
       href="/#projects"
-      className="relative inline-flex items-center gap-2 py-2 font-mono text-xs uppercase tracking-[0.18em] text-muted link-underline hover:text-accent after:absolute after:inset-x-0 after:-inset-y-[10px] after:content-['']"
+      className="relative inline-flex min-h-11 items-center gap-2 py-2 font-mono text-xs uppercase tracking-[0.18em] text-muted link-underline hover:text-accent after:absolute after:inset-x-0 after:-inset-y-[10px] after:content-['']"
     >
       ← Back to Projects
     </a>
@@ -47,7 +48,7 @@ export function CaseHeader({ study }: { study: CaseStudy }) {
 export function CaseHeaderInk({ study }: { study: CaseStudy }) {
   return (
     <div className="flex flex-col gap-4">
-      <p className="font-mono text-[clamp(0.875rem,2vw,1.125rem)] uppercase tracking-[0.18em] text-case-accent">
+      <p className="font-mono text-[clamp(1.1875rem,2vw,1.375rem)] font-bold uppercase tracking-[0.18em] text-case-accent">
         {study.kicker}
       </p>
       <h1 className="font-sans text-[clamp(2.5rem,6vw,4.5rem)] font-bold leading-[1.02] tracking-[-0.02em] text-white">

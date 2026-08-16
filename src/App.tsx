@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import type { ComponentType } from "react";
 import Nav from "./components/Nav";
 import Hero from "./components/Hero";
@@ -53,9 +54,16 @@ export default function App() {
   const path = useRoute();
   const CasePage = CASE_ROUTES[path];
 
-  // Scroll restoration: every route scrolls to top on mount (spec 8).
+  // Scroll restoration (spec 8): every route change scrolls to top.
   // Hash navigation (/#projects etc.) is handled natively by the browser
-  // once the home sections exist.
+  // once the home sections exist, so only scroll when the pathname itself
+  // changes (client-side case route navigation).
+  useEffect(() => {
+    if (!window.location.hash) {
+      window.scrollTo(0, 0);
+    }
+  }, [path]);
+
   if (CasePage) {
     return <CasePage />;
   }

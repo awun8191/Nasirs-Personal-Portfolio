@@ -16,7 +16,7 @@ export default function NuesaCaseStudy() {
       slug={study.slug}
       hero={
         <section className="mt-10">
-          <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
+          <div className="flex flex-col-reverse gap-10 md:flex-row md:items-start md:justify-between">
             <div className="flex-1">
               <CaseHeader study={study} />
               <div className="mt-10 grid gap-8 md:grid-cols-3 md:gap-6">
