@@ -52,7 +52,7 @@ export default function ElegantRadianceCaseStudy() {
           {/* 02 THE D1 DATA WORKER BOUNDARY */}
           <Section key="02" section={study.sections[1]} />
 
-          {/* 03 ATOMIC STOCK RESERVATION & 1-HOUR HOLD */}
+          {/* 03 ATOMIC STOCK RESERVATION & 30-MINUTE HOLD */}
           <Section key="03" section={study.sections[2]} />
 
           {/* 04 PAYSTACK VERIFICATION & PAYMENT STATE MACHINE */}

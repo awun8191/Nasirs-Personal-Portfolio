@@ -534,7 +534,7 @@ export const elegantRadianceStudy: CaseStudy = {
     versionBadge: "V4.0-PRODUCTION",
     headlineMetrics: [
       { key: "InfraCost", label: "BASELINE INFRA COST", value: "$0.00 / MO" },
-      { key: "ReservationPolicy", label: "INVENTORY RESERVATION", value: "1-HOUR ATOMIC" },
+      { key: "ReservationPolicy", label: "INVENTORY RESERVATION", value: "30-MIN ATOMIC" },
       { key: "PaymentSecurity", label: "PAYSTACK WEBHOOK", value: "HMAC-SHA512" },
     ],
   },
@@ -585,10 +585,10 @@ export const elegantRadianceStudy: CaseStudy = {
     },
     {
       index: "03",
-      title: "Atomic Stock Reservation & 1-Hour Hold",
-      body: "To prevent overselling without distributed database locking, stock reservations execute as single conditional SQL updates that verify available stock and increment reserved units in one atomic step. Checkouts maintain a deterministic 1-hour reservation window with automatic reconciliation.",
+      title: "Atomic Stock Reservation & 30-Minute Hold",
+      body: "To prevent overselling without distributed database locking, stock reservations execute as single conditional SQL updates that verify available stock and increment reserved units in one atomic step. Checkouts maintain a deterministic 30-minute reservation window with automatic reconciliation.",
       ruled: [
-        { label: "RESERVATION WINDOW", value: "FIXED 1 HOUR FROM CHECKOUT CREATION" },
+        { label: "RESERVATION WINDOW", value: "FIXED 30 MINUTES FROM CHECKOUT CREATION" },
         { label: "RACE CONDITION PREVENTION", value: "ATOMIC CONDITIONAL UPDATE + AFFECTED ROWS" },
         { label: "EARLY RELEASE", value: "TRIGGERED ON VERIFIED PAYMENT FAILURE" },
         { label: "LATE PAYMENT EXCEPTION", value: "GRACEFUL PAYMENT_REVIEW ROUTING" },
