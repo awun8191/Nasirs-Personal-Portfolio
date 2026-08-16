@@ -31,6 +31,7 @@ export type CaseTable = {
 
 export type CaseLinks = {
   live?: string | null;
+  playstore?: string | null;
   checkout?: string | null;
   api?: string | null;
   github?: string | null;
@@ -509,7 +510,8 @@ export const engineeringHubStudy: CaseStudy = {
     },
   ],
   links: {
-    live: "https://engineeringhub.nasurf25.workers.dev",
+    live: "https://engineeringhub.nuesaabuad.ng/",
+    playstore: "https://play.google.com/store/apps/details?id=com.engineeringhub.engineeringhub&pcampaignid=web_share",
     api: "https://engineeringhub-api.nasurf25.workers.dev",
     github: null,
   },

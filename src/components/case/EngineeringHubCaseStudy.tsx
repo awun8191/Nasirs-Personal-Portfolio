@@ -48,6 +48,46 @@ function QuizPreview() {
   );
 }
 
+const APP_SCREENS = [
+  { src: "/projects/1.png", label: "01 / HOME DASHBOARD" },
+  { src: "/projects/2.png", label: "02 / ADAPTIVE QUIZ" },
+  { src: "/projects/3.png", label: "03 / QUESTION REVIEW" },
+  { src: "/projects/4.png", label: "04 / STUDY WORKBOOK" },
+  { src: "/projects/5.png", label: "05 / PERFORMANCE ANALYTICS" },
+  { src: "/projects/6.png", label: "06 / COURSE SYLLABUS" },
+  { src: "/projects/7.png", label: "07 / DISCUSSION HUB" },
+  { src: "/projects/8.png", label: "08 / USER PROFILE" },
+];
+
+function AppScreensGallery() {
+  return (
+    <div className="mt-8">
+      <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 md:gap-6">
+        {APP_SCREENS.map((screen) => (
+          <div
+            key={screen.src}
+            className="group overflow-hidden rounded-sm border border-card-border bg-canvas/30 transition-all duration-300 hover:border-case-accent"
+          >
+            <div className="relative overflow-hidden">
+              <img
+                src={screen.src}
+                alt={screen.label}
+                loading="lazy"
+                className="aspect-[9/19.5] w-full object-cover transition-transform duration-500 ease-ui group-hover:scale-[1.03]"
+              />
+            </div>
+            <div className="border-t border-hairline px-3 py-2">
+              <span className="font-mono text-[0.625rem] uppercase tracking-[0.14em] text-muted transition-colors group-hover:text-case-accent-deep">
+                {screen.label}
+              </span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export default function EngineeringHubCaseStudy() {
   const study = engineeringHubStudy;
 
@@ -109,8 +149,24 @@ export default function EngineeringHubCaseStudy() {
             </div>
           </div>
 
-          <Section key="05" section={study.sections[4]} />
-          <Section key="06" section={study.sections[5]} />
+          {/* 05 Mobile Application Interface Gallery */}
+          <section>
+            <div className="border-t border-hairline pt-6">
+              <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted">
+                05
+              </p>
+              <h2 className="mt-3 font-sans text-2xl font-bold leading-tight tracking-[-0.01em] text-ink md:text-3xl">
+                Production Mobile Interface
+              </h2>
+              <p className="mt-4 max-w-[68ch] font-sans text-[1.0625rem] leading-[1.6] text-ink-soft">
+                Production Flutter mobile client published on Google Play. Demonstrating live adaptive quiz execution, formula sheet integration, real-time BKT updates, syllabus navigation, and discussion streams.
+              </p>
+              <AppScreensGallery />
+            </div>
+          </section>
+
+          <Section key="05-data" section={study.sections[4]} />
+          <Section key="06-arch" section={study.sections[5]} />
 
           {/* 07 LESSONS */}
           <Section key="07" section={study.sections[6]} />
@@ -126,6 +182,16 @@ export default function EngineeringHubCaseStudy() {
                 {study.sections[7].body}
               </p>
               <div className="mt-6 flex flex-col gap-3 md:flex-row md:flex-wrap md:gap-x-10 md:gap-y-3">
+                {study.links.playstore && (
+                  <a
+                    href={study.links.playstore}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="relative inline-flex items-center gap-2 py-2 font-mono text-sm uppercase tracking-[0.14em] text-case-accent-deep link-underline after:absolute after:inset-x-0 after:-inset-y-[10px] after:content-['']"
+                  >
+                    Google Play Store →
+                  </a>
+                )}
                 {study.links.live && (
                   <a
                     href={study.links.live}

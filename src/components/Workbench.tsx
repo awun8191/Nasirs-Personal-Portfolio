@@ -39,7 +39,18 @@ export default function Workbench() {
                   {String(i + 1).padStart(2, "0")}
                 </p>
                 <div>
-                  <div className="flex flex-wrap items-baseline gap-x-4 gap-y-2">
+                  <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+                    {tool.logo && (
+                      <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-sm border border-white/15 bg-white/5 p-1 transition-colors duration-200 group-hover:border-white/30">
+                        <img
+                          src={tool.logo}
+                          alt=""
+                          aria-hidden="true"
+                          className="h-full w-full object-contain"
+                          loading="lazy"
+                        />
+                      </span>
+                    )}
                     <h3 className="font-sans text-2xl font-bold tracking-[-0.01em] text-white transition-colors duration-200 group-hover:text-accent-bright md:text-[2rem]">
                       {tool.name}
                     </h3>

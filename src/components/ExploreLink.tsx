@@ -22,7 +22,18 @@ export default function ExploreLink({
         aria-hidden
         className="transition-transform duration-300 ease-ui group-hover:translate-x-1"
       >
-        →
+        <svg
+          width="13"
+          height="13"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="square"
+          strokeLinejoin="miter"
+        >
+          <path d="M5 12h13M13 6l6 6-6 6" />
+        </svg>
       </span>
     </a>
   );

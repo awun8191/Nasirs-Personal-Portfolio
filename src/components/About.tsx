@@ -12,8 +12,8 @@ export default function About() {
             <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted">01 / About</p>
           </Reveal>
           <Reveal delay={0.06}>
-            <div className="max-w-[30ch]">
-              <p className="font-sans text-[clamp(2rem,4.5vw,3.75rem)] font-medium leading-[1.1] tracking-[-0.01em] text-ink">
+            <div className="max-w-[32ch]">
+              <p className="font-sans text-[clamp(2rem,4.5vw,3.75rem)] font-medium leading-[1.1] tracking-[-0.01em] text-ink text-balance">
                 {ABOUT_STATEMENT[0]}
               </p>
               <p className="mt-6 font-sans text-[clamp(1.125rem,2vw,1.5rem)] font-medium leading-[1.4] text-ink-soft">

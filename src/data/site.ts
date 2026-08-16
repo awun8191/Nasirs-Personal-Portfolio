@@ -9,10 +9,10 @@ export const NAV_LINKS = [
   { label: "Contact", href: "#contact" },
 ];
 
-// About (3.3): one direct statement. His words, polished. No metadata rows.
+// About (3.3): value proposition and scope.
 export const ABOUT_STATEMENT = [
-  "My name is Dauda Nasir. I'm an Electrical and Electronics Engineering graduate and a software developer.",
-  "I build products. I'm a product-minded developer.",
+  "I help businesses, organizations, and startups build high-impact digital products.",
+  "Covering scalable backends, responsive web platforms, cross-platform mobile apps, and intelligent AI integrations.",
 ];
 
 export type Tool = {
@@ -20,6 +20,7 @@ export type Tool = {
   tags: string[];
   note: string;
   status: string;
+  logo?: string;
 };
 
 export const TOOLS: Tool[] = [
@@ -28,30 +29,77 @@ export const TOOLS: Tool[] = [
     tags: ["BACKEND", "AI", "DATA"],
     note: "The workhorse behind the AI systems here. The RAG pipeline that turned 2,000+ PDFs into 1M+ semantic chunks is Python end to end.",
     status: "ACTIVE TOOL",
-  },
-  {
-    name: "Flutter",
-    tags: ["CROSS-PLATFORM"],
-    note: "Android-first clients for Engineering Hub, TRAKS, and NUESA Academia. One codebase, shipped to real users.",
-    status: "PRODUCTION",
+    logo: "/logos/python.svg",
   },
   {
     name: "FastAPI",
     tags: ["HIGH-PERFORMANCE APIS"],
     note: "Async, typed, measurable. Every API in this portfolio runs on it, including TRAKS vector search that answers in under 500ms.",
     status: "PRODUCTION",
+    logo: "/logos/fastapi.svg",
   },
   {
-    name: "Cloudflare / GCP",
-    tags: ["INFRASTRUCTURE"],
-    note: "Edge and cloud that stay cheap: Workers, R2, D1, Cloud Run. The NUESA worker is 461 lines and streams PDFs straight to R2.",
+    name: "React",
+    tags: ["FRONTEND", "UI SYSTEMS"],
+    note: "Modern, responsive client interfaces, interactive state systems, and component architectures. Fast, fluid web applications.",
     status: "PRODUCTION",
+    logo: "/logos/react.svg",
+  },
+  {
+    name: "Flutter",
+    tags: ["CROSS-PLATFORM", "MOBILE"],
+    note: "Android-first clients for Engineering Hub, TRAKS, and NUESA Academia. One codebase, shipped to real users.",
+    status: "PRODUCTION",
+    logo: "/logos/flutter.svg",
+  },
+  {
+    name: "PostgreSQL",
+    tags: ["RELATIONAL DB", "SQL"],
+    note: "Structured data persistence, complex relations, ACID transactions, and optimized indexing for heavy production workloads.",
+    status: "PRODUCTION",
+    logo: "/logos/postgresql.svg",
+  },
+  {
+    name: "Firebase",
+    tags: ["BAAS", "REALTIME", "AUTH"],
+    note: "Rapid application infrastructure: Firestore realtime synchronization, authentication, cloud storage, and push messaging.",
+    status: "PRODUCTION",
+    logo: "/logos/firebase.svg",
+  },
+  {
+    name: "Docker",
+    tags: ["CONTAINERS", "DEVOPS"],
+    note: "Reproducible container environments, multi-stage builds, and standardized deployments across development and cloud hosts.",
+    status: "PRODUCTION",
+    logo: "/logos/docker.svg",
+  },
+  {
+    name: "Cloudflare",
+    tags: ["EDGE", "WORKERS", "R2"],
+    note: "Ultra-low latency edge compute and storage: Workers, R2, and D1. The NUESA worker is 461 lines and streams PDFs straight to R2.",
+    status: "PRODUCTION",
+    logo: "/logos/cloudflare.svg",
+  },
+  {
+    name: "Google Cloud (GCP)",
+    tags: ["CLOUD RUN", "CONTAINERS"],
+    note: "Containerized deployments and microservices via Cloud Run, managed storage pipelines, and automated cloud workloads.",
+    status: "PRODUCTION",
+    logo: "/logos/google-cloud.svg",
+  },
+  {
+    name: "AWS",
+    tags: ["CLOUD INFRASTRUCTURE", "S3"],
+    note: "Resilient cloud infrastructure: EC2 compute, S3 object storage pipelines, IAM policies, and production server environments.",
+    status: "PRODUCTION",
+    logo: "/logos/aws.svg",
   },
   {
     name: "AI Systems",
     tags: ["AGENTS", "EMBEDDINGS"],
     note: "Agents and embeddings in production: hybrid OCR transcription, semantic search over 1M+ chunks, and AWUN storefront intelligence.",
     status: "ACTIVE TOOL",
+    logo: "/logos/ai.svg",
   },
 ];
 
@@ -69,50 +117,120 @@ export type ProjectEntry = {
   subLine?: string;
   tags: string[];
   href: string;
+  liveUrl?: string;
+  playStoreUrl?: string;
+  screenshots?: string[];
   variant: "small" | "medium" | "large" | "compact" | "chapter";
   visual?: { src: string; alt: string; caption: string };
 };
 
 export const PROJECTS: ProjectEntry[] = [
   {
-    id: "soiling",
-    year: "2024",
-    title: "Soiling Detection System",
-    line: "Embedded AI that keeps solar panels clean in off-grid Nigeria.",
-    metrics: [
-      { value: "3mW", label: "CONTINUOUS MONITORING" },
-      { value: "99.98%", label: "XGBOOST ACCURACY" },
-    ],
-    tags: ["C", "PYTHON", "XGBOOST", "CUSUM"],
-    href: "/projects/soiling-detection",
-    variant: "small",
-  },
-  {
-    id: "traks",
-    year: "2024",
-    title: "TRAKS",
-    line: "Community safety with real-time alerts and location-aware reporting.",
-    metrics: [{ value: "<500ms", label: "VECTOR SEARCH" }],
-    subLine: "REAL-TIME ALERTS / GEO + REVERSE GEOCODING",
-    tags: ["FLUTTER", "FASTAPI", "GEO"],
-    href: "/projects/traks",
-    variant: "small",
-  },
-  {
     id: "engineering-hub",
-    year: "2024",
+    year: "2024 / 2025",
     title: "Engineering Hub",
-    line: "A learning platform built for engineering students.",
+    line: "An interactive learning platform and adaptive quiz engine for engineering students across the faculty.",
     metrics: [{ value: "250", label: "DOWNLOADS" }],
-    tags: ["FLUTTER", "PYTHON", "FASTAPI", "FIREBASE"],
+    tags: ["FLUTTER", "FASTAPI", "POSTGRESQL", "FIREBASE"],
     href: "/projects/engineering-hub",
+    liveUrl: "https://engineeringhub.nuesaabuad.ng/",
+    playStoreUrl: "https://play.google.com/store/apps/details?id=com.engineeringhub.engineeringhub&pcampaignid=web_share",
+    screenshots: [
+      "/projects/1.png",
+      "/projects/2.png",
+      "/projects/3.png",
+      "/projects/4.png",
+      "/projects/5.png",
+      "/projects/6.png",
+      "/projects/7.png",
+      "/projects/8.png",
+    ],
     variant: "medium",
+    visual: {
+      src: "/projects/engineering-hub-logo.png",
+      alt: "Engineering Hub official platform logo",
+      caption: "ENGINEERING HUB / ABUAD FACULTY PLATFORM",
+    },
+  },
+  {
+    id: "queen-brique",
+    year: "2024 / 2025",
+    title: "QueenBrique",
+    line: "Digital platform and storefront for sustainable brick manufacturing, engineered with React and hosted on Cloudflare.",
+    metrics: [
+      { value: "REACT", label: "FRONTEND" },
+      { value: "CLOUDFLARE", label: "EDGE DEPLOYED" },
+    ],
+    tags: ["REACT", "CLOUDFLARE", "TAILWIND"],
+    href: "https://www.queenbrique.com/",
+    liveUrl: "https://www.queenbrique.com/",
+    variant: "small",
+    visual: {
+      src: "/projects/queen-brique.png",
+      alt: "QueenBrique platform website interface",
+      caption: "PLATFORM INTERFACE / CLOUDFLARE EDGE",
+    },
+  },
+  {
+    id: "elegant-radiance-luxe",
+    year: "2024 / 2025",
+    title: "Elegant Radiance Luxe",
+    line: "Full-stack luxury beauty e-commerce store. React client on Cloudflare with a FastAPI backend running on Google Cloud Run and Firebase authentication.",
+    metrics: [
+      { value: "FASTAPI", label: "CLOUD RUN" },
+      { value: "FIREBASE", label: "AUTH & DATA" },
+    ],
+    tags: ["REACT", "CLOUDFLARE", "CLOUD RUN", "FASTAPI", "FIREBASE"],
+    href: "https://elegantradianceluxe.com/",
+    liveUrl: "https://elegantradianceluxe.com/",
+    variant: "medium",
+    visual: {
+      src: "/projects/elegant-radiance-luxe.png",
+      alt: "Elegant Radiance Luxe online beauty store interface",
+      caption: "ONLINE STOREFRONT & CLOUD RUN API",
+    },
+  },
+  {
+    id: "rag",
+    year: "2025",
+    title: "RAG Data Pipeline",
+    line: "Institutional AI ingestion infrastructure: 2,000+ academic PDFs parsed into 1M+ semantic chunks with OpenCV orientation correction and hybrid OCR.",
+    metrics: [{ value: "1M+", label: "SEMANTIC CHUNKS" }],
+    subLine: "2,000+ PDFS INGESTED",
+    tags: ["PYTHON", "CHROMADB", "GEMMA 3", "OPENCV"],
+    href: "/projects/rag-data-pipeline",
+    variant: "compact",
+    visual: {
+      src: "/projects/rag-pipeline.png",
+      alt: "RAG Data Pipeline ingestion architecture",
+      caption: "SEMANTIC INGESTION / 1M+ CHUNKS",
+    },
+  },
+  {
+    id: "nuesa-website",
+    year: "2024 / 2025",
+    title: "NUESA Engineering Portal",
+    line: "Official web portal for the Faculty of Engineering at ABUAD. Built with React, the integrated digital library runs on Cloudflare and streams course textbooks obtained from Academia.",
+    metrics: [
+      { value: "9", label: "DEPARTMENTS" },
+      { value: "2,000+", label: "TEXTBOOKS SERVED" },
+      { value: "CLOUDFLARE", label: "EDGE DELIVERY" },
+    ],
+    tags: ["REACT", "CLOUDFLARE", "ACADEMIA API", "TAILWIND"],
+    href: "https://nuesaabuad.ng/",
+    liveUrl: "https://nuesaabuad.ng/",
+    variant: "large",
+    visual: {
+      src: "/projects/nuesa-website.png",
+      alt: "NUESA ABUAD official website portal and digital library",
+      caption: "OFFICIAL FACULTY PORTAL & DIGITAL LIBRARY",
+    },
   },
   {
     id: "nuesa",
     year: "2024 / 2025",
-    title: "NUESA Academia",
-    line: "Digital learning platform for the Faculty of Engineering at ABUAD. A 461-line Cloudflare Worker streams PDFs straight to R2.",
+    title: "NUESA Academia Engine",
+    line: "Digital learning backend for the Faculty of Engineering at ABUAD. A 461-line Cloudflare Worker streams PDFs straight to R2 with Redis caching and Gemini syllabus indexing.",
     metrics: [
       { value: "800-1,200", label: "STUDENTS MONTHLY" },
       { value: "9", label: "DEPARTMENTS" },
@@ -128,17 +246,6 @@ export const PROJECTS: ProjectEntry[] = [
     },
   },
   {
-    id: "rag",
-    year: "2025",
-    title: "RAG Data Pipeline",
-    line: "Institutional ingestion: PDFs to semantic chunks with hybrid OCR.",
-    metrics: [{ value: "1M+", label: "SEMANTIC CHUNKS" }],
-    subLine: "2,000+ PDFS INGESTED",
-    tags: ["PYTHON", "CHROMADB", "GEMMA 3", "OPENCV"],
-    href: "/projects/rag-data-pipeline",
-    variant: "compact",
-  },
-  {
     id: "awun",
     year: "2025 / 2026",
     title: "AWUN",
@@ -146,7 +253,13 @@ export const PROJECTS: ProjectEntry[] = [
     metrics: [],
     tags: ["FASTAPI", "CLOUD RUN", "WORKERS", "AI"],
     href: "/projects/awun",
+    liveUrl: "https://www.awun.dev/",
     variant: "chapter",
+    visual: {
+      src: "/projects/awun.png",
+      alt: "AWUN AI social commerce platform",
+      caption: "AI STOREFRONT & CHAT COMMERCE",
+    },
   },
 ];
 

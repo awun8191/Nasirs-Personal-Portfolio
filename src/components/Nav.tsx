@@ -10,10 +10,28 @@ import { useRoute } from "../router";
 // sections with an absolute path (/#about), per CASE-STUDY-SYSTEM.md 1.1.
 export default function Nav() {
   const [open, setOpen] = useState(false);
+  const [active, setActive] = useState<string>("");
   const reduce = useReducedMotion();
   const route = useRoute();
   const isCase = route !== "/" && route.startsWith("/projects/");
   const hrefFor = (href: string) => (isCase ? `/${href}` : href);
+
+  // Scroll-spy: the section crossing the upper third of the viewport
+  // becomes the active nav link. Homepage only; case pages have no sections.
+  useEffect(() => {
+    if (isCase) return;
+    const sections = NAV_LINKS.map((l) => document.getElementById(l.href.slice(1)));
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) setActive(`#${entry.target.id}`);
+        }
+      },
+      { rootMargin: "-35% 0px -55% 0px" }
+    );
+    sections.forEach((s) => s && observer.observe(s));
+    return () => observer.disconnect();
+  }, [isCase]);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -38,7 +56,9 @@ export default function Nav() {
               <a
                 key={link.href}
                 href={hrefFor(link.href)}
-                className="py-2 font-mono text-xs uppercase tracking-[0.18em] text-ink-soft link-underline hover:text-accent"
+                className={`py-2 font-mono text-xs uppercase tracking-[0.18em] link-underline hover:text-accent ${
+                  active === link.href ? "text-accent" : "text-ink-soft"
+                }`}
               >
                 {link.label}
               </a>
@@ -103,7 +123,9 @@ export default function Nav() {
                 <motion.a
                   key={link.href}
                   href={hrefFor(link.href)}
-                  className="py-3 font-sans text-[clamp(2.5rem,10vw,4rem)] font-bold uppercase leading-none tracking-[-0.02em] text-ink"
+                  className={`py-3 font-sans text-[clamp(2.5rem,10vw,4rem)] font-bold uppercase leading-none tracking-[-0.02em] ${
+                    active === link.href ? "text-accent" : "text-ink"
+                  }`}
                   initial={{ opacity: 0, y: 16 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, ease: EASE_EXPO, delay: 0.06 * i }}
