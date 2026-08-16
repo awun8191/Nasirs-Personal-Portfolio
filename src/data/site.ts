@@ -181,7 +181,7 @@ export const PROJECTS: ProjectEntry[] = [
       { value: "FIREBASE", label: "AUTH & DATA" },
     ],
     tags: ["REACT", "CLOUDFLARE", "CLOUD RUN", "FASTAPI", "FIREBASE"],
-    href: "https://elegantradianceluxe.com/",
+    href: "/projects/elegant-radiance-luxe",
     liveUrl: "https://elegantradianceluxe.com/",
     variant: "medium",
     visual: {

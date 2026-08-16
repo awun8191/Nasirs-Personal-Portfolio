@@ -515,11 +515,176 @@ export const engineeringHubStudy: CaseStudy = {
     api: "https://engineeringhub-api.nasurf25.workers.dev",
     github: null,
   },
+  nextSlug: "elegant-radiance-luxe",
+};
+
+// ---------------------------------------------------------------------------
+// 04 / Elegant Radiance Luxe: Hybrid Cloud E-Commerce (Luxury Rose)
+// ---------------------------------------------------------------------------
+export const elegantRadianceStudy: CaseStudy = {
+  slug: "elegant-radiance-luxe",
+  accentClass: "case-rose",
+  kicker: "HYBRID CLOUD E-COMMERCE DOSSIER",
+  title: "Elegant Radiance Luxe",
+  meta: "2024 / 2025 / SINGLE-VENDOR COMMERCE / CLOUD RUN + CLOUDFLARE D1",
+  description:
+    "A zero-maintenance, single-vendor luxury beauty e-commerce platform built on a hybrid cloud topology. A Python FastAPI monolith on Google Cloud Run handles business logic and Paystack verification, while an authenticated TypeScript Data Worker interfaces natively with Cloudflare D1 SQL, and an asynchronous Cloudflare Queue and Images pipeline processes high-resolution product media.",
+  hero: {
+    field: "white",
+    versionBadge: "V4.0-PRODUCTION",
+    headlineMetrics: [
+      { key: "InfraCost", label: "BASELINE INFRA COST", value: "$0.00 / MO" },
+      { key: "ReservationPolicy", label: "INVENTORY RESERVATION", value: "1-HOUR ATOMIC" },
+      { key: "PaymentSecurity", label: "PAYSTACK WEBHOOK", value: "HMAC-SHA512" },
+    ],
+  },
+  sections: [
+    {
+      index: "01",
+      title: "The Hybrid Topology",
+      body: "The store separates business logic from persistence and media via a multi-cloud boundary: Google Cloud Run hosts the containerized FastAPI application with zero-scale economics and 60-minute execution headroom; Cloudflare D1 provides the relational SQL source of truth; Cloudflare R2 and Queues handle asynchronous image transformations without consuming Cloud Run compute.",
+      flow: [
+        "REACT STOREFRONT",
+        "FASTAPI / CLOUD RUN",
+        "AUTH D1 DATA WORKER",
+        "CLOUDFLARE D1 SQL",
+        "PAYSTACK GATEWAY",
+      ],
+      chips: ["FASTAPI", "CLOUD RUN", "CLOUDFLARE D1", "R2 STORAGE", "QUEUES", "PAYSTACK", "FIREBASE"],
+    },
+    {
+      index: "02",
+      title: "The D1 Data Worker Boundary",
+      body: "Cloud Run cannot bind natively to Cloudflare D1. Rather than exposing a raw SQL endpoint or relying on the rate-limited D1 REST control-plane API, an internal authenticated TypeScript Data Worker exposes coarse-grained domain operations with HMAC-SHA256 request signatures, timestamps, and replay validation.",
+      ruled: [
+        { label: "PROTOCOL", value: "INTERNAL HTTPS + SIGNED COARSE COMMANDS" },
+        { label: "SIGNATURE", value: "HMAC-SHA256 WITH SHORT REPLAY WINDOW" },
+        { label: "DATA BOUNDARY", value: "ZERO RAW SQL EXPOSURE ACROSS PROVIDERS" },
+        { label: "QUERY EFFICIENCY", value: "SINGLE RPC PER COMMERCE USE-CASE" },
+      ],
+      mono: [
+        {
+          title: "COARSE-GRAINED RPC CONTRACT",
+          lines: [
+            "POST /v1/checkout/create-and-reserve",
+            "POST /v1/checkout/commit-payment",
+            "POST /v1/checkout/release-expired",
+            "GET  /v1/catalog/storefront",
+          ],
+        },
+        {
+          title: "REQUEST AUTHENTICATION HEADERS",
+          lines: [
+            "X-ERL-Signature: <hmac-sha256-hex>",
+            "X-ERL-Timestamp: <iso-8601-unix>",
+            "X-ERL-Request-Id: <uuidv4-nonce>",
+            "X-ERL-Body-Digest: <sha256-payload>",
+          ],
+        },
+      ],
+    },
+    {
+      index: "03",
+      title: "Atomic Stock Reservation & 1-Hour Hold",
+      body: "To prevent overselling without distributed database locking, stock reservations execute as single conditional SQL updates that verify available stock and increment reserved units in one atomic step. Checkouts maintain a deterministic 1-hour reservation window with automatic reconciliation.",
+      ruled: [
+        { label: "RESERVATION WINDOW", value: "FIXED 1 HOUR FROM CHECKOUT CREATION" },
+        { label: "RACE CONDITION PREVENTION", value: "ATOMIC CONDITIONAL UPDATE + AFFECTED ROWS" },
+        { label: "EARLY RELEASE", value: "TRIGGERED ON VERIFIED PAYMENT FAILURE" },
+        { label: "LATE PAYMENT EXCEPTION", value: "GRACEFUL PAYMENT_REVIEW ROUTING" },
+      ],
+      mono: [
+        {
+          title: "ATOMIC CONDITIONAL RESERVATION QUERY",
+          lines: [
+            "UPDATE inventory",
+            "SET reserved_quantity = reserved_quantity + ?",
+            "WHERE variant_id = ?",
+            "  AND (stock_quantity - reserved_quantity) >= ?;",
+            "-- rows_affected === 0 triggers atomic compensation rollback",
+          ],
+        },
+        {
+          title: "INVENTORY LIFECYCLE TRANSITIONS",
+          lines: [
+            "RESERVE:  reserved_quantity += QTY",
+            "RELEASE:  reserved_quantity -= QTY",
+            "COMMIT:   stock_quantity -= QTY, reserved_quantity -= QTY",
+          ],
+        },
+      ],
+    },
+    {
+      index: "04",
+      title: "Paystack Verification & Payment State Machine",
+      body: "Payment confirmation combines asynchronous signed webhooks with server-side API verification. The webhook handler verifies raw request bytes with HMAC-SHA512 before JSON parsing, guaranteeing tamper-proof execution. A durable outbox pattern ensures customer notifications fire reliably after database commit.",
+      matrix: [
+        {
+          label: "WEBHOOK TIMEOUT",
+          value: "FASTAPI CONFIRMS IDEMPOTENTLY BEFORE QUEUING NOTIFICATIONS",
+        },
+        {
+          label: "DUPLICATE WEBHOOK",
+          value: "UNIQUE PROVIDER EVENT KEYS PREVENT DOUBLE-COMMIT",
+        },
+        {
+          label: "LATE SUCCESSFUL CHARGE",
+          value: "RE-CHECKS PHYSICAL INVENTORY; MOVES TO MANUAL REVIEW IF STOCK DEPLETED",
+        },
+        {
+          label: "CALLBACK INTERRUPT",
+          value: "SERVER-SIDE VERIFY API FALLBACK RECOVERS ORDER ON BUYER RETURN",
+        },
+      ],
+    },
+    {
+      index: "05",
+      title: "Two-Tier Asynchronous Media Pipeline",
+      body: "Product images are uploaded directly from the vendor's browser to a private R2 staging bucket via short-lived presigned authorizations. A Cloudflare Queue triggers a lightweight Image Worker that resizes, optimizes, and encodes WebP assets using native Cloudflare Images bindings, writing outputs to the production R2 bucket.",
+      ruled: [
+        { label: "ORIGINAL UPLOAD", value: "DIRECT BROWSER-TO-R2 VIA PRESIGNED URL" },
+        { label: "IMAGE PROCESSING", value: "CLOUDFLARE IMAGES BINDING (WEBP / RESIZE)" },
+        { label: "COMPUTE CONSUMPTION", value: "ZERO CLOUD RUN CPU USED FOR MEDIA ENCODING" },
+        { label: "EDGE CACHING", value: "GLOBAL CLOUDFLARE CDN CACHE RULES" },
+      ],
+    },
+    {
+      index: "06",
+      title: "Guest Privacy & Storefront Security",
+      body: "Buyers check out as guests without compulsory account creation. Minimal order status lookup uses cryptographically random, high-entropy public order references rather than sequential IDs, preventing enumeration attacks and protecting buyer contact details and delivery addresses.",
+      ruled: [
+        { label: "BUYER AUTH", value: "GUEST CHECKOUT (NO COMPULSORY ACCOUNTS)" },
+        { label: "ADMIN AUTH", value: "FIREBASE AUTHENTICATION (VENDOR ONLY)" },
+        { label: "PUBLIC TRACKING", value: "HIGH-ENTROPY OPAQUE REFERENCE" },
+        { label: "PII SANITIZATION", value: "PUBLIC STATUS REDACTS SENSITIVE DATA" },
+      ],
+    },
+    {
+      index: "07",
+      title: "Reliability, Reconciliation & Cost",
+      body: "At baseline volume (300 monthly visitors / 12,000 requests), the hybrid infrastructure runs at $0.00/month by operating comfortably within the free allowances of Google Cloud Run, Cloudflare D1, R2, Queues, and Firebase. A scheduled reconciliation cron cleans abandoned checkouts and checks dangling transactions.",
+      ruled: [
+        { label: "CLOUD RUN FREE TIER", value: "2,000,000 REQUESTS / MONTH" },
+        { label: "CLOUDFLARE D1 FREE TIER", value: "5,000,000 ROWS READ / DAY" },
+        { label: "R2 STORAGE FREE TIER", value: "10 GB STORAGE, 1M CLASS A WRITES" },
+        { label: "INFRASTRUCTURE COST", value: "$0.00 / MONTH AT BASELINE TRAFFIC" },
+      ],
+    },
+    {
+      index: "08",
+      title: "Links",
+      body: "The online storefront is live with full catalog browsing, cart, and Paystack integration.",
+    },
+  ],
+  links: {
+    live: "https://elegantradianceluxe.com/",
+    github: null,
+  },
   nextSlug: "rag-data-pipeline",
 };
 
 // ---------------------------------------------------------------------------
-// 04 / RAG Data Pipeline: The Pipeline Manifest (Electric Cyan)
+// 05 / RAG Data Pipeline: The Pipeline Manifest (Electric Cyan)
 // ---------------------------------------------------------------------------
 export const ragStudy: CaseStudy = {
   slug: "rag-data-pipeline",
@@ -922,6 +1087,7 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
   "soiling-detection": soilingStudy,
   traks: traksStudy,
   "engineering-hub": engineeringHubStudy,
+  "elegant-radiance-luxe": elegantRadianceStudy,
   "rag-data-pipeline": ragStudy,
   "nuesa-academia": nuesaStudy,
   awun: awunStudy,

@@ -208,6 +208,11 @@
   --case-accent-deep: #8b4513;
   --case-accent-bright: #c97a4d;
 }
+.case-rose {
+  --case-accent: #be123c;
+  --case-accent-deep: #9f1239;
+  --case-accent-bright: #e11d48;
+}
 
 /* Diagram slot contract (CASE-STUDY-SYSTEM.md section 4) */
 .diagram-slot {

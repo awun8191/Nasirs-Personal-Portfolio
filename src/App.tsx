@@ -9,6 +9,7 @@ import Closing from "./components/Closing";
 import SoilingCaseStudy from "./components/case/SoilingCaseStudy";
 import TraksCaseStudy from "./components/case/TraksCaseStudy";
 import EngineeringHubCaseStudy from "./components/case/EngineeringHubCaseStudy";
+import ElegantRadianceCaseStudy from "./components/case/ElegantRadianceCaseStudy";
 import RagCaseStudy from "./components/case/RagCaseStudy";
 import NuesaCaseStudy from "./components/case/NuesaCaseStudy";
 import AwunCaseStudy from "./components/case/AwunCaseStudy";
@@ -45,6 +46,7 @@ const CASE_ROUTES: Record<string, ComponentType> = {
   "/projects/soiling-detection": SoilingCaseStudy,
   "/projects/traks": TraksCaseStudy,
   "/projects/engineering-hub": EngineeringHubCaseStudy,
+  "/projects/elegant-radiance-luxe": ElegantRadianceCaseStudy,
   "/projects/rag-data-pipeline": RagCaseStudy,
   "/projects/nuesa-academia": NuesaCaseStudy,
   "/projects/awun": AwunCaseStudy,
