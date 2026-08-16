@@ -1,0 +1,59 @@
+# Dauda Nasir (raregazzetto)
+
+> Electrical and Electronics Engineer and Full-Stack Software Developer from Afe Babalola University (ABUAD). Specializing in scalable cloud backends, hardware telemetry, cross-platform mobile apps, and high-throughput AI pipelines.
+
+- **Website**: https://raregazzetto.me/
+- **GitHub**: https://github.com/awun8191
+- **LinkedIn**: https://www.linkedin.com/in/nasir-dauda-729357361/
+- **Email**: nasirdaud2015@gmail.com
+- **Aliases**: Nasir Dauda, Dauda Nasir Omotola, raregazzetto, awun8191
+
+## Core Technical Capabilities
+- **Languages**: Python, TypeScript, Dart, SQL, C/C++
+- **Frameworks & APIs**: FastAPI, React, Flutter, Next.js, Tailwind CSS
+- **Databases & Storage**: PostgreSQL, Redis, Cloudflare D1/R2, ChromaDB, Cloud Firestore
+- **Infrastructure & Cloud**: Docker, Cloudflare Workers, Google Cloud Run, AWS (EC2/S3), GCP
+- **AI & Data Engineering**: Retrieval-Augmented Generation (RAG), ChromaDB, Gemini API, OpenCV, Hybrid OCR, Vector Embeddings
+- **Hardware & Telemetry**: Embedded C/Python, Raspberry Pi Pico / Zero 2 W, Sensor Integration, CUSUM Anomaly Detection
+
+## Selected Projects & Systems
+
+### 1. Engineering Hub
+- **URL**: https://raregazzetto.me/projects/engineering-hub
+- **Live Platform**: https://engineeringhub.nuesaabuad.ng/
+- **Play Store**: https://play.google.com/store/apps/details?id=com.engineeringhub.engineeringhub
+- **Stack**: Flutter, FastAPI, PostgreSQL, Firebase
+- **Summary**: Interactive engineering learning platform and adaptive quiz engine with real-time faculty analytics, syllabus coverage, and offline-first mobile client.
+
+### 2. AWUN
+- **URL**: https://raregazzetto.me/projects/awun
+- **Live Platform**: https://www.awun.dev/
+- **Stack**: FastAPI, Cloud Run, Cloudflare Workers, AI
+- **Summary**: AI social commerce architecture enabling automated storefront creation, chat-driven transactional flows, payment verification, and inventory management.
+
+### 3. RAG Data Pipeline
+- **URL**: https://raregazzetto.me/projects/rag-data-pipeline
+- **Stack**: Python, ChromaDB, Gemma 3, OpenCV
+- **Summary**: Academic document ingestion pipeline transforming 2,000+ complex engineering PDFs into 1M+ semantic chunks with OpenCV orientation correction and hybrid OCR.
+
+### 4. NUESA Academia & Engineering Portal
+- **URL**: https://raregazzetto.me/projects/nuesa-academia
+- **Live Platform**: https://nuesaabuad.ng/
+- **Stack**: FastAPI, Cloudflare Workers, Redis, Next.js, Gemini API
+- **Summary**: Faculty digital library delivering course materials and streaming PDFs directly to Cloudflare R2 with sub-second response times.
+
+### 5. Elegant Radiance Luxe
+- **URL**: https://raregazzetto.me/projects/elegant-radiance-luxe
+- **Live Platform**: https://elegantradianceluxe.com/
+- **Stack**: React, FastAPI, Google Cloud Run, Firebase
+- **Summary**: Luxury e-commerce web platform backed by a containerized FastAPI backend on Google Cloud Run with atomic inventory reservations.
+
+### 6. Soiling Detection System
+- **URL**: https://raregazzetto.me/projects/soiling-detection
+- **Stack**: Raspberry Pi Pico, Pi Zero 2 W, XGBoost, Embedded Python
+- **Summary**: Off-grid sensor-only solar panel cleaning system utilizing real-time CUSUM change detection and XGBoost verification.
+
+### 7. TRAKS
+- **URL**: https://raregazzetto.me/projects/traks
+- **Stack**: FastAPI, ChromaDB, Flutter, Python
+- **Summary**: High-performance semantic vector search engine delivering contextual technical responses in under 500ms.
