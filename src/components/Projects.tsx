@@ -54,23 +54,28 @@ function TechPill({ label, light = false }: { label: string; light?: boolean }) 
 function MetricGroup({ metrics, light = false }: { metrics: Metric[]; light?: boolean }) {
   if (!metrics || metrics.length === 0) return null;
   return (
-    <div className="flex flex-wrap items-baseline gap-x-8 gap-y-4 pt-2">
-      {metrics.map((m) => (
-        <div key={m.label} className="flex flex-col">
+    <div className="flex flex-wrap items-center gap-x-6 gap-y-2 pt-2 font-mono">
+      {metrics.map((m, idx) => (
+        <div key={m.label} className="inline-flex items-baseline gap-2">
           <span
-            className={`metric-num font-sans text-2xl font-bold leading-none tracking-[-0.01em] md:text-3xl ${
+            className={`text-sm md:text-[0.9375rem] font-bold tracking-tight ${
               light ? "text-white" : "text-ink"
             }`}
           >
             {m.value}
           </span>
           <span
-            className={`mt-1.5 font-mono text-[0.6875rem] uppercase tracking-[0.14em] ${
+            className={`text-[0.6875rem] uppercase tracking-[0.12em] ${
               light ? "text-white/70" : "text-muted"
             }`}
           >
             {m.label}
           </span>
+          {idx < metrics.length - 1 && (
+            <span className="ml-4 text-hairline" aria-hidden="true">
+              /
+            </span>
+          )}
         </div>
       ))}
     </div>

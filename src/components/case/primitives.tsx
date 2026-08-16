@@ -366,9 +366,9 @@ export function HeroMetric({
   accent?: boolean;
 }) {
   return (
-    <div>
+    <div className="flex flex-col">
       <div
-        className={`metric-num font-sans text-[clamp(2.75rem,6vw,4.5rem)] font-bold leading-[0.95] tracking-[-0.02em] ${
+        className={`metric-num font-sans text-2xl sm:text-3xl lg:text-[2.25rem] font-bold leading-tight tracking-[-0.015em] ${
           light ? (accent ? "text-case-accent" : "text-white") : "text-ink"
         }`}
       >
@@ -376,7 +376,7 @@ export function HeroMetric({
         {metric.pending && <span className="text-case-accent">*</span>}
       </div>
       <div
-        className={`mt-2 font-mono text-xs uppercase tracking-[0.14em] ${
+        className={`mt-2 font-mono text-[0.6875rem] uppercase tracking-[0.14em] ${
           light ? "text-white/80" : "text-muted"
         }`}
       >
