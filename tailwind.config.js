@@ -19,6 +19,11 @@ export default {
         "card-border-hover": "var(--color-card-border-hover)",
         "tag-bg": "var(--color-tag-bg)",
         "tag-border": "var(--color-tag-border)",
+        // Case study accent system (CASE-STUDY-SYSTEM.md section 2.2).
+        // Values are swapped per page via .case-<slug> wrapper classes.
+        "case-accent": "var(--case-accent)",
+        "case-accent-deep": "var(--case-accent-deep)",
+        "case-accent-bright": "var(--case-accent-bright)",
       },
       borderRadius: {
         sharp: "0px",

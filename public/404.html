@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Redirecting</title>
+</head>
+<body>
+  <script>
+    // GitHub Pages SPA fallback: any unknown path (e.g. /projects/awun)
+    // is served this file. Preserve the requested path and bounce to the
+    // SPA root, where the router restores it. Only routes under /projects/
+    // are restored; real asset 404s stay visible as 404s.
+    (function () {
+      try {
+        var path = window.location.pathname;
+        if (path && path.indexOf("/projects/") === 0) {
+          sessionStorage.setItem("ghp_route", path);
+        }
+      } catch (e) {
+        /* sessionStorage unavailable: fall through to plain redirect */
+      }
+      window.location.replace("/");
+    })();
+  </script>
+</body>
+</html>

@@ -2,12 +2,18 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { NAV_LINKS } from "../data/site";
 import { EASE_EXPO } from "./Reveal";
+import { useRoute } from "../router";
 
 // Swiss bar (3.1). Fixed, white, hairline bottom border, sharp corners.
 // Mobile: wordmark + animated arrow button, full-screen overlay with bold sans links.
+// On case study pages (route !== "/") the links anchor back to the homepage
+// sections with an absolute path (/#about), per CASE-STUDY-SYSTEM.md 1.1.
 export default function Nav() {
   const [open, setOpen] = useState(false);
   const reduce = useReducedMotion();
+  const route = useRoute();
+  const isCase = route !== "/" && route.startsWith("/projects/");
+  const hrefFor = (href: string) => (isCase ? `/${href}` : href);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -21,8 +27,8 @@ export default function Nav() {
       <header className="fixed inset-x-0 top-0 z-30 border-b border-hairline bg-canvas/90 backdrop-blur-md">
         <div className="mx-auto flex h-16 max-w-[1200px] items-center justify-between px-6 md:px-10">
           <a
-            href="#hero"
-            className="font-mono text-sm font-medium tracking-[0.18em] text-ink"
+            href={isCase ? "/" : "#hero"}
+            className="relative inline-flex min-h-11 items-center font-mono text-sm font-medium tracking-[0.18em] text-ink after:absolute after:inset-x-0 after:inset-y-0 after:content-['']"
           >
             raregazzetto<span className="text-accent">.</span>
           </a>
@@ -31,7 +37,7 @@ export default function Nav() {
             {NAV_LINKS.map((link) => (
               <a
                 key={link.href}
-                href={link.href}
+                href={hrefFor(link.href)}
                 className="py-2 font-mono text-xs uppercase tracking-[0.18em] text-ink-soft link-underline hover:text-accent"
               >
                 {link.label}
@@ -96,7 +102,7 @@ export default function Nav() {
               {NAV_LINKS.map((link, i) => (
                 <motion.a
                   key={link.href}
-                  href={link.href}
+                  href={hrefFor(link.href)}
                   className="py-3 font-sans text-[clamp(2.5rem,10vw,4rem)] font-bold uppercase leading-none tracking-[-0.02em] text-ink"
                   initial={{ opacity: 0, y: 16 }}
                   animate={{ opacity: 1, y: 0 }}
