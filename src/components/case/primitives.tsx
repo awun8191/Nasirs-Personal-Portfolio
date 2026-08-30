@@ -26,6 +26,16 @@ const DIAGRAM_REGISTRY: Record<string, string> = {
   "rag-data-pipeline:04": "/assets/diagrams/rag-data-pipeline-04.svg",
   "rag-data-pipeline:05": "/assets/diagrams/rag-data-pipeline-05.svg",
   "rag-data-pipeline:06": "/assets/diagrams/rag-data-pipeline-06.svg",
+  "soiling-detection:01": "/assets/diagrams/soiling-detection-01.svg",
+  "soiling-detection:02": "/assets/diagrams/soiling-detection-02.svg",
+  "soiling-detection:03": "/assets/diagrams/soiling-detection-03.svg",
+  "soiling-detection:04": "/assets/diagrams/soiling-detection-04.svg",
+  "soiling-detection:05": "/assets/diagrams/soiling-detection-05.svg",
+  "traks:01": "/assets/diagrams/traks-01.svg",
+  "traks:02": "/assets/diagrams/traks-02.svg",
+  "traks:03": "/assets/diagrams/traks-03.svg",
+  "traks:04": "/assets/diagrams/traks-04.svg",
+  "traks:05": "/assets/diagrams/traks-05.svg",
 };
 
 export function resolveDiagram(slug: string | undefined, slotId: string): string | null {

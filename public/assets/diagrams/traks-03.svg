@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" preserveAspectRatio="xMidYMid meet" role="img" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" style="font-family:'JetBrains Mono',ui-monospace,monospace">
+  <title>TRAKS - SOS Flow</title>
+  <desc>SOS flow: the emergency button triggers an instant push from Cloudflare Workers at the edge, and nearby users receive a real-time alert carrying the location, mobilizing the response network within seconds.</desc>
+  <defs><marker id="chev" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto" markerUnits="userSpaceOnUse"><path d="M2 2 L9 6 L2 10" fill="none" stroke="#B91C1C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+  <rect x="40" y="170" width="190" height="96" rx="8" fill="#DC2626" stroke="#991B1B" stroke-width="1.25"/>
+  <text x="135" y="208" font-size="15" fill="#FFFFFF" text-anchor="middle" font-weight="600">EMERGENCY</text>
+  <text x="135" y="228" font-size="11" fill="#FECACA" text-anchor="middle">BUTTON TRIGGER</text>
+  <rect x="305" y="170" width="190" height="96" rx="8" fill="#FFFFFF" stroke="#B91C1C" stroke-width="1.25"/>
+  <text x="400" y="208" font-size="14" fill="#2A1418" text-anchor="middle" font-weight="600">WORKERS PUSH</text>
+  <text x="400" y="228" font-size="11" fill="#991B1B" text-anchor="middle">FROM THE EDGE</text>
+  <rect x="570" y="170" width="190" height="96" rx="8" fill="#FFFFFF" stroke="#B91C1C" stroke-width="1.25"/>
+  <text x="665" y="208" font-size="14" fill="#2A1418" text-anchor="middle" font-weight="600">NEARBY USERS</text>
+  <text x="665" y="228" font-size="11" fill="#991B1B" text-anchor="middle">LOCATION ALERT</text>
+  <rect x="465" y="132" width="140" height="28" rx="14" fill="#FEE2E2" stroke="#B91C1C" stroke-width="1.25"/>
+  <text x="535" y="150" font-size="11" fill="#991B1B" text-anchor="middle" font-weight="600">&lt; 2s FROM TRIGGER</text>
+  <path d="M230 218 L305 218" fill="none" stroke="#B91C1C" stroke-width="1.25" marker-end="url(#chev)"/>
+  <path d="M495 218 L570 218" fill="none" stroke="#B91C1C" stroke-width="1.25" marker-end="url(#chev)"/>
+  <text x="665" y="300" font-size="10" fill="#991B1B" text-anchor="middle">response network</text>
+  <text x="665" y="316" font-size="10" fill="#991B1B" text-anchor="middle">mobilized within seconds</text>
+  <text x="400" y="415" font-size="10" fill="#991B1B" text-anchor="middle">One button triggers an instant edge push; nearby users get a real-time location alert, mobilizing the response network within seconds (under 2s confirmed).</text>
+</svg>

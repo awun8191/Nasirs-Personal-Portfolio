@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" preserveAspectRatio="xMidYMid meet" role="img" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" style="font-family:'JetBrains Mono',ui-monospace,monospace">
+  <title>Soiling Detection - System Architecture</title>
+  <desc>Off-grid sensor-only solar soiling system. Environmental and performance sensors feed a Raspberry Pi Pico running an always-on Composite Soiling Index with a one-sided CUSUM. On alarm a MOSFET power gate wakes a normally-off Raspberry Pi Zero 2 W that runs an XGBoost confirmer. Confirmed soiling drives a NEMA17 stepper and brush cleaning carriage, which then returns home and sleeps. No cameras are used anywhere in the loop.</desc>
+  <defs><marker id="chev" markerWidth="12" markerHeight="12" refX="8" refY="6" orient="auto" markerUnits="userSpaceOnUse"><path d="M2 2 L9 6 L2 10" fill="none" stroke="#D97706" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+  <rect x="0" y="0" width="800" height="450" fill="#111111"/>
+  <!-- A SOLAR PANEL -->
+  <rect x="34" y="40" width="176" height="66" rx="8" fill="#1C1917" stroke="#B45309" stroke-width="1.25"/>
+  <text x="122.0" y="70.0" font-size="12" fill="#FAFAF9" text-anchor="middle" font-weight="600">SOLAR PANEL</text>
+  <text x="122.0" y="88.0" font-size="10" fill="#FDE68A" text-anchor="middle">20 W PV</text>
+  <!-- B SENSOR ARRAY -->
+  <rect x="34" y="150" width="176" height="112" rx="8" fill="#1C1917" stroke="#B45309" stroke-width="1.25"/>
+  <text x="122.0" y="178.0" font-size="11" fill="#FAFAF9" text-anchor="middle" font-weight="600">ENV + PERF SENSORS</text>
+  <text x="122.0" y="196.0" font-size="10" fill="#D6D3D1" text-anchor="middle">7 sensors · MOSFET-gated</text>
+  <text x="122.0" y="216.0" font-size="10" fill="#FDE68A" text-anchor="middle" font-weight="600">NO CAMERAS</text>
+  <text x="122.0" y="234.0" font-size="9" fill="#D6D3D1" text-anchor="middle">rail gated in sleep</text>
+  <!-- C PI PICO LAYER 1 -->
+  <rect x="298" y="104" width="196" height="150" rx="8" fill="#92400E" stroke="#D97706" stroke-width="1.25"/>
+  <text x="396.0" y="132.0" font-size="12" fill="#FFFFFF" text-anchor="middle" font-weight="600">RASPBERRY PI PICO</text>
+  <text x="396.0" y="150.0" font-size="10" fill="#FDE68A" text-anchor="middle">LAYER 1 · ALWAYS-ON</text>
+  <line x1="318" y1="162" x2="474" y2="162" stroke="#D97706" stroke-width="1" stroke-opacity="0.6"/>
+  <text x="396.0" y="184.0" font-size="11" fill="#FFFFFF" text-anchor="middle">Composite Soiling Index</text>
+  <text x="396.0" y="202.0" font-size="11" fill="#FFFFFF" text-anchor="middle">one-sided CUSUM</text>
+  <text x="396.0" y="224.0" font-size="11" fill="#FDE68A" text-anchor="middle" font-weight="600">alarm →</text>
+  <!-- D MOSFET GATE -->
+  <rect x="540" y="146" width="96" height="66" rx="8" fill="#1C1917" stroke="#B45309" stroke-width="1.25"/>
+  <text x="588.0" y="174.0" font-size="11" fill="#FFFFFF" text-anchor="middle" font-weight="600">MOSFET</text>
+  <text x="588.0" y="192.0" font-size="10" fill="#D6D3D1" text-anchor="middle">POWER GATE</text>
+  <!-- E PI ZERO LAYER 2 -->
+  <rect x="668" y="96" width="152" height="166" rx="8" fill="#1C1917" stroke="#B45309" stroke-width="1.25"/>
+  <text x="744.0" y="124.0" font-size="12" fill="#FAFAF9" text-anchor="middle" font-weight="600">PI ZERO 2 W</text>
+  <text x="744.0" y="142.0" font-size="10" fill="#FDE68A" text-anchor="middle">LAYER 2 · NORMALLY OFF</text>
+  <line x1="688" y1="154" x2="800" y2="154" stroke="#B45309" stroke-width="1" stroke-opacity="0.5"/>
+  <text x="744.0" y="178.0" font-size="12" fill="#FFFFFF" text-anchor="middle" font-weight="600">XGBoost</text>
+  <text x="744.0" y="196.0" font-size="11" fill="#FFFFFF" text-anchor="middle">confirmer</text>
+  <text x="744.0" y="216.0" font-size="10" fill="#D6D3D1" text-anchor="middle">wakes on alarm</text>
+  <!-- F CLEANING CARRIAGE -->
+  <rect x="430" y="330" width="300" height="82" rx="8" fill="#92400E" stroke="#D97706" stroke-width="1.25"/>
+  <text x="580.0" y="360.0" font-size="12" fill="#FFFFFF" text-anchor="middle" font-weight="600">NEMA17 + BRUSH</text>
+  <text x="580.0" y="380.0" font-size="11" fill="#FAFAF9" text-anchor="middle">autonomous cleaning carriage</text>
+  <text x="580.0" y="398.0" font-size="10" fill="#FDE68A" text-anchor="middle">confirmed soiling</text>
+  <!-- connectors -->
+  <path d="M122 106 L122 150" fill="none" stroke="#D97706" stroke-width="1.25" marker-end="url(#chev)"/>
+  <path d="M210 206 L260 206 Q272 206 272 192 L298 192" fill="none" stroke="#D97706" stroke-width="1.25" marker-end="url(#chev)"/>
+  <path d="M494 180 L540 180" fill="none" stroke="#D97706" stroke-width="1.25" marker-end="url(#chev)"/>
+  <path d="M636 180 L668 180" fill="none" stroke="#D97706" stroke-width="1.25" marker-end="url(#chev)"/>
+  <path d="M744 262 L744 340 Q744 360 724 360 L724 360 Q720 372 700 372 L592 372 Q580 372 580 360 L580 330" fill="none" stroke="#D97706" stroke-width="1.25" marker-end="url(#chev)"/>
+  <text x="648" y="300" font-size="9" fill="#FDE68A" text-anchor="middle" font-weight="600">CONFIRMED</text>
+  <path d="M430 371 L40 371 Q20 371 20 350 L20 90 Q20 73 40 73 L34 73" fill="none" stroke="#D97706" stroke-width="1.25" stroke-dasharray="5 4" marker-end="url(#chev)"/>
+  <text x="120" y="395" font-size="9" fill="#A8A29E" text-anchor="middle">returns home · sleeps</text>
+  <text x="400" y="436" font-size="10" fill="#A8A29E" text-anchor="middle">Layer 1 monitors continuously at ~2.64 mW; Layer 2 powers on only on alarm (Pi Zero 2 W, 2250 mW). No cameras anywhere in the loop.</text>
+</svg>
