@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 480" width="100%" preserveAspectRatio="xMidYMid meet" role="img" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" style="font-family:'JetBrains Mono',ui-monospace,monospace">
+  <title>RAG Data Pipeline - Bi-stage OCR Decision</title>
+  <desc>Bi-stage OCR decision: orientation-corrected pages enter EasyOCR on the fast path; high-confidence text is accepted, while low-confidence text such as complex tables, math notation, and low-resolution scans falls back to a Gemma 3:27b model. No numeric confidence threshold is shown.</desc>
+  <defs><marker id="chev" markerWidth="10" markerHeight="10" refX="7" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M1.5 1.5 L7 5 L1.5 8.5" fill="none" stroke="#155e75" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+  <!-- start -->
+  <rect x="160" y="28" width="160" height="62" rx="8" fill="#FFFFFF" stroke="#0e7490" stroke-width="1.25"/><text x="240.0" y="53.0" font-size="11" fill="#14323a" text-anchor="middle" font-weight="500">ORIENTATION-CORRECTED</text><text x="240.0" y="69.0" font-size="11" fill="#5b7785" text-anchor="middle">PAGE</text>
+  <!-- fast path -->
+  <rect x="32" y="170" width="160" height="62" rx="8" fill="#0e7490" stroke="#0e7490" stroke-width="1.25"/><text x="112.0" y="187.0" font-size="11" fill="#FFFFFF" text-anchor="middle" font-weight="600">EASYOCR FAST PATH</text><text x="112.0" y="203.0" font-size="11" fill="#cbe9f2" text-anchor="middle">HIGH CONFIDENCE</text>
+  <!-- decision -->
+  <rect x="180" y="166" width="120" height="70" rx="8" fill="#FFFFFF" stroke="#0e7490" stroke-width="1.25"/><text x="240.0" y="195.0" font-size="12" fill="#14323a" text-anchor="middle" font-weight="600">CONFIDENCE?</text><text x="240.0" y="213.0" font-size="10" fill="#5b7785" text-anchor="middle">(THRESHOLD NOT SHOWN)</text>
+  <!-- fallback -->
+  <rect x="296" y="170" width="152" height="62" rx="8" fill="#FFFFFF" stroke="#0e7490" stroke-width="1.25"/><text x="372.0" y="195.0" font-size="11" fill="#14323a" text-anchor="middle" font-weight="500">GEMMA 3:27B</text><text x="372.0" y="211.0" font-size="11" fill="#5b7785" text-anchor="middle">FALLBACK</text>
+  <!-- merged output -->
+  <rect x="150" y="360" width="180" height="62" rx="8" fill="#FFFFFF" stroke="#0e7490" stroke-width="1.25"/><text x="240.0" y="385.0" font-size="11" fill="#14323a" text-anchor="middle" font-weight="500">NORMALIZED TEXT OUT</text><text x="240.0" y="401.0" font-size="11" fill="#5b7785" text-anchor="middle">TO CHUNKING</text>
+  <!-- connectors -->
+  <path d="M240 90 L240 166" fill="none" stroke="#155e75" stroke-width="1.25" marker-end="url(#chev)"/>
+  <path d="M180 201 L192 201" fill="none" stroke="#155e75" stroke-width="1.25" marker-end="url(#chev)"/>
+  <path d="M300 201 L308 201" fill="none" stroke="#155e75" stroke-width="1.25" marker-end="url(#chev)"/>
+  <path d="M112 232 L112 320 Q112 330 122 330 L222 330 Q232 330 232 340 L232 360" fill="none" stroke="#155e75" stroke-width="1.25" marker-end="url(#chev)"/>
+  <path d="M372 232 L372 320 Q372 330 362 330 L258 330 Q248 330 248 340 L248 360" fill="none" stroke="#155e75" stroke-width="1.25" marker-end="url(#chev)"/>
+  <!-- low-confidence note -->
+  <text x="372" y="262" font-size="10" fill="#0e7490" text-anchor="middle">TABLES / MATH / LOW-RES</text>
+</svg>

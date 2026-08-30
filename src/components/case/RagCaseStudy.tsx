@@ -57,23 +57,23 @@ export default function RagCaseStudy() {
             layout={{ indexInline: true, titleClassName: "text-2xl md:text-3xl" }}
           />
 
-          <Section key="02" section={study.sections[1]} />
+          <Section key="02" section={study.sections[1]} studySlug={study.slug} />
 
           {/* 03 PHASE A: chevron flow band */}
-          <Section key="03" section={study.sections[2]} />
+          <Section key="03" section={study.sections[2]} studySlug={study.slug} />
 
           {/* 04 PHASE B: chevron flow band */}
-          <Section key="04" section={study.sections[3]} />
+          <Section key="04" section={study.sections[3]} studySlug={study.slug} />
 
-          <Section key="05" section={study.sections[4]} />
+          <Section key="05" section={study.sections[4]} studySlug={study.slug} />
 
           {/* 06 THE DETERMINISM: = motif rows */}
-          <Section key="06" section={study.sections[5]} />
+          <Section key="06" section={study.sections[5]} studySlug={study.slug} />
 
-          <Section key="07" section={study.sections[6]} />
+          <Section key="07" section={study.sections[6]} studySlug={study.slug} />
 
           {/* 08 FAILURE MODES: matrix */}
-          <Section key="08" section={study.sections[7]} />
+          <Section key="08" section={study.sections[7]} studySlug={study.slug} />
 
           {/* 09 LINKS: pending placeholders driven by links.live/github nulls */}
           <CaseLinksSection key="09" section={study.sections[8]} links={study.links} />

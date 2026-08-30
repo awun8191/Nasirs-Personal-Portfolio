@@ -50,22 +50,22 @@ export default function ElegantRadianceCaseStudy() {
           />
 
           {/* 02 THE D1 DATA WORKER BOUNDARY */}
-          <Section key="02" section={study.sections[1]} />
+          <Section key="02" section={study.sections[1]} studySlug={study.slug} />
 
           {/* 03 ATOMIC STOCK RESERVATION & 30-MINUTE HOLD */}
-          <Section key="03" section={study.sections[2]} />
+          <Section key="03" section={study.sections[2]} studySlug={study.slug} />
 
           {/* 04 PAYSTACK VERIFICATION & PAYMENT STATE MACHINE */}
-          <Section key="04" section={study.sections[3]} />
+          <Section key="04" section={study.sections[3]} studySlug={study.slug} />
 
           {/* 05 TWO-TIER ASYNCHRONOUS MEDIA PIPELINE */}
-          <Section key="05" section={study.sections[4]} />
+          <Section key="05" section={study.sections[4]} studySlug={study.slug} />
 
           {/* 06 GUEST PRIVACY & STOREFRONT SECURITY */}
-          <Section key="06" section={study.sections[5]} />
+          <Section key="06" section={study.sections[5]} studySlug={study.slug} />
 
           {/* 07 RELIABILITY, RECONCILIATION & COST */}
-          <Section key="07" section={study.sections[6]} />
+          <Section key="07" section={study.sections[6]} studySlug={study.slug} />
 
           {/* 08 LINKS */}
           <section>

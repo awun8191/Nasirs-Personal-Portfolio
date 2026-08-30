@@ -8,6 +8,33 @@ import type {
 } from "../../data/caseStudies";
 
 // ---------------------------------------------------------------------------
+// Slot-specific diagram registry.
+// Keyed by `${studySlug}:${slotId}` so that two case studies sharing the same
+// numeric slot id (e.g. several "01 SYSTEM ARCHITECTURE") never collide: only
+// Engineering Hub's ids resolve to a real asset, the rest stay placeholders.
+// ---------------------------------------------------------------------------
+const DIAGRAM_REGISTRY: Record<string, string> = {
+  "engineering-hub:01": "/assets/diagrams/engineering-hub-01.svg",
+  "engineering-hub:02": "/assets/diagrams/engineering-hub-02.svg",
+  "engineering-hub:03": "/assets/diagrams/engineering-hub-03.svg",
+  "engineering-hub:04": "/assets/diagrams/engineering-hub-04.svg",
+  "engineering-hub:05": "/assets/diagrams/engineering-hub-05.svg",
+  "engineering-hub:06": "/assets/diagrams/engineering-hub-06.svg",
+  "rag-data-pipeline:01": "/assets/diagrams/rag-data-pipeline-01.svg",
+  "rag-data-pipeline:02": "/assets/diagrams/rag-data-pipeline-02.svg",
+  "rag-data-pipeline:03": "/assets/diagrams/rag-data-pipeline-03.svg",
+  "rag-data-pipeline:04": "/assets/diagrams/rag-data-pipeline-04.svg",
+  "rag-data-pipeline:05": "/assets/diagrams/rag-data-pipeline-05.svg",
+  "rag-data-pipeline:06": "/assets/diagrams/rag-data-pipeline-06.svg",
+};
+
+export function resolveDiagram(slug: string | undefined, slotId: string): string | null {
+  if (!slug) return null;
+  const key = `${slug}:${slotId}`;
+  return DIAGRAM_REGISTRY[key] ?? null;
+}
+
+// ---------------------------------------------------------------------------
 // Shared primitives for the six case study pages.
 // All content comes from src/data/caseStudies.ts; these components only
 // render. The page accent is set by the .case-<slug> wrapper class on the
@@ -21,19 +48,40 @@ const ASPECT_CLASS: Record<DiagramSlot["aspect"], string> = {
 };
 
 // Diagram slot contract (spec 4): dashed accent border, mono two-line label,
-// aspect ratio per slot, collapses to min-height on mobile.
-export function DiagramSlot({ slot, ink = false }: { slot: DiagramSlot; ink?: boolean }) {
+// aspect ratio per slot, collapses to min-height on mobile. When `src` is
+// supplied (resolved from the slot-specific registry) the real SVG asset is
+// rendered in place of the placeholder label.
+export function DiagramSlot({
+  slot,
+  ink = false,
+  src = null,
+}: {
+  slot: DiagramSlot;
+  ink?: boolean;
+  src?: string | null;
+}) {
   return (
     <div
       className={`diagram-slot ${ASPECT_CLASS[slot.aspect]} ${ink ? "diagram-slot-ink" : ""}`}
       aria-label={`Diagram slot ${slot.id}`}
     >
-      <p className="font-mono text-[0.8125rem] font-medium uppercase tracking-[0.14em] text-case-accent-deep">
-        DIAGRAM {slot.id} / {slot.label} (SLOT)
-      </p>
-      <p className="font-mono text-[0.6875rem] uppercase tracking-[0.14em] text-muted">
-        REPLACE WITH REAL SVG LATER
-      </p>
+      {src ? (
+        <img
+          src={src}
+          alt={`Diagram ${slot.id}: ${slot.label}`}
+          className="h-full w-full object-contain"
+          loading="lazy"
+        />
+      ) : (
+        <>
+          <p className="font-mono text-[0.8125rem] font-medium uppercase tracking-[0.14em] text-case-accent-deep">
+            DIAGRAM {slot.id} / {slot.label} (SLOT)
+          </p>
+          <p className="font-mono text-[0.6875rem] uppercase tracking-[0.14em] text-muted">
+            REPLACE WITH REAL SVG LATER
+          </p>
+        </>
+      )}
     </div>
   );
 }
@@ -391,6 +439,7 @@ export function HeroMetric({
 export function Section({
   section,
   layout = {},
+  studySlug,
 }: {
   section: CaseSection;
   layout?: {
@@ -400,6 +449,7 @@ export function Section({
     bodyClassName?: string;
     contentGap?: string;
   };
+  studySlug?: string;
 }) {
   const {
     indexInline = false,
@@ -490,7 +540,11 @@ export function Section({
           <div className="mt-8">
             <div className="grid gap-6">
               {section.diagrams.map((slot) => (
-                <DiagramSlot key={slot.id} slot={slot} />
+                <DiagramSlot
+                  key={slot.id}
+                  slot={slot}
+                  src={resolveDiagram(studySlug, slot.id)}
+                />
               ))}
             </div>
           </div>

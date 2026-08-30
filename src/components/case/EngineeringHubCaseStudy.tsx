@@ -113,12 +113,12 @@ export default function EngineeringHubCaseStudy() {
           />
 
           {/* 02 THE PROBLEM: why BKT over the rejected heuristic */}
-          <Section key="02" section={study.sections[1]} />
+          <Section key="02" section={study.sections[1]} studySlug={study.slug} />
 
-          <Section key="03" section={study.sections[2]} />
+          <Section key="03" section={study.sections[2]} studySlug={study.slug} />
 
           {/* 04 THE ADAPTIVE ENGINE: formula panel + wrong-answer card */}
-          <Section key="04" section={study.sections[3]} />
+          <Section key="04" section={study.sections[3]} studySlug={study.slug} />
 
           {/* Wrong-answer card motif (6.3): struck-through wrong answer,
               violet correct answer, review rating chips */}
@@ -165,11 +165,11 @@ export default function EngineeringHubCaseStudy() {
             </div>
           </section>
 
-          <Section key="05-data" section={study.sections[4]} />
-          <Section key="06-arch" section={study.sections[5]} />
+          <Section key="05-data" section={study.sections[4]} studySlug={study.slug} />
+          <Section key="06-arch" section={study.sections[5]} studySlug={study.slug} />
 
           {/* 07 LESSONS */}
-          <Section key="07" section={study.sections[6]} />
+          <Section key="07" section={study.sections[6]} studySlug={study.slug} />
 
           {/* 08 LINKS */}
           <section>

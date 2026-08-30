@@ -60,11 +60,11 @@ export default function SoilingCaseStudy() {
       sections={
         <>
           {study.sections.slice(0, 5).map((section) => (
-            <Section key={section.index} section={section} layout={{ trace: true }} />
+            <Section key={section.index} section={section} layout={{ trace: true }} studySlug={study.slug} />
           ))}
 
           {/* 06 THE LIMITS: instrument-panel honest margins */}
-          <Section key="06" section={study.sections[5]} layout={{ trace: true }} />
+          <Section key="06" section={study.sections[5]} layout={{ trace: true }} studySlug={study.slug} />
 
           {/* 07 THE PAPER + hardware gallery */}
           <section>

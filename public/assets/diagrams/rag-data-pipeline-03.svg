@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 798 342" width="100%" preserveAspectRatio="xMidYMid meet" role="img" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" style="font-family:'JetBrains Mono',ui-monospace,monospace">
+  <title>RAG Data Pipeline - Phase B Retrieval</title>
+  <desc>Phase B retrieval flow: a query, metadata-filtered scoped search (RAG-lite), deduplicated context assembly, token budget trimming, then JSON-schema-controlled generation.</desc>
+  <defs><marker id="chev" markerWidth="10" markerHeight="10" refX="7" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M1.5 1.5 L7 5 L1.5 8.5" fill="none" stroke="#155e75" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+  <rect x="39" y="118" width="120" height="64" rx="8" fill="#FFFFFF" stroke="#0e7490" stroke-width="1.25"/><text x="99.0" y="156.0" font-size="12" fill="#14323a" text-anchor="middle" font-weight="500">QUERY</text>
+  <rect x="189" y="118" width="120" height="64" rx="8" fill="#FFFFFF" stroke="#0e7490" stroke-width="1.25"/><text x="249.0" y="143.0" font-size="11" fill="#14323a" text-anchor="middle" font-weight="500">METADATA-FILTER</text><text x="249.0" y="159.0" font-size="11" fill="#5b7785" text-anchor="middle">SCOPED (RAG-LITE)</text>
+  <rect x="339" y="118" width="120" height="64" rx="8" fill="#FFFFFF" stroke="#0e7490" stroke-width="1.25"/><text x="399.0" y="143.0" font-size="11" fill="#14323a" text-anchor="middle" font-weight="500">DEDUP CONTEXT</text><text x="399.0" y="159.0" font-size="11" fill="#5b7785" text-anchor="middle">ASSEMBLY</text>
+  <rect x="489" y="118" width="120" height="64" rx="8" fill="#FFFFFF" stroke="#0e7490" stroke-width="1.25"/><text x="549.0" y="143.0" font-size="11" fill="#14323a" text-anchor="middle" font-weight="500">TOKEN BUDGET</text><text x="549.0" y="159.0" font-size="11" fill="#5b7785" text-anchor="middle">TRIMMING</text>
+  <rect x="639" y="118" width="120" height="64" rx="8" fill="#0e7490" stroke="#0e7490" stroke-width="1.25"/><text x="699.0" y="143.0" font-size="11" fill="#FFFFFF" text-anchor="middle" font-weight="600">JSON-SCHEMA</text><text x="699.0" y="159.0" font-size="11" fill="#cbe9f2" text-anchor="middle">GENERATION</text>
+  <path d="M159 150 L189 150" fill="none" stroke="#155e75" stroke-width="1.25" marker-end="url(#chev)"/>
+  <path d="M309 150 L339 150" fill="none" stroke="#155e75" stroke-width="1.25" marker-end="url(#chev)"/>
+  <path d="M459 150 L489 150" fill="none" stroke="#155e75" stroke-width="1.25" marker-end="url(#chev)"/>
+  <path d="M609 150 L639 150" fill="none" stroke="#155e75" stroke-width="1.25" marker-end="url(#chev)"/>
+  <text x="399" y="300" font-size="10" fill="#0e7490" text-anchor="middle">Phase B: scoped retrieval returns only known-domain context; deduplicated assembly and token trimming feed JSON-schema-controlled generation.</text>
+</svg>

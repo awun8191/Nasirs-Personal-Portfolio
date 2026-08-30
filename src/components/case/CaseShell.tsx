@@ -4,7 +4,7 @@ import Closing from "../Closing";
 import Reveal from "../Reveal";
 import { CASE_STUDIES } from "../../data/caseStudies";
 import type { CaseStudy } from "../../data/caseStudies";
-import { DiagramSlot } from "./primitives";
+import { DiagramSlot, resolveDiagram } from "./primitives";
 
 const DEFAULT_TITLE = "Dauda Nasir - Full Stack Software Developer";
 const DEFAULT_DESC =
@@ -156,7 +156,11 @@ export function HeroDiagram({ study }: { study: CaseStudy }) {
   return (
     <Reveal>
       <div className="mt-10">
-        <DiagramSlot slot={slot} ink={study.hero?.field === "ink"} />
+        <DiagramSlot
+          slot={slot}
+          ink={study.hero?.field === "ink"}
+          src={resolveDiagram(study.slug, slot.id)}
+        />
       </div>
     </Reveal>
   );
