@@ -36,6 +36,21 @@ const DIAGRAM_REGISTRY: Record<string, string> = {
   "traks:03": "/assets/diagrams/traks-03.svg",
   "traks:04": "/assets/diagrams/traks-04.svg",
   "traks:05": "/assets/diagrams/traks-05.svg",
+  "nuesa-academia:01": "/assets/diagrams/nuesa-academia-01.svg",
+  "nuesa-academia:02": "/assets/diagrams/nuesa-academia-02.svg",
+  "nuesa-academia:03": "/assets/diagrams/nuesa-academia-03.svg",
+  "nuesa-academia:04": "/assets/diagrams/nuesa-academia-04.svg",
+  "nuesa-academia:05": "/assets/diagrams/nuesa-academia-05.svg",
+  "nuesa-academia:06": "/assets/diagrams/nuesa-academia-06.svg",
+  "nuesa-academia:07": "/assets/diagrams/nuesa-academia-07.svg",
+  "awun:01": "/assets/diagrams/awun-01.svg",
+  "awun:02": "/assets/diagrams/awun-02.svg",
+  "awun:03": "/assets/diagrams/awun-03.svg",
+  "awun:04": "/assets/diagrams/awun-04.svg",
+  "awun:05": "/assets/diagrams/awun-05.svg",
+  "awun:06": "/assets/diagrams/awun-06.svg",
+  "awun:07": "/assets/diagrams/awun-07.svg",
+  "awun:08": "/assets/diagrams/awun-08.svg",
 };
 
 export function resolveDiagram(slug: string | undefined, slotId: string): string | null {

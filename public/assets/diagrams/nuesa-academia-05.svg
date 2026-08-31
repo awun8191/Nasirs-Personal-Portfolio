@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" preserveAspectRatio="xMidYMid meet" role="img" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" style="font-family:'JetBrains Mono',ui-monospace,monospace">
+  <title>NUESA Academia - Search Flow</title>
+  <desc>The React single-page app builds search filters (keyword q, level 100 to 500, department code, semester, course code) and a past-question toggle, then calls FastAPI /api/search where the Firebase bearer is verified; FastAPI forwards over the CloudflareGateway as an HMAC-signed /internal/search request to the data Worker. The Worker search function filters published documents only with LIKE matches on display name, course code and course title, runs a keyset query, and returns a page of at most fifty results with a base64 next-cursor of created-at and id. The SPA renders the page and requests the next cursor on infinite scroll. Past-question mode switches the filter to course-code equals PQ; the response deliberately returns total zero because keyset pagination performs no COUNT.</desc>
+  <defs><marker id="chev" markerWidth="12" markerHeight="12" refX="8" refY="6" orient="auto" markerUnits="userSpaceOnUse"><path d="M2 2 L9 6 L2 10" fill="none" stroke="#047857" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+  <rect x="0" y="0" width="800" height="450" fill="#FFFFFF"/>
+  <text x="28" y="38" font-size="10" fill="#059669">NUESA · 05 / SEARCH-FLOW</text>
+  <!-- React SPA -->
+  <rect x="28" y="64" width="176" height="150" rx="8" fill="#ECFDF5" stroke="#047857" stroke-width="1.25"/>
+  <text x="116" y="88" font-size="12" fill="#064E3B" text-anchor="middle" font-weight="600">REACT SPA</text>
+  <text x="116" y="104" font-size="8" fill="#065F46" text-anchor="middle">FILTERS</text>
+  <text x="44" y="126" font-size="8" fill="#064E3B">q · level · dept</text>
+  <text x="44" y="142" font-size="8" fill="#064E3B">semester · course</text>
+  <text x="44" y="164" font-size="8" fill="#065F46" font-weight="600">PQ MODE TOGGLE</text>
+  <text x="44" y="186" font-size="8" fill="#065F46">infinite scroll</text>
+  <!-- FastAPI -->
+  <rect x="262" y="92" width="150" height="84" rx="8" fill="#047857" stroke="#065F46" stroke-width="1.25"/>
+  <text x="337" y="120" font-size="13" fill="#FFFFFF" text-anchor="middle" font-weight="600">FASTAPI</text>
+  <text x="337" y="138" font-size="9" fill="#A7F3D0" text-anchor="middle">/api/search</text>
+  <text x="337" y="154" font-size="9" fill="#A7F3D0" text-anchor="middle">verify bearer</text>
+  <!-- Data Worker -->
+  <rect x="470" y="64" width="302" height="92" rx="8" fill="#047857" stroke="#065F46" stroke-width="1.25"/>
+  <text x="621" y="92" font-size="13" fill="#FFFFFF" text-anchor="middle" font-weight="600">DATA WORKER · search()</text>
+  <text x="621" y="110" font-size="9" fill="#A7F3D0" text-anchor="middle">HMAC /internal/search</text>
+  <text x="621" y="126" font-size="9" fill="#A7F3D0" text-anchor="middle">published only · LIKE match</text>
+  <text x="621" y="142" font-size="9" fill="#A7F3D0" text-anchor="middle">keyset · limit ≤50</text>
+  <!-- D1 -->
+  <rect x="470" y="210" width="302" height="76" rx="8" fill="#ECFDF5" stroke="#047857" stroke-width="1.25"/>
+  <text x="621" y="238" font-size="12" fill="#064E3B" text-anchor="middle" font-weight="600">D1 · keyset query</text>
+  <text x="621" y="256" font-size="9" fill="#065F46" text-anchor="middle">courses + documents join</text>
+  <text x="621" y="272" font-size="9" fill="#065F46" text-anchor="middle">cursor = base64 createdAt|id</text>
+  <!-- response -->
+  <rect x="470" y="330" width="302" height="56" rx="8" fill="#ECFDF5" stroke="#047857" stroke-width="1.25"/>
+  <text x="621" y="354" font-size="11" fill="#064E3B" text-anchor="middle" font-weight="600">PAGE ≤50 + next_cursor</text>
+  <text x="621" y="372" font-size="9" fill="#065F46" text-anchor="middle">total: 0 (no COUNT)</text>
+  <!-- connectors -->
+  <path d="M204 139 L262 139" fill="none" stroke="#047857" stroke-width="1.25" marker-end="url(#chev)"/>
+  <path d="M412 134 L470 134" fill="none" stroke="#047857" stroke-width="1.25" marker-end="url(#chev)"/>
+  <path d="M621 156 L621 210" fill="none" stroke="#047857" stroke-width="1.25" marker-end="url(#chev)"/>
+  <path d="M621 286 L621 330" fill="none" stroke="#047857" stroke-width="1.25" marker-end="url(#chev)"/>
+  <path d="M470 358 L300 358 Q280 358 280 338 L280 158 Q280 139 204 139" fill="none" stroke="#047857" stroke-width="1.25" marker-end="url(#chev)"/>
+  <!-- PQ note -->
+  <rect x="470" y="150" width="302" height="0" fill="none"/>
+  <text x="621" y="172" font-size="8" fill="#065F46" text-anchor="middle">PQ MODE: filter course_code = 'PQ' past-question archives</text>
+  <text x="400" y="424" font-size="10" fill="#065F46" text-anchor="middle">SPA filters through FastAPI and the signed internal call into the data Worker; D1 keyset page returns at most fifty with a next cursor; the SPA scrolls and fetches again. No search latency invented.</text>
+</svg>

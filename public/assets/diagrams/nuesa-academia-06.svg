@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" preserveAspectRatio="xMidYMid meet" role="img" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" style="font-family:'JetBrains Mono',ui-monospace,monospace">
+  <title>NUESA Academia - Analytics Flow</title>
+  <desc>A request to /api/analytics/lms first checks the Cloudflare Cache API key internal-cache/analytics/lms-v2 with a five-minute max-age. On a hit the cached coverage payload returns directly. On a miss, six D1 queries run in a single Promise.all: an overview (total courses, courses with materials, coverage percent, total documents, and fully or partially or unsupported buckets), department coverage, level coverage, underserved courses, the heatmap, and the orphan count. The results assemble into one coverage payload, which is written to the cache, and the response returns. Every upload, update or delete mutation explicitly busts that single cache key.</desc>
+  <defs><marker id="chev" markerWidth="12" markerHeight="12" refX="8" refY="6" orient="auto" markerUnits="userSpaceOnUse"><path d="M2 2 L9 6 L2 10" fill="none" stroke="#047857" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+  <rect x="0" y="0" width="800" height="450" fill="#FFFFFF"/>
+  <text x="28" y="38" font-size="10" fill="#059669">NUESA · 06 / ANALYTICS-FLOW</text>
+  <!-- request -->
+  <rect x="28" y="200" width="130" height="64" rx="8" fill="#ECFDF5" stroke="#047857" stroke-width="1.25"/>
+  <text x="93" y="226" font-size="11" fill="#064E3B" text-anchor="middle" font-weight="600">/analytics</text>
+  <text x="93" y="242" font-size="9" fill="#065F46" text-anchor="middle">/lms request</text>
+  <!-- cache lookup -->
+  <rect x="196" y="196" width="150" height="72" rx="8" fill="#047857" stroke="#065F46" stroke-width="1.25"/>
+  <text x="271" y="222" font-size="12" fill="#FFFFFF" text-anchor="middle" font-weight="600">CACHE LOOKUP</text>
+  <text x="271" y="240" font-size="9" fill="#A7F3D0" text-anchor="middle">max-age=300</text>
+  <text x="271" y="254" font-size="9" fill="#A7F3D0" text-anchor="middle">caches.default</text>
+  <!-- hit -->
+  <rect x="380" y="60" width="170" height="56" rx="8" fill="#ECFDF5" stroke="#047857" stroke-width="1.25"/>
+  <text x="465" y="84" font-size="12" fill="#064E3B" text-anchor="middle" font-weight="600">CACHED RETURN</text>
+  <text x="465" y="100" font-size="9" fill="#065F46" text-anchor="middle">return cached payload</text>
+  <!-- Promise.all hub -->
+  <rect x="380" y="208" width="140" height="56" rx="8" fill="#047857" stroke="#065F46" stroke-width="1.25"/>
+  <text x="450" y="234" font-size="12" fill="#FFFFFF" text-anchor="middle" font-weight="600">Promise.all</text>
+  <text x="450" y="250" font-size="9" fill="#A7F3D0" text-anchor="middle">6 D1 queries</text>
+  <!-- 6 query boxes -->
+  <rect x="556" y="92" width="108" height="56" rx="8" fill="#ECFDF5" stroke="#047857" stroke-width="1.25"/>
+  <text x="610" y="116" font-size="10" fill="#064E3B" text-anchor="middle" font-weight="600">OVERVIEW</text>
+  <text x="610" y="132" font-size="8" fill="#065F46" text-anchor="middle">coverage %</text>
+  <rect x="684" y="92" width="108" height="56" rx="8" fill="#ECFDF5" stroke="#047857" stroke-width="1.25"/>
+  <text x="738" y="116" font-size="10" fill="#064E3B" text-anchor="middle" font-weight="600">DEPARTMENT</text>
+  <text x="738" y="132" font-size="8" fill="#065F46" text-anchor="middle">coverage</text>
+  <rect x="556" y="170" width="108" height="56" rx="8" fill="#ECFDF5" stroke="#047857" stroke-width="1.25"/>
+  <text x="610" y="194" font-size="10" fill="#064E3B" text-anchor="middle" font-weight="600">LEVEL</text>
+  <text x="610" y="210" font-size="8" fill="#065F46" text-anchor="middle">coverage</text>
+  <rect x="684" y="170" width="108" height="56" rx="8" fill="#ECFDF5" stroke="#047857" stroke-width="1.25"/>
+  <text x="738" y="194" font-size="10" fill="#064E3B" text-anchor="middle" font-weight="600">UNDERSERVED</text>
+  <text x="738" y="210" font-size="8" fill="#065F46" text-anchor="middle">courses</text>
+  <rect x="556" y="248" width="108" height="56" rx="8" fill="#ECFDF5" stroke="#047857" stroke-width="1.25"/>
+  <text x="610" y="272" font-size="10" fill="#064E3B" text-anchor="middle" font-weight="600">HEATMAP</text>
+  <text x="610" y="288" font-size="8" fill="#065F46" text-anchor="middle">dept × level</text>
+  <rect x="684" y="248" width="108" height="56" rx="8" fill="#ECFDF5" stroke="#047857" stroke-width="1.25"/>
+  <text x="738" y="272" font-size="10" fill="#064E3B" text-anchor="middle" font-weight="600">ORPHANS</text>
+  <text x="738" y="288" font-size="8" fill="#065F46" text-anchor="middle">count</text>
+  <!-- assemble + put -->
+  <rect x="556" y="330" width="236" height="56" rx="8" fill="#047857" stroke="#065F46" stroke-width="1.25"/>
+  <text x="674" y="354" font-size="11" fill="#FFFFFF" text-anchor="middle" font-weight="600">ASSEMBLE → CACHE PUT</text>
+  <text x="674" y="370" font-size="9" fill="#A7F3D0" text-anchor="middle">coverage payload · bust on mutate</text>
+  <!-- connectors -->
+  <path d="M158 232 L196 232" fill="none" stroke="#047857" stroke-width="1.25" marker-end="url(#chev)"/>
+  <path d="M346 228 L380 88" fill="none" stroke="#047857" stroke-width="1.25" marker-end="url(#chev)"/>
+  <path d="M346 236 L380 236" fill="none" stroke="#047857" stroke-width="1.25" marker-end="url(#chev)"/>
+  <path d="M450 236 L556 120" fill="none" stroke="#047857" stroke-width="1.25" marker-end="url(#chev)"/>
+  <path d="M450 236 L684 198" fill="none" stroke="#047857" stroke-width="1.25" marker-end="url(#chev)"/>
+  <path d="M450 236 L610 198" fill="none" stroke="#047857" stroke-width="1.25" marker-end="url(#chev)"/>
+  <path d="M450 236 L738 198" fill="none" stroke="#047857" stroke-width="1.25" marker-end="url(#chev)"/>
+  <path d="M450 264 L610 276" fill="none" stroke="#047857" stroke-width="1.25" marker-end="url(#chev)"/>
+  <path d="M450 264 L738 276" fill="none" stroke="#047857" stroke-width="1.25" marker-end="url(#chev)"/>
+  <path d="M556 358 L520 358 Q500 358 500 338" fill="none" stroke="#047857" stroke-width="1.25" stroke-dasharray="5 4" marker-end="url(#chev)"/>
+  <path d="M380 88 L260 88 Q240 88 240 140 L240 232" fill="none" stroke="#047857" stroke-width="1.25" stroke-dasharray="5 4" marker-end="url(#chev)"/>
+  <text x="400" y="424" font-size="10" fill="#065F46" text-anchor="middle">Cache lookup first; on miss six parallel D1 queries build the coverage payload, cached five minutes and busted on mutation. No invented metrics.</text>
+</svg>

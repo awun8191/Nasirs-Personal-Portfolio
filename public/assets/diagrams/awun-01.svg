@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="t-01 d-01">
+  <title id="t-01">System Architecture</title>
+  <desc id="d-01">Hand-authored AWUN Technical Documentary diagram for system architecture. JetBrains Mono labels, terracotta palette, flat white field, hairline borders, rounded orthogonal connectors with open chevron markers. No gradients, no shadows. All facts trace to docs/case-studies/awun.md.</desc>
+  <rect x="0" y="0" width="800" height="450" fill="#FFFFFF"/>
+  <defs>
+  <marker id="chev_01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M 0 0 L 9 5 L 0 10" fill="none" stroke="#3D2B1F" stroke-width="1.4"/>
+  </marker>
+</defs>
+  <text x="24" y="24" text-anchor="start" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="9" font-weight="600" fill="#8B4513">AWUN / TECHNICAL DOCUMENTARY</text>
+<text x="24" y="42" text-anchor="start" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="18" font-weight="600" fill="#1F1B16">System Architecture</text>
+<text x="24" y="60" text-anchor="start" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="10" font-weight="400" fill="#6B5A4A">Browser clients -> Cloudflare Pages -> Worker proxy -> Cloud Run -> D1 / R2 / Vectorize / Firebase / Paystack / Resend</text>
+<line x1="24" y1="85" x2="776" y2="85" stroke="#1F1B16" stroke-width="0.75"/>
+<rect x="40" y="100" width="720" height="64" rx="10" ry="10" fill="#FFFFFF" stroke="#8B4513" stroke-width="1" stroke-dasharray="2 2"/>
+<rect x="48" y="91" width="6" height="14" fill="#FFFFFF" stroke="none"/>
+<text x="58" y="102" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="9" font-weight="600" fill="#8B4513">CLIENTS</text>
+<text x="58" y="114" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="8" fill="#6B5A4A">browser</text>
+<rect x="72" y="120" width="130" height="32" rx="8" ry="8" fill="#F5E9DC" stroke="#1F1B16" stroke-width="1.25"/>
+<text x="137.0" y="140.0" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="11" font-weight="500" fill="#1F1B16">VENDOR DASHBOARD</text>
+<text x="137.0" y="154.0" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="9" fill="#6B5A4A">www.awun.dev</text>
+<rect x="232" y="120" width="130" height="32" rx="8" ry="8" fill="#F5E9DC" stroke="#1F1B16" stroke-width="1.25"/>
+<text x="297.0" y="140.0" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="11" font-weight="500" fill="#1F1B16">BUYER CHECKOUT</text>
+<text x="297.0" y="154.0" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="9" fill="#6B5A4A">checkout.awun.dev</text>
+<rect x="392" y="120" width="130" height="32" rx="8" ry="8" fill="#FFFFFF" stroke="#1F1B16" stroke-width="1.25"/>
+<text x="457.0" y="140.0" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="11" font-weight="500" fill="#1F1B16">PAYSTACK</text>
+<text x="457.0" y="154.0" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="9" fill="#6B5A4A">payment provider</text>
+<rect x="40" y="180" width="720" height="64" rx="10" ry="10" fill="#FFFFFF" stroke="#8B4513" stroke-width="1" stroke-dasharray="2 2"/>
+<rect x="48" y="171" width="6" height="14" fill="#FFFFFF" stroke="none"/>
+<text x="58" y="182" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="9" font-weight="600" fill="#8B4513">CLOUDFLARE PAGES</text>
+<text x="58" y="194" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="8" fill="#6B5A4A">static React 19 + Pages Functions proxy</text>
+<rect x="72" y="200" width="290" height="32" rx="8" ry="8" fill="#FBF6F1" stroke="#1F1B16" stroke-width="1.25"/>
+<text x="217.0" y="220.0" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="11" font-weight="500" fill="#1F1B16">PAGES FUNCTIONS</text>
+<text x="217.0" y="234.0" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="9" fill="#6B5A4A">/api/[[path]].ts proxy</text>
+<rect x="392" y="200" width="130" height="32" rx="8" ry="8" fill="#FBF6F1" stroke="#1F1B16" stroke-width="1.25"/>
+<text x="457.0" y="220.0" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="11" font-weight="500" fill="#1F1B16">WRANGLER ROUTING</text>
+<rect x="40" y="260" width="720" height="50" rx="10" ry="10" fill="#FFFFFF" stroke="#8B4513" stroke-width="1" stroke-dasharray="2 2"/>
+<rect x="48" y="251" width="6" height="14" fill="#FFFFFF" stroke="none"/>
+<text x="58" y="262" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="9" font-weight="600" fill="#8B4513">CLOUDFLARE WORKER</text>
+<text x="58" y="274" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="8" fill="#6B5A4A">awun-api-proxy on api.awun.dev/*</text>
+<rect x="72" y="276" width="220" height="24" rx="8" ry="8" fill="#F5E9DC" stroke="#1F1B16" stroke-width="1.25"/>
+<text x="182.0" y="292.0" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="11" font-weight="500" fill="#1F1B16">PATH + METHOD FORWARD</text>
+<rect x="40" y="320" width="720" height="56" rx="10" ry="10" fill="#FFFFFF" stroke="#8B4513" stroke-width="1" stroke-dasharray="2 2"/>
+<rect x="48" y="311" width="6" height="14" fill="#FFFFFF" stroke="none"/>
+<text x="58" y="322" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="9" font-weight="600" fill="#8B4513">CLOUD RUN FASTAPI</text>
+<text x="58" y="334" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="8" fill="#6B5A4A">minScale 0 / maxScale 3 / 512 MiB / 60s timeout</text>
+<rect x="72" y="340" width="220" height="24" rx="8" ry="8" fill="#FBF6F1" stroke="#1F1B16" stroke-width="1.25"/>
+<text x="182.0" y="356.0" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="11" font-weight="500" fill="#1F1B16">GATEWAYS: orders/products/checkouts/...</text>
+<rect x="40" y="390" width="720" height="50" rx="10" ry="10" fill="#FFFFFF" stroke="#8B4513" stroke-width="1" stroke-dasharray="2 2"/>
+<rect x="48" y="381" width="6" height="14" fill="#FFFFFF" stroke="none"/>
+<text x="58" y="392" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="9" font-weight="600" fill="#8B4513">DATA + IDENTITY + COMMERCE</text>
+<rect x="60" y="408" width="110" height="24" rx="8" ry="8" fill="#F5E9DC" stroke="#1F1B16" stroke-width="1.25"/>
+<text x="115.0" y="424.0" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="10" font-weight="500" fill="#1F1B16">D1</text>
+<text x="115.0" y="438.0" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="9" fill="#6B5A4A">awun-db / 10 tables</text>
+<rect x="182" y="408" width="110" height="24" rx="8" ry="8" fill="#F5E9DC" stroke="#1F1B16" stroke-width="1.25"/>
+<text x="237.0" y="424.0" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="10" font-weight="500" fill="#1F1B16">R2</text>
+<text x="237.0" y="438.0" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="9" fill="#6B5A4A">awun-assets + checkout</text>
+<rect x="304" y="408" width="110" height="24" rx="8" ry="8" fill="#F5E9DC" stroke="#1F1B16" stroke-width="1.25"/>
+<text x="359.0" y="424.0" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="10" font-weight="500" fill="#1F1B16">VECTORIZE</text>
+<text x="359.0" y="438.0" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="9" fill="#6B5A4A">awun-products 256d</text>
+<rect x="426" y="408" width="110" height="24" rx="8" ry="8" fill="#F5E9DC" stroke="#1F1B16" stroke-width="1.25"/>
+<text x="481.0" y="424.0" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="10" font-weight="500" fill="#1F1B16">FIREBASE AUTH</text>
+<text x="481.0" y="438.0" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="9" fill="#6B5A4A">awun-a934a</text>
+<rect x="548" y="408" width="110" height="24" rx="8" ry="8" fill="#F5E9DC" stroke="#1F1B16" stroke-width="1.25"/>
+<text x="603.0" y="424.0" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="10" font-weight="500" fill="#1F1B16">PAYSTACK</text>
+<text x="603.0" y="438.0" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="9" fill="#6B5A4A">HMAC + payouts</text>
+<rect x="670" y="408" width="110" height="24" rx="8" ry="8" fill="#F5E9DC" stroke="#1F1B16" stroke-width="1.25"/>
+<text x="725.0" y="424.0" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="10" font-weight="500" fill="#1F1B16">RESEND</text>
+<text x="725.0" y="438.0" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="9" fill="#6B5A4A">outbox + drain</text>
+<path d="M 140 152 L 140 180" stroke="#3D2B1F" stroke-width="1.25" fill="none"/>
+<path d="M 140 180 L 146 176.25 L 146 183.75 Z" fill="none" stroke="#3D2B1F" stroke-width="1.25"/>
+<path d="M 300 152 L 300 180" stroke="#3D2B1F" stroke-width="1.25" fill="none"/>
+<path d="M 300 180 L 306 176.25 L 306 183.75 Z" fill="none" stroke="#3D2B1F" stroke-width="1.25"/>
+<path d="M 220 216 L 220 260" stroke="#3D2B1F" stroke-width="1.25" fill="none"/>
+<path d="M 220 260 L 226 256.25 L 226 263.75 Z" fill="none" stroke="#3D2B1F" stroke-width="1.25"/>
+<path d="M 180 286 L 180 320" stroke="#3D2B1F" stroke-width="1.25" fill="none"/>
+<path d="M 180 320 L 186 316.25 L 186 323.75 Z" fill="none" stroke="#3D2B1F" stroke-width="1.25"/>
+<path d="M 180 348 L 180 390" stroke="#3D2B1F" stroke-width="1.25" fill="none"/>
+<path d="M 180 390 L 186 386.25 L 186 393.75 Z" fill="none" stroke="#3D2B1F" stroke-width="1.25"/>
+<line x1="24" y1="418" x2="776" y2="418" stroke="#1F1B16" stroke-width="0.5"/>
+<text x="24" y="434" text-anchor="start" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="8" font-weight="400" fill="#6B5A4A">AWUN / 01 OF 08</text>
+<text x="776" y="434" text-anchor="end" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="8" font-weight="400" fill="#6B5A4A">facts traced to docs/case-studies/awun.md sections 2 and 5</text>
+</svg>

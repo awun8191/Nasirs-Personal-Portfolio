@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="t-06 d-06">
+  <title id="t-06">Statement Budget Chart</title>
+  <desc id="d-06">Hand-authored AWUN Technical Documentary diagram for statement budget chart. JetBrains Mono labels, terracotta palette, flat white field, hairline borders, rounded orthogonal connectors with open chevron markers. No gradients, no shadows. All facts trace to docs/case-studies/awun.md.</desc>
+  <rect x="0" y="0" width="800" height="450" fill="#FFFFFF"/>
+  <defs>
+  <marker id="chev_06" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M 0 0 L 9 5 L 0 10" fill="none" stroke="#3D2B1F" stroke-width="1.4"/>
+  </marker>
+</defs>
+  <text x="24" y="24" text-anchor="start" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="9" font-weight="600" fill="#8B4513">AWUN / TECHNICAL DOCUMENTARY</text>
+<text x="24" y="42" text-anchor="start" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="18" font-weight="600" fill="#1F1B16">D1 Statement Budget</text>
+<text x="24" y="60" text-anchor="start" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="10" font-weight="400" fill="#6B5A4A">each execute_sql is one HTTP round trip; budget-enforced by tests</text>
+<line x1="24" y1="85" x2="776" y2="85" stroke="#1F1B16" stroke-width="0.75"/>
+<rect x="80" y="110" width="640" height="230" fill="none" stroke="#1F1B16" stroke-width="0.5"/>
+<rect x="144.0" y="254.28571428571428" width="28" height="65.71428571428571" fill="#C97A4D" stroke="#3D2B1F" stroke-width="0.75"/>
+<text x="158.0" y="248.28571428571428" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="9" font-weight="400" fill="#1F1B16">23</text>
+<rect x="196.0" y="291.42857142857144" width="28" height="28.57142857142857" fill="#8B4513" stroke="#3D2B1F" stroke-width="0.75"/>
+<text x="210.0" y="285.42857142857144" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="9" font-weight="400" fill="#1F1B16">10</text>
+<text x="184.0" y="336" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="9" font-weight="400" fill="#6B5A4A">DASHBOARD LOAD</text>
+<rect x="288.0" y="142.85714285714286" width="28" height="177.14285714285714" fill="#C97A4D" stroke="#3D2B1F" stroke-width="0.75"/>
+<text x="302.0" y="136.85714285714286" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="9" font-weight="400" fill="#1F1B16">62</text>
+<rect x="340.0" y="305.7142857142857" width="28" height="14.285714285714285" fill="#8B4513" stroke="#3D2B1F" stroke-width="0.75"/>
+<text x="354.0" y="299.7142857142857" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="9" font-weight="400" fill="#1F1B16">5</text>
+<text x="328.0" y="336" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="9" font-weight="400" fill="#6B5A4A">INVENTORY (20)</text>
+<rect x="432.0" y="280.0" width="28" height="40.0" fill="#C97A4D" stroke="#3D2B1F" stroke-width="0.75"/>
+<text x="446.0" y="274.0" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="9" font-weight="400" fill="#1F1B16">14</text>
+<rect x="484.0" y="285.7142857142857" width="28" height="34.285714285714285" fill="#8B4513" stroke="#3D2B1F" stroke-width="0.75"/>
+<text x="498.0" y="279.7142857142857" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="9" font-weight="400" fill="#1F1B16">12</text>
+<text x="472.0" y="336" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="9" font-weight="400" fill="#6B5A4A">PAYSTACK WEBHOOK</text>
+<rect x="576.0" y="282.85714285714283" width="28" height="37.142857142857146" fill="#C97A4D" stroke="#3D2B1F" stroke-width="0.75"/>
+<text x="590.0" y="276.85714285714283" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="9" font-weight="400" fill="#1F1B16">13</text>
+<rect x="628.0" y="291.42857142857144" width="28" height="28.57142857142857" fill="#8B4513" stroke="#3D2B1F" stroke-width="0.75"/>
+<text x="642.0" y="285.42857142857144" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="9" font-weight="400" fill="#1F1B16">10</text>
+<text x="616.0" y="336" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="9" font-weight="400" fill="#6B5A4A">VERIFY COMMIT</text>
+<rect x="80" y="358" width="14" height="14" rx="8" ry="8" fill="#C97A4D" stroke="#1F1B16" stroke-width="1.25"/>
+<text x="87.0" y="369.0" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="0" font-weight="500" fill="#1F1B16"></text>
+<text x="100" y="370" text-anchor="start" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="10" font-weight="400" fill="#6B5A4A">BEFORE</text>
+<rect x="190" y="358" width="14" height="14" rx="8" ry="8" fill="#8B4513" stroke="#1F1B16" stroke-width="1.25"/>
+<text x="197.0" y="369.0" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="0" font-weight="500" fill="#1F1B16"></text>
+<text x="210" y="370" text-anchor="start" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="10" font-weight="400" fill="#6B5A4A">AFTER</text>
+<text x="400.0" y="402" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="9" font-weight="400" fill="#6B5A4A" font-style="italic">Enforced by test_module_query_budgets.py; each fetch = 1 round trip</text>
+<line x1="24" y1="418" x2="776" y2="418" stroke="#1F1B16" stroke-width="0.5"/>
+<text x="24" y="434" text-anchor="start" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="8" font-weight="400" fill="#6B5A4A">AWUN / 06 OF 08</text>
+<text x="776" y="434" text-anchor="end" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="8" font-weight="400" fill="#6B5A4A">awun.md section 6 (verified, not aspirational)</text>
+</svg>
