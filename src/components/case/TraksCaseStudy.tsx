@@ -1,5 +1,5 @@
 import CaseShell, { CaseHeader, HeroDiagram } from "./CaseShell";
-import { Section, Chip, DiagramSlot, HeroMetric, CaseLinksSection } from "./primitives";
+import { Section, Chip, DiagramSlot, HeroMetric, CaseLinksSection, resolveDiagram } from "./primitives";
 import { traksStudy } from "../../data/caseStudies";
 
 // ---------------------------------------------------------------------------
@@ -109,13 +109,13 @@ export default function TraksCaseStudy() {
                 <div className="hidden w-40 shrink-0 flex-col gap-3 pt-8 md:flex">
                   <Chip label="CONFIRMED" variant="accent" />
                   <Chip label="REFUTED" variant="default" />
-                  <Chip label="PENDING" variant="pending" />
+                  <Chip label="UNDER REVIEW" variant="default" />
                 </div>
               </div>
               <div className="mt-8">
                 {study.sections[4].diagrams?.map((slot) => (
                   <div key={slot.id} className="mt-6 first:mt-0">
-                    <DiagramSlot slot={slot} />
+                    <DiagramSlot slot={slot} src={resolveDiagram(study.slug, slot.id)} />
                   </div>
                 ))}
               </div>

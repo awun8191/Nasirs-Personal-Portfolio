@@ -1,6 +1,6 @@
 import { motion, useReducedMotion } from "framer-motion";
 import CaseShell, { CaseHeader } from "./CaseShell";
-import { FlowBand, RuledRows, MetricTable, Chip, DiagramSlot } from "./primitives";
+import { FlowBand, RuledRows, MetricTable, Chip, DiagramSlot, resolveDiagram } from "./primitives";
 import { awunStudy } from "../../data/caseStudies";
 
 // ---------------------------------------------------------------------------
@@ -138,7 +138,11 @@ export default function AwunCaseStudy() {
                   {ch.diagrams && (
                     <div className="grid gap-6">
                       {ch.diagrams.map((slot) => (
-                        <DiagramSlot key={slot.id} slot={slot} />
+                        <DiagramSlot
+                          key={slot.id}
+                          slot={slot}
+                          src={resolveDiagram(study.slug, slot.id)}
+                        />
                       ))}
                     </div>
                   )}
@@ -185,9 +189,6 @@ export default function AwunCaseStudy() {
                     API →
                   </a>
                 )}
-                <span className="inline-flex items-center gap-2 py-2 font-mono text-sm uppercase tracking-[0.14em] text-muted">
-                  GitHub [URL PENDING]
-                </span>
               </div>
             </div>
           </section>

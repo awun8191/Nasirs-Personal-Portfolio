@@ -2,6 +2,7 @@
   <title>RAG Data Pipeline - Determinism Mechanism</title>
   <desc>Determinism mechanism: chunk-level hashes produce identical chunk IDs across shards for the same source material, and generation is locked at temperature 0.0 with specialized seeding, so output is reproducible. No hash algorithm, seed value, shard count, or model settings are invented.</desc>
   <defs><marker id="chev" markerWidth="10" markerHeight="10" refX="7" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M1.5 1.5 L7 5 L1.5 8.5" fill="none" stroke="#155e75" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+  <rect x="0" y="0" width="798" height="449" fill="#FFFFFF"/>
   <!-- inputs row -->
   <rect x="34" y="40" width="220" height="64" rx="8" fill="#FFFFFF" stroke="#0e7490" stroke-width="1.25"/><text x="144.0" y="65.0" font-size="11" fill="#14323a" text-anchor="middle" font-weight="500">CHUNK-LEVEL HASH</text><text x="144.0" y="81.0" font-size="11" fill="#5b7785" text-anchor="middle">PER SOURCE</text>
   <rect x="289" y="40" width="220" height="64" rx="8" fill="#FFFFFF" stroke="#0e7490" stroke-width="1.25"/><text x="399.0" y="65.0" font-size="11" fill="#14323a" text-anchor="middle" font-weight="500">TEMPERATURE 0.0</text><text x="399.0" y="81.0" font-size="11" fill="#5b7785" text-anchor="middle">LOCKED</text>

@@ -2,6 +2,7 @@
   <title>RAG Data Pipeline - Cost-efficiency Flow</title>
   <desc>Cost-efficiency flow: unchanged chunks hit the local chunk-hash cache and skip redundant embedding calls, while changed chunks are embedded again. Multi-versioned documents therefore avoid re-embedding the majority of their content. The up to 70% figure is a page claim, not a measured benchmark.</desc>
   <defs><marker id="chev" markerWidth="10" markerHeight="10" refX="7" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M1.5 1.5 L7 5 L1.5 8.5" fill="none" stroke="#155e75" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+  <rect x="0" y="0" width="798" height="449" fill="#FFFFFF"/>
   <!-- top: chunk in -->
   <rect x="289" y="40" width="220" height="64" rx="8" fill="#FFFFFF" stroke="#0e7490" stroke-width="1.25"/><text x="399.0" y="65.0" font-size="11" fill="#14323a" text-anchor="middle" font-weight="500">CHUNK ARRIVES</text><text x="399.0" y="81.0" font-size="11" fill="#5b7785" text-anchor="middle">NEW OR REVISION</text>
   <!-- decision -->
@@ -18,5 +19,5 @@
   <path d="M509 202 L544 202 Q554 202 554 212 L554 300" fill="none" stroke="#155e75" stroke-width="1.25" marker-end="url(#chev)"/>
   <path d="M144 364 L144 380" fill="none" stroke="#155e75" stroke-width="1.25" marker-end="url(#chev)"/>
   <path d="M654 364 L654 380" fill="none" stroke="#155e75" stroke-width="1.25" marker-end="url(#chev)"/>
-  <text x="399" y="442" font-size="9" fill="#0e7490" text-anchor="middle">Up to 70% pipeline cost reduction for multi-versioned docs (page claim, not a measured benchmark). Unchanged chunks reuse the cache; only changed chunks are re-embedded.</text>
+  <text x="399" y="442" font-size="9" fill="#0e7490" text-anchor="middle">Chunk-level hash caching prevents re-embedding unchanged sections across revised document editions.</text>
 </svg>

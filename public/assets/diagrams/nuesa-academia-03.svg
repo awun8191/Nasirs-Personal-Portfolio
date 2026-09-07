@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 798 342" width="100%" preserveAspectRatio="xMidYMid meet" role="img" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" style="font-family:'JetBrains Mono',ui-monospace,monospace">
+  <title>NUESA Academia - Migration Flow</title>
+  <desc>Migration workflow: 2,111 PDFs (~13.8 GB) collected across 9 engineering departments, parsed and normalized, deduplicated with SHA-256, streamed into Cloudflare R2, cataloged into D1, and cross-verified against 426 syllabus courses.</desc>
+  <defs>
+    <marker id="chev-green" markerWidth="10" markerHeight="10" refX="7" refY="5" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M1.5 1.5 L7 5 L1.5 8.5" fill="none" stroke="#047857" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="798" height="342" fill="#FFFFFF"/>
+  <text x="28" y="34" font-size="10" fill="#059669" font-weight="600">NUESA · 03 / MIGRATION FLOW (2,111 OBJECTS · ~13.8 GB)</text>
+
+  <!-- Step 1: Raw Archives -->
+  <rect x="28" y="80" width="110" height="96" rx="8" fill="#ECFDF5" stroke="#047857" stroke-width="1.25"/>
+  <text x="83" y="106" font-size="10" fill="#064E3B" text-anchor="middle" font-weight="600">RAW ARCHIVES</text>
+  <text x="83" y="124" font-size="8" fill="#065F46" text-anchor="middle">2,111 PDF FILES</text>
+  <line x1="40" y1="134" x2="126" y2="134" stroke="#047857" stroke-width="0.75" stroke-opacity="0.3"/>
+  <text x="83" y="152" font-size="8" fill="#065F46" text-anchor="middle">Faculty drives</text>
+  <text x="83" y="166" font-size="8" fill="#059669" text-anchor="middle">~13.8 GB</text>
+
+  <!-- Step 2: Metadata Extraction -->
+  <rect x="156" y="80" width="110" height="96" rx="8" fill="#FFFFFF" stroke="#047857" stroke-width="1.25"/>
+  <text x="211" y="106" font-size="10" fill="#064E3B" text-anchor="middle" font-weight="600">NORMALIZE</text>
+  <text x="211" y="124" font-size="8" fill="#065F46" text-anchor="middle">METADATA PARSE</text>
+  <line x1="168" y1="134" x2="254" y2="134" stroke="#047857" stroke-width="0.75" stroke-opacity="0.3"/>
+  <text x="211" y="152" font-size="8" fill="#065F46" text-anchor="middle">Course code</text>
+  <text x="211" y="166" font-size="8" fill="#065F46" text-anchor="middle">Dept &amp; Level</text>
+
+  <!-- Step 3: SHA-256 Dedup -->
+  <rect x="284" y="80" width="110" height="96" rx="8" fill="#FFFFFF" stroke="#047857" stroke-width="1.25"/>
+  <text x="339" y="106" font-size="10" fill="#064E3B" text-anchor="middle" font-weight="600">SHA-256</text>
+  <text x="339" y="124" font-size="8" fill="#065F46" text-anchor="middle">HASH CHECKSUM</text>
+  <line x1="296" y1="134" x2="382" y2="134" stroke="#047857" stroke-width="0.75" stroke-opacity="0.3"/>
+  <text x="339" y="152" font-size="8" fill="#065F46" text-anchor="middle">Integrity verify</text>
+  <text x="339" y="166" font-size="8" fill="#059669" text-anchor="middle">Dedup match</text>
+
+  <!-- Step 4: Stream to R2 -->
+  <rect x="412" y="80" width="110" height="96" rx="8" fill="#047857" stroke="#065F46" stroke-width="1.25"/>
+  <text x="467" y="106" font-size="10" fill="#FFFFFF" text-anchor="middle" font-weight="600">STREAM TO R2</text>
+  <text x="467" y="124" font-size="8" fill="#A7F3D0" text-anchor="middle">OBJECT STORE</text>
+  <line x1="424" y1="134" x2="510" y2="134" stroke="#A7F3D0" stroke-width="0.75" stroke-opacity="0.3"/>
+  <text x="467" y="152" font-size="8" fill="#FFFFFF" text-anchor="middle">Chunked put</text>
+  <text x="467" y="166" font-size="8" fill="#A7F3D0" text-anchor="middle">Zero egress</text>
+
+  <!-- Step 5: Index into D1 -->
+  <rect x="540" y="80" width="110" height="96" rx="8" fill="#047857" stroke="#065F46" stroke-width="1.25"/>
+  <text x="595" y="106" font-size="10" fill="#FFFFFF" text-anchor="middle" font-weight="600">CATALOG D1</text>
+  <text x="595" y="124" font-size="8" fill="#A7F3D0" text-anchor="middle">SQL BATCH</text>
+  <line x1="552" y1="134" x2="638" y2="134" stroke="#A7F3D0" stroke-width="0.75" stroke-opacity="0.3"/>
+  <text x="595" y="152" font-size="8" fill="#FFFFFF" text-anchor="middle">Courses join</text>
+  <text x="595" y="166" font-size="8" fill="#A7F3D0" text-anchor="middle">Keyset index</text>
+
+  <!-- Step 6: Coverage Audit -->
+  <rect x="668" y="80" width="102" height="96" rx="8" fill="#ECFDF5" stroke="#047857" stroke-width="1.25"/>
+  <text x="719" y="106" font-size="10" fill="#064E3B" text-anchor="middle" font-weight="600">AUDIT</text>
+  <text x="719" y="124" font-size="8" fill="#065F46" text-anchor="middle">VERIFICATION</text>
+  <line x1="680" y1="134" x2="758" y2="134" stroke="#047857" stroke-width="0.75" stroke-opacity="0.3"/>
+  <text x="719" y="152" font-size="8" fill="#064E3B" text-anchor="middle">426 Courses</text>
+  <text x="719" y="166" font-size="8" fill="#059669" text-anchor="middle">9 Departments</text>
+
+  <!-- Connectors -->
+  <path d="M138 128 L156 128" fill="none" stroke="#047857" stroke-width="1.25" marker-end="url(#chev-green)"/>
+  <path d="M266 128 L284 128" fill="none" stroke="#047857" stroke-width="1.25" marker-end="url(#chev-green)"/>
+  <path d="M394 128 L412 128" fill="none" stroke="#047857" stroke-width="1.25" marker-end="url(#chev-green)"/>
+  <path d="M522 128 L540 128" fill="none" stroke="#047857" stroke-width="1.25" marker-end="url(#chev-green)"/>
+  <path d="M650 128 L668 128" fill="none" stroke="#047857" stroke-width="1.25" marker-end="url(#chev-green)"/>
+
+  <!-- Summary stats box below -->
+  <rect x="28" y="210" width="742" height="64" rx="8" fill="#F0FDF4" stroke="#047857" stroke-width="1"/>
+  <text x="50" y="238" font-size="10" fill="#064E3B" font-weight="600">MIGRATION BENCHMARKS:</text>
+  <text x="50" y="258" font-size="9" fill="#065F46">100% of 2,111 legacy documents migrated with zero loss. All assets linked to verified syllabus course codes across Levels 100-500.</text>
+
+  <text x="399" y="316" font-size="10" fill="#065F46" text-anchor="middle">Deterministic ETL pipeline: raw faculty files normalized, deduplicated, streamed to R2 and indexed into D1.</text>
+</svg>

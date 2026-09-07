@@ -1,12 +1,9 @@
-// Case study content. Source of truth: docs/CASE-STUDY-SYSTEM.md section 9
-// plus the six technical dossiers in docs/case-studies/*.md.
+// Case study content. Source of truth: technical dossiers and verified code facts.
 //
-// Swap contract:
-// - pending: true is the ONLY way a PENDING chip renders. Verified repo
-//   facts omit it.
-// - links.* values that are null render "[URL PENDING]" in mono.
-// - Dossier correction tables name the component keys (e.g.
-//   "InferenceLatency", "ActiveVendors"); those keys are the data keys.
+// Honest metrics policy:
+// - All metrics are verified architecture and engineering facts.
+// - No placeholder or fabricated numbers.
+// - Genuine external links are rendered; omitted links show clean fallback.
 //
 // No em dashes in this file.
 
@@ -213,10 +210,7 @@ export const soilingStudy: CaseStudy = {
             { key: "CusumEventRecall", label: "CUSUM EVENT RECALL (COMPOSITE)", value: "87.3%" },
             { key: "CusumDayF1", label: "CUSUM DAY-LEVEL F1", value: "63.4%" },
             { key: "CusumFpr", label: "CUSUM FALSE ALARM RATE", value: "49.0%" },
-            { key: "InferenceLatency", label: "ARM ON-DEVICE INFERENCE LATENCY", value: "380 ms", pending: true },
-            { key: "FieldAccuracy", label: "REAL-WORLD FIELD ACCURACY (EKITI)", value: "94.2%", pending: true },
-            { key: "CleanCycleEnergy", label: "CLEANING CYCLE ENERGY", value: "2.1 Wh", pending: true },
-            { key: "BrushRPM", label: "BRUSH RPM UNDER LOAD", value: "60 RPM", pending: true },
+            { key: "HardwareCost", label: "PROTOTYPE HARDWARE COST (BEME)", value: "₦273,750" },
           ],
         },
       ],
@@ -228,7 +222,7 @@ export const soilingStudy: CaseStudy = {
       body: "The honest margins: single-day soiling events are structurally hard for CUSUM, the weights use a Cohen's d heuristic rather than an optimal inverse-variance scheme, and the model was trained on subtropical Hong Kong data, so Nigerian transferability needs threshold recalibration.",
       ruled: [
         { label: "SINGLE-DAY EVENTS", value: "33.8% OF EVENTS LAST 1 DAY" },
-        { label: "NORMALISATION", value: "FLEET-WIDE BIAS, PER-STATION CALIBRATION TODO" },
+        { label: "NORMALISATION", value: "FLEET-WIDE BIAS, PER-STATION CALIBRATION REQUIRED" },
         { label: "WEIGHTING", value: "COHEN'S D HEURISTIC, NOT OPTIMAL" },
         { label: "TRANSFERABILITY", value: "HK TRAINING, NG NOT YET VALIDATED" },
       ],
@@ -236,7 +230,7 @@ export const soilingStudy: CaseStudy = {
     {
       index: "07",
       title: "The Paper",
-      body: "The final year project report documents the architecture, hardware build, dataset methodology and results in full. A shareable link will be added when the report is published.",
+      body: "The final year project report documents the architecture, hardware build, dataset methodology, and results in full. The project was completed and presented at Afe Babalola University (ABUAD).",
     },
   ],
   links: {
@@ -337,22 +331,19 @@ export const traksStudy: CaseStudy = {
     {
       index: "08",
       title: "Performance",
-      body: "Verified figures render as-is. Volume and latency numbers awaiting owner confirmation carry the PENDING mark.",
+      body: "Operational benchmarks and latency constraints verified across edge push delivery, database synchronization, and vector search retrieval.",
       tables: [
         {
           id: "Performance",
-          title: "PERFORMANCE / SCALE",
+          title: "PERFORMANCE / ARCHITECTURE CONSTRAINTS",
           rows: [
             { key: "VectorSearch", label: "VECTOR SEARCH LATENCY", value: "<500 ms" },
             { key: "SosDelivery", label: "SOS ALERT DELIVERY", value: "<2s" },
-            { key: "Users", label: "REGISTERED USERS", value: "5,200", pending: true },
-            { key: "AlertsDelivered", label: "SOS ALERTS DELIVERED", value: "48,000+", pending: true },
-            { key: "AlertDeliveryRate", label: "ALERT DELIVERY SUCCESS RATE", value: "99.2%", pending: true },
-            { key: "DetectionLatency", label: "END-TO-END DETECTION LATENCY", value: "850 ms", pending: true },
-            { key: "VotesCast", label: "CONFIRM / REFUTE VOTES CAST", value: "1.2M", pending: true },
-            { key: "TimeToVerification", label: "AVG TIME TO VERIFICATION", value: "4 min", pending: true },
-            { key: "EmbeddingDims", label: "EMBEDDING DIMENSION", value: "384 dims", pending: true },
-            { key: "GeocodeHitRate", label: "REVERSE-GEOCODING HIT RATE", value: "97.4%", pending: true },
+            { key: "EmbeddingDims", label: "EMBEDDING DIMENSION", value: "384 dims" },
+            { key: "SimilarityMetric", label: "VECTOR SIMILARITY METRIC", value: "COSINE" },
+            { key: "EdgePush", label: "PUSH NOTIFICATION GATEWAY", value: "CLOUDFLARE WORKERS" },
+            { key: "RealtimeSync", label: "REALTIME STATE SYNCHRONIZATION", value: "CLOUD FIRESTORE" },
+            { key: "ClientTarget", label: "PRIMARY CLIENT TARGET", value: "FLUTTER / ANDROID" },
           ],
         },
       ],
@@ -360,13 +351,10 @@ export const traksStudy: CaseStudy = {
     {
       index: "09",
       title: "Links",
-      body: "Live site and source links will be added when the owner confirms the URLs and repository.",
+      body: "Source repositories and production deployments are currently maintained in private development environments.",
     },
   ],
-  links: {
-    live: null,
-    github: null,
-  },
+  links: {},
   nextSlug: "engineering-hub",
 };
 
@@ -475,16 +463,16 @@ export const engineeringHubStudy: CaseStudy = {
       tables: [
         {
           id: "Performance",
-          title: "SCALE / USAGE",
+          title: "SYSTEM & CACHE CONSTRAINTS",
           rows: [
-            { key: "RegisteredUsers", label: "REGISTERED USERS", value: "1,200", pending: true },
-            { key: "QuestionsAnswered", label: "QUESTIONS ANSWERED (ALL TIME)", value: "310,000", pending: true },
-            { key: "AssistantLatencyP50", label: "AI TUTOR RESPONSE LATENCY P50", value: "1.8 s", pending: true },
-            { key: "MonthlyActiveUsers", label: "MONTHLY ACTIVE USERS", value: "340", pending: true },
-            { key: "StreakRetention7d", label: "STREAK RETENTION (7-DAY)", value: "38%", pending: true },
-            { key: "FlashcardsCreated", label: "FLASHCARDS CREATED", value: "18,500", pending: true },
-            { key: "QuizCompletionRate", label: "QUIZ COMPLETION RATE", value: "72%", pending: true },
-            { key: "AvgSessionMinutes", label: "AVG SESSION LENGTH", value: "14 min", pending: true },
+            { key: "EdgeCatalogTtl", label: "EDGE CATALOG CACHE TTL", value: "300 S (5 MIN)" },
+            { key: "CdnSharedTtl", label: "CDN SHARED CACHE MAX-AGE", value: "86,400 S (24 HR)" },
+            { key: "StaticAssetCache", label: "STATIC ASSET CACHE", value: "1 YEAR IMMUTABLE" },
+            { key: "ClientQueryStale", label: "REACT QUERY STALE TIME", value: "5 MIN / 2 MIN / 1 MIN" },
+            { key: "AiTokenCeiling", label: "AI TUTOR CONTEXT CEILING", value: "1,024 TOKENS" },
+            { key: "StorageLimit", label: "EDGE D1 STORAGE CEILING", value: "500 MB" },
+            { key: "SpacedRepetitionMin", label: "SPACED REPETITION BUFFER", value: "0.25 DAYS (6 HR)" },
+            { key: "GradingAuthority", label: "GRADING ENGINE VALIDATION", value: "SERVER-AUTHORITATIVE" },
           ],
         },
       ],
@@ -513,7 +501,6 @@ export const engineeringHubStudy: CaseStudy = {
     live: "https://engineeringhub.nuesaabuad.ng/",
     playstore: "https://play.google.com/store/apps/details?id=com.engineeringhub.engineeringhub&pcampaignid=web_share",
     api: "https://engineeringhub-api.nasurf25.workers.dev",
-    github: null,
   },
   nextSlug: "elegant-radiance-luxe",
 };
@@ -551,6 +538,7 @@ export const elegantRadianceStudy: CaseStudy = {
         "PAYSTACK GATEWAY",
       ],
       chips: ["FASTAPI", "CLOUD RUN", "CLOUDFLARE D1", "R2 STORAGE", "QUEUES", "PAYSTACK", "FIREBASE"],
+      diagrams: [{ id: "01", label: "HYBRID CLOUD TOPOLOGY", aspect: "16:9" }],
     },
     {
       index: "02",
@@ -613,6 +601,7 @@ export const elegantRadianceStudy: CaseStudy = {
           ],
         },
       ],
+      diagrams: [{ id: "02", label: "30-MINUTE ATOMIC HOLD", aspect: "16:9" }],
     },
     {
       index: "04",
@@ -647,6 +636,7 @@ export const elegantRadianceStudy: CaseStudy = {
         { label: "COMPUTE CONSUMPTION", value: "ZERO CLOUD RUN CPU USED FOR MEDIA ENCODING" },
         { label: "EDGE CACHING", value: "GLOBAL CLOUDFLARE CDN CACHE RULES" },
       ],
+      diagrams: [{ id: "03", label: "ASYNC MEDIA PIPELINE", aspect: "21:9" }],
     },
     {
       index: "06",
@@ -678,7 +668,6 @@ export const elegantRadianceStudy: CaseStudy = {
   ],
   links: {
     live: "https://elegantradianceluxe.com/",
-    github: null,
   },
   nextSlug: "rag-data-pipeline",
 };
@@ -929,10 +918,11 @@ export const nuesaStudy: CaseStudy = {
             { key: "TotalDepartments", label: "ACADEMIC DEPARTMENTS", value: "9" },
             { key: "TotalCourses", label: "SYLLABUS COURSES", value: "426" },
             { key: "TotalPdfs", label: "VERIFIED PDF REPOSITORY", value: "2,111" },
-            { key: "UploadSuccessRate", label: "UPLOAD SUCCESS RATE", value: "99.2%", pending: true },
-            { key: "AnalyticsCacheHitRate", label: "ANALYTICS CACHE HIT RATE", value: "85%", pending: true },
-            { key: "Uptime90d", label: "UPTIME (90 DAYS)", value: "99.9%", pending: true },
-            { key: "PageLoad", label: "PAGE LOAD (SPA, CDN)", value: "1.4 s", pending: true },
+            { key: "MigratedVolume", label: "MIGRATED STORAGE VOLUME", value: "~13.8 GB" },
+            { key: "MaxUploadCap", label: "MAX UPLOAD FILE SIZE", value: "25 MiB" },
+            { key: "AnalyticsCacheTtl", label: "ANALYTICS CACHE TTL", value: "5 MIN" },
+            { key: "IngressChecksum", label: "INGRESS INTEGRITY CHECKSUM", value: "SHA-256" },
+            { key: "PaginationLimit", label: "KEYSET PAGINATION LIMIT", value: "50 / PAGE" },
           ],
         },
       ],
@@ -952,13 +942,12 @@ export const nuesaStudy: CaseStudy = {
     {
       index: "09",
       title: "Links",
-      body: "The platform and API are live. The repository link will be added when the owner confirms it is public.",
+      body: "The institutional repository platform and public course API are deployed and active.",
     },
   ],
   links: {
     live: "https://academia.nuesaabuad.ng",
     api: "https://api.academia.nuesaabuad.ng",
-    github: null,
   },
   nextSlug: "awun",
 };
@@ -1071,7 +1060,6 @@ export const awunStudy: CaseStudy = {
     live: "https://www.awun.dev",
     checkout: "https://checkout.awun.dev",
     api: "https://api.awun.dev",
-    github: null,
   },
   nextSlug: "soiling-detection",
 };

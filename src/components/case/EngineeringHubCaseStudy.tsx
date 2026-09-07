@@ -257,9 +257,16 @@ export default function EngineeringHubCaseStudy() {
                     API →
                   </a>
                 )}
-                <span className="inline-flex items-center gap-2 py-2 font-mono text-sm uppercase tracking-[0.14em] text-muted">
-                  GitHub [URL PENDING]
-                </span>
+                {study.links.github && (
+                  <a
+                    href={study.links.github}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="relative inline-flex items-center gap-2 py-2 font-mono text-sm uppercase tracking-[0.14em] text-case-accent-deep link-underline after:absolute after:inset-x-0 after:-inset-y-[10px] after:content-['']"
+                  >
+                    GitHub →
+                  </a>
+                )}
               </div>
             </div>
           </section>

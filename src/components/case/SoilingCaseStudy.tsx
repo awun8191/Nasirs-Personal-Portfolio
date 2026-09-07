@@ -1,5 +1,5 @@
 import CaseShell, { HeroDiagram } from "./CaseShell";
-import { Section, HeroMetric, PendingChip } from "./primitives";
+import { Section, HeroMetric } from "./primitives";
 import { soilingStudy } from "../../data/caseStudies";
 
 // ---------------------------------------------------------------------------
@@ -89,8 +89,7 @@ export default function SoilingCaseStudy() {
                   </a>
                 ) : (
                   <span className="inline-flex items-center gap-2 py-2 font-mono text-xs uppercase tracking-[0.14em] text-muted">
-                    [URL PENDING]
-                    <PendingChip />
+                    Academic Report Available Upon Request
                   </span>
                 )}
               </div>

@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 798 342" width="100%" preserveAspectRatio="xMidYMid meet" role="img" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" style="font-family:'JetBrains Mono',ui-monospace,monospace">
+  <title>NUESA Academia - Upload Pipeline</title>
+  <desc>Ten-step upload pipeline: origin check, size precheck under 25 MiB, idempotency, Firebase auth verification, magic byte validation, ingress SHA-256, course-scoped dedup, R2 put, D1 commit with audit log, and analytics cache bust.</desc>
+  <defs>
+    <marker id="chev-green" markerWidth="10" markerHeight="10" refX="7" refY="5" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M1.5 1.5 L7 5 L1.5 8.5" fill="none" stroke="#047857" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="798" height="342" fill="#FFFFFF"/>
+  <text x="28" y="34" font-size="10" fill="#059669" font-weight="600">NUESA · 04 / UPLOAD PIPELINE (10-STEP EDGE GUARD)</text>
+
+  <!-- Row 1: Steps 1 - 5 -->
+  <!-- Step 1 -->
+  <rect x="28" y="66" width="134" height="66" rx="8" fill="#ECFDF5" stroke="#047857" stroke-width="1.25"/>
+  <text x="95" y="90" font-size="10" fill="#064E3B" text-anchor="middle" font-weight="600">01. ORIGIN CHECK</text>
+  <text x="95" y="108" font-size="8" fill="#065F46" text-anchor="middle">CORS / Faculty Host</text>
+  <text x="95" y="122" font-size="8" fill="#059669" text-anchor="middle">Browser Gate</text>
+
+  <!-- Step 2 -->
+  <rect x="180" y="66" width="134" height="66" rx="8" fill="#ECFDF5" stroke="#047857" stroke-width="1.25"/>
+  <text x="247" y="90" font-size="10" fill="#064E3B" text-anchor="middle" font-weight="600">02. SIZE PRECHECK</text>
+  <text x="247" y="108" font-size="8" fill="#065F46" text-anchor="middle">Content-Length</text>
+  <text x="247" y="122" font-size="8" fill="#059669" text-anchor="middle">≤ 25 MiB Cap</text>
+
+  <!-- Step 3 -->
+  <rect x="332" y="66" width="134" height="66" rx="8" fill="#ECFDF5" stroke="#047857" stroke-width="1.25"/>
+  <text x="399" y="90" font-size="10" fill="#064E3B" text-anchor="middle" font-weight="600">03. IDEMPOTENCY</text>
+  <text x="399" y="108" font-size="8" fill="#065F46" text-anchor="middle">X-Idempotency-Key</text>
+  <text x="399" y="122" font-size="8" fill="#059669" text-anchor="middle">Prevents Replay</text>
+
+  <!-- Step 4 -->
+  <rect x="484" y="66" width="134" height="66" rx="8" fill="#ECFDF5" stroke="#047857" stroke-width="1.25"/>
+  <text x="551" y="90" font-size="10" fill="#064E3B" text-anchor="middle" font-weight="600">04. FIREBASE AUTH</text>
+  <text x="551" y="108" font-size="8" fill="#065F46" text-anchor="middle">Bearer ID Token</text>
+  <text x="551" y="122" font-size="8" fill="#059669" text-anchor="middle">Identity Verify</text>
+
+  <!-- Step 5 -->
+  <rect x="636" y="66" width="134" height="66" rx="8" fill="#ECFDF5" stroke="#047857" stroke-width="1.25"/>
+  <text x="703" y="90" font-size="10" fill="#064E3B" text-anchor="middle" font-weight="600">05. MAGIC BYTES</text>
+  <text x="703" y="108" font-size="8" fill="#065F46" text-anchor="middle">Header: %PDF-</text>
+  <text x="703" y="122" font-size="8" fill="#059669" text-anchor="middle">MIME Validation</text>
+
+  <!-- Connectors Row 1 -->
+  <path d="M162 99 L180 99" fill="none" stroke="#047857" stroke-width="1.25" marker-end="url(#chev-green)"/>
+  <path d="M314 99 L332 99" fill="none" stroke="#047857" stroke-width="1.25" marker-end="url(#chev-green)"/>
+  <path d="M466 99 L484 99" fill="none" stroke="#047857" stroke-width="1.25" marker-end="url(#chev-green)"/>
+  <path d="M618 99 L636 99" fill="none" stroke="#047857" stroke-width="1.25" marker-end="url(#chev-green)"/>
+
+  <!-- Transition Row 1 to Row 2 -->
+  <path d="M703 132 L703 162 Q703 174 691 174 L107 174 Q95 174 95 186 L95 204" fill="none" stroke="#047857" stroke-width="1.25" marker-end="url(#chev-green)"/>
+
+  <!-- Row 2: Steps 6 - 10 -->
+  <!-- Step 6 -->
+  <rect x="28" y="204" width="134" height="66" rx="8" fill="#047857" stroke="#065F46" stroke-width="1.25"/>
+  <text x="95" y="228" font-size="10" fill="#FFFFFF" text-anchor="middle" font-weight="600">06. SHA-256 HASH</text>
+  <text x="95" y="246" font-size="8" fill="#A7F3D0" text-anchor="middle">Ingress Stream</text>
+  <text x="95" y="260" font-size="8" fill="#A7F3D0" text-anchor="middle">Compute Digest</text>
+
+  <!-- Step 7 -->
+  <rect x="180" y="204" width="134" height="66" rx="8" fill="#047857" stroke="#065F46" stroke-width="1.25"/>
+  <text x="247" y="228" font-size="10" fill="#FFFFFF" text-anchor="middle" font-weight="600">07. COURSE DEDUP</text>
+  <text x="247" y="246" font-size="8" fill="#A7F3D0" text-anchor="middle">D1 Hash Query</text>
+  <text x="247" y="260" font-size="8" fill="#A7F3D0" text-anchor="middle">Reject Duplicate</text>
+
+  <!-- Step 8 -->
+  <rect x="332" y="204" width="134" height="66" rx="8" fill="#047857" stroke="#065F46" stroke-width="1.25"/>
+  <text x="399" y="228" font-size="10" fill="#FFFFFF" text-anchor="middle" font-weight="600">08. R2 OBJECT PUT</text>
+  <text x="399" y="246" font-size="8" fill="#A7F3D0" text-anchor="middle">Immutable Store</text>
+  <text x="399" y="260" font-size="8" fill="#A7F3D0" text-anchor="middle">Key: UUID.pdf</text>
+
+  <!-- Step 9 -->
+  <rect x="484" y="204" width="134" height="66" rx="8" fill="#047857" stroke="#065F46" stroke-width="1.25"/>
+  <text x="551" y="228" font-size="10" fill="#FFFFFF" text-anchor="middle" font-weight="600">09. D1 PUBLISH</text>
+  <text x="551" y="246" font-size="8" fill="#A7F3D0" text-anchor="middle">Insert Row + Audit</text>
+  <text x="551" y="260" font-size="8" fill="#A7F3D0" text-anchor="middle">Status: Published</text>
+
+  <!-- Step 10 -->
+  <rect x="636" y="204" width="134" height="66" rx="8" fill="#ECFDF5" stroke="#047857" stroke-width="1.25"/>
+  <text x="703" y="228" font-size="10" fill="#064E3B" text-anchor="middle" font-weight="600">10. CACHE BUST</text>
+  <text x="703" y="246" font-size="8" fill="#065F46" text-anchor="middle">Cache API Purge</text>
+  <text x="703" y="260" font-size="8" fill="#059669" text-anchor="middle">Invalidate 5-min</text>
+
+  <!-- Connectors Row 2 -->
+  <path d="M162 237 L180 237" fill="none" stroke="#047857" stroke-width="1.25" marker-end="url(#chev-green)"/>
+  <path d="M314 237 L332 237" fill="none" stroke="#047857" stroke-width="1.25" marker-end="url(#chev-green)"/>
+  <path d="M466 237 L484 237" fill="none" stroke="#047857" stroke-width="1.25" marker-end="url(#chev-green)"/>
+  <path d="M618 237 L636 237" fill="none" stroke="#047857" stroke-width="1.25" marker-end="url(#chev-green)"/>
+
+  <text x="399" y="316" font-size="10" fill="#065F46" text-anchor="middle">Zero-trust ingestion pipeline: every PDF is authenticated, verified, hashed, and committed atomically at the edge.</text>
+</svg>

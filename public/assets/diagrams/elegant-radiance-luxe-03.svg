@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 798 342" width="100%" preserveAspectRatio="xMidYMid meet" role="img" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" style="font-family:'JetBrains Mono',ui-monospace,monospace">
+  <title>Elegant Radiance Luxe - Asynchronous Media Pipeline</title>
+  <desc>Two-tier asynchronous media pipeline: client uploads directly to R2 using presigned URLs, bypassing Cloud Run; Cloudflare Queues trigger background Workers that encode WebP and thumbnails, writing to production R2 and D1.</desc>
+  <defs>
+    <marker id="chev-rose" markerWidth="10" markerHeight="10" refX="7" refY="5" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M1.5 1.5 L7 5 L1.5 8.5" fill="none" stroke="#BE123C" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="798" height="342" fill="#FFFFFF"/>
+  <text x="28" y="34" font-size="10" fill="#BE123C" font-weight="600">ERL · 03 / TWO-TIER ASYNC MEDIA PIPELINE (ZERO CLOUD RUN COMPUTE)</text>
+
+  <!-- Step 1 -->
+  <rect x="28" y="80" width="112" height="96" rx="8" fill="#FFF1F2" stroke="#BE123C" stroke-width="1.25"/>
+  <text x="84" y="106" font-size="10" fill="#881337" text-anchor="middle" font-weight="600">ADMIN CLIENT</text>
+  <text x="84" y="124" font-size="8" fill="#9F1239" text-anchor="middle">MEDIA UPLOAD</text>
+  <line x1="40" y1="134" x2="128" y2="134" stroke="#BE123C" stroke-width="0.75" stroke-opacity="0.3"/>
+  <text x="84" y="152" font-size="8" fill="#BE123C" text-anchor="middle">Product Images</text>
+  <text x="84" y="166" font-size="8" fill="#9F1239" text-anchor="middle">High-Res</text>
+
+  <!-- Step 2 -->
+  <rect x="156" y="80" width="112" height="96" rx="8" fill="#FFFFFF" stroke="#BE123C" stroke-width="1.25"/>
+  <text x="212" y="106" font-size="10" fill="#881337" text-anchor="middle" font-weight="600">FASTAPI</text>
+  <text x="212" y="124" font-size="8" fill="#9F1239" text-anchor="middle">PRESIGNED URL</text>
+  <line x1="168" y1="134" x2="256" y2="134" stroke="#BE123C" stroke-width="0.75" stroke-opacity="0.3"/>
+  <text x="212" y="152" font-size="8" fill="#881337" text-anchor="middle">Issues signed put</text>
+  <text x="212" y="166" font-size="8" fill="#BE123C" text-anchor="middle">Bypasses CPU</text>
+
+  <!-- Step 3 -->
+  <rect x="284" y="80" width="112" height="96" rx="8" fill="#FFF1F2" stroke="#BE123C" stroke-width="1.25"/>
+  <text x="340" y="106" font-size="10" fill="#881337" text-anchor="middle" font-weight="600">R2 STAGING</text>
+  <text x="340" y="124" font-size="8" fill="#9F1239" text-anchor="middle">INGRESS BUCKET</text>
+  <line x1="296" y1="134" x2="384" y2="134" stroke="#BE123C" stroke-width="0.75" stroke-opacity="0.3"/>
+  <text x="340" y="152" font-size="8" fill="#881337" text-anchor="middle">Direct Edge Put</text>
+  <text x="340" y="166" font-size="8" fill="#BE123C" text-anchor="middle">Zero Egress</text>
+
+  <!-- Step 4 -->
+  <rect x="412" y="80" width="112" height="96" rx="8" fill="#BE123C" stroke="#9F1239" stroke-width="1.25"/>
+  <text x="468" y="106" font-size="10" fill="#FFFFFF" text-anchor="middle" font-weight="600">CF QUEUES</text>
+  <text x="468" y="124" font-size="8" fill="#FECDD3" text-anchor="middle">ASYNC EVENT</text>
+  <line x1="424" y1="134" x2="512" y2="134" stroke="#FECDD3" stroke-width="0.75" stroke-opacity="0.4"/>
+  <text x="468" y="152" font-size="8" fill="#FFFFFF" text-anchor="middle">Job payload</text>
+  <text x="468" y="166" font-size="8" fill="#FECDD3" text-anchor="middle">Retry backoff</text>
+
+  <!-- Step 5 -->
+  <rect x="540" y="80" width="112" height="96" rx="8" fill="#BE123C" stroke="#9F1239" stroke-width="1.25"/>
+  <text x="596" y="106" font-size="10" fill="#FFFFFF" text-anchor="middle" font-weight="600">WORKER TRANSFORM</text>
+  <text x="596" y="124" font-size="8" fill="#FECDD3" text-anchor="middle">WEBP &amp; THUMBS</text>
+  <line x1="552" y1="134" x2="640" y2="134" stroke="#FECDD3" stroke-width="0.75" stroke-opacity="0.4"/>
+  <text x="596" y="152" font-size="8" fill="#FFFFFF" text-anchor="middle">Resize &amp; compress</text>
+  <text x="596" y="166" font-size="8" fill="#FECDD3" text-anchor="middle">WebP encoding</text>
+
+  <!-- Step 6 -->
+  <rect x="668" y="80" width="102" height="96" rx="8" fill="#FFF1F2" stroke="#BE123C" stroke-width="1.25"/>
+  <text x="719" y="106" font-size="10" fill="#881337" text-anchor="middle" font-weight="600">R2 PROD + D1</text>
+  <text x="719" y="124" font-size="8" fill="#9F1239" text-anchor="middle">COMMITTED</text>
+  <line x1="680" y1="134" x2="758" y2="134" stroke="#BE123C" stroke-width="0.75" stroke-opacity="0.3"/>
+  <text x="719" y="152" font-size="8" fill="#881337" text-anchor="middle">Public CDN</text>
+  <text x="719" y="166" font-size="8" fill="#BE123C" text-anchor="middle">Catalog linked</text>
+
+  <!-- Connectors -->
+  <path d="M140 128 L156 128" fill="none" stroke="#BE123C" stroke-width="1.25" marker-end="url(#chev-rose)"/>
+  <path d="M268 128 L284 128" fill="none" stroke="#BE123C" stroke-width="1.25" marker-end="url(#chev-rose)"/>
+  <path d="M396 128 L412 128" fill="none" stroke="#BE123C" stroke-width="1.25" marker-end="url(#chev-rose)"/>
+  <path d="M524 128 L540 128" fill="none" stroke="#BE123C" stroke-width="1.25" marker-end="url(#chev-rose)"/>
+  <path d="M652 128 L668 128" fill="none" stroke="#BE123C" stroke-width="1.25" marker-end="url(#chev-rose)"/>
+
+  <!-- Architecture summary box -->
+  <rect x="28" y="210" width="742" height="64" rx="8" fill="#FFF1F2" stroke="#BE123C" stroke-width="1"/>
+  <text x="50" y="238" font-size="10" fill="#881337" font-weight="600">ZERO COMPUTE OVERHEAD:</text>
+  <text x="50" y="258" font-size="9" fill="#9F1239">Cloud Run never buffers or encodes binary image data. The entire media pipeline runs serverless across Cloudflare Queues and R2.</text>
+
+  <text x="399" y="316" font-size="10" fill="#881337" text-anchor="middle">Presigned direct uploads + async Queue Workers preserve zero-scale Cloud Run economics.</text>
+</svg>

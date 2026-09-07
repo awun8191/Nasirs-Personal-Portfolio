@@ -45,6 +45,7 @@ export default function NuesaCaseStudy() {
           <Section
             key="01"
             section={study.sections[0]}
+            studySlug={study.slug}
             layout={{ indexInline: true, titleClassName: "text-2xl md:text-3xl" }}
           />
 
@@ -92,9 +93,6 @@ export default function NuesaCaseStudy() {
                     API →
                   </a>
                 )}
-                <span className="inline-flex items-center gap-2 py-2 font-mono text-sm uppercase tracking-[0.14em] text-muted">
-                  GitHub [URL PENDING]
-                </span>
               </div>
             </div>
           </section>

@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" preserveAspectRatio="xMidYMid meet" role="img" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" style="font-family:'JetBrains Mono',ui-monospace,monospace">
+  <title>NUESA Academia - System Architecture</title>
+  <desc>Architecture: React SPA connects to public FastAPI boundary, forwarding requests via signed HMAC-SHA256 to a private TypeScript Data Worker that manages Cloudflare D1 SQL and Cloudflare R2 storage, verified by Firebase Auth.</desc>
+  <defs>
+    <marker id="chev-green" markerWidth="12" markerHeight="12" refX="8" refY="6" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M2 2 L9 6 L2 10" fill="none" stroke="#047857" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="800" height="450" fill="#FFFFFF"/>
+  <text x="28" y="36" font-size="10" fill="#059669" font-weight="600">NUESA · 01 / SYSTEM ARCHITECTURE</text>
+
+  <!-- React Client -->
+  <rect x="28" y="60" width="168" height="280" rx="8" fill="#ECFDF5" stroke="#047857" stroke-width="1.25"/>
+  <text x="112" y="88" font-size="13" fill="#064E3B" text-anchor="middle" font-weight="600">REACT SPA</text>
+  <text x="112" y="106" font-size="9" fill="#065F46" text-anchor="middle">FACULTY PORTAL</text>
+  <line x1="44" y1="120" x2="180" y2="120" stroke="#047857" stroke-width="0.75" stroke-opacity="0.4"/>
+  <text x="44" y="142" font-size="9" fill="#064E3B" font-weight="600">4 CORE SURFACES:</text>
+  <text x="44" y="162" font-size="9" fill="#065F46">• Full Syllabus Search</text>
+  <text x="44" y="180" font-size="9" fill="#065F46">• Past Questions Mode</text>
+  <text x="44" y="198" font-size="9" fill="#065F46">• Edge Direct Upload</text>
+  <text x="44" y="216" font-size="9" fill="#065F46">• Coverage Analytics</text>
+  <rect x="44" y="240" width="136" height="48" rx="6" fill="#FFFFFF" stroke="#047857" stroke-width="1"/>
+  <text x="112" y="260" font-size="9" fill="#064E3B" text-anchor="middle" font-weight="600">FIREBASE AUTH</text>
+  <text x="112" y="276" font-size="8" fill="#065F46" text-anchor="middle">ID Token Bearer</text>
+
+  <!-- Public FastAPI Boundary -->
+  <rect x="248" y="110" width="168" height="150" rx="8" fill="#047857" stroke="#065F46" stroke-width="1.25"/>
+  <text x="332" y="138" font-size="13" fill="#FFFFFF" text-anchor="middle" font-weight="600">FASTAPI BOUNDARY</text>
+  <text x="332" y="156" font-size="9" fill="#A7F3D0" text-anchor="middle">DUAL RUNTIME ASGI</text>
+  <line x1="264" y1="170" x2="400" y2="170" stroke="#A7F3D0" stroke-width="0.75" stroke-opacity="0.4"/>
+  <text x="264" y="190" font-size="9" fill="#FFFFFF">• Auth Token Verify</text>
+  <text x="264" y="208" font-size="9" fill="#FFFFFF">• Query Sanitation</text>
+  <text x="264" y="226" font-size="9" fill="#FFFFFF">• HMAC Signer</text>
+  <text x="264" y="244" font-size="8" fill="#A7F3D0">Uvicorn / Python Worker</text>
+
+  <!-- Private TypeScript Data Worker -->
+  <rect x="468" y="90" width="304" height="96" rx="8" fill="#047857" stroke="#065F46" stroke-width="1.25"/>
+  <text x="620" y="118" font-size="13" fill="#FFFFFF" text-anchor="middle" font-weight="600">TYPESCRIPT DATA WORKER</text>
+  <text x="620" y="136" font-size="9" fill="#A7F3D0" text-anchor="middle">PRIVATE EDGE SERVICE (CLOUDFLARE)</text>
+  <line x1="484" y1="146" x2="756" y2="146" stroke="#A7F3D0" stroke-width="0.75" stroke-opacity="0.4"/>
+  <text x="484" y="166" font-size="9" fill="#FFFFFF">HMAC-SHA256 Signed Gateway · Zero Public Direct SQL</text>
+
+  <!-- Storage Tier: D1 + R2 + Cache API -->
+  <rect x="468" y="210" width="144" height="130" rx="8" fill="#ECFDF5" stroke="#047857" stroke-width="1.25"/>
+  <text x="540" y="234" font-size="12" fill="#064E3B" text-anchor="middle" font-weight="600">CLOUDFLARE D1</text>
+  <text x="540" y="250" font-size="9" fill="#065F46" text-anchor="middle">RELATIONAL SQL</text>
+  <line x1="480" y1="262" x2="600" y2="262" stroke="#047857" stroke-width="0.75" stroke-opacity="0.3"/>
+  <text x="480" y="282" font-size="8" fill="#064E3B">• 9 Departments</text>
+  <text x="480" y="298" font-size="8" fill="#064E3B">• 426 Courses</text>
+  <text x="480" y="314" font-size="8" fill="#064E3B">• Published Records</text>
+  <text x="480" y="330" font-size="8" fill="#064E3B">• Keyset Pagination</text>
+
+  <rect x="628" y="210" width="144" height="130" rx="8" fill="#ECFDF5" stroke="#047857" stroke-width="1.25"/>
+  <text x="700" y="234" font-size="12" fill="#064E3B" text-anchor="middle" font-weight="600">CLOUDFLARE R2</text>
+  <text x="700" y="250" font-size="9" fill="#065F46" text-anchor="middle">OBJECT STORAGE</text>
+  <line x1="640" y1="262" x2="760" y2="262" stroke="#047857" stroke-width="0.75" stroke-opacity="0.3"/>
+  <text x="640" y="282" font-size="8" fill="#064E3B">• 2,111 PDF Objects</text>
+  <text x="640" y="298" font-size="8" fill="#064E3B">• ~13.8 GB Volume</text>
+  <text x="640" y="314" font-size="8" fill="#064E3B">• SHA-256 Dedup</text>
+  <text x="640" y="330" font-size="8" fill="#064E3B">• Zero Egress Fees</text>
+
+  <!-- Connectors -->
+  <path d="M196 185 L248 185" fill="none" stroke="#047857" stroke-width="1.25" marker-end="url(#chev-green)"/>
+  <text x="222" y="177" font-size="8" fill="#047857" text-anchor="middle">HTTPS</text>
+
+  <path d="M416 138 L468 138" fill="none" stroke="#047857" stroke-width="1.25" marker-end="url(#chev-green)"/>
+  <text x="442" y="130" font-size="8" fill="#047857" text-anchor="middle">SIGNED</text>
+
+  <path d="M540 186 L540 210" fill="none" stroke="#047857" stroke-width="1.25" marker-end="url(#chev-green)"/>
+  <path d="M700 186 L700 210" fill="none" stroke="#047857" stroke-width="1.25" marker-end="url(#chev-green)"/>
+
+  <!-- Upload Direct Path -->
+  <path d="M196 205 Q 332 280 468 155" fill="none" stroke="#047857" stroke-width="1.25" stroke-dasharray="4 4" marker-end="url(#chev-green)"/>
+  <text x="310" y="295" font-size="8" fill="#059669" text-anchor="middle">Direct-to-Edge Upload (≤25 MiB)</text>
+
+  <text x="400" y="420" font-size="10" fill="#065F46" text-anchor="middle">FastAPI orchestrates public API routes and signs requests; private TypeScript Worker isolates D1 and R2; zero egress costs.</text>
+</svg>

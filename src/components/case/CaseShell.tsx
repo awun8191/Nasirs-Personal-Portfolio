@@ -109,7 +109,7 @@ export default function CaseShell({
   const next = CASE_STUDIES[study.nextSlug];
 
   useEffect(() => {
-    document.title = `${study.title} — Dauda Nasir | Case Study`;
+    document.title = `${study.title} | Dauda Nasir | Case Study`;
     const descMeta = document.querySelector('meta[name="description"]');
     if (descMeta) descMeta.setAttribute("content", study.description);
 

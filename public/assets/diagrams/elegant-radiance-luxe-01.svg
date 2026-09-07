@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" preserveAspectRatio="xMidYMid meet" role="img" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" style="font-family:'JetBrains Mono',ui-monospace,monospace">
+  <title>Elegant Radiance Luxe - Hybrid Cloud Topology</title>
+  <desc>Hybrid cloud architecture: React storefront on Cloudflare Pages calls FastAPI on Google Cloud Run with zero-scale economics, bridging via HMAC-SHA256 signed RPC to an internal TypeScript Data Worker that manages Cloudflare D1 SQL and R2 storage, verified with Paystack.</desc>
+  <defs>
+    <marker id="chev-rose" markerWidth="12" markerHeight="12" refX="8" refY="6" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M2 2 L9 6 L2 10" fill="none" stroke="#BE123C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="800" height="450" fill="#FFFFFF"/>
+  <text x="28" y="36" font-size="10" fill="#BE123C" font-weight="600">ERL · 01 / HYBRID CLOUD TOPOLOGY ($0.00 / MO BASELINE)</text>
+
+  <!-- Storefront: Cloudflare Pages -->
+  <rect x="28" y="66" width="160" height="260" rx="8" fill="#FFF1F2" stroke="#BE123C" stroke-width="1.25"/>
+  <text x="108" y="94" font-size="12" fill="#881337" text-anchor="middle" font-weight="600">STOREFRONT</text>
+  <text x="108" y="112" font-size="9" fill="#9F1239" text-anchor="middle">CLOUDFLARE PAGES</text>
+  <line x1="44" y1="126" x2="172" y2="126" stroke="#BE123C" stroke-width="0.75" stroke-opacity="0.3"/>
+  <text x="44" y="148" font-size="9" fill="#881337">• React 19 Client</text>
+  <text x="44" y="168" font-size="9" fill="#881337">• Edge Global CDN</text>
+  <text x="44" y="188" font-size="9" fill="#881337">• Guest Checkout</text>
+  <text x="44" y="208" font-size="9" fill="#881337">• Paystack Pop/Redirect</text>
+  <rect x="44" y="234" width="128" height="66" rx="6" fill="#FFFFFF" stroke="#BE123C" stroke-width="1"/>
+  <text x="108" y="254" font-size="9" fill="#881337" text-anchor="middle" font-weight="600">STATELESS UI</text>
+  <text x="108" y="270" font-size="8" fill="#9F1239" text-anchor="middle">Local Cart State</text>
+  <text x="108" y="286" font-size="8" fill="#BE123C" text-anchor="middle">No Guest DB Tracking</text>
+
+  <!-- Core Backend: Cloud Run -->
+  <rect x="238" y="100" width="180" height="190" rx="8" fill="#BE123C" stroke="#9F1239" stroke-width="1.25"/>
+  <text x="328" y="128" font-size="13" fill="#FFFFFF" text-anchor="middle" font-weight="600">FASTAPI / CLOUD RUN</text>
+  <text x="328" y="146" font-size="9" fill="#FECDD3" text-anchor="middle">GOOGLE CLOUD PLATFORM</text>
+  <line x1="254" y1="158" x2="402" y2="158" stroke="#FECDD3" stroke-width="0.75" stroke-opacity="0.4"/>
+  <text x="254" y="180" font-size="9" fill="#FFFFFF">• Scale-to-Zero ($0.00)</text>
+  <text x="254" y="200" font-size="9" fill="#FFFFFF">• Cart &amp; Hold Policy</text>
+  <text x="254" y="220" font-size="9" fill="#FFFFFF">• HMAC-SHA256 Signer</text>
+  <text x="254" y="240" font-size="9" fill="#FFFFFF">• Paystack Verification</text>
+  <text x="254" y="260" font-size="9" fill="#FFFFFF">• Webhook Idempotency</text>
+  <text x="254" y="278" font-size="8" fill="#FECDD3">Python 3.11 Container</text>
+
+  <!-- TypeScript Data Worker -->
+  <rect x="470" y="80" width="302" height="90" rx="8" fill="#BE123C" stroke="#9F1239" stroke-width="1.25"/>
+  <text x="621" y="108" font-size="12" fill="#FFFFFF" text-anchor="middle" font-weight="600">SIGNED DATA WORKER (TYPESCRIPT)</text>
+  <text x="621" y="126" font-size="9" fill="#FECDD3" text-anchor="middle">CLOUDFLARE EDGE RPC BOUNDARY</text>
+  <line x1="486" y1="136" x2="756" y2="136" stroke="#FECDD3" stroke-width="0.75" stroke-opacity="0.4"/>
+  <text x="486" y="156" font-size="8" fill="#FFFFFF">Coarse-Grained Domain Operations · Replay Nonces · Zero Raw SQL HTTP</text>
+
+  <!-- Storage: Cloudflare D1 & R2 -->
+  <rect x="470" y="196" width="144" height="130" rx="8" fill="#FFF1F2" stroke="#BE123C" stroke-width="1.25"/>
+  <text x="542" y="222" font-size="12" fill="#881337" text-anchor="middle" font-weight="600">CLOUDFLARE D1</text>
+  <text x="542" y="238" font-size="9" fill="#9F1239" text-anchor="middle">SQLITE EDGE DB</text>
+  <line x1="484" y1="248" x2="600" y2="248" stroke="#BE123C" stroke-width="0.75" stroke-opacity="0.3"/>
+  <text x="484" y="268" font-size="8" fill="#881337">• Products &amp; Variants</text>
+  <text x="484" y="284" font-size="8" fill="#881337">• Atomic 30-Min Holds</text>
+  <text x="484" y="300" font-size="8" fill="#881337">• Order Ledger</text>
+  <text x="484" y="316" font-size="8" fill="#BE123C">Native Cloudflare Bind</text>
+
+  <rect x="628" y="196" width="144" height="130" rx="8" fill="#FFF1F2" stroke="#BE123C" stroke-width="1.25"/>
+  <text x="700" y="222" font-size="12" fill="#881337" text-anchor="middle" font-weight="600">CLOUDFLARE R2</text>
+  <text x="700" y="238" font-size="9" fill="#9F1239" text-anchor="middle">OBJECT STORAGE</text>
+  <line x1="642" y1="248" x2="758" y2="248" stroke="#BE123C" stroke-width="0.75" stroke-opacity="0.3"/>
+  <text x="642" y="268" font-size="8" fill="#881337">• Product Photography</text>
+  <text x="642" y="284" font-size="8" fill="#881337">• Async Queue WebP</text>
+  <text x="642" y="300" font-size="8" fill="#881337">• Zero Egress Pricing</text>
+  <text x="642" y="316" font-size="8" fill="#BE123C">Global Edge Cache</text>
+
+  <!-- Connectors -->
+  <path d="M188 195 L238 195" fill="none" stroke="#BE123C" stroke-width="1.25" marker-end="url(#chev-rose)"/>
+  <text x="213" y="187" font-size="8" fill="#BE123C" text-anchor="middle">API</text>
+
+  <path d="M418 125 L470 125" fill="none" stroke="#BE123C" stroke-width="1.25" marker-end="url(#chev-rose)"/>
+  <text x="444" y="117" font-size="8" fill="#BE123C" text-anchor="middle">SIGNED</text>
+
+  <path d="M542 170 L542 196" fill="none" stroke="#BE123C" stroke-width="1.25" marker-end="url(#chev-rose)"/>
+  <path d="M700 170 L700 196" fill="none" stroke="#BE123C" stroke-width="1.25" marker-end="url(#chev-rose)"/>
+
+  <!-- Paystack Gateway -->
+  <rect x="238" y="324" width="180" height="52" rx="6" fill="#FFF1F2" stroke="#BE123C" stroke-width="1.25"/>
+  <text x="328" y="346" font-size="10" fill="#881337" text-anchor="middle" font-weight="600">PAYSTACK GATEWAY</text>
+  <text x="328" y="362" font-size="8" fill="#9F1239" text-anchor="middle">Webhook HMAC-SHA512 Verification</text>
+  <path d="M328 290 L328 324" fill="none" stroke="#BE123C" stroke-width="1.25" marker-end="url(#chev-rose)"/>
+
+  <text x="400" y="424" font-size="10" fill="#881337" text-anchor="middle">Hybrid topology: compute scales to zero on Cloud Run; signed TypeScript Worker bridges to Cloudflare D1 and R2.</text>
+</svg>

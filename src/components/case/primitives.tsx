@@ -20,6 +20,9 @@ const DIAGRAM_REGISTRY: Record<string, string> = {
   "engineering-hub:04": "/assets/diagrams/engineering-hub-04.svg",
   "engineering-hub:05": "/assets/diagrams/engineering-hub-05.svg",
   "engineering-hub:06": "/assets/diagrams/engineering-hub-06.svg",
+  "elegant-radiance-luxe:01": "/assets/diagrams/elegant-radiance-luxe-01.svg",
+  "elegant-radiance-luxe:02": "/assets/diagrams/elegant-radiance-luxe-02.svg",
+  "elegant-radiance-luxe:03": "/assets/diagrams/elegant-radiance-luxe-03.svg",
   "rag-data-pipeline:01": "/assets/diagrams/rag-data-pipeline-01.svg",
   "rag-data-pipeline:02": "/assets/diagrams/rag-data-pipeline-02.svg",
   "rag-data-pipeline:03": "/assets/diagrams/rag-data-pipeline-03.svg",
@@ -347,9 +350,7 @@ export function Shelf({ items }: { items: string[] }) {
   );
 }
 
-// Link rows (spec 9): each defined link renders as a mono link when the URL
-// exists, or as a [URL PENDING] mono row when null. Only keys present in the
-// study's links object render (live / checkout / api / github / paper).
+// Link rows: each defined link renders as a mono link when the URL exists.
 const LINK_ROWS: { key: keyof CaseLinks; label: string }[] = [
   { key: "live", label: "Live Site" },
   { key: "checkout", label: "Checkout" },
@@ -359,21 +360,20 @@ const LINK_ROWS: { key: keyof CaseLinks; label: string }[] = [
 ];
 
 export function CaseLinks({ links }: { links: CaseLinks }) {
-  const rows = LINK_ROWS.filter((row) => row.key in links);
+  const activeRows = LINK_ROWS.filter((row) => row.key in links && Boolean(links[row.key]));
+  if (activeRows.length === 0) {
+    return (
+      <div className="mt-6">
+        <span className="inline-flex items-center gap-2 py-2 font-mono text-sm uppercase tracking-[0.14em] text-muted">
+          Internal Repository / Available Upon Request
+        </span>
+      </div>
+    );
+  }
   return (
     <div className="mt-6 flex flex-col gap-3 md:flex-row md:flex-wrap md:gap-x-10 md:gap-y-3">
-      {rows.map(({ key, label }) => {
-        const href = links[key];
-        if (!href) {
-          return (
-            <span
-              key={key}
-              className="inline-flex items-center gap-2 py-2 font-mono text-sm uppercase tracking-[0.14em] text-muted"
-            >
-              {label} [URL PENDING]
-            </span>
-          );
-        }
+      {activeRows.map(({ key, label }) => {
+        const href = links[key]!;
         return (
           <a
             key={key}
