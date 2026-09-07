@@ -184,6 +184,27 @@ function ShowcaseRow({
                   </span>
                 </a>
               )}
+              {entry.githubUrl && (
+                <a
+                  href={entry.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`View source code for ${entry.title} on GitHub`}
+                  className={
+                    hasCaseStudy
+                      ? "group/link relative inline-flex items-center justify-center gap-1.5 rounded-sm border border-card-border bg-surface px-4 py-2.5 font-mono text-xs uppercase tracking-[0.14em] text-ink transition-all duration-160 ease-ui hover:border-ink hover:bg-ink/[0.03] active:scale-[0.97]"
+                      : "group/link relative inline-flex items-center justify-center gap-2 rounded-sm bg-ink px-4 py-2.5 font-mono text-xs uppercase tracking-[0.14em] text-white transition-all duration-160 ease-ui hover:bg-accent active:scale-[0.97]"
+                  }
+                >
+                  <span>GitHub</span>
+                  <span
+                    aria-hidden
+                    className="transition-transform duration-200 ease-ui group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5"
+                  >
+                    ↗
+                  </span>
+                </a>
+              )}
               {entry.playStoreUrl && (
                 <a
                   href={entry.playStoreUrl}
@@ -303,6 +324,23 @@ function ChapterCard({ entry, index }: { entry: ProjectEntry; index: number }) {
                   className="group/link relative inline-flex items-center justify-center gap-1.5 rounded-sm border border-card-border bg-surface px-4 py-2.5 font-mono text-xs uppercase tracking-[0.14em] text-ink transition-all duration-160 ease-ui hover:border-ink hover:bg-ink/[0.03] active:scale-[0.97]"
                 >
                   <span>Live Platform</span>
+                  <span
+                    aria-hidden
+                    className="transition-transform duration-200 ease-ui group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5"
+                  >
+                    ↗
+                  </span>
+                </a>
+              )}
+              {entry.githubUrl && (
+                <a
+                  href={entry.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`View source code for ${entry.title} on GitHub`}
+                  className="group/link relative inline-flex items-center justify-center gap-1.5 rounded-sm border border-card-border bg-surface px-4 py-2.5 font-mono text-xs uppercase tracking-[0.14em] text-ink transition-all duration-160 ease-ui hover:border-ink hover:bg-ink/[0.03] active:scale-[0.97]"
+                >
+                  <span>GitHub</span>
                   <span
                     aria-hidden
                     className="transition-transform duration-200 ease-ui group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5"

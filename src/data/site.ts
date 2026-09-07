@@ -118,6 +118,7 @@ export type ProjectEntry = {
   tags: string[];
   href: string;
   liveUrl?: string;
+  githubUrl?: string;
   playStoreUrl?: string;
   screenshots?: string[];
   variant: "small" | "medium" | "large" | "compact" | "chapter";
@@ -201,6 +202,7 @@ export const PROJECTS: ProjectEntry[] = [
     subLine: "2,000+ PDFS INGESTED",
     tags: ["PYTHON", "CHROMADB", "GEMMA 3", "OPENCV"],
     href: "/projects/rag-data-pipeline",
+    githubUrl: "https://github.com/awun8191/CourseGen",
     variant: "compact",
     visual: {
       src: "/projects/rag-pipeline.png",

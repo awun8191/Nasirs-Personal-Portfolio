@@ -805,13 +805,11 @@ export const ragStudy: CaseStudy = {
     {
       index: "09",
       title: "Links",
-      body: "Architecture specifications, ingestion benchmarks, and pipeline documentation.",
+      body: "CourseGen source code, document extraction pipeline, and model orchestration scripts.",
     },
   ],
   links: {
-    live: null,
-    api: null,
-    github: null,
+    github: "https://github.com/awun8191/CourseGen",
   },
   nextSlug: "nuesa-academia",
 };
