@@ -106,6 +106,7 @@ function ShowcaseRow({
   reversed: boolean;
 }) {
   const targetUrl = entry.liveUrl || entry.href;
+  const hasCaseStudy = Boolean(entry.href && !entry.href.startsWith("http"));
 
   return (
     <Reveal>
@@ -114,7 +115,9 @@ function ShowcaseRow({
           {/* Info Column */}
           <div
             className={`flex flex-col ${
-              reversed ? "md:col-span-6 lg:col-span-5 md:order-2" : "md:col-span-6 lg:col-span-6 md:order-1"
+              reversed
+                ? "md:order-2 md:col-span-6 lg:col-span-5"
+                : "md:order-1 md:col-span-6 lg:col-span-6"
             }`}
           >
             <div className="flex items-baseline justify-between gap-4">
@@ -151,23 +154,14 @@ function ShowcaseRow({
               ))}
             </div>
 
-            <div className="mt-8 flex flex-wrap items-center gap-6 pt-2">
-              {entry.playStoreUrl && (
-                <a
-                  href={entry.playStoreUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`View ${entry.title} on Google Play Store`}
-                  className="group/link relative inline-flex items-center gap-1.5 py-2 font-mono text-xs uppercase tracking-[0.16em] text-accent link-underline hover:text-accent-deep"
-                >
-                  Play Store
-                  <span
-                    aria-hidden
-                    className="transition-transform duration-300 ease-ui group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5"
-                  >
-                    ↗
-                  </span>
-                </a>
+            <div className="mt-8 flex flex-wrap items-center gap-3 pt-2">
+              {hasCaseStudy && (
+                <ExploreLink
+                  href={entry.href}
+                  label="Case Study"
+                  ariaLabel={`Read the ${entry.title} case study`}
+                  variant="primary"
+                />
               )}
               {entry.liveUrl && (
                 <a
@@ -175,23 +169,37 @@ function ShowcaseRow({
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={`Visit live website for ${entry.title}`}
-                  className="group/link relative inline-flex items-center gap-1.5 py-2 font-mono text-xs uppercase tracking-[0.16em] text-accent link-underline hover:text-accent-deep"
+                  className={
+                    hasCaseStudy
+                      ? "group/link relative inline-flex items-center justify-center gap-1.5 rounded-sm border border-card-border bg-surface px-4 py-2.5 font-mono text-xs uppercase tracking-[0.14em] text-ink transition-all duration-160 ease-ui hover:border-ink hover:bg-ink/[0.03] active:scale-[0.97]"
+                      : "group/link relative inline-flex items-center justify-center gap-2 rounded-sm bg-ink px-4 py-2.5 font-mono text-xs uppercase tracking-[0.14em] text-white transition-all duration-160 ease-ui hover:bg-accent active:scale-[0.97]"
+                  }
                 >
-                  Live Site
+                  <span>Live Site</span>
                   <span
                     aria-hidden
-                    className="transition-transform duration-300 ease-ui group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5"
+                    className="transition-transform duration-200 ease-ui group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5"
                   >
                     ↗
                   </span>
                 </a>
               )}
-              {entry.href && !entry.href.startsWith("http") && (
-                <ExploreLink
-                  href={entry.href}
-                  label="Case Study"
-                  ariaLabel={`Read the ${entry.title} case study`}
-                />
+              {entry.playStoreUrl && (
+                <a
+                  href={entry.playStoreUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`View ${entry.title} on Google Play Store`}
+                  className="group/link relative inline-flex items-center justify-center gap-1.5 rounded-sm border border-card-border bg-surface px-4 py-2.5 font-mono text-xs uppercase tracking-[0.14em] text-ink transition-all duration-160 ease-ui hover:border-ink hover:bg-ink/[0.03] active:scale-[0.97]"
+                >
+                  <span>Play Store</span>
+                  <span
+                    aria-hidden
+                    className="transition-transform duration-200 ease-ui group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5"
+                  >
+                    ↗
+                  </span>
+                </a>
               )}
             </div>
           </div>
@@ -199,28 +207,32 @@ function ShowcaseRow({
           {/* Visual Column */}
           <div
             className={`${
-              reversed ? "md:col-span-6 lg:col-span-6 md:order-1" : "md:col-span-6 lg:col-span-6 md:order-2"
+              reversed
+                ? "md:order-1 md:col-span-6 lg:col-span-7"
+                : "md:order-2 md:col-span-6 lg:col-span-6"
             }`}
           >
             {entry.visual ? (
-              <a
-                href={targetUrl}
-                target={entry.liveUrl || entry.playStoreUrl ? "_blank" : undefined}
-                rel={entry.liveUrl || entry.playStoreUrl ? "noopener noreferrer" : undefined}
-                aria-label={`Open ${entry.title} ${entry.liveUrl ? "live site" : "case study"}`}
-                className="group/img block overflow-hidden"
-              >
-                <img
-                  src={entry.visual.src}
-                  alt={entry.visual.alt}
-                  loading="lazy"
-                  className={`w-full transition-transform duration-500 ease-ui group-hover/img:scale-[1.02] ${
-                    entry.id === "engineering-hub"
-                      ? "aspect-[16/10] object-contain p-6 md:p-10"
-                      : "aspect-[16/10] object-cover"
-                  }`}
-                />
-              </a>
+              <div className="overflow-hidden rounded-sm border border-hairline bg-ink/[0.02]">
+                <a
+                  href={targetUrl}
+                  target={entry.liveUrl || entry.playStoreUrl ? "_blank" : undefined}
+                  rel={entry.liveUrl || entry.playStoreUrl ? "noopener noreferrer" : undefined}
+                  aria-label={`Open ${entry.title} ${entry.liveUrl ? "live site" : "case study"}`}
+                  className="group/img block"
+                >
+                  <img
+                    src={entry.visual.src}
+                    alt={entry.visual.alt}
+                    loading="lazy"
+                    className={`w-full transition-transform duration-500 ease-ui group-hover/img:scale-[1.02] ${
+                      entry.id === "engineering-hub"
+                        ? "aspect-[16/10] object-contain p-6 md:p-10"
+                        : "aspect-[16/10] object-cover"
+                    }`}
+                  />
+                </a>
+              </div>
             ) : null}
           </div>
         </div>
@@ -275,48 +287,51 @@ function ChapterCard({ entry, index }: { entry: ProjectEntry; index: number }) {
               ))}
             </div>
 
-            <div className="mt-8 flex flex-wrap items-center gap-6 pt-2">
+            <div className="mt-8 flex flex-wrap items-center gap-3 pt-2">
+              <ExploreLink
+                href={entry.href}
+                label="Explore the Documentary"
+                ariaLabel={`Read the documentary and case study for ${entry.title}`}
+                variant="primary"
+              />
               {entry.liveUrl && (
                 <a
                   href={entry.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={`Visit live platform for ${entry.title}`}
-                  className="group/link relative inline-flex items-center gap-1.5 py-2 font-mono text-xs uppercase tracking-[0.16em] text-accent link-underline hover:text-accent-deep"
+                  className="group/link relative inline-flex items-center justify-center gap-1.5 rounded-sm border border-card-border bg-surface px-4 py-2.5 font-mono text-xs uppercase tracking-[0.14em] text-ink transition-all duration-160 ease-ui hover:border-ink hover:bg-ink/[0.03] active:scale-[0.97]"
                 >
-                  Live Platform
+                  <span>Live Platform</span>
                   <span
                     aria-hidden
-                    className="transition-transform duration-300 ease-ui group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5"
+                    className="transition-transform duration-200 ease-ui group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5"
                   >
                     ↗
                   </span>
                 </a>
               )}
-              <ExploreLink
-                href={entry.href}
-                label="Explore the Documentary"
-                ariaLabel={`Read the documentary and case study for ${entry.title}`}
-              />
             </div>
           </div>
 
           <div className="md:col-span-6 lg:col-span-6">
             {entry.visual && (
-              <a
-                href={entry.liveUrl || entry.href}
-                target={entry.liveUrl ? "_blank" : undefined}
-                rel={entry.liveUrl ? "noopener noreferrer" : undefined}
-                aria-label={`Open ${entry.title} ${entry.liveUrl ? "live platform" : "case study"}`}
-                className="group/cap block overflow-hidden"
-              >
-                <img
-                  src={entry.visual.src}
-                  alt={entry.visual.alt}
-                  loading="lazy"
-                  className="aspect-[16/10] w-full object-cover transition-transform duration-500 ease-ui group-hover/cap:scale-[1.02]"
-                />
-              </a>
+              <div className="overflow-hidden rounded-sm border border-hairline bg-ink/[0.02]">
+                <a
+                  href={entry.liveUrl || entry.href}
+                  target={entry.liveUrl ? "_blank" : undefined}
+                  rel={entry.liveUrl ? "noopener noreferrer" : undefined}
+                  aria-label={`Open ${entry.title} ${entry.liveUrl ? "live platform" : "case study"}`}
+                  className="group/cap block"
+                >
+                  <img
+                    src={entry.visual.src}
+                    alt={entry.visual.alt}
+                    loading="lazy"
+                    className="aspect-[16/10] w-full object-cover transition-transform duration-500 ease-ui group-hover/cap:scale-[1.02]"
+                  />
+                </a>
+              </div>
             )}
           </div>
         </div>

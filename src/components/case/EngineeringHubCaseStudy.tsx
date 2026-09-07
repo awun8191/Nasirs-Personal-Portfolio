@@ -1,6 +1,31 @@
 import CaseShell, { CaseHeader } from "./CaseShell";
-import { Section, Chip } from "./primitives";
-import { engineeringHubStudy } from "../../data/caseStudies";
+import { Section, Chip, DiagramSlot } from "./primitives";
+import { engineeringHubStudy, type DiagramSlot as DiagramSlotType } from "../../data/caseStudies";
+import EngineeringHubFlashcardDiagram from "./diagrams/EngineeringHubFlashcardDiagram";
+import EngineeringHubGradingDiagram from "./diagrams/EngineeringHubGradingDiagram";
+import EngineeringHubBktDiagram from "./diagrams/EngineeringHubBktDiagram";
+import EngineeringHubArchitectureDiagram from "./diagrams/EngineeringHubArchitectureDiagram";
+import EngineeringHubPipelineDiagram from "./diagrams/EngineeringHubPipelineDiagram";
+import EngineeringHubCachingDiagram from "./diagrams/EngineeringHubCachingDiagram";
+
+function renderEngineeringHubDiagram(slot: DiagramSlotType) {
+  switch (slot.id) {
+    case "01":
+      return <EngineeringHubFlashcardDiagram key={slot.id} />;
+    case "02":
+      return <EngineeringHubGradingDiagram key={slot.id} />;
+    case "03":
+      return <EngineeringHubBktDiagram key={slot.id} />;
+    case "04":
+      return <EngineeringHubArchitectureDiagram key={slot.id} />;
+    case "05":
+      return <EngineeringHubPipelineDiagram key={slot.id} />;
+    case "06":
+      return <EngineeringHubCachingDiagram key={slot.id} />;
+    default:
+      return <DiagramSlot key={slot.id} slot={slot} />;
+  }
+}
 
 // ---------------------------------------------------------------------------
 // Engineering Hub: The Study Workbook (Study Violet)
@@ -115,10 +140,20 @@ export default function EngineeringHubCaseStudy() {
           {/* 02 THE PROBLEM: why BKT over the rejected heuristic */}
           <Section key="02" section={study.sections[1]} studySlug={study.slug} />
 
-          <Section key="03" section={study.sections[2]} studySlug={study.slug} />
+          <Section
+            key="03"
+            section={study.sections[2]}
+            studySlug={study.slug}
+            renderDiagram={renderEngineeringHubDiagram}
+          />
 
           {/* 04 THE ADAPTIVE ENGINE: formula panel + wrong-answer card */}
-          <Section key="04" section={study.sections[3]} studySlug={study.slug} />
+          <Section
+            key="04"
+            section={study.sections[3]}
+            studySlug={study.slug}
+            renderDiagram={renderEngineeringHubDiagram}
+          />
 
           {/* Wrong-answer card motif (6.3): struck-through wrong answer,
               violet correct answer, review rating chips */}
@@ -165,8 +200,18 @@ export default function EngineeringHubCaseStudy() {
             </div>
           </section>
 
-          <Section key="05-data" section={study.sections[4]} studySlug={study.slug} />
-          <Section key="06-arch" section={study.sections[5]} studySlug={study.slug} />
+          <Section
+            key="05-data"
+            section={study.sections[4]}
+            studySlug={study.slug}
+            renderDiagram={renderEngineeringHubDiagram}
+          />
+          <Section
+            key="06-arch"
+            section={study.sections[5]}
+            studySlug={study.slug}
+            renderDiagram={renderEngineeringHubDiagram}
+          />
 
           {/* 07 LESSONS */}
           <Section key="07" section={study.sections[6]} studySlug={study.slug} />

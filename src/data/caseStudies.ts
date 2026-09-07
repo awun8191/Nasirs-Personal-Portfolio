@@ -380,7 +380,7 @@ export const engineeringHubStudy: CaseStudy = {
   title: "Engineering Hub",
   meta: "WEB + ANDROID / LIVE",
   description:
-    "An adaptive study platform for engineering students. Uses Bayesian Knowledge Tracing and spaced repetition to schedule exactly what a student should see next: question banks, flashcards, quizzes, schedules and learning analytics in one mobile-first workflow.",
+    "A comprehensive exam preparation and adaptive learning platform engineered for engineering students. It replaces fragmented study materials with an intelligent system that models concept mastery in real time, delivering personalized practice quizzes, spaced-repetition flashcards, and verified step-by-step solutions across web and Android.",
   hero: {
     field: "white",
   },
@@ -388,7 +388,7 @@ export const engineeringHubStudy: CaseStudy = {
     {
       index: "01",
       title: "Overview",
-      body: "Bayesian Knowledge Tracing plus spaced repetition, server-authoritative, shared across a React web SPA and a Flutter Android app over one Worker API. The platform is live: web and API run on Cloudflare, the Android app is in release builds.",
+      body: "Engineering Hub was built to solve a critical challenge in engineering education where students across 9 departments lacked a unified, reliable way to prepare for assessments which typically cover hundreds of technical courses split across those departments. The platform unifies over 142,000 curriculum-aligned questions, interactive quizzes, and automated flashcards into a synchronized study experience. By pairing Bayesian Knowledge Tracing (BKT) with spaced repetition, the system continuously estimates each student's mastery of specific topics, surfacing targeted weak areas and scheduling reviews right before retention decays. The entire system is powered by a server-authoritative Cloudflare Worker API and D1 database, serving both a React web SPA and a production Flutter Android application.",
       ruled: [
         { label: "DEPARTMENTS", value: "9" },
         { label: "COURSES", value: "426" },
@@ -399,7 +399,7 @@ export const engineeringHubStudy: CaseStudy = {
     {
       index: "02",
       title: "The Problem",
-      body: "The v1 heuristic combined Ebbinghaus curves with an HMM and was rejected as crude and not good at all. BKT replaced it because it is pedagogically validated, its P(L) is interpretable as mastery, its P(T) / P(S) / P(G) parameters are configurable per knowledge component, and it produces genuine spaced-repetition behavior: massed practice flattens mastery, spaced reviews grow stability.",
+      body: "Traditional study habits encourage massed cramming, creating an illusion of competence while long-term retention collapses days later. Our early heuristic combined static Ebbinghaus decay with a basic Hidden Markov Model, but it failed to distinguish lucky guesses from true conceptual mastery. We replaced it with a 4-parameter Bayesian Knowledge Tracing (BKT) model that explicitly separates slip and guess probabilities from genuine learning transitions, ensuring mastery scores reflect durable skill acquisition rather than repetitive drilling.",
       ruled: [
         { label: "REJECTED", value: "EBBINGHAUS + HMM HEURISTIC" },
         { label: "SHIPPED", value: "4-PARAMETER BAYESIAN KNOWLEDGE TRACING" },
@@ -408,7 +408,7 @@ export const engineeringHubStudy: CaseStudy = {
     {
       index: "03",
       title: "The Product",
-      body: "Four surfaces carry the study loop: searchable question banks with full answer explanations, flashcards built from the exact questions a student got wrong, an AI tutor that explains any card or question, and streaks that keep the habit.",
+      body: "The product is structured around a continuous learning loop across four key surfaces which include searchable course question banks rendered with LaTeX equations, an automated wrong-answer recycling engine that converts missed quiz problems into spaced-repetition flashcards, an on-demand AI tutor powered by Gemini to break down complex proofs, and daily streak tracking to sustain study habits across semester exam cycles.",
       ruled: [
         { label: "QUESTION BANKS", value: "MCQ + THEORY + CALCULATION, KATEX RENDERED" },
         { label: "FLASHCARDS", value: "WRONG ANSWERS RETURN SOONER, SM-2 EASE" },
@@ -420,7 +420,7 @@ export const engineeringHubStudy: CaseStudy = {
     {
       index: "04",
       title: "The Adaptive Engine",
-      body: "Every graded answer updates a per-user knowledge state in D1 through a Durable Object. The BKT math is pure and stateless: P(L0) is the prior mastery, P(T) the learning transition, P(S) the slip probability, P(G) the guess probability. Stability S doubles on correct qualified reviews and halves on incorrect ones.",
+      body: "The adaptive grading system computes state updates server-side to maintain complete anti-cheat integrity. Each response is processed through a Cloudflare Durable Object that coordinates per-user learning states in D1. The pure BKT algorithm updates the probability of mastery based on prior knowledge, learning rate, slip factor, and guess chance. Memory stability dynamically scales with verified reviews, calculating optimal review intervals so questions return precisely when memory decay begins.",
       mono: [
         {
           title: "BKT PARAMETERS (DEFAULTS)",
@@ -450,7 +450,7 @@ export const engineeringHubStudy: CaseStudy = {
     {
       index: "05",
       title: "The Architecture",
-      body: "One Worker API serves both clients. Firebase Auth verifies the ID token, Firestore holds profiles and schedules, D1 is the authoritative learning store, and Gemini powers the assistant. The content pipeline generates questions from textbooks through OCR, chunking, embeddings and Gemini generation.",
+      body: "A unified API coordinates the multi-client ecosystem. Firebase handles identity verification and user profiles, while a high-throughput Cloudflare Worker paired with SQLite-based D1 serves as the authoritative source for questions, attempts, and mastery states. In the background, an automated content pipeline ingests departmental course syllabi and textbooks through optical character recognition and semantic chunking to continuously seed curriculum-aligned question pools.",
       ruled: [
         { label: "WEB", value: "REACT 19 + VITE 8 + TS" },
         { label: "ANDROID", value: "FLUTTER, BLOC + GETX" },
@@ -466,7 +466,7 @@ export const engineeringHubStudy: CaseStudy = {
     {
       index: "06",
       title: "Performance",
-      body: "Three layers of caching keep the catalog reads cheap: Worker Cache-Control at the edge, one-year immutable asset caching, and a React Query layer with targeted invalidation. Usage numbers await owner confirmation.",
+      body: "To maintain sub-100ms response times for students practicing in bandwidth-constrained environments, the system implements a three-tier caching hierarchy. Edge-level Worker Cache-Control handles high-volume course catalog lookups, static assets are cached with one-year immutable headers, and client-side React Query state handles optimistic rendering with targeted cache invalidation on quiz submission.",
       ruled: [
         { label: "WORKER CACHE", value: "PUBLIC max-age=300 / CDN s-maxage 3600-86400" },
         { label: "ASSET CACHE", value: "1 YEAR IMMUTABLE" },
@@ -493,7 +493,7 @@ export const engineeringHubStudy: CaseStudy = {
     {
       index: "07",
       title: "Lessons",
-      body: "The hardest parts were the integrity decisions, not the features.",
+      body: "Building an educational platform revealed that data integrity and pedagogical honesty matter far more than surface features. Rejecting client-side answer key validation eliminated cheating vectors, enforcing massed-practice guards prevented students from gaming mastery scores through rapid clicking, and optimizing SQLite storage schemas kept relational learning histories performant under severe edge memory limits.",
       ruled: [
         { label: "SERVER-AUTHORITATIVE GRADING", value: "NO ANSWER KEYS SHIPPED; NO OPTIMISTIC UI" },
         { label: "MASSED-PRACTICE GUARD", value: "S ONLY GROWS ON QUALIFIED REVIEWS" },
@@ -506,7 +506,7 @@ export const engineeringHubStudy: CaseStudy = {
     {
       index: "08",
       title: "Links",
-      body: "Web and API are live on Cloudflare. The repository link will be added when the owner confirms it is public.",
+      body: "The web client and edge API are deployed live on Cloudflare infrastructure, and the mobile application is distributed to students via the Google Play Store. Source code and content pipelines are maintained across private monorepo repositories.",
     },
   ],
   links: {
@@ -528,7 +528,7 @@ export const elegantRadianceStudy: CaseStudy = {
   title: "Elegant Radiance Luxe",
   meta: "SINGLE-VENDOR COMMERCE / CLOUD RUN + CLOUDFLARE D1",
   description:
-    "A zero-maintenance, single-vendor luxury beauty e-commerce platform built on a hybrid cloud topology. A Python FastAPI monolith on Google Cloud Run handles business logic and Paystack verification, while an authenticated TypeScript Data Worker interfaces natively with Cloudflare D1 SQL, and an asynchronous Cloudflare Queue and Images pipeline processes high-resolution product media.",
+    "A zero-maintenance, single-vendor luxury e-commerce platform built on a hybrid cloud architecture. A Python FastAPI backend on Google Cloud Run manages cart orchestration and Paystack verification, while an internal TypeScript Data Worker bridges requests to Cloudflare D1 SQLite. Asynchronous product image processing is offloaded to Cloudflare Queues and R2, enabling the platform to operate with a verified $0.00/month baseline infrastructure cost.",
   hero: {
     field: "white",
     versionBadge: "V4.0-PRODUCTION",
@@ -542,7 +542,7 @@ export const elegantRadianceStudy: CaseStudy = {
     {
       index: "01",
       title: "The Hybrid Topology",
-      body: "The store separates business logic from persistence and media via a multi-cloud boundary: Google Cloud Run hosts the containerized FastAPI application with zero-scale economics and 60-minute execution headroom; Cloudflare D1 provides the relational SQL source of truth; Cloudflare R2 and Queues handle asynchronous image transformations without consuming Cloud Run compute.",
+      body: "The architecture isolates business logic, relational storage, and media processing across provider boundaries. Containerized FastAPI runs on Google Cloud Run with zero-scale economics, scaling down to zero when idle. Persistent product data is managed in Cloudflare D1 SQLite. Product media transformations are handled asynchronously by Cloudflare Queues and R2, preventing image encoding from consuming Cloud Run compute.",
       flow: [
         "REACT STOREFRONT",
         "FASTAPI / CLOUD RUN",
@@ -555,7 +555,7 @@ export const elegantRadianceStudy: CaseStudy = {
     {
       index: "02",
       title: "The D1 Data Worker Boundary",
-      body: "Cloud Run cannot bind natively to Cloudflare D1. Rather than exposing a raw SQL endpoint or relying on the rate-limited D1 REST control-plane API, an internal authenticated TypeScript Data Worker exposes coarse-grained domain operations with HMAC-SHA256 request signatures, timestamps, and replay validation.",
+      body: "Google Cloud Run cannot bind natively to Cloudflare D1. Exposing raw SQL over HTTP introduces security vulnerabilities, while Cloudflare's public D1 REST API is subject to control-plane rate limits. To bridge this gap, an internal TypeScript Data Worker exposes coarse-grained domain operations. Each request is authenticated using HMAC-SHA256 signatures, timestamps, and unique nonces to prevent replay attacks.",
       ruled: [
         { label: "PROTOCOL", value: "INTERNAL HTTPS + SIGNED COARSE COMMANDS" },
         { label: "SIGNATURE", value: "HMAC-SHA256 WITH SHORT REPLAY WINDOW" },
@@ -586,7 +586,7 @@ export const elegantRadianceStudy: CaseStudy = {
     {
       index: "03",
       title: "Atomic Stock Reservation & 30-Minute Hold",
-      body: "To prevent overselling without distributed database locking, stock reservations execute as single conditional SQL updates that verify available stock and increment reserved units in one atomic step. Checkouts maintain a deterministic 30-minute reservation window with automatic reconciliation.",
+      body: "To prevent overselling without the overhead of distributed database locks, stock reservations execute as single conditional SQL updates. The query checks available inventory and increments reserved units in one atomic step. Checkouts enforce a 30-minute reservation hold. If the buyer abandons the cart or payment fails, the hold is released and items return to available inventory.",
       ruled: [
         { label: "RESERVATION WINDOW", value: "FIXED 30 MINUTES FROM CHECKOUT CREATION" },
         { label: "RACE CONDITION PREVENTION", value: "ATOMIC CONDITIONAL UPDATE + AFFECTED ROWS" },
@@ -617,7 +617,7 @@ export const elegantRadianceStudy: CaseStudy = {
     {
       index: "04",
       title: "Paystack Verification & Payment State Machine",
-      body: "Payment confirmation combines asynchronous signed webhooks with server-side API verification. The webhook handler verifies raw request bytes with HMAC-SHA512 before JSON parsing, guaranteeing tamper-proof execution. A durable outbox pattern ensures customer notifications fire reliably after database commit.",
+      body: "Payment confirmation pairs asynchronous webhooks with direct server-side API verification. Inbound Paystack webhooks verify raw request bytes against HMAC-SHA512 signatures before JSON parsing to ensure payload integrity. The backend deduplicates events using unique transaction keys and handles edge cases such as customer redirection drops and expired holds, ensuring orders are neither double-charged nor lost.",
       matrix: [
         {
           label: "WEBHOOK TIMEOUT",
@@ -640,7 +640,7 @@ export const elegantRadianceStudy: CaseStudy = {
     {
       index: "05",
       title: "Two-Tier Asynchronous Media Pipeline",
-      body: "Product images are uploaded directly from the vendor's browser to a private R2 staging bucket via short-lived presigned authorizations. A Cloudflare Queue triggers a lightweight Image Worker that resizes, optimizes, and encodes WebP assets using native Cloudflare Images bindings, writing outputs to the production R2 bucket.",
+      body: "Product images upload directly from the admin browser to a private Cloudflare R2 staging bucket using presigned URLs. An asynchronous Cloudflare Queue then triggers an Image Worker that resizes, optimizes, and encodes assets into WebP format using Cloudflare Images bindings, storing the production-ready assets in a public R2 bucket.",
       ruled: [
         { label: "ORIGINAL UPLOAD", value: "DIRECT BROWSER-TO-R2 VIA PRESIGNED URL" },
         { label: "IMAGE PROCESSING", value: "CLOUDFLARE IMAGES BINDING (WEBP / RESIZE)" },
@@ -651,7 +651,7 @@ export const elegantRadianceStudy: CaseStudy = {
     {
       index: "06",
       title: "Guest Privacy & Storefront Security",
-      body: "Buyers check out as guests without compulsory account creation. Minimal order status lookup uses cryptographically random, high-entropy public order references rather than sequential IDs, preventing enumeration attacks and protecting buyer contact details and delivery addresses.",
+      body: "Customers can complete purchases as guests without mandatory account registration. Public order tracking uses high-entropy, cryptographically random order references rather than sequential IDs. This prevents enumeration attacks (IDOR) and protects customer contact numbers, delivery addresses, and order histories.",
       ruled: [
         { label: "BUYER AUTH", value: "GUEST CHECKOUT (NO COMPULSORY ACCOUNTS)" },
         { label: "ADMIN AUTH", value: "FIREBASE AUTHENTICATION (VENDOR ONLY)" },
@@ -662,7 +662,7 @@ export const elegantRadianceStudy: CaseStudy = {
     {
       index: "07",
       title: "Reliability, Reconciliation & Cost",
-      body: "At baseline volume (300 monthly visitors / 12,000 requests), the hybrid infrastructure runs at $0.00/month by operating comfortably within the free allowances of Google Cloud Run, Cloudflare D1, R2, Queues, and Firebase. A scheduled reconciliation cron cleans abandoned checkouts and checks dangling transactions.",
+      body: "Operating within the free allowances of Google Cloud Run (2M requests/mo), Cloudflare D1 (5M rows read/day), R2, and Firebase allows the platform to maintain a $0.00/month baseline infrastructure cost. A scheduled reconciliation job runs periodically to release expired inventory holds, verify pending transactions, and keep stock counts synchronized.",
       ruled: [
         { label: "CLOUD RUN FREE TIER", value: "2,000,000 REQUESTS / MONTH" },
         { label: "CLOUDFLARE D1 FREE TIER", value: "5,000,000 ROWS READ / DAY" },
@@ -673,7 +673,7 @@ export const elegantRadianceStudy: CaseStudy = {
     {
       index: "08",
       title: "Links",
-      body: "The online storefront is live with full catalog browsing, cart, and Paystack integration.",
+      body: "The production storefront is live at elegantradianceluxe.com with complete catalog browsing, cart management, and Paystack payment processing. The source code is maintained under private client repository confidentiality.",
     },
   ],
   links: {

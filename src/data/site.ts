@@ -175,7 +175,7 @@ export const PROJECTS: ProjectEntry[] = [
   {
     id: "elegant-radiance-luxe",
     title: "Elegant Radiance Luxe",
-    line: "Full-stack luxury beauty e-commerce store. React client on Cloudflare with a FastAPI backend running on Google Cloud Run and Firebase authentication.",
+    line: "Full-stack luxury e-commerce platform built on a hybrid cloud architecture: FastAPI on Cloud Run, signed Cloudflare D1 Data Workers, atomic 30-minute inventory holds, and Paystack payments.",
     metrics: [
       { value: "$0.00", label: "INFRA BASELINE" },
       { value: "30-MIN", label: "ATOMIC HOLD" },

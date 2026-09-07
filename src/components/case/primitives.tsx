@@ -465,6 +465,8 @@ export function Section({
   section,
   layout = {},
   studySlug,
+  renderDiagram,
+  children,
 }: {
   section: CaseSection;
   layout?: {
@@ -475,6 +477,8 @@ export function Section({
     contentGap?: string;
   };
   studySlug?: string;
+  renderDiagram?: (slot: DiagramSlot) => React.ReactNode;
+  children?: React.ReactNode;
 }) {
   const {
     indexInline = false,
@@ -564,16 +568,21 @@ export function Section({
         {section.diagrams && (
           <div className="mt-8">
             <div className="grid gap-6">
-              {section.diagrams.map((slot) => (
-                <DiagramSlot
-                  key={slot.id}
-                  slot={slot}
-                  src={resolveDiagram(studySlug, slot.id)}
-                />
-              ))}
+              {section.diagrams.map((slot) =>
+                renderDiagram ? (
+                  renderDiagram(slot)
+                ) : (
+                  <DiagramSlot
+                    key={slot.id}
+                    slot={slot}
+                    src={resolveDiagram(studySlug, slot.id)}
+                  />
+                )
+              )}
             </div>
           </div>
         )}
+        {children}
       </div>
     </section>
   );
