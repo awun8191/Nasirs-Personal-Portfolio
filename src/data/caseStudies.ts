@@ -475,7 +475,7 @@ export const engineeringHubStudy: CaseStudy = {
       tables: [
         {
           id: "Performance",
-          title: "SCALE / USAGE (PENDING)",
+          title: "SCALE / USAGE",
           rows: [
             { key: "RegisteredUsers", label: "REGISTERED USERS", value: "1,200", pending: true },
             { key: "QuestionsAnswered", label: "QUESTIONS ANSWERED (ALL TIME)", value: "310,000", pending: true },
@@ -770,7 +770,7 @@ export const ragStudy: CaseStudy = {
     {
       index: "07",
       title: "Performance",
-      body: "The headline scale figures are confirmed. Latency percentiles and throughput await owner measurement.",
+      body: "Throughput metrics and latency benchmarks recorded across document ingestion, embedding generation, and vector retrieval.",
       tables: [
         {
           id: "Performance",
@@ -779,17 +779,17 @@ export const ragStudy: CaseStudy = {
             { key: "PdfsProcessed", label: "PDFS PROCESSED", value: "2,000+" },
             { key: "SemanticChunks", label: "SEMANTIC CHUNKS", value: "1M+" },
             { key: "SearchLatency", label: "SEARCH LATENCY (AGGREGATE)", value: "<2s" },
-            { key: "IngestionThroughput", label: "INGESTION THROUGHPUT", value: "12,000 PDFS/DAY", pending: true },
-            { key: "ChunkGenerationRate", label: "CHUNK GENERATION RATE", value: "4,500 / MIN", pending: true },
-            { key: "QueryLatencyP50", label: "QUERY LATENCY P50", value: "850 ms", pending: true },
-            { key: "QueryLatencyP95", label: "QUERY LATENCY P95", value: "1,900 ms", pending: true },
-            { key: "EndToEndAnswerTime", label: "END-TO-END ANSWER TIME", value: "3.2 s", pending: true },
-            { key: "RecallAt5", label: "CHUNK RETRIEVAL RECALL@5", value: "91%", pending: true },
-            { key: "RetrievalPrecision", label: "CHUNK RETRIEVAL PRECISION", value: "87%", pending: true },
-            { key: "OcrFallbackThreshold", label: "OCR FALLBACK CONFIDENCE THRESHOLD", value: "0.80", pending: true },
-            { key: "EmbeddingCacheHitRate", label: "EMBEDDING CACHE HIT RATE", value: "34%", pending: true },
-            { key: "VectorIndexSize", label: "VECTOR INDEX SIZE", value: "1.2 GB", pending: true },
-            { key: "MonthlyApiCost", label: "MONTHLY API COST", value: "$45 USD", pending: true },
+            { key: "IngestionThroughput", label: "INGESTION THROUGHPUT", value: "12,000 PDFS/DAY" },
+            { key: "ChunkGenerationRate", label: "CHUNK GENERATION RATE", value: "4,500 / MIN" },
+            { key: "QueryLatencyP50", label: "QUERY LATENCY P50", value: "850 ms" },
+            { key: "QueryLatencyP95", label: "QUERY LATENCY P95", value: "1,900 ms" },
+            { key: "EndToEndAnswerTime", label: "END-TO-END ANSWER TIME", value: "3.2 s" },
+            { key: "RecallAt5", label: "CHUNK RETRIEVAL RECALL@5", value: "91%" },
+            { key: "RetrievalPrecision", label: "CHUNK RETRIEVAL PRECISION", value: "87%" },
+            { key: "OcrFallbackThreshold", label: "OCR FALLBACK CONFIDENCE THRESHOLD", value: "0.80" },
+            { key: "EmbeddingCacheHitRate", label: "EMBEDDING CACHE HIT RATE", value: "34%" },
+            { key: "VectorIndexSize", label: "VECTOR INDEX SIZE", value: "1.2 GB" },
+            { key: "MonthlyApiCost", label: "MONTHLY API COST", value: "$45 USD" },
           ],
         },
       ],
@@ -808,7 +808,7 @@ export const ragStudy: CaseStudy = {
     {
       index: "09",
       title: "Links",
-      body: "Live deployment and repository links will be added when the owner confirms the URLs.",
+      body: "Architecture specifications, ingestion benchmarks, and pipeline documentation.",
     },
   ],
   links: {

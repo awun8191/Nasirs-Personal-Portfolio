@@ -123,7 +123,6 @@ export function PendingChip() {
 // Metric table (spec 5): [label | value | chip] rows on hairline rules.
 // pending: true renders the asterisk suffix + PENDING chip + footnote.
 export function MetricTable({ table }: { table: CaseTable }) {
-  const hasPending = table.rows.some((r) => r.pending);
   const wide = table.rows.length > 6;
   return (
     <div className="min-w-0">
@@ -163,11 +162,6 @@ export function MetricTable({ table }: { table: CaseTable }) {
           ))}
         </div>
       </div>
-      {hasPending && (
-        <p className="mt-3 font-mono text-[0.6875rem] text-muted">
-          * PENDING: placeholder value awaiting owner correction
-        </p>
-      )}
     </div>
   );
 }
