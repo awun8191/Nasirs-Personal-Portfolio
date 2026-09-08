@@ -1,24 +1,76 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 480" width="100%" preserveAspectRatio="xMidYMid meet" role="img" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" style="font-family:'JetBrains Mono',ui-monospace,monospace">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 480" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" role="img" font-family="'JetBrains Mono', ui-monospace, Menlo, Consolas, monospace" style="font-family:'JetBrains Mono',ui-monospace,monospace">
   <title>RAG Data Pipeline - Bi-stage OCR Decision</title>
-  <desc>Bi-stage OCR decision: orientation-corrected pages enter EasyOCR on the fast path; high-confidence text is accepted, while low-confidence text such as complex tables, math notation, and low-resolution scans falls back to a Gemma 3:27b model. No numeric confidence threshold is shown.</desc>
-  <defs><marker id="chev" markerWidth="10" markerHeight="10" refX="7" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M1.5 1.5 L7 5 L1.5 8.5" fill="none" stroke="#155e75" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+  <desc>Bi-stage OCR decision flowchart: orientation-corrected pages enter EasyOCR on the fast path; high-confidence text (score >= 0.80) is accepted immediately, while low-confidence text (complex tables, math notation, low-resolution scans) routes to the Gemma 3:27b fallback before merging into normalized markdown.</desc>
+  <defs>
+    <marker id="arrow-cyan" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M1.5 1.5 L6.5 4 L1.5 6.5" fill="none" stroke="#0891B2" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="arrow-teal" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M1.5 1.5 L6.5 4 L1.5 6.5" fill="none" stroke="#0E7490" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+
   <rect x="0" y="0" width="480" height="480" fill="#FFFFFF"/>
-  <!-- start -->
-  <rect x="160" y="28" width="160" height="62" rx="8" fill="#FFFFFF" stroke="#0e7490" stroke-width="1.25"/><text x="240.0" y="53.0" font-size="11" fill="#14323a" text-anchor="middle" font-weight="500">ORIENTATION-CORRECTED</text><text x="240.0" y="69.0" font-size="11" fill="#5b7785" text-anchor="middle">PAGE</text>
-  <!-- fast path -->
-  <rect x="32" y="170" width="160" height="62" rx="8" fill="#0e7490" stroke="#0e7490" stroke-width="1.25"/><text x="112.0" y="187.0" font-size="11" fill="#FFFFFF" text-anchor="middle" font-weight="600">EASYOCR FAST PATH</text><text x="112.0" y="203.0" font-size="11" fill="#cbe9f2" text-anchor="middle">HIGH CONFIDENCE</text>
-  <!-- decision -->
-  <rect x="180" y="166" width="120" height="70" rx="8" fill="#FFFFFF" stroke="#0e7490" stroke-width="1.25"/><text x="240.0" y="195.0" font-size="12" fill="#14323a" text-anchor="middle" font-weight="600">CONFIDENCE</text><text x="240.0" y="213.0" font-size="10" fill="#0e7490" text-anchor="middle">&lt; 0.80 SCORE</text>
-  <!-- fallback -->
-  <rect x="296" y="170" width="152" height="62" rx="8" fill="#FFFFFF" stroke="#0e7490" stroke-width="1.25"/><text x="372.0" y="195.0" font-size="11" fill="#14323a" text-anchor="middle" font-weight="500">GEMMA 3:27B</text><text x="372.0" y="211.0" font-size="11" fill="#5b7785" text-anchor="middle">FALLBACK</text>
-  <!-- merged output -->
-  <rect x="150" y="360" width="180" height="62" rx="8" fill="#FFFFFF" stroke="#0e7490" stroke-width="1.25"/><text x="240.0" y="385.0" font-size="11" fill="#14323a" text-anchor="middle" font-weight="500">NORMALIZED TEXT OUT</text><text x="240.0" y="401.0" font-size="11" fill="#5b7785" text-anchor="middle">TO CHUNKING</text>
-  <!-- connectors -->
-  <path d="M240 90 L240 166" fill="none" stroke="#155e75" stroke-width="1.25" marker-end="url(#chev)"/>
-  <path d="M180 201 L192 201" fill="none" stroke="#155e75" stroke-width="1.25" marker-end="url(#chev)"/>
-  <path d="M300 201 L308 201" fill="none" stroke="#155e75" stroke-width="1.25" marker-end="url(#chev)"/>
-  <path d="M112 232 L112 320 Q112 330 122 330 L222 330 Q232 330 232 340 L232 360" fill="none" stroke="#155e75" stroke-width="1.25" marker-end="url(#chev)"/>
-  <path d="M372 232 L372 320 Q372 330 362 330 L258 330 Q248 330 248 340 L248 360" fill="none" stroke="#155e75" stroke-width="1.25" marker-end="url(#chev)"/>
-  <!-- low-confidence note -->
-  <text x="372" y="262" font-size="10" fill="#0e7490" text-anchor="middle">TABLES / MATH / LOW-RES</text>
+
+  <!-- Title / Header -->
+  <text x="24" y="24" font-size="9" font-weight="600" fill="#0891B2" letter-spacing="0.12em">BI-STAGE OCR / DECISION FLOW</text>
+  <line x1="24" y1="32" x2="456" y2="32" stroke="#E2E8F0" stroke-width="1"/>
+
+  <!-- Step 1: Input Page -->
+  <rect x="135" y="44" width="210" height="52" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.25"/>
+  <text x="240" y="66" font-size="10.5" font-weight="600" fill="#0F172A" text-anchor="middle">DESKEWED INPUT PAGE</text>
+  <text x="240" y="82" font-size="8.5" fill="#64748B" text-anchor="middle">OpenCV Orientation Check</text>
+
+  <!-- Connector 1 -->
+  <path d="M240 96 L240 118" fill="none" stroke="#0891B2" stroke-width="1.25" marker-end="url(#arrow-cyan)"/>
+
+  <!-- Step 2: EasyOCR Fast Path -->
+  <rect x="135" y="118" width="210" height="56" rx="6" fill="#ECFEFF" stroke="#0891B2" stroke-width="1.25"/>
+  <text x="240" y="141" font-size="10.5" font-weight="600" fill="#0E7490" text-anchor="middle">STAGE 1: EASYOCR</text>
+  <text x="240" y="157" font-size="8.5" fill="#0891B2" text-anchor="middle">Fast-Path Line &amp; Token Scan</text>
+
+  <!-- Connector 2 -->
+  <path d="M240 174 L240 198" fill="none" stroke="#0891B2" stroke-width="1.25" marker-end="url(#arrow-cyan)"/>
+
+  <!-- Step 3: Confidence Decision Node -->
+  <rect x="145" y="198" width="190" height="56" rx="6" fill="#0E7490" stroke="#0891B2" stroke-width="1.5"/>
+  <text x="240" y="221" font-size="10" font-weight="600" fill="#FFFFFF" text-anchor="middle">CONFIDENCE SCORE</text>
+  <text x="240" y="238" font-size="8.5" fill="#A5F3FC" text-anchor="middle">Threshold: 0.80 Cutoff</text>
+
+  <!-- Decision Branches -->
+  <!-- Left: High Confidence -->
+  <path d="M145 226 L94 226 Q84 226 84 236 L84 278" fill="none" stroke="#0891B2" stroke-width="1.25" marker-end="url(#arrow-cyan)"/>
+  <rect x="90" y="217" width="50" height="16" rx="3" fill="#ECFEFF" stroke="#0891B2" stroke-width="0.75"/>
+  <text x="115" y="228" font-size="7.5" font-weight="600" fill="#0E7490" text-anchor="middle">&gt;= 0.80</text>
+
+  <rect x="24" y="280" width="150" height="74" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.25"/>
+  <rect x="34" y="290" width="70" height="16" rx="3" fill="#E2E8F0"/>
+  <text x="69" y="301" font-size="7.5" font-weight="600" fill="#475569" text-anchor="middle">FAST PATH</text>
+  <text x="34" y="322" font-size="9.5" font-weight="600" fill="#0F172A">ACCEPTED TEXT</text>
+  <text x="34" y="338" font-size="8" fill="#64748B">Standard Text Bodies</text>
+  <text x="34" y="348" font-size="7.5" fill="#059669">No Extra Model Latency</text>
+
+  <!-- Right: Low Confidence Fallback -->
+  <path d="M335 226 L386 226 Q396 226 396 236 L396 278" fill="none" stroke="#0891B2" stroke-width="1.25" marker-end="url(#arrow-cyan)"/>
+  <rect x="340" y="217" width="50" height="16" rx="3" fill="#FEF2F2" stroke="#EF4444" stroke-width="0.75"/>
+  <text x="365" y="228" font-size="7.5" font-weight="600" fill="#B91C1C" text-anchor="middle">&lt; 0.80</text>
+
+  <rect x="306" y="280" width="150" height="74" rx="6" fill="#FEF2F2" stroke="#FCA5A5" stroke-width="1.25"/>
+  <rect x="316" y="290" width="70" height="16" rx="3" fill="#FEE2E2"/>
+  <text x="351" y="301" font-size="7.5" font-weight="600" fill="#B91C1C" text-anchor="middle">FALLBACK</text>
+  <text x="316" y="322" font-size="9.5" font-weight="600" fill="#991B1B">GEMMA 3:27B</text>
+  <text x="316" y="338" font-size="8" fill="#7F1D1D">Complex Tables &amp; Math</text>
+  <text x="316" y="348" font-size="7.5" fill="#B91C1C">Low-Res Visual Scans</text>
+
+  <!-- Merge Paths to Final Box -->
+  <path d="M99 354 L99 375 Q99 385 109 385 L200 385 Q210 385 210 395 L210 404" fill="none" stroke="#0891B2" stroke-width="1.25" marker-end="url(#arrow-cyan)"/>
+  <path d="M381 354 L381 375 Q381 385 371 385 L270 385 Q260 385 260 395 L260 404" fill="none" stroke="#0891B2" stroke-width="1.25" marker-end="url(#arrow-cyan)"/>
+
+  <!-- Step 4: Output -->
+  <rect x="135" y="406" width="210" height="52" rx="6" fill="#ECFEFF" stroke="#0891B2" stroke-width="1.25"/>
+  <text x="240" y="428" font-size="10.5" font-weight="600" fill="#0E7490" text-anchor="middle">NORMALIZED MARKDOWN</text>
+  <text x="240" y="444" font-size="8.5" fill="#0891B2" text-anchor="middle">Unified Output to Semantic Chunking</text>
+
+  <!-- Footer -->
+  <line x1="24" y1="468" x2="456" y2="468" stroke="#E2E8F0" stroke-width="1"/>
 </svg>

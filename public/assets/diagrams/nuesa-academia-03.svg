@@ -1,73 +1,139 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 798 342" width="100%" preserveAspectRatio="xMidYMid meet" role="img" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" style="font-family:'JetBrains Mono',ui-monospace,monospace">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 360" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" role="img" font-family="'JetBrains Mono', ui-monospace, Menlo, Consolas, monospace" style="font-family:'JetBrains Mono',ui-monospace,monospace">
   <title>NUESA Academia - Migration Flow</title>
-  <desc>Migration workflow: 2,111 PDFs (~13.8 GB) collected across 9 engineering departments, parsed and normalized, deduplicated with SHA-256, streamed into Cloudflare R2, cataloged into D1, and cross-verified against 426 syllabus courses.</desc>
+  <desc>Deterministic migration workflow: 2,111 PDF files (~13.8 GB) collected across 9 engineering departments, parsed and normalized, deduplicated with SHA-256, streamed into Cloudflare R2, cataloged into D1, and cross-verified against 426 syllabus courses.</desc>
   <defs>
-    <marker id="chev-green" markerWidth="10" markerHeight="10" refX="7" refY="5" orient="auto" markerUnits="userSpaceOnUse">
-      <path d="M1.5 1.5 L7 5 L1.5 8.5" fill="none" stroke="#047857" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+    <marker id="arrow-green" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M1.5 1.5 L7.5 4.5 L1.5 7.5" fill="none" stroke="#047857" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
     </marker>
   </defs>
-  <rect x="0" y="0" width="798" height="342" fill="#FFFFFF"/>
-  <text x="28" y="34" font-size="10" fill="#059669" font-weight="600">NUESA · 03 / MIGRATION FLOW (2,111 OBJECTS · ~13.8 GB)</text>
 
-  <!-- Step 1: Raw Archives -->
-  <rect x="28" y="80" width="110" height="96" rx="8" fill="#ECFDF5" stroke="#047857" stroke-width="1.25"/>
-  <text x="83" y="106" font-size="10" fill="#064E3B" text-anchor="middle" font-weight="600">RAW ARCHIVES</text>
-  <text x="83" y="124" font-size="8" fill="#065F46" text-anchor="middle">2,111 PDF FILES</text>
-  <line x1="40" y1="134" x2="126" y2="134" stroke="#047857" stroke-width="0.75" stroke-opacity="0.3"/>
-  <text x="83" y="152" font-size="8" fill="#065F46" text-anchor="middle">Faculty drives</text>
-  <text x="83" y="166" font-size="8" fill="#059669" text-anchor="middle">~13.8 GB</text>
+  <rect x="0" y="0" width="840" height="360" fill="#FFFFFF"/>
 
-  <!-- Step 2: Metadata Extraction -->
-  <rect x="156" y="80" width="110" height="96" rx="8" fill="#FFFFFF" stroke="#047857" stroke-width="1.25"/>
-  <text x="211" y="106" font-size="10" fill="#064E3B" text-anchor="middle" font-weight="600">NORMALIZE</text>
-  <text x="211" y="124" font-size="8" fill="#065F46" text-anchor="middle">METADATA PARSE</text>
-  <line x1="168" y1="134" x2="254" y2="134" stroke="#047857" stroke-width="0.75" stroke-opacity="0.3"/>
-  <text x="211" y="152" font-size="8" fill="#065F46" text-anchor="middle">Course code</text>
-  <text x="211" y="166" font-size="8" fill="#065F46" text-anchor="middle">Dept &amp; Level</text>
+  <!-- Header -->
+  <text x="32" y="32" font-size="10" font-weight="600" fill="#047857" letter-spacing="0.12em">NUESA · 03 / MIGRATION FLOW</text>
+  <text x="808" y="32" font-size="9" font-weight="500" fill="#64748B" text-anchor="end">2,111 OBJECTS · ~13.8 GB DETERMINISTIC ETL</text>
+  <line x1="32" y1="44" x2="808" y2="44" stroke="#E2E8F0" stroke-width="1"/>
 
-  <!-- Step 3: SHA-256 Dedup -->
-  <rect x="284" y="80" width="110" height="96" rx="8" fill="#FFFFFF" stroke="#047857" stroke-width="1.25"/>
-  <text x="339" y="106" font-size="10" fill="#064E3B" text-anchor="middle" font-weight="600">SHA-256</text>
-  <text x="339" y="124" font-size="8" fill="#065F46" text-anchor="middle">HASH CHECKSUM</text>
-  <line x1="296" y1="134" x2="382" y2="134" stroke="#047857" stroke-width="0.75" stroke-opacity="0.3"/>
-  <text x="339" y="152" font-size="8" fill="#065F46" text-anchor="middle">Integrity verify</text>
-  <text x="339" y="166" font-size="8" fill="#059669" text-anchor="middle">Dedup match</text>
+  <!-- STAGE 1: RAW INGRESS -->
+  <rect x="32" y="62" width="142" height="186" rx="8" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.25"/>
+  <rect x="42" y="72" width="56" height="18" rx="3" fill="#E2E8F0"/>
+  <text x="70" y="85" font-size="8.5" font-weight="600" fill="#475569" text-anchor="middle">STAGE 01</text>
+  <text x="42" y="108" font-size="11" font-weight="600" fill="#0F172A">RAW ARCHIVE</text>
+  <text x="42" y="123" font-size="11" font-weight="600" fill="#0F172A">INGRESS</text>
 
-  <!-- Step 4: Stream to R2 -->
-  <rect x="412" y="80" width="110" height="96" rx="8" fill="#047857" stroke="#065F46" stroke-width="1.25"/>
-  <text x="467" y="106" font-size="10" fill="#FFFFFF" text-anchor="middle" font-weight="600">STREAM TO R2</text>
-  <text x="467" y="124" font-size="8" fill="#A7F3D0" text-anchor="middle">OBJECT STORE</text>
-  <line x1="424" y1="134" x2="510" y2="134" stroke="#A7F3D0" stroke-width="0.75" stroke-opacity="0.3"/>
-  <text x="467" y="152" font-size="8" fill="#FFFFFF" text-anchor="middle">Chunked put</text>
-  <text x="467" y="166" font-size="8" fill="#A7F3D0" text-anchor="middle">Zero egress</text>
+  <line x1="42" y1="133" x2="164" y2="133" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="42" y="149" font-size="8.5" fill="#047857" font-weight="600">INPUT SOURCES:</text>
+  <text x="42" y="165" font-size="8" fill="#475569">• Faculty Drives</text>
+  <text x="42" y="179" font-size="8" fill="#475569">• 2,111 PDF Files</text>
+  <text x="42" y="193" font-size="8" fill="#475569">• ~13.8 GB Total</text>
 
-  <!-- Step 5: Index into D1 -->
-  <rect x="540" y="80" width="110" height="96" rx="8" fill="#047857" stroke="#065F46" stroke-width="1.25"/>
-  <text x="595" y="106" font-size="10" fill="#FFFFFF" text-anchor="middle" font-weight="600">CATALOG D1</text>
-  <text x="595" y="124" font-size="8" fill="#A7F3D0" text-anchor="middle">SQL BATCH</text>
-  <line x1="552" y1="134" x2="638" y2="134" stroke="#A7F3D0" stroke-width="0.75" stroke-opacity="0.3"/>
-  <text x="595" y="152" font-size="8" fill="#FFFFFF" text-anchor="middle">Courses join</text>
-  <text x="595" y="166" font-size="8" fill="#A7F3D0" text-anchor="middle">Keyset index</text>
+  <rect x="42" y="205" width="122" height="32" rx="4" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/>
+  <text x="48" y="218" font-size="7.5" font-weight="600" fill="#047857">INGRESS STATUS:</text>
+  <text x="48" y="229" font-size="7.5" fill="#64748B">Aggregated Raw Blobs</text>
 
-  <!-- Step 6: Coverage Audit -->
-  <rect x="668" y="80" width="102" height="96" rx="8" fill="#ECFDF5" stroke="#047857" stroke-width="1.25"/>
-  <text x="719" y="106" font-size="10" fill="#064E3B" text-anchor="middle" font-weight="600">AUDIT</text>
-  <text x="719" y="124" font-size="8" fill="#065F46" text-anchor="middle">VERIFICATION</text>
-  <line x1="680" y1="134" x2="758" y2="134" stroke="#047857" stroke-width="0.75" stroke-opacity="0.3"/>
-  <text x="719" y="152" font-size="8" fill="#064E3B" text-anchor="middle">426 Courses</text>
-  <text x="719" y="166" font-size="8" fill="#059669" text-anchor="middle">9 Departments</text>
+  <!-- STAGE 2: PARSE & NORMALIZE -->
+  <rect x="190" y="62" width="142" height="186" rx="8" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.25"/>
+  <rect x="200" y="72" width="56" height="18" rx="3" fill="#E2E8F0"/>
+  <text x="228" y="85" font-size="8.5" font-weight="600" fill="#475569" text-anchor="middle">STAGE 02</text>
+  <text x="200" y="108" font-size="11" font-weight="600" fill="#0F172A">PARSE AND</text>
+  <text x="200" y="123" font-size="11" font-weight="600" fill="#0F172A">NORMALIZE</text>
+
+  <line x1="200" y1="133" x2="322" y2="133" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="200" y="149" font-size="8.5" fill="#047857" font-weight="600">METADATA FIELDS:</text>
+  <text x="200" y="165" font-size="8" fill="#475569">• Course Code Parse</text>
+  <text x="200" y="179" font-size="8" fill="#475569">• Dept and Level</text>
+  <text x="200" y="193" font-size="8" fill="#475569">• Semester Typing</text>
+
+  <rect x="200" y="205" width="122" height="32" rx="4" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/>
+  <text x="206" y="218" font-size="7.5" font-weight="600" fill="#047857">SCHEMA MATCH:</text>
+  <text x="206" y="229" font-size="7.5" fill="#64748B">Canonical Metadata</text>
+
+  <!-- STAGE 3: SHA-256 INTEGRITY -->
+  <rect x="348" y="62" width="142" height="186" rx="8" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.25"/>
+  <rect x="358" y="72" width="56" height="18" rx="3" fill="#E2E8F0"/>
+  <text x="386" y="85" font-size="8.5" font-weight="600" fill="#475569" text-anchor="middle">STAGE 03</text>
+  <text x="358" y="108" font-size="11" font-weight="600" fill="#0F172A">SHA-256</text>
+  <text x="358" y="123" font-size="11" font-weight="600" fill="#0F172A">INTEGRITY</text>
+
+  <line x1="358" y1="133" x2="480" y2="133" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="358" y="149" font-size="8.5" fill="#047857" font-weight="600">VERIFICATION:</text>
+  <text x="358" y="165" font-size="8" fill="#475569">• Stream Hash Digest</text>
+  <text x="358" y="179" font-size="8" fill="#475569">• Duplicate Filter</text>
+  <text x="358" y="193" font-size="8" fill="#475569">• Zero Byte Guard</text>
+
+  <rect x="358" y="205" width="122" height="32" rx="4" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/>
+  <text x="364" y="218" font-size="7.5" font-weight="600" fill="#047857">HASH DIGEST:</text>
+  <text x="364" y="229" font-size="7.5" fill="#64748B">Unique Document Key</text>
+
+  <!-- STAGE 4: R2 STREAM PUT -->
+  <rect x="506" y="62" width="142" height="186" rx="8" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.25"/>
+  <rect x="516" y="72" width="56" height="18" rx="3" fill="#E2E8F0"/>
+  <text x="544" y="85" font-size="8.5" font-weight="600" fill="#475569" text-anchor="middle">STAGE 04</text>
+  <text x="516" y="108" font-size="11" font-weight="600" fill="#0F172A">R2 STREAM</text>
+  <text x="516" y="123" font-size="11" font-weight="600" fill="#0F172A">STORAGE</text>
+
+  <line x1="516" y1="133" x2="638" y2="133" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="516" y="149" font-size="8.5" fill="#047857" font-weight="600">OBJECT STORE:</text>
+  <text x="516" y="165" font-size="8" fill="#475569">• Chunked Stream Put</text>
+  <text x="516" y="179" font-size="8" fill="#475569">• Zero Egress Cost</text>
+  <text x="516" y="193" font-size="8" fill="#475569">• Immutable UUID Key</text>
+
+  <rect x="516" y="205" width="122" height="32" rx="4" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/>
+  <text x="522" y="218" font-size="7.5" font-weight="600" fill="#047857">BLOB LOCATION:</text>
+  <text x="522" y="229" font-size="7.5" fill="#64748B">r2://academia-docs/</text>
+
+  <!-- STAGE 5: D1 RELATIONAL JOIN -->
+  <rect x="664" y="62" width="144" height="186" rx="8" fill="#ECFDF5" stroke="#047857" stroke-width="1.5"/>
+  <rect x="674" y="72" width="56" height="18" rx="3" fill="#047857"/>
+  <text x="702" y="85" font-size="8.5" font-weight="600" fill="#FFFFFF" text-anchor="middle">STAGE 05</text>
+  <text x="674" y="108" font-size="11" font-weight="600" fill="#064E3B">D1 CATALOG</text>
+  <text x="674" y="123" font-size="11" font-weight="600" fill="#064E3B">RELATIONAL JOIN</text>
+
+  <line x1="674" y1="133" x2="796" y2="133" stroke="#A7F3D0" stroke-width="1"/>
+  <text x="674" y="149" font-size="8.5" fill="#047857" font-weight="600">SQL PERSISTENCE:</text>
+  <text x="674" y="165" font-size="8" fill="#065F46">• SQL Batch Commit</text>
+  <text x="674" y="179" font-size="8" fill="#065F46">• 426 Courses Joined</text>
+  <text x="674" y="193" font-size="8" fill="#065F46">• Audit Trail Log</text>
+
+  <rect x="674" y="205" width="124" height="32" rx="4" fill="#FFFFFF" stroke="#047857" stroke-width="1"/>
+  <text x="680" y="218" font-size="7.5" font-weight="600" fill="#047857">CATALOG INDEX:</text>
+  <text x="680" y="229" font-size="7.5" fill="#065F46">Status: Published</text>
 
   <!-- Connectors -->
-  <path d="M138 128 L156 128" fill="none" stroke="#047857" stroke-width="1.25" marker-end="url(#chev-green)"/>
-  <path d="M266 128 L284 128" fill="none" stroke="#047857" stroke-width="1.25" marker-end="url(#chev-green)"/>
-  <path d="M394 128 L412 128" fill="none" stroke="#047857" stroke-width="1.25" marker-end="url(#chev-green)"/>
-  <path d="M522 128 L540 128" fill="none" stroke="#047857" stroke-width="1.25" marker-end="url(#chev-green)"/>
-  <path d="M650 128 L668 128" fill="none" stroke="#047857" stroke-width="1.25" marker-end="url(#chev-green)"/>
+  <line x1="174" y1="155" x2="190" y2="155" stroke="#047857" stroke-width="1.5" marker-end="url(#arrow-green)"/>
+  <line x1="332" y1="155" x2="348" y2="155" stroke="#047857" stroke-width="1.5" marker-end="url(#arrow-green)"/>
+  <line x1="490" y1="155" x2="506" y2="155" stroke="#047857" stroke-width="1.5" marker-end="url(#arrow-green)"/>
+  <line x1="648" y1="155" x2="664" y2="155" stroke="#047857" stroke-width="1.5" marker-end="url(#arrow-green)"/>
 
-  <!-- Summary stats box below -->
-  <rect x="28" y="210" width="742" height="64" rx="8" fill="#F0FDF4" stroke="#047857" stroke-width="1"/>
-  <text x="50" y="238" font-size="10" fill="#064E3B" font-weight="600">MIGRATION BENCHMARKS:</text>
-  <text x="50" y="258" font-size="9" fill="#065F46">100% of 2,111 legacy documents migrated with zero loss. All assets linked to verified syllabus course codes across Levels 100-500.</text>
+  <!-- VERIFICATION AUDIT PANEL -->
+  <rect x="32" y="258" width="776" height="66" rx="6" fill="#F0FDF4" stroke="#047857" stroke-width="1"/>
 
-  <text x="399" y="316" font-size="10" fill="#065F46" text-anchor="middle">Deterministic ETL pipeline: raw faculty files normalized, deduplicated, streamed to R2 and indexed into D1.</text>
+  <!-- Col 1 -->
+  <text x="48" y="280" font-size="10" font-weight="600" fill="#064E3B">2,111 / 2,111 OBJECTS</text>
+  <text x="48" y="296" font-size="8.5" fill="#047857">100% Zero Data Loss Verified</text>
+  <text x="48" y="311" font-size="7.5" fill="#64748B">~13.8 GB legacy archives ingested</text>
+
+  <line x1="225" y1="268" x2="225" y2="314" stroke="#CBD5E1" stroke-width="1"/>
+
+  <!-- Col 2 -->
+  <text x="241" y="280" font-size="10" font-weight="600" fill="#064E3B">426 SYLLABUS COURSES</text>
+  <text x="241" y="296" font-size="8.5" fill="#047857">Levels 100 to 500 Verified</text>
+  <text x="241" y="311" font-size="7.5" fill="#64748B">Every document mapped to course code</text>
+
+  <line x1="418" y1="268" x2="418" y2="314" stroke="#CBD5E1" stroke-width="1"/>
+
+  <!-- Col 3 -->
+  <text x="434" y="280" font-size="10" font-weight="600" fill="#064E3B">9 ACADEMIC DEPTS</text>
+  <text x="434" y="296" font-size="8.5" fill="#047857">Faculty-Wide Coverage</text>
+  <text x="434" y="311" font-size="7.5" fill="#64748B">AAE, BME, CHE, CVL, COE, EEE, MEE, MCT, PTE</text>
+
+  <line x1="611" y1="268" x2="611" y2="314" stroke="#CBD5E1" stroke-width="1"/>
+
+  <!-- Col 4 -->
+  <text x="627" y="280" font-size="10" font-weight="600" fill="#064E3B">CLOUDFLARE R2 + D1</text>
+  <text x="627" y="296" font-size="8.5" fill="#047857">Zero Egress Operating Cost</text>
+  <text x="627" y="311" font-size="7.5" fill="#64748B">Edge-distributed serverless catalog</text>
+
+  <!-- Footer -->
+  <text x="420" y="344" font-size="8.5" fill="#64748B" text-anchor="middle">Deterministic ETL pipeline: raw faculty files normalized, deduplicated with SHA-256, streamed to R2, and cataloged into D1.</text>
 </svg>

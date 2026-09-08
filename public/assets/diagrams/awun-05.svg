@@ -1,66 +1,119 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="t-05 d-05">
-  <title id="t-05">Data Model</title>
-  <desc id="d-05">Hand-authored AWUN Technical Documentary diagram for data model. JetBrains Mono labels, terracotta palette, flat white field, hairline borders, rounded orthogonal connectors with open chevron markers. No gradients, no shadows. All facts trace to docs/case-studies/awun.md.</desc>
-  <rect x="0" y="0" width="800" height="450" fill="#FFFFFF"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" role="img" font-family="'JetBrains Mono', ui-monospace, Menlo, Consolas, monospace" style="font-family:'JetBrains Mono',ui-monospace,monospace">
+  <title>AWUN - Relational Data Model (Cloudflare D1)</title>
+  <desc>Relational schema of 10 Cloudflare D1 tables across Catalog, Commerce, and Outbox domains, featuring atomic stock reservation tracking, money stored in integer kobo, and webhook event idempotency.</desc>
   <defs>
-  <marker id="chev_05" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-    <path d="M 0 0 L 9 5 L 0 10" fill="none" stroke="#3D2B1F" stroke-width="1.4"/>
-  </marker>
-</defs>
-  <text x="24" y="24" text-anchor="start" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="9" font-weight="600" fill="#8B4513">AWUN / TECHNICAL DOCUMENTARY</text>
-<text x="24" y="42" text-anchor="start" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="18" font-weight="600" fill="#1F1B16">Data Model</text>
-<text x="24" y="60" text-anchor="start" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="10" font-weight="400" fill="#6B5A4A">10 D1 tables / 22 indexes; money in minor units (kobo)</text>
-<line x1="24" y1="85" x2="776" y2="85" stroke="#1F1B16" stroke-width="0.75"/>
-<rect x="30" y="110" width="130" height="50" rx="8" ry="8" fill="#F5E9DC" stroke="#1F1B16" stroke-width="1.25"/>
-<text x="95.0" y="139.0" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="11" font-weight="500" fill="#1F1B16">vendors</text>
-<text x="95.0" y="153.0" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="9" fill="#6B5A4A">D1</text>
-<rect x="174" y="110" width="130" height="50" rx="8" ry="8" fill="#F5E9DC" stroke="#1F1B16" stroke-width="1.25"/>
-<text x="239.0" y="139.0" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="11" font-weight="500" fill="#1F1B16">products</text>
-<text x="239.0" y="153.0" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="9" fill="#6B5A4A">D1</text>
-<rect x="318" y="110" width="130" height="50" rx="8" ry="8" fill="#F5E9DC" stroke="#1F1B16" stroke-width="1.25"/>
-<text x="383.0" y="139.0" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="11" font-weight="500" fill="#1F1B16">product_variants</text>
-<text x="383.0" y="153.0" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="9" fill="#6B5A4A">D1</text>
-<rect x="462" y="110" width="130" height="50" rx="8" ry="8" fill="#F5E9DC" stroke="#1F1B16" stroke-width="1.25"/>
-<text x="527.0" y="139.0" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="11" font-weight="500" fill="#1F1B16">product_images</text>
-<text x="527.0" y="153.0" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="9" fill="#6B5A4A">D1</text>
-<rect x="606" y="110" width="130" height="50" rx="8" ry="8" fill="#F5E9DC" stroke="#1F1B16" stroke-width="1.25"/>
-<text x="671.0" y="139.0" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="11" font-weight="500" fill="#1F1B16">checkouts</text>
-<text x="671.0" y="153.0" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="9" fill="#6B5A4A">D1</text>
-<rect x="30" y="280" width="130" height="50" rx="8" ry="8" fill="#F5E9DC" stroke="#1F1B16" stroke-width="1.25"/>
-<text x="95.0" y="309.0" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="11" font-weight="500" fill="#1F1B16">orders</text>
-<text x="95.0" y="323.0" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="9" fill="#6B5A4A">D1</text>
-<rect x="174" y="280" width="130" height="50" rx="8" ry="8" fill="#F5E9DC" stroke="#1F1B16" stroke-width="1.25"/>
-<text x="239.0" y="309.0" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="11" font-weight="500" fill="#1F1B16">stock_reservations</text>
-<text x="239.0" y="323.0" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="9" fill="#6B5A4A">D1</text>
-<rect x="318" y="280" width="130" height="50" rx="8" ry="8" fill="#F5E9DC" stroke="#1F1B16" stroke-width="1.25"/>
-<text x="383.0" y="309.0" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="11" font-weight="500" fill="#1F1B16">webhook_events</text>
-<text x="383.0" y="323.0" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="9" fill="#6B5A4A">D1</text>
-<rect x="462" y="280" width="130" height="50" rx="8" ry="8" fill="#F5E9DC" stroke="#1F1B16" stroke-width="1.25"/>
-<text x="527.0" y="309.0" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="11" font-weight="500" fill="#1F1B16">email_outbox</text>
-<text x="527.0" y="323.0" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="9" fill="#6B5A4A">D1</text>
-<rect x="606" y="280" width="130" height="50" rx="8" ry="8" fill="#F5E9DC" stroke="#1F1B16" stroke-width="1.25"/>
-<text x="671.0" y="309.0" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="11" font-weight="500" fill="#1F1B16">product_embeddings</text>
-<text x="671.0" y="323.0" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="9" fill="#6B5A4A">D1</text>
-<path d="M 95.0 170 L 107.0 170 Q 113.0 170 113.0 164 L 113.0 176 Q 113.0 170 119.0 170 L 239.0 170" stroke="#6B5A4A" stroke-width="1.25" fill="none"/>
-<path d="M 239.0 170 L 233.0 166.25 L 233.0 173.75 Z" fill="none" stroke="#6B5A4A" stroke-width="1.25"/>
-<path d="M 239.0 170 L 251.0 170 Q 257.0 170 257.0 164 L 257.0 176 Q 257.0 170 263.0 170 L 383.0 170" stroke="#6B5A4A" stroke-width="1.25" fill="none"/>
-<path d="M 383.0 170 L 377.0 166.25 L 377.0 173.75 Z" fill="none" stroke="#6B5A4A" stroke-width="1.25"/>
-<path d="M 239.0 170 L 251.0 170 Q 257.0 170 257.0 164 L 257.0 176 Q 257.0 170 263.0 170 L 527.0 170" stroke="#6B5A4A" stroke-width="1.25" fill="none"/>
-<path d="M 527.0 170 L 521.0 166.25 L 521.0 173.75 Z" fill="none" stroke="#6B5A4A" stroke-width="1.25"/>
-<path d="M 95.0 170 L 107.0 170 Q 113.0 170 113.0 164 L 113.0 176 Q 113.0 170 119.0 170 L 671.0 170" stroke="#6B5A4A" stroke-width="1.25" fill="none"/>
-<path d="M 671.0 170 L 665.0 166.25 L 665.0 173.75 Z" fill="none" stroke="#6B5A4A" stroke-width="1.25"/>
-<path d="M 671.0 160 L 689.0 160 Q 695.0 160 695.0 166 L 695.0 274 Q 695.0 280 701.0 280 L 95.0 280" stroke="#6B5A4A" stroke-width="1.25" fill="none"/>
-<path d="M 95.0 280 L 89.0 276.25 L 89.0 283.75 Z" fill="none" stroke="#6B5A4A" stroke-width="1.25"/>
-<path d="M 671.0 160 L 689.0 160 Q 695.0 160 695.0 166 L 695.0 274 Q 695.0 280 701.0 280 L 239.0 280" stroke="#6B5A4A" stroke-width="1.25" fill="none"/>
-<path d="M 239.0 280 L 233.0 276.25 L 233.0 283.75 Z" fill="none" stroke="#6B5A4A" stroke-width="1.25"/>
-<path d="M 671.0 160 L 689.0 160 Q 695.0 160 695.0 166 L 695.0 274 Q 695.0 280 701.0 280 L 383.0 280" stroke="#6B5A4A" stroke-width="1.25" fill="none"/>
-<path d="M 383.0 280 L 377.0 276.25 L 377.0 283.75 Z" fill="none" stroke="#6B5A4A" stroke-width="1.25"/>
-<path d="M 95.0 270 L 107.0 270 Q 113.0 270 113.0 264 L 113.0 276 Q 113.0 270 119.0 270 L 527.0 270" stroke="#6B5A4A" stroke-width="1.25" fill="none"/>
-<path d="M 527.0 270 L 521.0 266.25 L 521.0 273.75 Z" fill="none" stroke="#6B5A4A" stroke-width="1.25"/>
-<path d="M 239.0 160 L 257.0 160 Q 263.0 160 263.0 166 L 263.0 274 Q 263.0 280 269.0 280 L 671.0 280" stroke="#6B5A4A" stroke-width="1.25" fill="none"/>
-<path d="M 671.0 280 L 665.0 276.25 L 665.0 283.75 Z" fill="none" stroke="#6B5A4A" stroke-width="1.25"/>
-<text x="30" y="220" text-anchor="start" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="9" font-weight="400" fill="#6B5A4A" font-style="italic">Cross-table rules: out-of-stock blocks checkout link creation with HTTP 409; reservation released on CANCEL or EXPIRED.</text>
-<line x1="24" y1="418" x2="776" y2="418" stroke="#1F1B16" stroke-width="0.5"/>
-<text x="24" y="434" text-anchor="start" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="8" font-weight="400" fill="#6B5A4A">AWUN / 05 OF 08</text>
-<text x="776" y="434" text-anchor="end" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="8" font-weight="400" fill="#6B5A4A">awun.md section 2.4 + 5.2</text>
+    <marker id="arrow-terracotta" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M1.5 1.5 L6.5 4 L1.5 6.5" fill="none" stroke="#8B4513" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="800" height="450" fill="#FFFFFF"/>
+
+  <!-- Header -->
+  <text x="32" y="32" font-size="10" font-weight="600" fill="#8B4513" letter-spacing="0.12em">AWUN / 05 · RELATIONAL SCHEMA (CLOUDFLARE D1)</text>
+  <text x="768" y="32" font-size="9" font-weight="500" fill="#78716C" text-anchor="end">10 TABLES · 22 INDEXES · KOBO INTEGERS</text>
+  <line x1="32" y1="44" x2="768" y2="44" stroke="#E7E5E4" stroke-width="1"/>
+
+  <!-- ==================== CLUSTER 1: CATALOG DOMAIN ==================== -->
+  <rect x="32" y="58" width="224" height="344" rx="6" fill="#FDFBF7" stroke="#E7E5E4" stroke-width="1.25"/>
+  <rect x="42" y="68" width="80" height="18" rx="3" fill="#F5EBE1"/>
+  <text x="82" y="80" font-size="8" font-weight="600" fill="#8B4513" text-anchor="middle">CATALOG</text>
+
+  <!-- Table 1: vendors -->
+  <rect x="42" y="94" width="204" height="66" rx="4" fill="#FFFFFF" stroke="#D7CCC8" stroke-width="1"/>
+  <text x="52" y="110" font-size="9.5" font-weight="600" fill="#1C1917">TABLE: vendors</text>
+  <text x="52" y="126" font-size="8" fill="#8B4513">id <tspan fill="#78716C">INTEGER PRIMARY KEY</tspan></text>
+  <text x="52" y="139" font-size="8" fill="#1C1917">firebase_uid <tspan fill="#78716C">TEXT UNIQUE</tspan></text>
+  <text x="52" y="152" font-size="8" fill="#1C1917">slug <tspan fill="#78716C">TEXT UNIQUE · store_name</tspan></text>
+
+  <!-- Table 2: products -->
+  <rect x="42" y="168" width="204" height="66" rx="4" fill="#FFFFFF" stroke="#D7CCC8" stroke-width="1"/>
+  <text x="52" y="184" font-size="9.5" font-weight="600" fill="#1C1917">TABLE: products</text>
+  <text x="52" y="200" font-size="8" fill="#8B4513">id <tspan fill="#78716C">INTEGER PRIMARY KEY</tspan></text>
+  <text x="52" y="213" font-size="8" fill="#8B4513">vendor_id <tspan fill="#78716C">INTEGER FK</tspan></text>
+  <text x="52" y="226" font-size="8" fill="#1C1917">title, base_price_kobo, status</text>
+
+  <!-- Table 3: product_variants -->
+  <rect x="42" y="242" width="204" height="74" rx="4" fill="#FFFFFF" stroke="#8B4513" stroke-width="1.25"/>
+  <text x="52" y="258" font-size="9.5" font-weight="600" fill="#1C1917">TABLE: product_variants</text>
+  <text x="52" y="274" font-size="8" fill="#8B4513">id <tspan fill="#78716C">INTEGER PRIMARY KEY</tspan></text>
+  <text x="52" y="287" font-size="8" fill="#8B4513">product_id <tspan fill="#78716C">INTEGER FK</tspan></text>
+  <text x="52" y="300" font-size="8" fill="#047857">stock_qty, reserved_qty</text>
+  <text x="52" y="312" font-size="7" fill="#78716C">CHECK (stock_qty &gt;= reserved_qty)</text>
+
+  <!-- Table 4: product_images -->
+  <rect x="42" y="324" width="204" height="66" rx="4" fill="#FFFFFF" stroke="#D7CCC8" stroke-width="1"/>
+  <text x="52" y="340" font-size="9.5" font-weight="600" fill="#1C1917">TABLE: product_images</text>
+  <text x="52" y="356" font-size="8" fill="#8B4513">id <tspan fill="#78716C">INTEGER PK</tspan></text>
+  <text x="52" y="369" font-size="8" fill="#8B4513">product_id <tspan fill="#78716C">INTEGER FK</tspan></text>
+  <text x="52" y="382" font-size="8" fill="#1C1917">r2_key <tspan fill="#78716C">TEXT · is_primary BOOL</tspan></text>
+
+  <!-- ==================== CLUSTER 2: COMMERCE & STATE ==================== -->
+  <rect x="280" y="58" width="240" height="344" rx="6" fill="#FDFBF7" stroke="#E7E5E4" stroke-width="1.25"/>
+  <rect x="290" y="68" width="90" height="18" rx="3" fill="#F5EBE1"/>
+  <text x="335" y="80" font-size="8" font-weight="600" fill="#8B4513" text-anchor="middle">COMMERCE</text>
+
+  <!-- Table 5: checkouts -->
+  <rect x="290" y="94" width="220" height="82" rx="4" fill="#FFFFFF" stroke="#8B4513" stroke-width="1.25"/>
+  <text x="300" y="110" font-size="9.5" font-weight="600" fill="#1C1917">TABLE: checkouts</text>
+  <text x="300" y="126" font-size="8" fill="#8B4513">id <tspan fill="#78716C">TEXT PRIMARY KEY (UUID)</tspan></text>
+  <text x="300" y="139" font-size="8" fill="#8B4513">vendor_id <tspan fill="#78716C">INTEGER FK</tspan></text>
+  <text x="300" y="152" font-size="8" fill="#1C1917">status: <tspan fill="#8B4513">open / paid / expired / cancel</tspan></text>
+  <text x="300" y="165" font-size="8" fill="#1C1917">expires_at <tspan fill="#78716C">TIMESTAMP (30-MIN)</tspan></text>
+
+  <!-- Table 6: stock_reservations -->
+  <rect x="290" y="184" width="220" height="96" rx="4" fill="#F5EBE1" stroke="#8B4513" stroke-width="1.5"/>
+  <text x="300" y="200" font-size="9.5" font-weight="600" fill="#1C1917">TABLE: stock_reservations</text>
+  <text x="300" y="216" font-size="8" fill="#8B4513">id <tspan fill="#78716C">INTEGER PRIMARY KEY</tspan></text>
+  <text x="300" y="229" font-size="8" fill="#8B4513">checkout_id <tspan fill="#78716C">TEXT FK</tspan></text>
+  <text x="300" y="242" font-size="8" fill="#8B4513">variant_id <tspan fill="#78716C">INTEGER FK</tspan></text>
+  <text x="300" y="255" font-size="8" fill="#1C1917">quantity <tspan fill="#78716C">INTEGER</tspan></text>
+  <text x="300" y="268" font-size="7.5" fill="#8B4513">status: <tspan fill="#047857">active</tspan> / <tspan fill="#78716C">consumed</tspan> / <tspan fill="#B91C1C">released</tspan></text>
+
+  <!-- Table 7: orders -->
+  <rect x="290" y="288" width="220" height="102" rx="4" fill="#FFFFFF" stroke="#D7CCC8" stroke-width="1"/>
+  <text x="300" y="304" font-size="9.5" font-weight="600" fill="#1C1917">TABLE: orders</text>
+  <text x="300" y="320" font-size="8" fill="#8B4513">id <tspan fill="#78716C">TEXT PRIMARY KEY (UUID)</tspan></text>
+  <text x="300" y="333" font-size="8" fill="#8B4513">checkout_id <tspan fill="#78716C">TEXT FK (UNIQUE)</tspan></text>
+  <text x="300" y="346" font-size="8" fill="#1C1917">amount_kobo, delivery_fee_kobo</text>
+  <text x="300" y="359" font-size="8" fill="#1C1917">customer_name, customer_phone</text>
+  <text x="300" y="372" font-size="8" fill="#047857">status: new / processing / fulfilled</text>
+
+  <!-- ==================== CLUSTER 3: INFRASTRUCTURE ==================== -->
+  <rect x="544" y="58" width="224" height="344" rx="6" fill="#FDFBF7" stroke="#E7E5E4" stroke-width="1.25"/>
+  <rect x="554" y="68" width="110" height="18" rx="3" fill="#F5EBE1"/>
+  <text x="609" y="80" font-size="8" font-weight="600" fill="#8B4513" text-anchor="middle">INFRASTRUCTURE</text>
+
+  <!-- Table 8: webhook_events -->
+  <rect x="554" y="94" width="204" height="82" rx="4" fill="#FFFFFF" stroke="#D7CCC8" stroke-width="1"/>
+  <text x="564" y="110" font-size="9.5" font-weight="600" fill="#1C1917">TABLE: webhook_events</text>
+  <text x="564" y="126" font-size="8" fill="#8B4513">id <tspan fill="#78716C">INTEGER PRIMARY KEY</tspan></text>
+  <text x="564" y="139" font-size="8" fill="#8B4513">event_key <tspan fill="#78716C">TEXT UNIQUE</tspan></text>
+  <text x="564" y="152" font-size="8" fill="#1C1917">provider <tspan fill="#78716C">'paystack'</tspan></text>
+  <text x="564" y="165" font-size="7.5" fill="#8B4513">Guarantees idempotency</text>
+
+  <!-- Table 9: email_outbox -->
+  <rect x="554" y="184" width="204" height="82" rx="4" fill="#FFFFFF" stroke="#D7CCC8" stroke-width="1"/>
+  <text x="564" y="200" font-size="9.5" font-weight="600" fill="#1C1917">TABLE: email_outbox</text>
+  <text x="564" y="216" font-size="8" fill="#8B4513">id <tspan fill="#78716C">INTEGER PRIMARY KEY</tspan></text>
+  <text x="564" y="229" font-size="8" fill="#8B4513">order_id <tspan fill="#78716C">TEXT FK</tspan></text>
+  <text x="564" y="242" font-size="8" fill="#1C1917">recipient, template, status</text>
+  <text x="564" y="255" font-size="7.5" fill="#8B4513">Drain cron via Resend</text>
+
+  <!-- Table 10: product_embeddings -->
+  <rect x="554" y="274" width="204" height="82" rx="4" fill="#FFFFFF" stroke="#D7CCC8" stroke-width="1"/>
+  <text x="564" y="290" font-size="9.5" font-weight="600" fill="#1C1917">TABLE: product_embeddings</text>
+  <text x="564" y="306" font-size="8" fill="#8B4513">product_id <tspan fill="#78716C">INTEGER PK</tspan></text>
+  <text x="564" y="319" font-size="8" fill="#1C1917">vector_id <tspan fill="#78716C">TEXT</tspan></text>
+  <text x="564" y="332" font-size="8" fill="#1C1917">dimensions <tspan fill="#78716C">256</tspan></text>
+  <text x="564" y="345" font-size="7.5" fill="#8B4513">Sync flag for Vectorize</text>
+
+  <!-- Intra-Domain Relationships (Orthogonal) -->
+  <path d="M246 279 L280 232" fill="none" stroke="#8B4513" stroke-width="1.25" marker-end="url(#arrow-terracotta)"/>
+  <path d="M510 339 L544 225" fill="none" stroke="#8B4513" stroke-width="1.25" marker-end="url(#arrow-terracotta)"/>
+
+  <!-- Footer -->
+  <line x1="32" y1="416" x2="768" y2="416" stroke="#E7E5E4" stroke-width="1"/>
+  <text x="32" y="434" font-size="8.5" fill="#78716C">AWUN / 05 OF 08 · D1 Relational Schema</text>
+  <text x="768" y="434" font-size="8.5" fill="#78716C" text-anchor="end">Source: docs/case-studies/awun.md sections 2.4 &amp; 5.2</text>
 </svg>

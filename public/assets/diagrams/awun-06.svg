@@ -1,45 +1,110 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="t-06 d-06">
-  <title id="t-06">Statement Budget Chart</title>
-  <desc id="d-06">Hand-authored AWUN Technical Documentary diagram for statement budget chart. JetBrains Mono labels, terracotta palette, flat white field, hairline borders, rounded orthogonal connectors with open chevron markers. No gradients, no shadows. All facts trace to docs/case-studies/awun.md.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" role="img" font-family="'JetBrains Mono', ui-monospace, Menlo, Consolas, monospace" style="font-family:'JetBrains Mono',ui-monospace,monospace">
+  <title>AWUN - D1 Statement Budget Chart</title>
+  <desc>Technical bar chart illustrating D1 statement budgets before and after query batching optimizations. Each query represents an HTTP round trip over the internal worker boundary, budget-enforced by automated tests in CI.</desc>
+
   <rect x="0" y="0" width="800" height="450" fill="#FFFFFF"/>
-  <defs>
-  <marker id="chev_06" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-    <path d="M 0 0 L 9 5 L 0 10" fill="none" stroke="#3D2B1F" stroke-width="1.4"/>
-  </marker>
-</defs>
-  <text x="24" y="24" text-anchor="start" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="9" font-weight="600" fill="#8B4513">AWUN / TECHNICAL DOCUMENTARY</text>
-<text x="24" y="42" text-anchor="start" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="18" font-weight="600" fill="#1F1B16">D1 Statement Budget</text>
-<text x="24" y="60" text-anchor="start" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="10" font-weight="400" fill="#6B5A4A">each execute_sql is one HTTP round trip; budget-enforced by tests</text>
-<line x1="24" y1="85" x2="776" y2="85" stroke="#1F1B16" stroke-width="0.75"/>
-<rect x="80" y="110" width="640" height="230" fill="none" stroke="#1F1B16" stroke-width="0.5"/>
-<rect x="144.0" y="254.28571428571428" width="28" height="65.71428571428571" fill="#C97A4D" stroke="#3D2B1F" stroke-width="0.75"/>
-<text x="158.0" y="248.28571428571428" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="9" font-weight="400" fill="#1F1B16">23</text>
-<rect x="196.0" y="291.42857142857144" width="28" height="28.57142857142857" fill="#8B4513" stroke="#3D2B1F" stroke-width="0.75"/>
-<text x="210.0" y="285.42857142857144" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="9" font-weight="400" fill="#1F1B16">10</text>
-<text x="184.0" y="336" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="9" font-weight="400" fill="#6B5A4A">DASHBOARD LOAD</text>
-<rect x="288.0" y="142.85714285714286" width="28" height="177.14285714285714" fill="#C97A4D" stroke="#3D2B1F" stroke-width="0.75"/>
-<text x="302.0" y="136.85714285714286" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="9" font-weight="400" fill="#1F1B16">62</text>
-<rect x="340.0" y="305.7142857142857" width="28" height="14.285714285714285" fill="#8B4513" stroke="#3D2B1F" stroke-width="0.75"/>
-<text x="354.0" y="299.7142857142857" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="9" font-weight="400" fill="#1F1B16">5</text>
-<text x="328.0" y="336" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="9" font-weight="400" fill="#6B5A4A">INVENTORY (20)</text>
-<rect x="432.0" y="280.0" width="28" height="40.0" fill="#C97A4D" stroke="#3D2B1F" stroke-width="0.75"/>
-<text x="446.0" y="274.0" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="9" font-weight="400" fill="#1F1B16">14</text>
-<rect x="484.0" y="285.7142857142857" width="28" height="34.285714285714285" fill="#8B4513" stroke="#3D2B1F" stroke-width="0.75"/>
-<text x="498.0" y="279.7142857142857" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="9" font-weight="400" fill="#1F1B16">12</text>
-<text x="472.0" y="336" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="9" font-weight="400" fill="#6B5A4A">PAYSTACK WEBHOOK</text>
-<rect x="576.0" y="282.85714285714283" width="28" height="37.142857142857146" fill="#C97A4D" stroke="#3D2B1F" stroke-width="0.75"/>
-<text x="590.0" y="276.85714285714283" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="9" font-weight="400" fill="#1F1B16">13</text>
-<rect x="628.0" y="291.42857142857144" width="28" height="28.57142857142857" fill="#8B4513" stroke="#3D2B1F" stroke-width="0.75"/>
-<text x="642.0" y="285.42857142857144" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="9" font-weight="400" fill="#1F1B16">10</text>
-<text x="616.0" y="336" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="9" font-weight="400" fill="#6B5A4A">VERIFY COMMIT</text>
-<rect x="80" y="358" width="14" height="14" rx="8" ry="8" fill="#C97A4D" stroke="#1F1B16" stroke-width="1.25"/>
-<text x="87.0" y="369.0" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="0" font-weight="500" fill="#1F1B16"></text>
-<text x="100" y="370" text-anchor="start" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="10" font-weight="400" fill="#6B5A4A">BEFORE</text>
-<rect x="190" y="358" width="14" height="14" rx="8" ry="8" fill="#8B4513" stroke="#1F1B16" stroke-width="1.25"/>
-<text x="197.0" y="369.0" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="0" font-weight="500" fill="#1F1B16"></text>
-<text x="210" y="370" text-anchor="start" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="10" font-weight="400" fill="#6B5A4A">AFTER</text>
-<text x="400.0" y="402" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="9" font-weight="400" fill="#6B5A4A" font-style="italic">Enforced by test_module_query_budgets.py; each fetch = 1 round trip</text>
-<line x1="24" y1="418" x2="776" y2="418" stroke="#1F1B16" stroke-width="0.5"/>
-<text x="24" y="434" text-anchor="start" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="8" font-weight="400" fill="#6B5A4A">AWUN / 06 OF 08</text>
-<text x="776" y="434" text-anchor="end" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="8" font-weight="400" fill="#6B5A4A">awun.md section 6 (verified, not aspirational)</text>
+
+  <!-- Header -->
+  <text x="32" y="32" font-size="10" font-weight="600" fill="#8B4513" letter-spacing="0.12em">AWUN / 06 · D1 STATEMENT BUDGET ENFORCEMENT</text>
+  <text x="768" y="32" font-size="9" font-weight="500" fill="#78716C" text-anchor="end">HTTP ROUND-TRIP REDUCTIONS</text>
+  <line x1="32" y1="44" x2="768" y2="44" stroke="#E7E5E4" stroke-width="1"/>
+
+  <!-- ==================== CHART GRID & AXES ==================== -->
+  <!-- Y-Axis Gridlines & Labels -->
+  <!-- 70 -->
+  <line x1="80" y1="90" x2="740" y2="90" stroke="#F5EBE1" stroke-width="1"/>
+  <text x="70" y="94" font-size="8.5" fill="#78716C" text-anchor="end">70</text>
+
+  <!-- 50 -->
+  <line x1="80" y1="135" x2="740" y2="135" stroke="#F5EBE1" stroke-width="1"/>
+  <text x="70" y="139" font-size="8.5" fill="#78716C" text-anchor="end">50</text>
+
+  <!-- 30 -->
+  <line x1="80" y1="180" x2="740" y2="180" stroke="#F5EBE1" stroke-width="1"/>
+  <text x="70" y="184" font-size="8.5" fill="#78716C" text-anchor="end">30</text>
+
+  <!-- 10 -->
+  <line x1="80" y1="225" x2="740" y2="225" stroke="#F5EBE1" stroke-width="1"/>
+  <text x="70" y="229" font-size="8.5" fill="#78716C" text-anchor="end">10</text>
+
+  <!-- Baseline (0) -->
+  <line x1="80" y1="248" x2="740" y2="248" stroke="#1C1917" stroke-width="1.25"/>
+  <text x="70" y="252" font-size="8.5" fill="#1C1917" font-weight="600" text-anchor="end">0</text>
+
+  <!-- Y-Axis Title -->
+  <text x="40" y="76" font-size="8" font-weight="600" fill="#8B4513">SQL RPC CALLS</text>
+
+  <!-- ==================== GROUP 1: DASHBOARD LOAD ==================== -->
+  <!-- Before: 23 calls -> height = 52px (y: 196 to 248) -->
+  <rect x="130" y="196" width="30" height="52" rx="3" fill="#D7CCC8" stroke="#8B4513" stroke-width="1"/>
+  <text x="145" y="188" font-size="9" font-weight="600" fill="#78716C" text-anchor="middle">23</text>
+
+  <!-- After: 10 calls -> height = 23px (y: 225 to 248) -->
+  <rect x="166" y="225" width="30" height="23" rx="3" fill="#8B4513" stroke="#5D2E0C" stroke-width="1"/>
+  <text x="181" y="217" font-size="9" font-weight="600" fill="#8B4513" text-anchor="middle">10</text>
+
+  <!-- Labels -->
+  <text x="163" y="268" font-size="9.5" font-weight="600" fill="#1C1917" text-anchor="middle">DASHBOARD LOAD</text>
+  <rect x="123" y="278" width="80" height="18" rx="3" fill="#ECFDF5" stroke="#059669" stroke-width="0.75"/>
+  <text x="163" y="290" font-size="8" font-weight="600" fill="#065F46" text-anchor="middle">-57% REDUCTION</text>
+
+  <!-- ==================== GROUP 2: INVENTORY (20 ITEMS) ==================== -->
+  <!-- Before: 62 calls (N+1 query) -> height = 140px (y: 108 to 248) -->
+  <rect x="290" y="108" width="30" height="140" rx="3" fill="#D7CCC8" stroke="#8B4513" stroke-width="1"/>
+  <text x="305" y="100" font-size="9" font-weight="600" fill="#78716C" text-anchor="middle">62</text>
+
+  <!-- After: 5 calls (batched) -> height = 11px (y: 237 to 248) -->
+  <rect x="326" y="237" width="30" height="11" rx="3" fill="#8B4513" stroke="#5D2E0C" stroke-width="1"/>
+  <text x="341" y="229" font-size="9" font-weight="600" fill="#8B4513" text-anchor="middle">5</text>
+
+  <!-- Labels -->
+  <text x="323" y="268" font-size="9.5" font-weight="600" fill="#1C1917" text-anchor="middle">INVENTORY (20)</text>
+  <rect x="283" y="278" width="80" height="18" rx="3" fill="#ECFDF5" stroke="#059669" stroke-width="0.75"/>
+  <text x="323" y="290" font-size="8" font-weight="600" fill="#065F46" text-anchor="middle">-92% BATCHED</text>
+
+  <!-- ==================== GROUP 3: PAYSTACK WEBHOOK ==================== -->
+  <!-- Before: 14 calls -> height = 32px (y: 216 to 248) -->
+  <rect x="450" y="216" width="30" height="32" rx="3" fill="#D7CCC8" stroke="#8B4513" stroke-width="1"/>
+  <text x="465" y="208" font-size="9" font-weight="600" fill="#78716C" text-anchor="middle">14</text>
+
+  <!-- After: 12 calls -> height = 27px (y: 221 to 248) -->
+  <rect x="486" y="221" width="30" height="27" rx="3" fill="#8B4513" stroke="#5D2E0C" stroke-width="1"/>
+  <text x="501" y="213" font-size="9" font-weight="600" fill="#8B4513" text-anchor="middle">12</text>
+
+  <!-- Labels -->
+  <text x="483" y="268" font-size="9.5" font-weight="600" fill="#1C1917" text-anchor="middle">PAYSTACK HOOK</text>
+  <rect x="443" y="278" width="80" height="18" rx="3" fill="#ECFDF5" stroke="#059669" stroke-width="0.75"/>
+  <text x="483" y="290" font-size="8" font-weight="600" fill="#065F46" text-anchor="middle">-14% AUDITED</text>
+
+  <!-- ==================== GROUP 4: VERIFY & COMMIT ==================== -->
+  <!-- Before: 13 calls -> height = 29px (y: 219 to 248) -->
+  <rect x="610" y="219" width="30" height="29" rx="3" fill="#D7CCC8" stroke="#8B4513" stroke-width="1"/>
+  <text x="625" y="211" font-size="9" font-weight="600" fill="#78716C" text-anchor="middle">13</text>
+
+  <!-- After: 10 calls -> height = 23px (y: 225 to 248) -->
+  <rect x="646" y="225" width="30" height="23" rx="3" fill="#8B4513" stroke="#5D2E0C" stroke-width="1"/>
+  <text x="661" y="217" font-size="9" font-weight="600" fill="#8B4513" text-anchor="middle">10</text>
+
+  <!-- Labels -->
+  <text x="643" y="268" font-size="9.5" font-weight="600" fill="#1C1917" text-anchor="middle">VERIFY COMMIT</text>
+  <rect x="603" y="278" width="80" height="18" rx="3" fill="#ECFDF5" stroke="#059669" stroke-width="0.75"/>
+  <text x="643" y="290" font-size="8" font-weight="600" fill="#065F46" text-anchor="middle">-23% AUDITED</text>
+
+  <!-- ==================== LEGEND & NOTE ==================== -->
+  <rect x="80" y="322" width="660" height="74" rx="6" fill="#FDFBF7" stroke="#E7E5E4" stroke-width="1"/>
+  
+  <!-- Legend items -->
+  <rect x="100" y="340" width="14" height="14" rx="2" fill="#D7CCC8" stroke="#8B4513" stroke-width="0.75"/>
+  <text x="122" y="352" font-size="8.5" fill="#78716C">UNOPTIMIZED BASELINE</text>
+
+  <rect x="270" y="340" width="14" height="14" rx="2" fill="#8B4513" stroke="#5D2E0C" stroke-width="0.75"/>
+  <text x="292" y="352" font-size="8.5" font-weight="600" fill="#1C1917">PRODUCTION ENFORCED BUDGET</text>
+
+  <text x="100" y="378" font-size="8" fill="#8B4513">TEST SUITE:</text>
+  <text x="180" y="378" font-size="8" fill="#78716C">test_module_query_budgets.py fails build if statement counts exceed thresholds.</text>
+
+  <!-- Footer -->
+  <line x1="32" y1="418" x2="768" y2="418" stroke="#E7E5E4" stroke-width="1"/>
+  <text x="32" y="434" font-size="8.5" fill="#78716C">AWUN / 06 OF 08 · D1 Statement Budget</text>
+  <text x="768" y="434" font-size="8.5" fill="#78716C" text-anchor="end">Source: docs/case-studies/awun.md section 6</text>
 </svg>

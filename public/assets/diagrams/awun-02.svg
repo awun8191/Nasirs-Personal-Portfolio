@@ -1,43 +1,89 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 480" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="t-02 d-02">
-  <title id="t-02">Order State Machine</title>
-  <desc id="d-02">Hand-authored AWUN Technical Documentary diagram for order state machine. JetBrains Mono labels, terracotta palette, flat white field, hairline borders, rounded orthogonal connectors with open chevron markers. No gradients, no shadows. All facts trace to docs/case-studies/awun.md.</desc>
-  <rect x="0" y="0" width="480" height="480" fill="#FFFFFF"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 480" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" role="img" font-family="'JetBrains Mono', ui-monospace, Menlo, Consolas, monospace" style="font-family:'JetBrains Mono',ui-monospace,monospace">
+  <title>AWUN - Order State Machine</title>
+  <desc>State machine showing order transitions: NEW transitions to PROCESSING, then FULFILLED (terminal). CANCELLED is reachable from NEW or PROCESSING, triggering stock release.</desc>
   <defs>
-  <marker id="chev_02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-    <path d="M 0 0 L 9 5 L 0 10" fill="none" stroke="#3D2B1F" stroke-width="1.4"/>
-  </marker>
-</defs>
-  <text x="24" y="24" text-anchor="start" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="9" font-weight="600" fill="#8B4513">AWUN / TECHNICAL DOCUMENTARY</text>
-<text x="24" y="42" text-anchor="start" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="18" font-weight="600" fill="#1F1B16">Order State Machine</text>
-<text x="24" y="60" text-anchor="start" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="10" font-weight="400" fill="#6B5A4A">NEW -> PROCESSING -> FULFILLED (terminal) / CANCELLED from NEW or PROCESSING</text>
-<line x1="24" y1="85" x2="456" y2="85" stroke="#1F1B16" stroke-width="0.75"/>
-<rect x="170.0" y="110" width="140" height="56" rx="8" ry="8" fill="#F5E9DC" stroke="#1F1B16" stroke-width="1.25"/>
-<text x="240.0" y="142.0" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="11" font-weight="500" fill="#1F1B16">NEW</text>
-<text x="240.0" y="156.0" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="9" fill="#6B5A4A">order created</text>
-<rect x="170.0" y="195" width="140" height="56" rx="8" ry="8" fill="#F5E9DC" stroke="#1F1B16" stroke-width="1.25"/>
-<text x="240.0" y="227.0" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="11" font-weight="500" fill="#1F1B16">PROCESSING</text>
-<text x="240.0" y="241.0" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="9" fill="#6B5A4A">vendor preparing</text>
-<rect x="320.0" y="110" width="140" height="56" rx="8" ry="8" fill="#E6F0E8" stroke="#1F1B16" stroke-width="1.25"/>
-<text x="390.0" y="142.0" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="11" font-weight="500" fill="#1F1B16">FULFILLED</text>
-<text x="390.0" y="156.0" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="9" fill="#6B5A4A">terminal</text>
-<rect x="320.0" y="195" width="140" height="56" rx="8" ry="8" fill="#FCEAE5" stroke="#1F1B16" stroke-width="1.25"/>
-<text x="390.0" y="227.0" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="11" font-weight="500" fill="#1F1B16">CANCELLED</text>
-<text x="390.0" y="241.0" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="9" fill="#6B5A4A">from NEW or PROCESSING</text>
-<path d="M 310.0 138.0 L 170.0 223.0" stroke="#3D2B1F" stroke-width="1.25" fill="none"/>
-<path d="M 170.0 223.0 L 176.0 219.25 L 176.0 226.75 Z" fill="none" stroke="#3D2B1F" stroke-width="1.25"/>
-<text x="316.0" y="176.5" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="9" fill="#6B5A4A">vendor pickup</text>
-<path d="M 310.0 195 L 322.0 195 Q 328.0 195 328.0 189 L 328.0 144.0 Q 328.0 138.0 334.0 138.0 L 320.0 138.0" stroke="#A0522D" stroke-width="1.25" fill="none"/>
-<path d="M 320.0 138.0 L 314.0 134.25 L 314.0 141.75 Z" fill="none" stroke="#A0522D" stroke-width="1.25"/>
-<text x="315.0" y="162.5" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="9" fill="#6B5A4A">ship</text>
-<path d="M 310.0 223.0 L 320.0 223.0" stroke="#7F1D1D" stroke-width="1.25" fill="none"/>
-<path d="M 320.0 223.0 L 314.0 219.25 L 314.0 226.75 Z" fill="none" stroke="#7F1D1D" stroke-width="1.25"/>
-<text x="315.0" y="219.0" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="9" fill="#6B5A4A">cancel</text>
-<path d="M 310.0 138.0 L 320.0 223.0" stroke="#3D2B1F" stroke-width="1.25" fill="none"/>
-<path d="M 320.0 223.0 L 314.0 219.25 L 314.0 226.75 Z" fill="none" stroke="#3D2B1F" stroke-width="1.25"/>
-<text x="315.0" y="176.5" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="9" fill="#6B5A4A">cancel</text>
-<text x="240.0" y="305" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="9" font-weight="400" fill="#6B5A4A" font-style="italic">Buyer receives status email on every transition</text>
-<text x="240.0" y="322" text-anchor="middle" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="9" font-weight="400" fill="#6B5A4A" font-style="italic">Cancel releases any active stock reservation</text>
-<line x1="24" y1="448" x2="456" y2="448" stroke="#1F1B16" stroke-width="0.5"/>
-<text x="24" y="464" text-anchor="start" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="8" font-weight="400" fill="#6B5A4A">AWUN / 02 OF 08</text>
-<text x="456" y="464" text-anchor="end" font-family="'JetBrains Mono', 'Menlo', 'Consolas', monospace" font-size="8" font-weight="400" fill="#6B5A4A">awun.md section 3 step 7</text>
+    <marker id="arrow-terracotta" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M1.5 1.5 L6.5 4 L1.5 6.5" fill="none" stroke="#8B4513" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="arrow-green" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M1.5 1.5 L6.5 4 L1.5 6.5" fill="none" stroke="#059669" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="arrow-red" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M1.5 1.5 L6.5 4 L1.5 6.5" fill="none" stroke="#DC2626" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="480" height="480" fill="#FFFFFF"/>
+
+  <!-- Title / Header -->
+  <text x="24" y="24" font-size="9" font-weight="600" fill="#8B4513" letter-spacing="0.12em">AWUN / 02 · ORDER STATE MACHINE</text>
+  <text x="456" y="24" font-size="8" font-weight="500" fill="#78716C" text-anchor="end">LIFECYCLE INVARIANTS</text>
+  <line x1="24" y1="32" x2="456" y2="32" stroke="#E7E5E4" stroke-width="1"/>
+
+  <!-- STATE 1: NEW -->
+  <rect x="40" y="70" width="165" height="74" rx="6" fill="#FDFBF7" stroke="#8B4513" stroke-width="1.25"/>
+  <rect x="52" y="80" width="48" height="16" rx="3" fill="#F5EBE1"/>
+  <text x="76" y="91" font-size="7.5" font-weight="600" fill="#8B4513" text-anchor="middle">INITIAL</text>
+  <text x="52" y="112" font-size="12" font-weight="600" fill="#1C1917">NEW</text>
+  <text x="52" y="127" font-size="8" fill="#78716C">Payment verified via webhook</text>
+  <text x="52" y="137" font-size="7.5" fill="#8B4513">Stock committed from reserve</text>
+
+  <!-- Happy Path Arrow: NEW -> PROCESSING -->
+  <path d="M205 107 L271 107" fill="none" stroke="#8B4513" stroke-width="1.5" marker-end="url(#arrow-terracotta)"/>
+  <text x="238" y="99" font-size="7.5" font-weight="600" fill="#8B4513" text-anchor="middle">accept</text>
+
+  <!-- STATE 2: PROCESSING -->
+  <rect x="275" y="70" width="165" height="74" rx="6" fill="#FDFBF7" stroke="#8B4513" stroke-width="1.25"/>
+  <rect x="287" y="80" width="60" height="16" rx="3" fill="#F5EBE1"/>
+  <text x="317" y="91" font-size="7.5" font-weight="600" fill="#8B4513" text-anchor="middle">ACTIVE</text>
+  <text x="287" y="112" font-size="12" font-weight="600" fill="#1C1917">PROCESSING</text>
+  <text x="287" y="127" font-size="8" fill="#78716C">Vendor packaging items</text>
+  <text x="287" y="137" font-size="7.5" fill="#8B4513">Delivery courier assigned</text>
+
+  <!-- Happy Path Arrow: PROCESSING -> FULFILLED -->
+  <path d="M357 144 L357 206" fill="none" stroke="#059669" stroke-width="1.5" marker-end="url(#arrow-green)"/>
+  <text x="367" y="178" font-size="7.5" font-weight="600" fill="#059669">dispatch</text>
+
+  <!-- STATE 3: FULFILLED (TERMINAL SUCCESS) -->
+  <rect x="275" y="210" width="165" height="74" rx="6" fill="#F0FDF4" stroke="#059669" stroke-width="1.5"/>
+  <rect x="287" y="220" width="64" height="16" rx="3" fill="#DCFCE7"/>
+  <text x="319" y="231" font-size="7.5" font-weight="600" fill="#166534" text-anchor="middle">TERMINAL</text>
+  <text x="287" y="252" font-size="12" font-weight="600" fill="#065F46">FULFILLED</text>
+  <text x="287" y="267" font-size="8" fill="#15803D">Buyer confirmed delivery</text>
+  <text x="287" y="277" font-size="7.5" fill="#047857">Subaccount payout triggered</text>
+
+  <!-- Cancellation Paths: NEW -> CANCELLED -->
+  <path d="M122 144 L122 206" fill="none" stroke="#DC2626" stroke-width="1.5" marker-end="url(#arrow-red)"/>
+  <text x="112" y="178" font-size="7.5" font-weight="600" fill="#DC2626" text-anchor="end">buyer cancel</text>
+
+  <!-- Cancellation Paths: PROCESSING -> CANCELLED -->
+  <path d="M275 125 L230 125 Q220 125 220 135 L220 237 Q220 247 213 247 L209 247" fill="none" stroke="#DC2626" stroke-width="1.25" stroke-dasharray="3 3" marker-end="url(#arrow-red)"/>
+  <text x="228" y="200" font-size="7" font-weight="600" fill="#DC2626">vendor abort</text>
+
+  <!-- STATE 4: CANCELLED (TERMINAL ABORT) -->
+  <rect x="40" y="210" width="165" height="74" rx="6" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.25"/>
+  <rect x="52" y="220" width="64" height="16" rx="3" fill="#FEE2E2"/>
+  <text x="84" y="231" font-size="7.5" font-weight="600" fill="#991B1B" text-anchor="middle">TERMINAL</text>
+  <text x="52" y="252" font-size="12" font-weight="600" fill="#991B1B">CANCELLED</text>
+  <text x="52" y="267" font-size="8" fill="#B91C1C">Order voided / refunded</text>
+  <text x="52" y="277" font-size="7.5" fill="#DC2626">Stock returned to catalog</text>
+
+  <!-- Informational Rules Ledger -->
+  <rect x="40" y="312" width="400" height="96" rx="6" fill="#FDFBF7" stroke="#E7E5E4" stroke-width="1.25"/>
+  <text x="54" y="330" font-size="8.5" font-weight="600" fill="#8B4513">STATE TRANSITION RULES &amp; GUARANTEES</text>
+  <line x1="54" y1="338" x2="426" y2="338" stroke="#E7E5E4" stroke-width="0.75"/>
+  
+  <text x="54" y="356" font-size="8" font-weight="600" fill="#1C1917">NOTIFICATIONS:</text>
+  <text x="140" y="356" font-size="8" fill="#78716C">Resend triggers transactional emails on every state change.</text>
+  
+  <text x="54" y="374" font-size="8" font-weight="600" fill="#1C1917">STOCK INTEGRITY:</text>
+  <text x="140" y="374" font-size="8" fill="#78716C">Cancellation invokes atomic SQL: reserved_quantity -= QTY.</text>
+
+  <text x="54" y="392" font-size="8" font-weight="600" fill="#1C1917">IDEMPOTENCY:</text>
+  <text x="140" y="392" font-size="8" fill="#78716C">Duplicate status updates guarded by database rowversion.</text>
+
+  <!-- Footer -->
+  <line x1="24" y1="430" x2="456" y2="430" stroke="#E7E5E4" stroke-width="1"/>
+  <text x="24" y="448" font-size="8" fill="#78716C">AWUN / 02 OF 08 · Order State Machine</text>
+  <text x="456" y="448" font-size="8" fill="#78716C" text-anchor="end">Source: docs/case-studies/awun.md section 3</text>
 </svg>

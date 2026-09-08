@@ -1,30 +1,105 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 798 342" width="100%" preserveAspectRatio="xMidYMid meet" role="img" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" style="font-family:'JetBrains Mono',ui-monospace,monospace">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 360" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" role="img" font-family="'JetBrains Mono', ui-monospace, Menlo, Consolas, monospace" style="font-family:'JetBrains Mono',ui-monospace,monospace">
   <title>RAG Data Pipeline - Hero Architecture</title>
-  <desc>Full pipeline inside the ink hero: source PDFs to Cloudflare R2 storage and Firestore metadata, OpenCV orientation correction, bi-stage OCR with EasyOCR fast path and Gemma 3:27b fallback, chunking, BGE-M3 embeddings, the Chroma / Vectorize vector store, metadata-filtered scoped retrieval, and JSON-schema-controlled Google Gemini generation that returns the answer.</desc>
-  <defs><marker id="chev" markerWidth="10" markerHeight="10" refX="7" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M1.5 1.5 L7 5 L1.5 8.5" fill="none" stroke="#22d3ee" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
-  <rect x="0" y="0" width="798" height="342" fill="#0b1a20"/>
-  <!-- top row: ingestion -->
-  <rect x="34" y="66" width="104" height="60" rx="8" fill="#0e7490" stroke="#22d3ee" stroke-width="1.25"/><text x="86.0" y="101.0" font-size="12" fill="#eafdff" text-anchor="middle" font-weight="500">SOURCE PDFS</text>
-  <rect x="159" y="66" width="104" height="60" rx="8" fill="#0e7490" stroke="#22d3ee" stroke-width="1.25"/><text x="211.0" y="92.0" font-size="11" fill="#eafdff" text-anchor="middle" font-weight="500">R2 STORAGE</text><text x="211.0" y="108.0" font-size="11" fill="#9fe9f5" text-anchor="middle">FIRESTORE META</text>
-  <rect x="284" y="66" width="104" height="60" rx="8" fill="#0e7490" stroke="#22d3ee" stroke-width="1.25"/><text x="336.0" y="92.0" font-size="11" fill="#eafdff" text-anchor="middle" font-weight="500">OPENCV</text><text x="336.0" y="108.0" font-size="11" fill="#9fe9f5" text-anchor="middle">ORIENT</text>
-  <rect x="409" y="66" width="104" height="60" rx="8" fill="#0e7490" stroke="#22d3ee" stroke-width="1.25"/><text x="461.0" y="92.0" font-size="11" fill="#eafdff" text-anchor="middle" font-weight="500">BI-STAGE OCR</text><text x="461.0" y="108.0" font-size="11" fill="#9fe9f5" text-anchor="middle">EASYOCR+G3</text>
-  <rect x="534" y="66" width="104" height="60" rx="8" fill="#0e7490" stroke="#22d3ee" stroke-width="1.25"/><text x="586.0" y="101.0" font-size="12" fill="#eafdff" text-anchor="middle" font-weight="500">CHUNKING</text>
-  <rect x="659" y="66" width="104" height="60" rx="8" fill="#0e7490" stroke="#22d3ee" stroke-width="1.25"/><text x="711.0" y="101.0" font-size="12" fill="#eafdff" text-anchor="middle" font-weight="500">BGE-M3 EMBED</text>
-  <!-- bottom row: retrieval -->
-  <rect x="34" y="206" width="104" height="60" rx="8" fill="#0e7490" stroke="#22d3ee" stroke-width="1.25"/><text x="86.0" y="224.0" font-size="11" fill="#eafdff" text-anchor="middle" font-weight="500">CHROMA</text><text x="86.0" y="240.0" font-size="11" fill="#9fe9f5" text-anchor="middle">VECTORIZE</text>
-  <rect x="159" y="206" width="104" height="60" rx="8" fill="#0e7490" stroke="#22d3ee" stroke-width="1.25"/><text x="211.0" y="224.0" font-size="11" fill="#eafdff" text-anchor="middle" font-weight="500">SCOPED</text><text x="211.0" y="240.0" font-size="11" fill="#9fe9f5" text-anchor="middle">RETRIEVAL</text>
-  <rect x="284" y="206" width="104" height="60" rx="8" fill="#0e7490" stroke="#22d3ee" stroke-width="1.25"/><text x="336.0" y="224.0" font-size="11" fill="#eafdff" text-anchor="middle" font-weight="500">GEMINI GEN</text><text x="336.0" y="240.0" font-size="11" fill="#9fe9f5" text-anchor="middle">JSON SCHEMA</text>
-  <rect x="409" y="206" width="104" height="60" rx="8" fill="#0e7490" stroke="#22d3ee" stroke-width="1.25"/><text x="461.0" y="237.0" font-size="12" fill="#eafdff" text-anchor="middle" font-weight="600">ANSWER</text>
-  <!-- connectors -->
-  <path d="M138 96 L159 96" fill="none" stroke="#22d3ee" stroke-width="1.25" marker-end="url(#chev)"/>
-  <path d="M263 96 L284 96" fill="none" stroke="#22d3ee" stroke-width="1.25" marker-end="url(#chev)"/>
-  <path d="M388 96 L409 96" fill="none" stroke="#22d3ee" stroke-width="1.25" marker-end="url(#chev)"/>
-  <path d="M513 96 L534 96" fill="none" stroke="#22d3ee" stroke-width="1.25" marker-end="url(#chev)"/>
-  <path d="M638 96 L659 96" fill="none" stroke="#22d3ee" stroke-width="1.25" marker-end="url(#chev)"/>
-  <path d="M763 96 L784 96 Q792 96 792 104 L792 158 Q792 166 784 166 L94 166 Q86 166 86 174 L86 200" fill="none" stroke="#22d3ee" stroke-width="1.25" marker-end="url(#chev)"/>
-  <path d="M138 236 L159 236" fill="none" stroke="#22d3ee" stroke-width="1.25" marker-end="url(#chev)"/>
-  <path d="M263 236 L284 236" fill="none" stroke="#22d3ee" stroke-width="1.25" marker-end="url(#chev)"/>
-  <path d="M388 236 L409 236" fill="none" stroke="#22d3ee" stroke-width="1.25" marker-end="url(#chev)"/>
-  <text x="430" y="160.0" font-size="9" fill="#67e8f9" text-anchor="middle" font-weight="600">STORE EMBEDDINGS</text>
-  <text x="399" y="318" font-size="10" fill="#67e8f9" text-anchor="middle">Top: ingestion writes BGE-M3 embeddings to the vector store. Bottom: scoped retrieval and JSON-schema Gemini generation return a reproducible answer.</text>
+  <desc>Full pipeline overview: Ingestion stages (Source Documents, Preprocessing and Bi-stage OCR, Semantic Chunking and BGE-M3 Embedding, Dual Persistence) connect to Scoped Retrieval stages (User Query, Metadata-Filtered Search, Context Shaping and Token Trimming, JSON-Schema Generation).</desc>
+  <defs>
+    <marker id="arrow-cyan" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M1.5 1.5 L7.5 4.5 L1.5 7.5" fill="none" stroke="#0891B2" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="arrow-teal" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M1.5 1.5 L7.5 4.5 L1.5 7.5" fill="none" stroke="#0E7490" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="840" height="360" fill="#FFFFFF"/>
+
+  <!-- Header -->
+  <text x="32" y="32" font-size="10" font-weight="600" fill="#0891B2" letter-spacing="0.12em">RAG DATA PIPELINE / ARCHITECTURE OVERVIEW</text>
+  <text x="808" y="32" font-size="9" font-weight="500" fill="#64748B" text-anchor="end">INGESTION &amp; DETERMINISTIC RETRIEVAL</text>
+  <line x1="32" y1="44" x2="808" y2="44" stroke="#E2E8F0" stroke-width="1"/>
+
+  <!-- ==================== TIER 1: INGESTION PIPELINE ==================== -->
+  <!-- Box 1: Sources -->
+  <rect x="32" y="66" width="165" height="84" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.25"/>
+  <rect x="42" y="78" width="56" height="18" rx="3" fill="#E2E8F0"/>
+  <text x="70" y="90" font-size="8.5" font-weight="600" fill="#475569" text-anchor="middle">STAGE 01</text>
+  <text x="42" y="112" font-size="11.5" font-weight="600" fill="#0F172A">SOURCE PDFS</text>
+  <text x="42" y="128" font-size="9" fill="#64748B">Course Syllabi &amp; Notes</text>
+  <text x="42" y="141" font-size="8.5" fill="#0891B2">Cloudflare R2 Staging</text>
+
+  <!-- Box 2: Preprocessing & OCR -->
+  <rect x="237" y="66" width="175" height="84" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.25"/>
+  <rect x="247" y="78" width="56" height="18" rx="3" fill="#E2E8F0"/>
+  <text x="275" y="90" font-size="8.5" font-weight="600" fill="#475569" text-anchor="middle">STAGE 02</text>
+  <text x="247" y="112" font-size="11.5" font-weight="600" fill="#0F172A">PREPROCESS &amp; OCR</text>
+  <text x="247" y="128" font-size="9" fill="#64748B">OpenCV Deskew / Orient</text>
+  <text x="247" y="141" font-size="8.5" fill="#0891B2">EasyOCR + Gemma Fallback</text>
+
+  <!-- Box 3: Chunking & Embedding -->
+  <rect x="452" y="66" width="175" height="84" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.25"/>
+  <rect x="462" y="78" width="56" height="18" rx="3" fill="#E2E8F0"/>
+  <text x="490" y="90" font-size="8.5" font-weight="600" fill="#475569" text-anchor="middle">STAGE 03</text>
+  <text x="462" y="112" font-size="11.5" font-weight="600" fill="#0F172A">SEMANTIC CHUNK</text>
+  <text x="462" y="128" font-size="9" fill="#64748B">BGE-M3 Dense Vectors</text>
+  <text x="462" y="141" font-size="8.5" fill="#0891B2">Hash-Key Dedup Cache</text>
+
+  <!-- Box 4: Persistence Tier -->
+  <rect x="667" y="66" width="141" height="84" rx="6" fill="#ECFEFF" stroke="#0891B2" stroke-width="1.5"/>
+  <rect x="677" y="78" width="56" height="18" rx="3" fill="#0891B2"/>
+  <text x="705" y="90" font-size="8.5" font-weight="600" fill="#FFFFFF" text-anchor="middle">STORAGE</text>
+  <text x="677" y="112" font-size="11.5" font-weight="600" fill="#0E7490">VECTOR &amp; META</text>
+  <text x="677" y="128" font-size="9" fill="#0F766E">Chroma Vector DB</text>
+  <text x="677" y="141" font-size="8.5" fill="#0E7490">Firestore Metadata</text>
+
+  <!-- Top Connectors -->
+  <path d="M197 108 L235 108" fill="none" stroke="#0891B2" stroke-width="1.5" marker-end="url(#arrow-cyan)"/>
+  <path d="M412 108 L450 108" fill="none" stroke="#0891B2" stroke-width="1.5" marker-end="url(#arrow-cyan)"/>
+  <path d="M627 108 L665 108" fill="none" stroke="#0891B2" stroke-width="1.5" marker-end="url(#arrow-cyan)"/>
+
+  <!-- Bus Link (Ingestion to Retrieval) -->
+  <path d="M737 150 L737 185 Q737 195 727 195 L637 195 Q627 195 627 205 L627 218" fill="none" stroke="#0E7490" stroke-width="1.25" stroke-dasharray="4 4" marker-end="url(#arrow-teal)"/>
+  <rect x="648" y="185" width="80" height="18" rx="3" fill="#FFFFFF" stroke="#0E7490" stroke-width="1"/>
+  <text x="688" y="197" font-size="8" font-weight="600" fill="#0E7490" text-anchor="middle">INDEX READY</text>
+
+  <!-- ==================== TIER 2: RETRIEVAL & SYNTHESIS ==================== -->
+  <!-- Box 5: User Query -->
+  <rect x="32" y="220" width="165" height="84" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.25"/>
+  <rect x="42" y="232" width="56" height="18" rx="3" fill="#E2E8F0"/>
+  <text x="70" y="244" font-size="8.5" font-weight="600" fill="#475569" text-anchor="middle">QUERY</text>
+  <text x="42" y="266" font-size="11.5" font-weight="600" fill="#0F172A">STUDENT PROMPT</text>
+  <text x="42" y="282" font-size="9" fill="#64748B">Course Code &amp; Term</text>
+  <text x="42" y="295" font-size="8.5" fill="#0891B2">Targeted Question</text>
+
+  <!-- Box 6: Scoped Retrieval -->
+  <rect x="237" y="220" width="175" height="84" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.25"/>
+  <rect x="247" y="232" width="56" height="18" rx="3" fill="#E2E8F0"/>
+  <text x="275" y="244" font-size="8.5" font-weight="600" fill="#475569" text-anchor="middle">STAGE 04</text>
+  <text x="247" y="266" font-size="11.5" font-weight="600" fill="#0F172A">METADATA SCOPE</text>
+  <text x="247" y="282" font-size="9" fill="#64748B">Pre-filter by Subject</text>
+  <text x="247" y="295" font-size="8.5" fill="#0891B2">BGE-M3 Top-K Search</text>
+
+  <!-- Box 7: Context Shaping -->
+  <rect x="452" y="220" width="175" height="84" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.25"/>
+  <rect x="462" y="232" width="56" height="18" rx="3" fill="#E2E8F0"/>
+  <text x="490" y="244" font-size="8.5" font-weight="600" fill="#475569" text-anchor="middle">STAGE 05</text>
+  <text x="462" y="266" font-size="11.5" font-weight="600" fill="#0F172A">CONTEXT SHAPING</text>
+  <text x="462" y="282" font-size="9" fill="#64748B">Deduplicate Passages</text>
+  <text x="462" y="295" font-size="8.5" fill="#0891B2">Token Budget Trimming</text>
+
+  <!-- Box 8: Deterministic Synthesis -->
+  <rect x="667" y="220" width="141" height="84" rx="6" fill="#0E7490" stroke="#0891B2" stroke-width="1.5"/>
+  <rect x="677" y="232" width="56" height="18" rx="3" fill="#164E63"/>
+  <text x="705" y="244" font-size="8.5" font-weight="600" fill="#E0F2FE" text-anchor="middle">OUTPUT</text>
+  <text x="677" y="266" font-size="11.5" font-weight="600" fill="#FFFFFF">GEMINI MODEL</text>
+  <text x="677" y="282" font-size="9" fill="#CCFBF1">Temp 0.0 + Schema</text>
+  <text x="677" y="295" font-size="8.5" fill="#A5F3FC">Verified Answer</text>
+
+  <!-- Bottom Connectors -->
+  <path d="M197 262 L235 262" fill="none" stroke="#0891B2" stroke-width="1.5" marker-end="url(#arrow-cyan)"/>
+  <path d="M412 262 L450 262" fill="none" stroke="#0891B2" stroke-width="1.5" marker-end="url(#arrow-cyan)"/>
+  <path d="M627 262 L665 262" fill="none" stroke="#0891B2" stroke-width="1.5" marker-end="url(#arrow-cyan)"/>
+
+  <!-- Footer -->
+  <line x1="32" y1="326" x2="808" y2="326" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="32" y="342" font-size="8.5" fill="#64748B">CourseGen / RAG Data Pipeline</text>
+  <text x="808" y="342" font-size="8.5" fill="#64748B" text-anchor="end">Source: github.com/awun8191/CourseGen</text>
 </svg>

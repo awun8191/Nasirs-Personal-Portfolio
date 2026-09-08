@@ -1,77 +1,114 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" preserveAspectRatio="xMidYMid meet" role="img" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" style="font-family:'JetBrains Mono',ui-monospace,monospace">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" role="img" font-family="'JetBrains Mono', ui-monospace, Menlo, Consolas, monospace" style="font-family:'JetBrains Mono',ui-monospace,monospace">
   <title>NUESA Academia - System Architecture</title>
-  <desc>Architecture: React SPA connects to public FastAPI boundary, forwarding requests via signed HMAC-SHA256 to a private TypeScript Data Worker that manages Cloudflare D1 SQL and Cloudflare R2 storage, verified by Firebase Auth.</desc>
+  <desc>System Architecture: React SPA connects to public FastAPI boundary, forwarding requests via signed HMAC-SHA256 to a private TypeScript Data Worker that manages Cloudflare D1 SQL and Cloudflare R2 storage, verified by Firebase Auth.</desc>
   <defs>
-    <marker id="chev-green" markerWidth="12" markerHeight="12" refX="8" refY="6" orient="auto" markerUnits="userSpaceOnUse">
-      <path d="M2 2 L9 6 L2 10" fill="none" stroke="#047857" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <marker id="arrow-green" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M1.5 1.5 L7.5 4.5 L1.5 7.5" fill="none" stroke="#047857" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
     </marker>
   </defs>
+
   <rect x="0" y="0" width="800" height="450" fill="#FFFFFF"/>
-  <text x="28" y="36" font-size="10" fill="#059669" font-weight="600">NUESA · 01 / SYSTEM ARCHITECTURE</text>
 
-  <!-- React Client -->
-  <rect x="28" y="60" width="168" height="280" rx="8" fill="#ECFDF5" stroke="#047857" stroke-width="1.25"/>
-  <text x="112" y="88" font-size="13" fill="#064E3B" text-anchor="middle" font-weight="600">REACT SPA</text>
-  <text x="112" y="106" font-size="9" fill="#065F46" text-anchor="middle">FACULTY PORTAL</text>
-  <line x1="44" y1="120" x2="180" y2="120" stroke="#047857" stroke-width="0.75" stroke-opacity="0.4"/>
-  <text x="44" y="142" font-size="9" fill="#064E3B" font-weight="600">4 CORE SURFACES:</text>
-  <text x="44" y="162" font-size="9" fill="#065F46">• Full Syllabus Search</text>
-  <text x="44" y="180" font-size="9" fill="#065F46">• Past Questions Mode</text>
-  <text x="44" y="198" font-size="9" fill="#065F46">• Edge Direct Upload</text>
-  <text x="44" y="216" font-size="9" fill="#065F46">• Coverage Analytics</text>
-  <rect x="44" y="240" width="136" height="48" rx="6" fill="#FFFFFF" stroke="#047857" stroke-width="1"/>
-  <text x="112" y="260" font-size="9" fill="#064E3B" text-anchor="middle" font-weight="600">FIREBASE AUTH</text>
-  <text x="112" y="276" font-size="8" fill="#065F46" text-anchor="middle">ID Token Bearer</text>
+  <!-- Header -->
+  <text x="32" y="32" font-size="10" font-weight="600" fill="#047857" letter-spacing="0.12em">NUESA ACADEMIA / 01 · SYSTEM ARCHITECTURE</text>
+  <text x="768" y="32" font-size="9" font-weight="500" fill="#065F46" text-anchor="end">EDGE ARCHITECTURE &amp; DATA SERVICE</text>
+  <line x1="32" y1="44" x2="768" y2="44" stroke="#E2E8F0" stroke-width="1"/>
 
-  <!-- Public FastAPI Boundary -->
-  <rect x="248" y="110" width="168" height="150" rx="8" fill="#047857" stroke="#065F46" stroke-width="1.25"/>
-  <text x="332" y="138" font-size="13" fill="#FFFFFF" text-anchor="middle" font-weight="600">FASTAPI BOUNDARY</text>
-  <text x="332" y="156" font-size="9" fill="#A7F3D0" text-anchor="middle">DUAL RUNTIME ASGI</text>
-  <line x1="264" y1="170" x2="400" y2="170" stroke="#A7F3D0" stroke-width="0.75" stroke-opacity="0.4"/>
-  <text x="264" y="190" font-size="9" fill="#FFFFFF">• Auth Token Verify</text>
-  <text x="264" y="208" font-size="9" fill="#FFFFFF">• Query Sanitation</text>
-  <text x="264" y="226" font-size="9" fill="#FFFFFF">• HMAC Signer</text>
-  <text x="264" y="244" font-size="8" fill="#A7F3D0">Uvicorn / Python Worker</text>
+  <!-- ==================== COLUMN 1: PRESENTATION TIER ==================== -->
+  <rect x="32" y="60" width="216" height="344" rx="6" fill="#F0FDF4" stroke="#047857" stroke-width="1.25"/>
+  <rect x="44" y="72" width="80" height="18" rx="3" fill="#DCFCE7"/>
+  <text x="84" y="84" font-size="8" font-weight="600" fill="#065F46" text-anchor="middle">CLIENT TIER</text>
+  <text x="44" y="112" font-size="12" font-weight="600" fill="#064E3B">REACT 19 SPA</text>
+  <text x="44" y="128" font-size="8.5" fill="#065F46">Faculty Repository Portal</text>
+  <line x1="44" y1="138" x2="236" y2="138" stroke="#BBF7D0" stroke-width="0.75"/>
 
-  <!-- Private TypeScript Data Worker -->
-  <rect x="468" y="90" width="304" height="96" rx="8" fill="#047857" stroke="#065F46" stroke-width="1.25"/>
-  <text x="620" y="118" font-size="13" fill="#FFFFFF" text-anchor="middle" font-weight="600">TYPESCRIPT DATA WORKER</text>
-  <text x="620" y="136" font-size="9" fill="#A7F3D0" text-anchor="middle">PRIVATE EDGE SERVICE (CLOUDFLARE)</text>
-  <line x1="484" y1="146" x2="756" y2="146" stroke="#A7F3D0" stroke-width="0.75" stroke-opacity="0.4"/>
-  <text x="484" y="166" font-size="9" fill="#FFFFFF">HMAC-SHA256 Signed Gateway · Zero Public Direct SQL</text>
+  <text x="44" y="158" font-size="8.5" font-weight="600" fill="#064E3B">4 CORE SURFACES:</text>
+  <text x="44" y="174" font-size="8" fill="#065F46">• Full Syllabus Search</text>
+  <text x="44" y="188" font-size="8" fill="#065F46">• Past Questions Mode (PQ)</text>
+  <text x="44" y="202" font-size="8" fill="#065F46">• Direct Edge PDF Upload</text>
+  <text x="44" y="216" font-size="8" fill="#065F46">• Faculty Coverage Analytics</text>
 
-  <!-- Storage Tier: D1 + R2 + Cache API -->
-  <rect x="468" y="210" width="144" height="130" rx="8" fill="#ECFDF5" stroke="#047857" stroke-width="1.25"/>
-  <text x="540" y="234" font-size="12" fill="#064E3B" text-anchor="middle" font-weight="600">CLOUDFLARE D1</text>
-  <text x="540" y="250" font-size="9" fill="#065F46" text-anchor="middle">RELATIONAL SQL</text>
-  <line x1="480" y1="262" x2="600" y2="262" stroke="#047857" stroke-width="0.75" stroke-opacity="0.3"/>
-  <text x="480" y="282" font-size="8" fill="#064E3B">• 9 Departments</text>
-  <text x="480" y="298" font-size="8" fill="#064E3B">• 426 Courses</text>
-  <text x="480" y="314" font-size="8" fill="#064E3B">• Published Records</text>
-  <text x="480" y="330" font-size="8" fill="#064E3B">• Keyset Pagination</text>
+  <rect x="44" y="238" width="192" height="70" rx="4" fill="#FFFFFF" stroke="#86EFAC" stroke-width="1"/>
+  <text x="54" y="256" font-size="8.5" font-weight="600" fill="#047857">CLIENT AUTHENTICATION:</text>
+  <text x="54" y="272" font-size="8" fill="#064E3B">Firebase Auth ID Tokens</text>
+  <text x="54" y="286" font-size="8" fill="#065F46">Transmitted via Bearer headers</text>
+  <text x="54" y="298" font-size="7.5" fill="#059669">Strict Session Invalidation</text>
 
-  <rect x="628" y="210" width="144" height="130" rx="8" fill="#ECFDF5" stroke="#047857" stroke-width="1.25"/>
-  <text x="700" y="234" font-size="12" fill="#064E3B" text-anchor="middle" font-weight="600">CLOUDFLARE R2</text>
-  <text x="700" y="250" font-size="9" fill="#065F46" text-anchor="middle">OBJECT STORAGE</text>
-  <line x1="640" y1="262" x2="760" y2="262" stroke="#047857" stroke-width="0.75" stroke-opacity="0.3"/>
-  <text x="640" y="282" font-size="8" fill="#064E3B">• 2,111 PDF Objects</text>
-  <text x="640" y="298" font-size="8" fill="#064E3B">• ~13.8 GB Volume</text>
-  <text x="640" y="314" font-size="8" fill="#064E3B">• SHA-256 Dedup</text>
-  <text x="640" y="330" font-size="8" fill="#064E3B">• Zero Egress Fees</text>
+  <rect x="44" y="322" width="192" height="66" rx="4" fill="#FFFFFF" stroke="#86EFAC" stroke-width="1"/>
+  <text x="54" y="340" font-size="8.5" font-weight="600" fill="#047857">LOCAL CLIENT STATE:</text>
+  <text x="54" y="356" font-size="8" fill="#064E3B">TanStack React Query</text>
+  <text x="54" y="370" font-size="7.5" fill="#065F46">Optimistic UI + Cache Invalidate</text>
 
-  <!-- Connectors -->
-  <path d="M196 185 L248 185" fill="none" stroke="#047857" stroke-width="1.25" marker-end="url(#chev-green)"/>
-  <text x="222" y="177" font-size="8" fill="#047857" text-anchor="middle">HTTPS</text>
+  <!-- ==================== COLUMN 2: PUBLIC GATEWAY ==================== -->
+  <rect x="290" y="60" width="226" height="344" rx="6" fill="#047857" stroke="#064E3B" stroke-width="1.5"/>
+  <rect x="302" y="72" width="110" height="18" rx="3" fill="#064E3B"/>
+  <text x="357" y="84" font-size="8" font-weight="600" fill="#A7F3D0" text-anchor="middle">API BOUNDARY</text>
+  <text x="302" y="112" font-size="12" font-weight="600" fill="#FFFFFF">FASTAPI GATEWAY</text>
+  <text x="302" y="128" font-size="8.5" fill="#A7F3D0">Dual Runtime: Container / Worker</text>
+  <line x1="302" y1="138" x2="504" y2="138" stroke="#059669" stroke-width="0.75"/>
 
-  <path d="M416 138 L468 138" fill="none" stroke="#047857" stroke-width="1.25" marker-end="url(#chev-green)"/>
-  <text x="442" y="130" font-size="8" fill="#047857" text-anchor="middle">SIGNED</text>
+  <text x="302" y="158" font-size="8.5" font-weight="600" fill="#FFFFFF">GATEWAY RESPONSIBILITIES:</text>
+  <text x="302" y="174" font-size="8" fill="#E2E8F0">• Firebase Token Verification</text>
+  <text x="302" y="188" font-size="8" fill="#E2E8F0">• Search Query Sanitation</text>
+  <text x="302" y="202" font-size="8" fill="#E2E8F0">• Keyset Pagination Encoding</text>
+  <text x="302" y="216" font-size="8" fill="#E2E8F0">• HMAC-SHA256 Internal Signer</text>
 
-  <path d="M540 186 L540 210" fill="none" stroke="#047857" stroke-width="1.25" marker-end="url(#chev-green)"/>
-  <path d="M700 186 L700 210" fill="none" stroke="#047857" stroke-width="1.25" marker-end="url(#chev-green)"/>
+  <rect x="302" y="238" width="202" height="70" rx="4" fill="#064E3B" stroke="#059669" stroke-width="1"/>
+  <text x="312" y="256" font-size="8.5" font-weight="600" fill="#A7F3D0">SECURITY ENVELOPE:</text>
+  <text x="312" y="272" font-size="8" fill="#FFFFFF">X-NUESA-Signature header</text>
+  <text x="312" y="286" font-size="8" fill="#E2E8F0">Timestamp replay window (30s)</text>
+  <text x="312" y="298" font-size="7.5" fill="#A7F3D0">Zero direct external SQL</text>
 
-  <!-- Upload Direct Path -->
-  <path d="M196 205 Q 332 280 468 155" fill="none" stroke="#047857" stroke-width="1.25" stroke-dasharray="4 4" marker-end="url(#chev-green)"/>
-  <text x="310" y="295" font-size="8" fill="#059669" text-anchor="middle">Direct-to-Edge Upload (≤25 MiB)</text>
+  <rect x="302" y="322" width="202" height="66" rx="4" fill="#064E3B" stroke="#059669" stroke-width="1"/>
+  <text x="312" y="340" font-size="8.5" font-weight="600" fill="#A7F3D0">UPLOAD DISPATCH:</text>
+  <text x="312" y="356" font-size="8" fill="#FFFFFF">Multipart Stream Router</text>
+  <text x="312" y="370" font-size="7.5" fill="#E2E8F0">≤ 25 MiB direct edge stream</text>
 
-  <text x="400" y="420" font-size="10" fill="#065F46" text-anchor="middle">FastAPI orchestrates public API routes and signs requests; private TypeScript Worker isolates D1 and R2; zero egress costs.</text>
+  <!-- Connectors C1 -> C2 -->
+  <path d="M248 160 L290 160" fill="none" stroke="#047857" stroke-width="1.5" marker-end="url(#arrow-green)"/>
+  <text x="269" y="152" font-size="7.5" font-weight="600" fill="#047857" text-anchor="middle">HTTPS</text>
+
+  <!-- ==================== COLUMN 3: DATA SERVICE & PERSISTENCE ==================== -->
+  <!-- Top Box: TypeScript Data Worker -->
+  <rect x="558" y="60" width="210" height="106" rx="6" fill="#047857" stroke="#064E3B" stroke-width="1.25"/>
+  <rect x="570" y="70" width="100" height="18" rx="3" fill="#064E3B"/>
+  <text x="620" y="82" font-size="8" font-weight="600" fill="#A7F3D0" text-anchor="middle">EDGE WORKER</text>
+  <text x="570" y="104" font-size="11" font-weight="600" fill="#FFFFFF">TYPESCRIPT DATA WORKER</text>
+  <text x="570" y="118" font-size="8" fill="#A7F3D0">Private Cloudflare Edge Service</text>
+  <line x1="570" y1="126" x2="756" y2="126" stroke="#059669" stroke-width="0.75"/>
+  <text x="570" y="140" font-size="7.5" fill="#E2E8F0">Validates HMAC · Owns D1 &amp; R2</text>
+  <text x="570" y="152" font-size="7.5" fill="#A7F3D0">Zero public database credentials</text>
+
+  <!-- Connectors C2 -> C3 -->
+  <path d="M516 113 L558 113" fill="none" stroke="#047857" stroke-width="1.5" marker-end="url(#arrow-green)"/>
+  <text x="537" y="105" font-size="7" font-weight="600" fill="#047857" text-anchor="middle">HMAC RPC</text>
+
+  <!-- Bottom Box 1: Cloudflare D1 -->
+  <rect x="558" y="180" width="210" height="106" rx="6" fill="#F0FDF4" stroke="#047857" stroke-width="1.25"/>
+  <rect x="570" y="190" width="70" height="18" rx="3" fill="#DCFCE7"/>
+  <text x="605" y="202" font-size="8" font-weight="600" fill="#065F46" text-anchor="middle">STORAGE</text>
+  <text x="570" y="224" font-size="11" font-weight="600" fill="#064E3B">CLOUDFLARE D1</text>
+  <text x="570" y="238" font-size="8" fill="#065F46">Relational SQLite Database</text>
+  <line x1="570" y1="246" x2="756" y2="246" stroke="#BBF7D0" stroke-width="0.75"/>
+  <text x="570" y="260" font-size="8" fill="#064E3B">• 9 Depts · 426 Courses</text>
+  <text x="570" y="274" font-size="8" fill="#064E3B">• Keyset index: createdAt | id</text>
+
+  <!-- Bottom Box 2: Cloudflare R2 -->
+  <rect x="558" y="298" width="210" height="106" rx="6" fill="#F0FDF4" stroke="#047857" stroke-width="1.25"/>
+  <rect x="570" y="308" width="70" height="18" rx="3" fill="#DCFCE7"/>
+  <text x="605" y="320" font-size="8" font-weight="600" fill="#065F46" text-anchor="middle">STORAGE</text>
+  <text x="570" y="342" font-size="11" font-weight="600" fill="#064E3B">CLOUDFLARE R2</text>
+  <text x="570" y="356" font-size="8" fill="#065F46">Immutable Object Storage</text>
+  <line x1="570" y1="364" x2="756" y2="364" stroke="#BBF7D0" stroke-width="0.75"/>
+  <text x="570" y="378" font-size="8" fill="#064E3B">• 2,111 PDF Blobs (~13.8 GB)</text>
+  <text x="570" y="392" font-size="8" fill="#064E3B">• SHA-256 Dedup · Zero Egress</text>
+
+  <!-- Connectors Worker -> D1 & R2 -->
+  <path d="M663 166 L663 178" fill="none" stroke="#047857" stroke-width="1.25" marker-end="url(#arrow-green)"/>
+  <path d="M663 286 L663 296" fill="none" stroke="#047857" stroke-width="1.25" marker-end="url(#arrow-green)"/>
+
+  <!-- Footer -->
+  <line x1="32" y1="418" x2="768" y2="418" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="32" y="434" font-size="8.5" fill="#065F46">NUESA ACADEMIA / 01 OF 07 · System Architecture</text>
+  <text x="768" y="434" font-size="8.5" fill="#065F46" text-anchor="end">Source: docs/case-studies/nuesa-academia.md</text>
 </svg>
