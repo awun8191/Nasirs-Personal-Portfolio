@@ -39,7 +39,6 @@ https://raregazzetto.me
 - Embedded AI chat assistant (bottom right) powered by Google Gemini. It answers visitor questions about Dauda's skills, experience, and projects using a curated system instruction.
 - Light and dark theme support (class based dark mode).
 - SEO ready: Open Graph and Twitter tags, canonical link, and JSON-LD Person schema in index.html.
-- Downloadable CV served from the public folder.
 
 ## Project structure
 

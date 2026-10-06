@@ -54,7 +54,7 @@ The header can sit on a white field or an ink field per page (hero band treatmen
 
 ### 1.4 Footer
 
-Reuse the Closing component (DESIGN-SYSTEM 3.9) on every case page: hairline divider, sign-off "Every system begins with a single line.", contact row (EMAIL / GITHUB / LINKEDIN / CV), mono status line. Between the last section and the footer, add a Next Project row:
+Reuse the Closing component (DESIGN-SYSTEM 3.9) on every case page: hairline divider, sign-off "Every system begins with a single line.", contact row (EMAIL / GITHUB / LINKEDIN), mono status line. Between the last section and the footer, add a Next Project row:
 
 - Left: mono label `NEXT PROJECT`
 - Right: General Sans 700 project title + arrow, links to the next case study in route order (section 8), hover to accent

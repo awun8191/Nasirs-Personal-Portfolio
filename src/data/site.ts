@@ -285,7 +285,6 @@ export const CONTACTS = [
   { label: "Email", href: "mailto:nasirdaud2015@gmail.com" },
   { label: "GitHub", href: "https://github.com/awun8191" },
   { label: "LinkedIn", href: "https://www.linkedin.com/in/nasir-dauda-729357361/" },
-  { label: "CV", href: "/Dauda_Nasir_Omotola_CV.pdf" },
 ];
 
 export const CLOSING_SIGN_OFF =

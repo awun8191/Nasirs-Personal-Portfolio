@@ -80,7 +80,7 @@ All corners are sharp or near-sharp. The previous 26/14/999 squircle system is r
 2. About: index `01 / ABOUT`, the direct statement (his words): "My name is Dauda Nasir. I'm an Electrical and Electronics Engineering graduate and a software developer." / "I build products. I'm a product-minded developer."
 3. The Workbench (Systems I Build): index `02 / WORKBENCH`. Ruled list of tools (Python, Flutter, FastAPI, Cloudflare / GCP, AI Systems) with real notes and status lines. Not cards, not bento
 4. Projects (The Work): index `03 / PROJECTS`. Six verified projects on a structured 12-column Swiss grid with index numbers 01-06, uniform gutters, deliberate spans (7/5, 8/4, then two full-width statements). AWUN closes the section as a full-width blue chapter band
-5. Closing: index `04 / CONTACT`. Sign-off, EMAIL / GITHUB / LINKEDIN / CV links, mono status line
+5. Closing: index `04 / CONTACT`. Sign-off, EMAIL / GITHUB / LINKEDIN links, mono status line
 
 ## 6. The Projects Grid
 

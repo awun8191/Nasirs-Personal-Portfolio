@@ -238,7 +238,7 @@ AWUN closes the Projects section as a full-width blue band.
 ### 3.9 Closing / contact
 
 - Sign-off: "Every system begins with a single line." General Sans 700, `clamp(2rem, 4.5vw, 3.5rem)`, max 24ch
-- Contact row: EMAIL / GITHUB / LINKEDIN / CV as mono uppercase links, ink, accent blue on hover with growing underline, arranged in a row (vertical stack on mobile, 44px targets)
+- Contact row: EMAIL / GITHUB / LINKEDIN as mono uppercase links, ink, accent blue on hover with growing underline, arranged in a row (vertical stack on mobile, 44px targets)
 - Mono status line beneath: `STATUS / OPEN TO COLLABORATION`
 - No version footers, no decoration strips
 
