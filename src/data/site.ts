@@ -96,8 +96,8 @@ export const TOOLS: Tool[] = [
   },
   {
     name: "AI Systems",
-    tags: ["AGENTS", "EMBEDDINGS"],
-    note: "Agents and embeddings in production: hybrid OCR transcription, semantic search over 1M+ chunks, and AWUN storefront intelligence.",
+    tags: ["AI INTEGRATIONS", "LLM INTEGRATIONS", "RAG SYSTEMS", "DECISION MODELS"],
+    note: "I implement language models into products: retrieval augmented generation systems, embeddings, and the decision models behind user-facing features.",
     status: "ACTIVE TOOL",
     logo: "/logos/ai.svg",
   },
