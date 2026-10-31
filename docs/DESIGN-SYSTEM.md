@@ -41,7 +41,7 @@ Rules:
 - Text-level accent is `#2563EB` (AA on white for normal text). `#3B82F6` is for large text and fills only (fails AA at small sizes). `#1D4ED8` is the AA-safe small-text blue.
 - Ink is `#111111`, never `#000000` (a11y discipline).
 - Card variety rule (3.5): card fields alternate WHITE and BLACK only, arranged in a diagonal rhythm (Soiling and RAG are ink, TRAKS / Engineering Hub / NUESA are paper). No tinted fields, no accent strips, no gray shading, no shadows. Blue appears on cards only in index numbers, text accents, and links; the one filled blue surface is the AWUN chapter band (frozen).
-- Section rhythm rule (set 2026-08-15): the Workbench section is a full-bleed ink band between the white About and white Projects sections (white -> white -> ink -> white -> white). It inverts to light-on-dark text with its own white/10 top/bottom hairlines; see 3.4. It is a section field, not a dark mode toggle: the page stays light-only.
+- Section rhythm rule (revised 2026-10-31): the Workbench ink band sits AFTER the work, between the white Projects and the white Closing sections (white -> white -> white -> ink -> white). The page has one peak, the hero, and the work holds the body. The band is a coda, not a second anchor before the projects. It inverts to light-on-dark text with its own white/10 top/bottom hairlines; see 3.4.
 
 Contrast (WCAG AA):
 
@@ -143,9 +143,10 @@ Spectral serif is DROPPED (2026-08-15). No serif anywhere. Fontshare license per
 
 Swiss bar, not a floating pill:
 
-- Container: `max-width 1200px` centered inside a `position: fixed` full-width bar at top, `height 64px`, sharp corners (0), `border-bottom: 1px hairline`, background `rgba(255,255,255,0.9)` with `backdrop-blur`
+- Container: `max-width 1200px` centered inside a `position: fixed` full-width bar at top, `height 64px`, sharp corners (0), `border-bottom: 1px hairline`, background SOLID `#FFFFFF` (no alpha, no backdrop blur)
+- Color tokens are channel triplets (`--color-ink-rgb: 17 17 17`) because Tailwind drops an opacity modifier (`bg-canvas/90`) on a bare `var()` color. That silent drop left the bar transparent over the ink band: the nav measured 1.06:1 against `#080808`. Do not reintroduce `bg-canvas/90`
 - Content: wordmark left (JetBrains Mono 500, lowercase `raregazzetto.` with blue period, letter-spaced `0.18em`), links right
-- Links (mono, uppercase, `0.75rem`, ink-soft): `ABOUT`, `WORKBENCH`, `PROJECTS`, `CONTACT`. Anchor to sections, `scroll-margin-top: 88px`
+- Links (mono, uppercase, `0.75rem`, ink-soft): `ABOUT`, `PROJECTS`, `WORKBENCH`, `CONTACT`. Anchor to sections, `scroll-margin-top: 88px`
 - Active/hover: accent blue text + 2px growing underline (`link-underline`)
 - Mobile: wordmark + a square 44px arrow button (1px hairline border). The button is a stroke-based chevron-right SVG (`M9 6l6 6-6 6`, 1.75px stroke, `currentColor`) that rotates 90deg to point DOWN when the overlay opens and back to right when closed (250ms EASE_EXPO, instant under reduced-motion). Tapping opens a full-screen white overlay with bold sans links at `clamp(2.5rem, 10vw, 4rem)`, staggered entrance, close button top right
 - Nav is the ONLY fixed element on the homepage
@@ -155,24 +156,25 @@ Swiss bar, not a floating pill:
 - `min-height: 100dvh` with `100svh` fallback, content anchored toward the BOTTOM (not centered, not top)
 - Content: subtitle ABOVE the name: `FULL STACK SOFTWARE DEVELOPER` (mono, uppercase, letter-spaced, ink-soft). Then the name `DAUDA NASIR` on two lines, General Sans 700, `clamp(3.5rem, 12vw, 11rem)`, `leading 0.88`, `tracking -0.03em`, uppercase, accent blue
 - Nothing else. No quote, no image, no buttons, no scroll cue
-- Entrance: subtitle rises first, name follows 80ms later (see motion spec)
+- Entrance: none. The name is the LCP element and renders visible on first paint. A reveal on the H1 gates the largest text behind React and framer-motion, which cost 3.76s LCP on Fast 3G. Do not wrap the hero in `Reveal`
 
 ### 3.3 About (who I am)
 
-Swiss grid: index column left, statement right.
+Section opening: a hairline rule, not a numbered kicker.
 
-- Section grid: `md:grid-cols-[10rem_1fr]`, index `01 / ABOUT` (mono, muted)
-- Statement 1 (his words): "My name is Dauda Nasir. I'm an Electrical and Electronics Engineering graduate and a software developer." General Sans 500, `clamp(2rem, 4.5vw, 3.75rem)`, max 30ch
-- Statement 2: "I build products. I'm a product-minded developer." General Sans 500, smaller (`clamp(1.125rem, 2vw, 1.5rem)`), ink-soft
+- Section: `border-top: 1px hairline` on the statement block, `pt-10` (`pt-14` on desktop). The rule spans the 1200px container
+- No index label: the numbered rails are reserved for the project index, which is a real sequence
+- Statement 1: General Sans 500, `clamp(2rem, 4.5vw, 3.75rem)`, measure `46rem` on the paragraph itself, `text-wrap: pretty`. Set the measure on the paragraph: a `ch` measure on the wrapper computes at 16px and collapses the display type into one-word lines
+- Statement 2: General Sans 500, smaller (`clamp(1.125rem, 2vw, 1.5rem)`), ink-soft, same `46rem` measure
 - No metadata table, no cards, no ruled rows
 
 ### 3.4 Workbench (SYSTEMS I BUILD)
 
-NOT a bento grid. NOT cards. A ruled index list. THE BLACK BAND of the page (section rhythm, set 2026-08-15).
+NOT a bento grid. NOT cards. A ruled index list. THE INK CODA of the page, after the work (section rhythm, revised 2026-10-31).
 
 - Full-bleed ink band: the `<section>` itself is `background: #111111` (edge to edge, not just the inner container) with its own `border-top/bottom: 1px rgba(255,255,255,0.10)` hairlines, so the divider reads on both the white section above and the white section below. No App-level hairline sits around it.
-- Section vertical padding: `clamp(96px, 12vw, 160px)` (same rhythm as every other section, so the band reads as a deliberate section, not a strip).
-- Section grid: index `02 / WORKBENCH` left (mono, `text-white/70`), kicker `SYSTEMS I BUILD` (mono, `accent-bright` #3B82F6) + headline right (`text-white`).
+- Section vertical padding: `clamp(72px, 8vw, 120px)`, tighter than the white sections. The band is an appendix, so it must not carry the mass of a second peak.
+- Section opening: a change of background only. No index label, no kicker. The headline sits on the content rail (`md:ml-[calc(10rem+3rem)]`) and aligns with the tool names below.
 - Each tool is a row: `border-top: 1px rgba(255,255,255,0.20)`, grid `[10rem | 1fr | auto]`: index number (mono, white/70), name (General Sans bold, 2xl-2rem, white) + domain tags + real note (`white/85`), status line right (mono, white/70).
 - Name goes `accent-bright` on hover (200ms), matching the ink-card hover language.
 - Tags on ink: `border: 1px rgba(255,255,255,0.40)`, `text: rgba(255,255,255,0.90)` (the light Tag treatment, same as ink cards and the AWUN chapter). No tag-bg fill on ink.
@@ -237,7 +239,7 @@ AWUN closes the Projects section as a full-width blue band.
 
 ### 3.9 Closing / contact
 
-- Sign-off: "Every system begins with a single line." General Sans 700, `clamp(2rem, 4.5vw, 3.5rem)`, max 24ch
+- Sign-off: "Every system begins with a single line." General Sans 700, `clamp(2rem, 4.5vw, 3.5rem)`, max 26ch. The section opens with air: no rail number, no eyebrow. The ink band above is the last change of field, so the end needs no furniture.
 - Contact row: EMAIL / GITHUB / LINKEDIN as mono uppercase links, ink, accent blue on hover with growing underline, arranged in a row (vertical stack on mobile, 44px targets)
 - Mono status line beneath: `STATUS / OPEN TO COLLABORATION`
 - No version footers, no decoration strips
@@ -248,10 +250,15 @@ One discipline: Swiss minimal. Nothing bounces, nothing glows, nothing draws its
 
 ### 4.1 Reveals
 
-- Rise + fade: `opacity: 0 -> 1`, `translateY(16px -> 0)`
+Three expressions, one system. Bind the expression to the content: a paragraph rises, a media card settles from 0.98, a heading fades in place. Never the same entrance on every section.
+
+- `rise`: `opacity: 0 -> 1`, `translateY(16px -> 0)`. Prose, statements, list rows
+- `scale`: `opacity: 0 -> 1`, `scale(0.98 -> 1)`. Media cards and project visuals
+- `fade`: `opacity: 0 -> 1`, no transform. Section headers and the sign-off
 - Duration: 500-700ms, ease: `cubic-bezier(0.16, 1, 0.3, 1)` (expo-out)
 - Stagger: 40-80ms between sibling items. One beat at a time
 - Trigger: `whileInView` with `once: true` (framer-motion IntersectionObserver; no window scroll listeners)
+- Never gate the LCP element: the hero renders visible, no reveal
 - UI micro-transitions (hover, press): under 300ms, `cubic-bezier(0.23, 1, 0.32, 1)`
 - Press feedback: `scale(0.97)` on `:active` for pressable elements, 120ms
 
@@ -291,19 +298,17 @@ Global `prefers-reduced-motion: reduce`:
 
 ### 6.1 Homepage
 
-Section order (locked): Hero -> About -> Workbench -> Projects (AWUN chapter inside) -> Closing.
+Section order (revised 2026-10-31): Hero -> About -> Projects (AWUN chapter inside) -> Workbench -> Closing.
 
-1. Hero: 100dvh, subtitle above name, giant blue name, bottom-anchored, white field
+1. Hero: 100dvh, subtitle above name, giant blue name, bottom-anchored, white field, no reveal
 2. Hairline divider
-3. About: `01 / ABOUT`, direct statement
-4. Workbench: `02 / WORKBENCH`, the full-bleed ink band (white -> white -> ink -> white -> white rhythm). Carries its own white/10 top and bottom hairlines; no App-level Hairline around it.
-5. Projects: `03 / PROJECTS`, kicker THE WORK, grid of six on a 12-col Swiss grid (uniform gap-6, no orphan columns):
-   - Soiling Detection System (01) span 7 + TRAKS (02) span 5 - paired row
-   - Engineering Hub (03) span 8 with flow strip + RAG Data Pipeline (04) span 4 - paired row
-   - NUESA Academia (05) span 12 full-width with dashboard image
-   - AWUN (06) span 12 full-width blue band
-6. Hairline divider
-7. Closing: `04 / CONTACT`, sign-off, contact row, status line
+3. About: opens with a hairline rule, no index label, direct statement
+4. Projects: opens with the single kicker `THE WORK` (mono, accent) plus heading `Selected systems, built and deployed`, then alternating project rows:
+   - Engineering Hub (01), QueenBrique (02), Elegant Radiance Luxe (03)
+   - RAG Data Pipeline (04), NUESA Engineering Portal (05), NUESA Academia Engine (06)
+   - AWUN (07), the capstone chapter
+5. Workbench: the full-bleed ink band, no label, headline `Tools of the trade` on the content rail. Carries its own white/10 top and bottom hairlines; no App-level Hairline around it
+6. Closing: opens with air, no label, sign-off, contact row, status line
 
 ### 6.2 Case study template (one template, 8 sections)
 

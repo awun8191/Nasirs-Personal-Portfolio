@@ -6,14 +6,16 @@ export default {
   theme: {
     extend: {
       colors: {
-        canvas: "var(--color-canvas)",
-        surface: "var(--color-surface)",
-        ink: "var(--color-ink)",
-        "ink-soft": "var(--color-ink-soft)",
-        muted: "var(--color-muted)",
-        accent: "var(--color-accent)",
-        "accent-bright": "var(--color-accent-bright)",
-        "accent-deep": "var(--color-accent-deep)",
+        // Channel-form tokens so opacity modifiers work: bg-canvas/90,
+        // hover:bg-ink/[0.03], hover:border-ink/30.
+        canvas: "rgb(var(--color-canvas-rgb) / <alpha-value>)",
+        surface: "rgb(var(--color-surface-rgb) / <alpha-value>)",
+        ink: "rgb(var(--color-ink-rgb) / <alpha-value>)",
+        "ink-soft": "rgb(var(--color-ink-soft-rgb) / <alpha-value>)",
+        muted: "rgb(var(--color-muted-rgb) / <alpha-value>)",
+        accent: "rgb(var(--color-accent-rgb) / <alpha-value>)",
+        "accent-bright": "rgb(var(--color-accent-bright-rgb) / <alpha-value>)",
+        "accent-deep": "rgb(var(--color-accent-deep-rgb) / <alpha-value>)",
         hairline: "var(--color-hairline)",
         "card-border": "var(--color-card-border)",
         "card-border-hover": "var(--color-card-border-hover)",

@@ -133,7 +133,7 @@ export default function EngineeringHubArchitectureDiagram() {
             >
               REACT 19 · VITE · KATEX
             </text>
-            <text x="12" y="68" fontSize="9.5" fill="#3F3F46" leading-normal>
+            <text x="12" y="68" fontSize="9.5" fill="#3F3F46">
               • Interactive workbook for desktop study
             </text>
             <text x="12" y="90" fontSize="9.5" fill="#3F3F46">

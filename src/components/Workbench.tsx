@@ -3,37 +3,27 @@ import { TOOLS } from "../data/site";
 
 // Workbench (3.4): SYSTEMS I BUILD. Swiss index list, not cards.
 // Each tool is a ruled row: index, name, tags, note, status. Sharp hairlines.
-// Section rhythm (2026-08-15): the Workbench is the page's black band, a
-// full-bleed ink field between white About and white Projects. Every color
+// Section rhythm (2026-10-31 auteur audit): the Workbench is the page's ink
+// band, and it now sits AFTER the work as a coda, not before it. It opens by
+// a change of background alone: no numbered kicker, no eyebrow. Every color
 // inverts to light-on-dark (white text, accent-bright on ink), the row rules
-// become white/20, and the section carries its own white/10 top and bottom
-// hairlines so the band reads cleanly against the white sections.
+// become white/20, and the section carries its own white/10 hairlines.
 export default function Workbench() {
   return (
     <section
       id="workbench"
-      className="border-y border-white/10 bg-ink py-[clamp(96px,12vw,160px)]"
+      className="border-y border-white/10 bg-ink py-[clamp(72px,8vw,120px)]"
     >
       <div className="mx-auto w-full max-w-[1200px] px-6 md:px-10">
-        <Reveal>
-          <div className="grid gap-6 md:grid-cols-[10rem_1fr] md:gap-12">
-            <p className="font-mono text-xs uppercase tracking-[0.2em] text-white/70">
-              02 / Workbench
-            </p>
-            <div>
-              <p className="font-mono text-xs uppercase tracking-[0.18em] text-accent-bright">
-                Systems I Build
-              </p>
-              <h2 className="mt-4 font-sans text-[clamp(2rem,4.5vw,3.5rem)] font-bold leading-[1.02] tracking-[-0.02em] text-white">
-                Tools of the trade
-              </h2>
-            </div>
-          </div>
+        <Reveal variant="fade">
+          <h2 className="font-sans text-[clamp(2rem,4.5vw,3.5rem)] font-bold leading-[1.02] tracking-[-0.02em] text-white md:ml-[calc(10rem+3rem)]">
+            Tools of the trade
+          </h2>
         </Reveal>
 
         <div className="mt-14 md:mt-20">
           {TOOLS.map((tool, i) => (
-            <Reveal key={tool.name} delay={0.04 * (i % 2)}>
+            <Reveal key={tool.name} variant="fade" delay={0.04 * (i % 2)}>
               <article className="group grid gap-4 border-t border-white/20 py-6 md:grid-cols-[10rem_1fr_auto] md:gap-12 md:py-8">
                 <p className="font-mono text-xs uppercase tracking-[0.2em] text-white/70">
                   {String(i + 1).padStart(2, "0")}

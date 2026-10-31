@@ -4,14 +4,14 @@
 
 export const NAV_LINKS = [
   { label: "About", href: "#about" },
-  { label: "Workbench", href: "#workbench" },
   { label: "Projects", href: "#projects" },
+  { label: "Workbench", href: "#workbench" },
   { label: "Contact", href: "#contact" },
 ];
 
 // About (3.3): value proposition and scope.
 export const ABOUT_STATEMENT = [
-  "I help businesses, organizations, and startups build high-impact digital products.",
+  "I build production backends, web platforms, and mobile apps for startups and institutions.",
   "Covering scalable backends, responsive web platforms, cross-platform mobile apps, and intelligent AI integrations.",
 ];
 
@@ -134,7 +134,7 @@ export const PROJECTS: ProjectEntry[] = [
       { value: "250+", label: "STUDENTS" },
       { value: "BKT", label: "QUIZ ENGINE" },
     ],
-    tags: ["FLUTTER", "FASTAPI", "POSTGRESQL", "FIREBASE"],
+    tags: ["FLUTTER", "FASTAPI", "POSTGRESQL", "FIREBASE", "GEMINI"],
     href: "/projects/engineering-hub",
     liveUrl: "https://engineeringhub.nuesaabuad.ng/",
     playStoreUrl: "https://play.google.com/store/apps/details?id=com.engineeringhub.engineeringhub&pcampaignid=web_share",

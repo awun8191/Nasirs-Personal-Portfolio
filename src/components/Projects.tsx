@@ -109,17 +109,17 @@ function ShowcaseRow({
   const hasCaseStudy = Boolean(entry.href && !entry.href.startsWith("http"));
 
   return (
-    <Reveal>
-      <article data-project={entry.id} className="group relative">
-        <div className="grid items-center gap-10 md:grid-cols-12 md:gap-14 lg:gap-20">
-          {/* Info Column */}
-          <div
-            className={`flex flex-col ${
-              reversed
-                ? "md:order-2 md:col-span-6 lg:col-span-5"
-                : "md:order-1 md:col-span-6 lg:col-span-6"
-            }`}
-          >
+    <article data-project={entry.id} className="group relative">
+      <div className="grid items-center gap-10 md:grid-cols-12 md:gap-14 lg:gap-20">
+        {/* Info Column: rises. The media beside it settles from 0.98. */}
+        <Reveal
+          className={
+            reversed
+              ? "md:order-2 md:col-span-6 lg:col-span-5"
+              : "md:order-1 md:col-span-6 lg:col-span-6"
+          }
+        >
+          <div className="flex flex-col">
             <div className="flex items-baseline justify-between gap-4">
               <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
                 {String(index + 1).padStart(2, "0")} / PROJECT
@@ -171,8 +171,8 @@ function ShowcaseRow({
                   aria-label={`Visit live website for ${entry.title}`}
                   className={
                     hasCaseStudy
-                      ? "group/link relative inline-flex items-center justify-center gap-1.5 rounded-sm border border-card-border bg-surface px-4 py-2.5 font-mono text-xs uppercase tracking-[0.14em] text-ink transition-all duration-160 ease-ui hover:border-ink hover:bg-ink/[0.03] active:scale-[0.97]"
-                      : "group/link relative inline-flex items-center justify-center gap-2 rounded-sm bg-ink px-4 py-2.5 font-mono text-xs uppercase tracking-[0.14em] text-white transition-all duration-160 ease-ui hover:bg-accent active:scale-[0.97]"
+                      ? "group/link relative inline-flex items-center justify-center gap-1.5 rounded-sm border border-card-border bg-surface px-4 py-2.5 font-mono text-xs uppercase tracking-[0.14em] text-ink transition-[color,background-color,border-color,transform] duration-150 ease-ui hover:border-ink hover:bg-ink/[0.03] active:scale-[0.97]"
+                      : "group/link relative inline-flex items-center justify-center gap-2 rounded-sm bg-ink px-4 py-2.5 font-mono text-xs uppercase tracking-[0.14em] text-white transition-[color,background-color,border-color,transform] duration-150 ease-ui hover:bg-accent active:scale-[0.97]"
                   }
                 >
                   <span>Live Site</span>
@@ -192,8 +192,8 @@ function ShowcaseRow({
                   aria-label={`View source code for ${entry.title} on GitHub`}
                   className={
                     hasCaseStudy
-                      ? "group/link relative inline-flex items-center justify-center gap-1.5 rounded-sm border border-card-border bg-surface px-4 py-2.5 font-mono text-xs uppercase tracking-[0.14em] text-ink transition-all duration-160 ease-ui hover:border-ink hover:bg-ink/[0.03] active:scale-[0.97]"
-                      : "group/link relative inline-flex items-center justify-center gap-2 rounded-sm bg-ink px-4 py-2.5 font-mono text-xs uppercase tracking-[0.14em] text-white transition-all duration-160 ease-ui hover:bg-accent active:scale-[0.97]"
+                      ? "group/link relative inline-flex items-center justify-center gap-1.5 rounded-sm border border-card-border bg-surface px-4 py-2.5 font-mono text-xs uppercase tracking-[0.14em] text-ink transition-[color,background-color,border-color,transform] duration-150 ease-ui hover:border-ink hover:bg-ink/[0.03] active:scale-[0.97]"
+                      : "group/link relative inline-flex items-center justify-center gap-2 rounded-sm bg-ink px-4 py-2.5 font-mono text-xs uppercase tracking-[0.14em] text-white transition-[color,background-color,border-color,transform] duration-150 ease-ui hover:bg-accent active:scale-[0.97]"
                   }
                 >
                   <span>GitHub</span>
@@ -211,7 +211,7 @@ function ShowcaseRow({
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={`View ${entry.title} on Google Play Store`}
-                  className="group/link relative inline-flex items-center justify-center gap-1.5 rounded-sm border border-card-border bg-surface px-4 py-2.5 font-mono text-xs uppercase tracking-[0.14em] text-ink transition-all duration-160 ease-ui hover:border-ink hover:bg-ink/[0.03] active:scale-[0.97]"
+                  className="group/link relative inline-flex items-center justify-center gap-1.5 rounded-sm border border-card-border bg-surface px-4 py-2.5 font-mono text-xs uppercase tracking-[0.14em] text-ink transition-[color,background-color,border-color,transform] duration-150 ease-ui hover:border-ink hover:bg-ink/[0.03] active:scale-[0.97]"
                 >
                   <span>Play Store</span>
                   <span
@@ -224,15 +224,17 @@ function ShowcaseRow({
               )}
             </div>
           </div>
+        </Reveal>
 
-          {/* Visual Column */}
-          <div
-            className={`${
-              reversed
-                ? "md:order-1 md:col-span-6 lg:col-span-7"
-                : "md:order-2 md:col-span-6 lg:col-span-6"
-            }`}
-          >
+        {/* Visual Column */}
+        <Reveal
+          variant="scale"
+          className={
+            reversed
+              ? "md:order-1 md:col-span-6 lg:col-span-7"
+              : "md:order-2 md:col-span-6 lg:col-span-6"
+          }
+        >
             {entry.visual ? (
               <div className="overflow-hidden rounded-sm border border-hairline bg-ink/[0.02]">
                 <a
@@ -255,20 +257,19 @@ function ShowcaseRow({
                 </a>
               </div>
             ) : null}
-          </div>
-        </div>
-      </article>
-    </Reveal>
+        </Reveal>
+      </div>
+    </article>
   );
 }
 
 // AWUN Capstone Section (Editorial Showcase)
 function ChapterCard({ entry, index }: { entry: ProjectEntry; index: number }) {
   return (
-    <Reveal>
-      <article data-project={entry.id} className="group relative">
-        <div className="grid items-center gap-10 md:grid-cols-12 md:gap-14 lg:gap-20">
-          <div className="flex flex-col md:col-span-6 lg:col-span-6">
+    <article data-project={entry.id} className="group relative">
+      <div className="grid items-center gap-10 md:grid-cols-12 md:gap-14 lg:gap-20">
+        <Reveal className="md:col-span-6 lg:col-span-6">
+          <div className="flex flex-col">
             <div className="flex items-baseline justify-between gap-4">
               <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
                 {String(index + 1).padStart(2, "0")} / THE CAPSTONE
@@ -321,7 +322,7 @@ function ChapterCard({ entry, index }: { entry: ProjectEntry; index: number }) {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={`Visit live platform for ${entry.title}`}
-                  className="group/link relative inline-flex items-center justify-center gap-1.5 rounded-sm border border-card-border bg-surface px-4 py-2.5 font-mono text-xs uppercase tracking-[0.14em] text-ink transition-all duration-160 ease-ui hover:border-ink hover:bg-ink/[0.03] active:scale-[0.97]"
+                  className="group/link relative inline-flex items-center justify-center gap-1.5 rounded-sm border border-card-border bg-surface px-4 py-2.5 font-mono text-xs uppercase tracking-[0.14em] text-ink transition-[color,background-color,border-color,transform] duration-150 ease-ui hover:border-ink hover:bg-ink/[0.03] active:scale-[0.97]"
                 >
                   <span>Live Platform</span>
                   <span
@@ -338,7 +339,7 @@ function ChapterCard({ entry, index }: { entry: ProjectEntry; index: number }) {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={`View source code for ${entry.title} on GitHub`}
-                  className="group/link relative inline-flex items-center justify-center gap-1.5 rounded-sm border border-card-border bg-surface px-4 py-2.5 font-mono text-xs uppercase tracking-[0.14em] text-ink transition-all duration-160 ease-ui hover:border-ink hover:bg-ink/[0.03] active:scale-[0.97]"
+                  className="group/link relative inline-flex items-center justify-center gap-1.5 rounded-sm border border-card-border bg-surface px-4 py-2.5 font-mono text-xs uppercase tracking-[0.14em] text-ink transition-[color,background-color,border-color,transform] duration-150 ease-ui hover:border-ink hover:bg-ink/[0.03] active:scale-[0.97]"
                 >
                   <span>GitHub</span>
                   <span
@@ -351,30 +352,30 @@ function ChapterCard({ entry, index }: { entry: ProjectEntry; index: number }) {
               )}
             </div>
           </div>
+        </Reveal>
 
-          <div className="md:col-span-6 lg:col-span-6">
-            {entry.visual && (
-              <div className="overflow-hidden rounded-sm border border-hairline bg-ink/[0.02]">
-                <a
-                  href={entry.liveUrl || entry.href}
-                  target={entry.liveUrl ? "_blank" : undefined}
-                  rel={entry.liveUrl ? "noopener noreferrer" : undefined}
-                  aria-label={`Open ${entry.title} ${entry.liveUrl ? "live platform" : "case study"}`}
-                  className="group/cap block"
-                >
-                  <img
-                    src={entry.visual.src}
-                    alt={entry.visual.alt}
-                    loading="lazy"
-                    className="aspect-[16/10] w-full object-cover transition-transform duration-500 ease-ui group-hover/cap:scale-[1.02]"
-                  />
-                </a>
-              </div>
-            )}
-          </div>
-        </div>
-      </article>
-    </Reveal>
+        <Reveal variant="scale" className="md:col-span-6 lg:col-span-6">
+          {entry.visual && (
+            <div className="overflow-hidden rounded-sm border border-hairline bg-ink/[0.02]">
+              <a
+                href={entry.liveUrl || entry.href}
+                target={entry.liveUrl ? "_blank" : undefined}
+                rel={entry.liveUrl ? "noopener noreferrer" : undefined}
+                aria-label={`Open ${entry.title} ${entry.liveUrl ? "live platform" : "case study"}`}
+                className="group/cap block"
+              >
+                <img
+                  src={entry.visual.src}
+                  alt={entry.visual.alt}
+                  loading="lazy"
+                  className="aspect-[16/10] w-full object-cover transition-transform duration-500 ease-ui group-hover/cap:scale-[1.02]"
+                />
+              </a>
+            </div>
+          )}
+        </Reveal>
+      </div>
+    </article>
   );
 }
 
@@ -392,16 +393,13 @@ export default function Projects() {
   return (
     <section id="projects" className="py-[clamp(96px,12vw,160px)]">
       <div className="mx-auto w-full max-w-[1200px] px-6 md:px-10">
-        <Reveal>
+        <Reveal variant="fade">
           <div className="grid gap-6 md:grid-cols-12 md:gap-6">
-            <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted md:col-span-3">
-              03 / Projects
-            </p>
-            <div className="md:col-span-9">
+            <div className="md:col-span-9 md:col-start-4">
               <p className="font-mono text-xs uppercase tracking-[0.18em] text-accent">
                 The Work
               </p>
-              <h2 className="mt-4 font-sans text-[clamp(2rem,4.5vw,3.5rem)] font-bold leading-[1.02] tracking-[-0.02em] text-ink">
+              <h2 className="mt-4 max-w-[20ch] font-sans text-[clamp(2rem,4.5vw,3.5rem)] font-bold leading-[1.02] tracking-[-0.02em] text-ink md:max-w-none md:text-balance">
                 Selected systems, built and deployed
               </h2>
             </div>

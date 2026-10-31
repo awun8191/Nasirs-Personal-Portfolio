@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { NAV_LINKS } from "../data/site";
 import { EASE_EXPO } from "./Reveal";
@@ -11,6 +11,9 @@ import { useRoute } from "../router";
 export default function Nav() {
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState<string>("");
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
+  const closeRef = useRef<HTMLButtonElement>(null);
   const reduce = useReducedMotion();
   const route = useRoute();
   const isCase = route !== "/" && route.startsWith("/projects/");
@@ -40,9 +43,57 @@ export default function Nav() {
     };
   }, [open]);
 
+  // Keyboard contract for the mobile overlay: ESC closes it, focus moves in on
+  // open, Tab stays inside, and focus returns to the trigger on close.
+  useEffect(() => {
+    if (!open) return;
+    const menu = menuRef.current;
+    const focusables = () =>
+      menu
+        ? Array.from(
+            menu.querySelectorAll<HTMLElement>('a[href], button:not([disabled])')
+          )
+        : [];
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        setOpen(false);
+        triggerRef.current?.focus();
+        return;
+      }
+      if (event.key !== "Tab") return;
+      const list = focusables();
+      if (list.length === 0) return;
+      const first = list[0];
+      const last = list[list.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+
+    document.addEventListener("keydown", onKeyDown);
+    const focusTimer = window.setTimeout(() => closeRef.current?.focus(), 50);
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+      window.clearTimeout(focusTimer);
+    };
+  }, [open]);
+
+  const closeMenu = () => {
+    setOpen(false);
+    triggerRef.current?.focus();
+  };
+
   return (
     <>
-      <header className="fixed inset-x-0 top-0 z-30 border-b border-hairline bg-canvas/90 backdrop-blur-md">
+      {/* Solid fill, not bg-canvas/90: Tailwind drops the alpha modifier on a
+          var() color, which left the bar transparent over the ink band. */}
+      <header className="fixed inset-x-0 top-0 z-30 border-b border-hairline bg-canvas">
         <div className="mx-auto flex h-16 max-w-[1200px] items-center justify-between px-6 md:px-10">
           <a
             href={isCase ? "/" : "#hero"}
@@ -67,6 +118,7 @@ export default function Nav() {
 
           <button
             type="button"
+            ref={triggerRef}
             className="pressable flex h-11 w-11 items-center justify-center rounded-sm border border-card-border bg-canvas text-ink hover:border-card-border-hover hover:text-accent md:hidden"
             aria-expanded={open}
             aria-controls="mobile-menu"
@@ -96,6 +148,7 @@ export default function Nav() {
         {open && (
           <motion.div
             id="mobile-menu"
+            ref={menuRef}
             role="dialog"
             aria-modal="true"
             aria-label="Menu"
@@ -111,9 +164,10 @@ export default function Nav() {
               </span>
               <button
                 type="button"
+                ref={closeRef}
                 className="pressable flex h-11 w-11 items-center justify-center rounded-sm border border-card-border bg-canvas font-mono text-sm text-ink hover:border-card-border-hover"
                 aria-label="Close menu"
-                onClick={() => setOpen(false)}
+                onClick={closeMenu}
               >
                 ✕
               </button>

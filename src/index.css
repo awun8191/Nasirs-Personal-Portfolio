@@ -11,18 +11,28 @@
    ============================================================ */
 
 :root {
-  /* Color (1.1). White dominant canvas, near-black ink, blue accent. */
-  --color-canvas: #ffffff;
-  --color-surface: #ffffff;
-  /* Card fields (3.5 white/black alternation rule): white paper or ink only.
-     No tinted fields, no accent strips. Blue appears only in text accents,
-     index numbers, links, and the frozen AWUN chapter band. */
-  --color-ink: #111111;
-  --color-ink-soft: #3f3f46;
-  --color-muted: #6b7280;
-  --color-accent: #2563eb;
-  --color-accent-bright: #3b82f6;
-  --color-accent-deep: #1d4ed8;
+  /* Color (1.1). Channels, not hex: Tailwind only applies an opacity
+     modifier (bg-canvas/90, hover:bg-ink/[0.03]) when the token resolves to
+     channel values. A bare var() hex silently drops the modifier, which is
+     how the fixed header lost its fill over the ink band.
+     White dominant canvas, near-black ink, blue accent. */
+  --color-canvas-rgb: 255 255 255;
+  --color-surface-rgb: 255 255 255;
+  --color-ink-rgb: 17 17 17;
+  --color-ink-soft-rgb: 63 63 70;
+  --color-muted-rgb: 107 114 128;
+  --color-accent-rgb: 37 99 235;
+  --color-accent-bright-rgb: 59 130 246;
+  --color-accent-deep-rgb: 29 78 216;
+
+  --color-canvas: rgb(var(--color-canvas-rgb));
+  --color-surface: rgb(var(--color-surface-rgb));
+  --color-ink: rgb(var(--color-ink-rgb));
+  --color-ink-soft: rgb(var(--color-ink-soft-rgb));
+  --color-muted: rgb(var(--color-muted-rgb));
+  --color-accent: rgb(var(--color-accent-rgb));
+  --color-accent-bright: rgb(var(--color-accent-bright-rgb));
+  --color-accent-deep: rgb(var(--color-accent-deep-rgb));
   --color-hairline: rgba(17, 17, 17, 0.14);
   --color-tag-bg: rgba(37, 99, 235, 0.06);
   --color-tag-border: rgba(37, 99, 235, 0.25);

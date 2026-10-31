@@ -21,7 +21,7 @@ export default function ExploreLink({
       <a
         href={href}
         aria-label={ariaLabel}
-        className={`group/btn relative inline-flex items-center justify-center gap-2 rounded-sm px-4 py-2.5 font-mono text-xs uppercase tracking-[0.14em] transition-all duration-160 ease-ui active:scale-[0.97] ${bgClass}`}
+        className={`group/btn relative inline-flex items-center justify-center gap-2 rounded-sm px-4 py-2.5 font-mono text-xs uppercase tracking-[0.14em] transition-[color,background-color,border-color,transform] duration-150 ease-ui active:scale-[0.97] ${bgClass}`}
       >
         <span>{label}</span>
         <span
@@ -50,7 +50,7 @@ export default function ExploreLink({
       <a
         href={href}
         aria-label={ariaLabel}
-        className="group/btn relative inline-flex items-center justify-center gap-2 rounded-sm border border-card-border bg-surface px-4 py-2.5 font-mono text-xs uppercase tracking-[0.14em] text-ink transition-all duration-160 ease-ui hover:border-ink hover:bg-ink/[0.03] active:scale-[0.97]"
+        className="group/btn relative inline-flex items-center justify-center gap-2 rounded-sm border border-card-border bg-surface px-4 py-2.5 font-mono text-xs uppercase tracking-[0.14em] text-ink transition-[color,background-color,border-color,transform] duration-150 ease-ui hover:border-ink hover:bg-ink/[0.03] active:scale-[0.97]"
       >
         <span>{label}</span>
         <span
