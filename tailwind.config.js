@@ -16,6 +16,7 @@ export default {
         accent: "rgb(var(--color-accent-rgb) / <alpha-value>)",
         "accent-bright": "rgb(var(--color-accent-bright-rgb) / <alpha-value>)",
         "accent-deep": "rgb(var(--color-accent-deep-rgb) / <alpha-value>)",
+        plate: "rgb(var(--color-plate-rgb) / <alpha-value>)",
         hairline: "var(--color-hairline)",
         "card-border": "var(--color-card-border)",
         "card-border-hover": "var(--color-card-border-hover)",

@@ -1,6 +1,7 @@
 // Verified content for the Swiss portfolio homepage.
 // Every number here is real and confirmed. See docs/DESIGN-SYSTEM.md section 7.
 // Do not add figures that are not in this module.
+// Project copy is ASD-STE100: short sentences, active voice, no tags.
 
 export const NAV_LINKS = [
   { label: "About", href: "#about" },
@@ -103,41 +104,29 @@ export const TOOLS: Tool[] = [
   },
 ];
 
-export type Metric = {
-  value: string;
-  label: string;
-};
-
+// The projects carry prose, not metadata rows. No metrics, no tags, no
+// pipeline strips: every fact lives in a sentence a reader can scan.
 export type ProjectEntry = {
   id: string;
-  year?: string;
   title: string;
   line: string;
-  metrics: Metric[];
-  subLine?: string;
-  tags: string[];
   href: string;
   liveUrl?: string;
   githubUrl?: string;
   playStoreUrl?: string;
   screenshots?: string[];
-  variant: "small" | "medium" | "large" | "compact" | "chapter";
-  visual?: { src: string; alt: string; caption: string };
+  visual?: { src: string; alt: string; contain?: boolean };
 };
 
 export const PROJECTS: ProjectEntry[] = [
   {
     id: "engineering-hub",
     title: "Engineering Hub",
-    line: "An interactive learning platform and adaptive quiz engine for engineering students across the faculty.",
-    metrics: [
-      { value: "250+", label: "STUDENTS" },
-      { value: "BKT", label: "QUIZ ENGINE" },
-    ],
-    tags: ["FLUTTER", "FASTAPI", "POSTGRESQL", "FIREBASE", "GEMINI"],
+    line: "Engineering Hub gives each student an adaptive quiz. The quiz selects the next question from the last answer. More than 250 students use it across the faculty.",
     href: "/projects/engineering-hub",
     liveUrl: "https://engineeringhub.nuesaabuad.ng/",
-    playStoreUrl: "https://play.google.com/store/apps/details?id=com.engineeringhub.engineeringhub&pcampaignid=web_share",
+    playStoreUrl:
+      "https://play.google.com/store/apps/details?id=com.engineeringhub.engineeringhub&pcampaignid=web_share",
     screenshots: [
       "/projects/1.png",
       "/projects/2.png",
@@ -148,137 +137,78 @@ export const PROJECTS: ProjectEntry[] = [
       "/projects/7.png",
       "/projects/8.png",
     ],
-    variant: "medium",
     visual: {
       src: "/projects/engineering-hub-logo.png",
-      alt: "Engineering Hub official platform logo",
-      caption: "ENGINEERING HUB / ABUAD FACULTY PLATFORM",
+      alt: "Engineering Hub platform logo",
+      contain: true,
     },
   },
   {
     id: "queen-brique",
     title: "QueenBrique",
-    line: "Digital platform and storefront for sustainable brick manufacturing, engineered with React and hosted on Cloudflare.",
-    metrics: [
-      { value: "100%", label: "EDGE DEPLOYED" },
-      { value: "<50ms", label: "TTFB" },
-    ],
-    tags: ["REACT", "CLOUDFLARE", "TAILWIND"],
+    line: "QueenBrique makes bridal and ceremonial clothes in Abuja. The site shows the collection and the services. A client books a fitting through WhatsApp.",
     href: "https://www.queenbrique.com/",
     liveUrl: "https://www.queenbrique.com/",
-    variant: "small",
     visual: {
       src: "/projects/queen-brique.png",
-      alt: "QueenBrique platform website interface",
-      caption: "PLATFORM INTERFACE / CLOUDFLARE EDGE",
+      alt: "QueenBrique website interface",
     },
   },
   {
     id: "elegant-radiance-luxe",
     title: "Elegant Radiance Luxe",
-    line: "Full-stack luxury e-commerce platform built on a hybrid cloud architecture: FastAPI on Cloud Run, signed Cloudflare D1 Data Workers, atomic 30-minute inventory holds, and Paystack payments.",
-    metrics: [
-      { value: "$0.00", label: "INFRA BASELINE" },
-      { value: "30-MIN", label: "ATOMIC HOLD" },
-    ],
-    tags: ["REACT", "CLOUDFLARE", "CLOUD RUN", "FASTAPI", "FIREBASE"],
+    line: "Elegant Radiance Luxe is a website that sells clothes and beauty products. It holds stock for 30 minutes while the buyer pays. The infrastructure has a baseline cost of zero.",
     href: "/projects/elegant-radiance-luxe",
     liveUrl: "https://elegantradianceluxe.com/",
-    variant: "medium",
     visual: {
       src: "/projects/elegant-radiance-luxe.webp",
       alt: "Elegant Radiance Luxe online storefront hero",
-      caption: "ONLINE STOREFRONT & CLOUD RUN API",
     },
   },
   {
     id: "rag",
     title: "RAG Data Pipeline",
-    line: "Institutional AI ingestion infrastructure: 2,000+ academic PDFs parsed into 1M+ semantic chunks with OpenCV orientation correction and hybrid OCR.",
-    metrics: [
-      { value: "1M+", label: "CHUNKS" },
-      { value: "2,000+", label: "PDFS" },
-    ],
-    subLine: "2,000+ PDFS INGESTED",
-    tags: ["PYTHON", "CHROMADB", "GEMMA 3", "OPENCV"],
+    line: "The pipeline reads academic PDF documents. It corrects the page orientation with OpenCV and extracts the text with OCR. It made one million text chunks from 2,000 documents.",
     href: "/projects/rag-data-pipeline",
     githubUrl: "https://github.com/awun8191/CourseGen",
-    variant: "compact",
     visual: {
       src: "/projects/rag-pipeline.png",
-      alt: "RAG Data Pipeline ingestion architecture",
-      caption: "SEMANTIC INGESTION / 1M+ CHUNKS",
+      alt: "RAG Data Pipeline ingestion diagram",
+      contain: true,
     },
   },
   {
     id: "nuesa-website",
     title: "NUESA Engineering Portal",
-    line: "Official web portal for the Faculty of Engineering at ABUAD. Built with React, the integrated digital library runs on Cloudflare and streams course textbooks obtained from Academia.",
-    metrics: [
-      { value: "9", label: "DEPARTMENTS" },
-      { value: "2,000+", label: "TEXTBOOKS" },
-    ],
-    tags: ["REACT", "CLOUDFLARE", "ACADEMIA API", "TAILWIND"],
+    line: "The portal is the website for the Faculty of Engineering at ABUAD. It holds a digital library of 2,000 textbooks for nine departments. Cloudflare sends each book to the reader.",
     href: "https://nuesaabuad.ng/",
     liveUrl: "https://nuesaabuad.ng/",
-    variant: "large",
     visual: {
       src: "/projects/nuesa-website.png",
-      alt: "NUESA ABUAD official website portal and digital library",
-      caption: "OFFICIAL FACULTY PORTAL & DIGITAL LIBRARY",
+      alt: "NUESA ABUAD website and digital library",
     },
   },
   {
     id: "nuesa",
     title: "NUESA Academia Engine",
-    line: "Digital learning backend for the Faculty of Engineering at ABUAD. A 461-line Cloudflare Worker streams PDFs straight to R2 with Redis caching and Gemini syllabus indexing.",
-    metrics: [
-      { value: "9", label: "DEPARTMENTS" },
-      { value: "2,000+", label: "DOCUMENTS" },
-    ],
-    tags: ["FASTAPI", "WORKERS", "NEXT.JS", "REDIS", "GEMINI"],
+    line: "The engine is the learning backend for the Faculty of Engineering at ABUAD. A Cloudflare Worker of 461 lines sends each document to R2 storage. Gemini indexes the syllabus and Redis caches the result.",
     href: "/projects/nuesa-academia",
-    variant: "large",
     visual: {
       src: "/projects/nuesa-academia.jpg",
-      alt: "NUESA Academia live dashboard showing syllabus coverage across the faculty",
-      caption: "LIVE DASHBOARD / SYLLABUS COVERAGE",
+      alt: "NUESA Academia dashboard with syllabus coverage",
     },
   },
   {
     id: "awun",
     title: "AWUN",
-    line: "AI social commerce. A storefront created by machine intelligence, payments verified, inventory managed, all inside chat.",
-    metrics: [
-      { value: "AI", label: "STOREFRONT" },
-      { value: "100%", label: "AUTOMATED" },
-    ],
-    tags: ["FASTAPI", "CLOUD RUN", "WORKERS", "AI"],
+    line: "AWUN sells goods in a chat. A seller writes a request and the system builds the sales page. The system checks each payment and tracks the stock.",
     href: "/projects/awun",
     liveUrl: "https://www.awun.dev/",
-    variant: "chapter",
     visual: {
       src: "/projects/awun.webp",
-      alt: "AWUN AI social commerce platform",
-      caption: "AI STOREFRONT & CHAT COMMERCE",
+      alt: "AWUN storefront landing page",
     },
   },
-];
-
-export const AWUN_FLOW = ["CLIENT", "API", "WORKER", "D1 / R2"];
-
-export const AWUN_FACTS = [
-  "AI STOREFRONT CREATION",
-  "PAYMENT VERIFICATION",
-  "INVENTORY MANAGEMENT",
-];
-
-export const AWUN_CHAPTERS = [
-  "CH. 01 THE SYSTEM",
-  "CH. 02 THE MARKETPLACE",
-  "CH. 03 THE INTELLIGENCE LAYER",
-  "CH. 04 THE INFRASTRUCTURE",
-  "CH. 05 THE DIFFICULT PARTS",
 ];
 
 export const CONTACTS = [

@@ -184,35 +184,29 @@ NOT a bento grid. NOT cards. A ruled index list. THE INK CODA of the page, after
 
 ### 3.5 Project entries (The Work)
 
-Structured 12-column Swiss grid, index numbers 01-06, uniform gutters, hairline cards. Entries never feel like a journal timeline; they are a disciplined index of shipped systems.
+One row anatomy for all seven. No cards, no tags, no metrics, no pipeline strips, no borders. The leading edge never moves: a number rail holds the left column on every row (revised 2026-10-31).
 
-Common anatomy (all variants):
+- Row grid: `.project-row` in `index.css`. `3rem | minmax(0,1fr) | 26rem`, areas `idx text media` over `idx actions media`. Mobile: one column, `text`, `media`, `actions`
+- Index rail: `01`-`07` in JetBrains Mono, 12px, accent blue, over a 44px 1px accent rule at 35% opacity. Hidden on mobile, where the number sits above the title
+- Title: General Sans 700, `clamp(1.75rem, 3vw, 2.75rem)`, tracking `-0.025em`
+- Prose: two or three sentences, 46ch measure, 17px, ink-soft. Copy is ASD-STE100 (see below)
+- Action: one per row. Label plus a 40px accent circle with a white arrow. The arrow moves 4px on hover. 44px hit area
+- Secondary links: one mono line, 11px, ink-soft, 44px hit areas. External links only
+- Media: `bg-plate` field (`#F2F6FF`), 4:3, no border, no radius. `object-cover` for screenshots, `object-contain` with padding for a logo or diagram. Scale 1.02 on hover
+- Between rows: whitespace only, `3.5rem` of padding. No rules
 
-- Index number: JetBrains Mono, `01`-`06` (top-left). Color follows the field: accent on white, accent-bright on ink
-- Year: JetBrains Mono, muted (top-right)
-- Title: General Sans 700 headline
-- One-line why-care: General Sans body, ink-soft
-- Metrics row: verified figures as large bold sans numbers + mono labels
-- Stack tags: mono pills, accent-deep on tag-bg
-- EXPLORE PROJECT: mono link, accent blue (white on the chapter band), underline grows, arrow nudges. 44px hit area
+Copy standard (ASD-STE100):
 
-Grid (12 fixed columns, ONE gap value `gap-6` = 24px everywhere, no orphan columns):
+- One fact in one sentence, 25 words maximum
+- Active voice, simple present. No contraction, no semicolon, no em dash
+- State the number in the sentence. Do not park it in a metric block
+- Name the customer or the user, not the category: "a client books a fitting", not "AI storefront creation"
 
-1. Soiling Detection System: `md:col-span-7` small card, ink field
-2. TRAKS: `md:col-span-5` small card, paper field (5+7 = 12, paired row)
-3. Engineering Hub: `md:col-span-8` medium card, paper field + real flow strip (Flutter Client -> FastAPI API -> PostgreSQL -> Gemini)
-4. RAG Data Pipeline: `md:col-span-4` compact card, ink field with big `1M+` metric in white (8+4 = 12, paired row)
-5. NUESA Academia: `md:col-span-12` full-width spread, paper field, dashboard image on the right in a hairline frame
-6. AWUN: `md:col-span-12` full-width blue band, capstone treatment (FROZEN, do not change)
+The section closes with a full-bleed `accent-deep` band: the kicker `MORE WORK`, one sentence, and the CTA `View all repositories` with an inverted white circle. That band is the section's only filled surface.
 
-The section header shares the same 12-column grid and closes with a hairline rule, so index, headline, and cards align.
+Row order (top to bottom): Engineering Hub (01), QueenBrique (02), Elegant Radiance Luxe (03), RAG Data Pipeline (04), NUESA Engineering Portal (05), NUESA Academia Engine (06), AWUN (07).
 
-Card style: every card carries the same 1px hairline border, 4px radius, flat (no shadow), and the same `.swiss-card` hover (2px rise + border deepen). Field colors alternate WHITE and BLACK in a diagonal rhythm (white/black alternation rule, set 2026-08-15 after Nasir's "it overdid the styling" critique):
-
-- ink `#111111`: inverted field, white text + accent-bright index (Soiling, RAG)
-- paper `#FFFFFF`: white field, ink text + accent index (TRAKS, Engineering Hub, NUESA)
-
-The black cards sit on the diagonal of the paired rows (Soiling top-left, RAG bottom-right); the white cards hold the middle. Blue appears on cards only as index numbers, text accents, tag text, and links. The one filled blue surface is the AWUN chapter band, kept exactly as-is. No tinted fields, no accent strips, no shadows, no thick borders, no new hue families.
+The section header sits on the content rail (`md:pl-[calc(3rem+2.5rem)]`), so the kicker and the heading align with the project titles, not with the number rail.
 
 ### 3.6 Metrics display (large numbers as composition)
 

@@ -1,383 +1,12 @@
 import Reveal from "./Reveal";
-import ExploreLink from "./ExploreLink";
-import { PROJECTS, AWUN_FACTS, AWUN_FLOW } from "../data/site";
-import type { ProjectEntry, Metric } from "../data/site";
+import { PROJECTS } from "../data/site";
+import type { ProjectEntry } from "../data/site";
 
-// Icon mapping for tech stack tags
-const TECH_ICONS: Record<string, string> = {
-  REACT: "/logos/react.svg",
-  PYTHON: "/logos/python.svg",
-  FASTAPI: "/logos/fastapi.svg",
-  FLUTTER: "/logos/flutter.svg",
-  POSTGRESQL: "/logos/postgresql.svg",
-  FIREBASE: "/logos/firebase.svg",
-  DOCKER: "/logos/docker.svg",
-  CLOUDFLARE: "/logos/cloudflare.svg",
-  WORKERS: "/logos/cloudflare.svg",
-  "CLOUD RUN": "/logos/google-cloud.svg",
-  "GOOGLE CLOUD RUN": "/logos/google-cloud.svg",
-  GCP: "/logos/google-cloud.svg",
-  AWS: "/logos/aws.svg",
-  AI: "/logos/ai.svg",
-  GEMINI: "/logos/ai.svg",
-  "GEMMA 3": "/logos/ai.svg",
-  CHROMADB: "/logos/ai.svg",
-  OPENCV: "/logos/ai.svg",
-  "ACADEMIA API": "/logos/ai.svg",
-  TAILWIND: "/logos/react.svg",
-};
-
-function TechPill({ label, light = false }: { label: string; light?: boolean }) {
-  const icon = TECH_ICONS[label.toUpperCase()];
-  return (
-    <span
-      className={`inline-flex items-center gap-1.5 rounded-sm border px-2.5 py-1 font-mono text-[0.6875rem] uppercase tracking-[0.1em] transition-colors duration-200 ${
-        light
-          ? "border-white/25 bg-white/10 text-white hover:border-white/40"
-          : "border-hairline bg-surface text-ink-soft hover:border-ink/30"
-      }`}
-    >
-      {icon && (
-        <img
-          src={icon}
-          alt=""
-          aria-hidden="true"
-          className="h-3.5 w-3.5 object-contain"
-          loading="lazy"
-        />
-      )}
-      <span>{label}</span>
-    </span>
-  );
-}
-
-function MetricGroup({ metrics, light = false }: { metrics: Metric[]; light?: boolean }) {
-  if (!metrics || metrics.length === 0) return null;
-  return (
-    <div className="flex flex-wrap items-center gap-x-6 gap-y-2 pt-2 font-mono">
-      {metrics.map((m, idx) => (
-        <div key={m.label} className="inline-flex items-baseline gap-2">
-          <span
-            className={`text-sm md:text-[0.9375rem] font-bold tracking-tight ${
-              light ? "text-white" : "text-ink"
-            }`}
-          >
-            {m.value}
-          </span>
-          <span
-            className={`text-[0.6875rem] uppercase tracking-[0.12em] ${
-              light ? "text-white/70" : "text-muted"
-            }`}
-          >
-            {m.label}
-          </span>
-          {idx < metrics.length - 1 && (
-            <span className="ml-4 text-hairline" aria-hidden="true">
-              /
-            </span>
-          )}
-        </div>
-      ))}
-    </div>
-  );
-}
-
-function FlowStrip({ layers }: { layers: string[] }) {
-  return (
-    <div className="flex flex-wrap items-center gap-x-3 gap-y-2 font-mono text-[0.6875rem] uppercase tracking-[0.1em] text-muted">
-      {layers.map((layer, i) => (
-        <span key={layer} className="contents">
-          <span>{layer}</span>
-          {i < layers.length - 1 && <span className="text-accent">→</span>}
-        </span>
-      ))}
-    </div>
-  );
-}
-
-// Clean unboxed alternating project showcase
-function ShowcaseRow({
-  entry,
-  index,
-  reversed,
-}: {
-  entry: ProjectEntry;
-  index: number;
-  reversed: boolean;
-}) {
-  const targetUrl = entry.liveUrl || entry.href;
-  const hasCaseStudy = Boolean(entry.href && !entry.href.startsWith("http"));
-
-  return (
-    <article data-project={entry.id} className="group relative">
-      <div className="grid items-center gap-10 md:grid-cols-12 md:gap-14 lg:gap-20">
-        {/* Info Column: rises. The media beside it settles from 0.98. */}
-        <Reveal
-          className={
-            reversed
-              ? "md:order-2 md:col-span-6 lg:col-span-5"
-              : "md:order-1 md:col-span-6 lg:col-span-6"
-          }
-        >
-          <div className="flex flex-col">
-            <div className="flex items-baseline justify-between gap-4">
-              <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
-                {String(index + 1).padStart(2, "0")} / PROJECT
-              </p>
-            </div>
-
-            <h3 className="mt-4 font-sans text-3xl font-bold leading-tight tracking-[-0.02em] text-ink transition-colors duration-200 group-hover:text-accent sm:text-4xl md:text-[2.5rem]">
-              {entry.title}
-            </h3>
-
-            <p className="mt-4 font-sans text-base leading-[1.65] text-ink-soft md:text-[1.0625rem]">
-              {entry.line}
-            </p>
-
-            {entry.id === "engineering-hub" && (
-              <div className="mt-4">
-                <FlowStrip
-                  layers={["Flutter Client", "FastAPI API", "PostgreSQL", "Gemini"]}
-                />
-              </div>
-            )}
-
-            {entry.metrics && entry.metrics.length > 0 && (
-              <div className="mt-6 border-t border-hairline pt-4">
-                <MetricGroup metrics={entry.metrics} />
-              </div>
-            )}
-
-            <div className="mt-6 flex flex-wrap gap-2">
-              {entry.tags.map((tag) => (
-                <TechPill key={tag} label={tag} />
-              ))}
-            </div>
-
-            <div className="mt-8 flex flex-wrap items-center gap-3 pt-2">
-              {hasCaseStudy && (
-                <ExploreLink
-                  href={entry.href}
-                  label="Case Study"
-                  ariaLabel={`Read the ${entry.title} case study`}
-                  variant="primary"
-                />
-              )}
-              {entry.liveUrl && (
-                <a
-                  href={entry.liveUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`Visit live website for ${entry.title}`}
-                  className={
-                    hasCaseStudy
-                      ? "group/link relative inline-flex items-center justify-center gap-1.5 rounded-sm border border-card-border bg-surface px-4 py-2.5 font-mono text-xs uppercase tracking-[0.14em] text-ink transition-[color,background-color,border-color,transform] duration-150 ease-ui hover:border-ink hover:bg-ink/[0.03] active:scale-[0.97]"
-                      : "group/link relative inline-flex items-center justify-center gap-2 rounded-sm bg-ink px-4 py-2.5 font-mono text-xs uppercase tracking-[0.14em] text-white transition-[color,background-color,border-color,transform] duration-150 ease-ui hover:bg-accent active:scale-[0.97]"
-                  }
-                >
-                  <span>Live Site</span>
-                  <span
-                    aria-hidden
-                    className="transition-transform duration-200 ease-ui group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5"
-                  >
-                    ↗
-                  </span>
-                </a>
-              )}
-              {entry.githubUrl && (
-                <a
-                  href={entry.githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`View source code for ${entry.title} on GitHub`}
-                  className={
-                    hasCaseStudy
-                      ? "group/link relative inline-flex items-center justify-center gap-1.5 rounded-sm border border-card-border bg-surface px-4 py-2.5 font-mono text-xs uppercase tracking-[0.14em] text-ink transition-[color,background-color,border-color,transform] duration-150 ease-ui hover:border-ink hover:bg-ink/[0.03] active:scale-[0.97]"
-                      : "group/link relative inline-flex items-center justify-center gap-2 rounded-sm bg-ink px-4 py-2.5 font-mono text-xs uppercase tracking-[0.14em] text-white transition-[color,background-color,border-color,transform] duration-150 ease-ui hover:bg-accent active:scale-[0.97]"
-                  }
-                >
-                  <span>GitHub</span>
-                  <span
-                    aria-hidden
-                    className="transition-transform duration-200 ease-ui group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5"
-                  >
-                    ↗
-                  </span>
-                </a>
-              )}
-              {entry.playStoreUrl && (
-                <a
-                  href={entry.playStoreUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`View ${entry.title} on Google Play Store`}
-                  className="group/link relative inline-flex items-center justify-center gap-1.5 rounded-sm border border-card-border bg-surface px-4 py-2.5 font-mono text-xs uppercase tracking-[0.14em] text-ink transition-[color,background-color,border-color,transform] duration-150 ease-ui hover:border-ink hover:bg-ink/[0.03] active:scale-[0.97]"
-                >
-                  <span>Play Store</span>
-                  <span
-                    aria-hidden
-                    className="transition-transform duration-200 ease-ui group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5"
-                  >
-                    ↗
-                  </span>
-                </a>
-              )}
-            </div>
-          </div>
-        </Reveal>
-
-        {/* Visual Column */}
-        <Reveal
-          variant="scale"
-          className={
-            reversed
-              ? "md:order-1 md:col-span-6 lg:col-span-7"
-              : "md:order-2 md:col-span-6 lg:col-span-6"
-          }
-        >
-            {entry.visual ? (
-              <div className="overflow-hidden rounded-sm border border-hairline bg-ink/[0.02]">
-                <a
-                  href={targetUrl}
-                  target={entry.liveUrl || entry.playStoreUrl ? "_blank" : undefined}
-                  rel={entry.liveUrl || entry.playStoreUrl ? "noopener noreferrer" : undefined}
-                  aria-label={`Open ${entry.title} ${entry.liveUrl ? "live site" : "case study"}`}
-                  className="group/img block"
-                >
-                  <img
-                    src={entry.visual.src}
-                    alt={entry.visual.alt}
-                    loading="lazy"
-                    className={`w-full transition-transform duration-500 ease-ui group-hover/img:scale-[1.02] ${
-                      entry.id === "engineering-hub"
-                        ? "aspect-[16/10] object-contain p-6 md:p-10"
-                        : "aspect-[16/10] object-cover"
-                    }`}
-                  />
-                </a>
-              </div>
-            ) : null}
-        </Reveal>
-      </div>
-    </article>
-  );
-}
-
-// AWUN Capstone Section (Editorial Showcase)
-function ChapterCard({ entry, index }: { entry: ProjectEntry; index: number }) {
-  return (
-    <article data-project={entry.id} className="group relative">
-      <div className="grid items-center gap-10 md:grid-cols-12 md:gap-14 lg:gap-20">
-        <Reveal className="md:col-span-6 lg:col-span-6">
-          <div className="flex flex-col">
-            <div className="flex items-baseline justify-between gap-4">
-              <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
-                {String(index + 1).padStart(2, "0")} / THE CAPSTONE
-              </p>
-            </div>
-
-            <h3 className="mt-4 font-sans text-3xl font-bold leading-tight tracking-[-0.02em] text-ink transition-colors duration-200 group-hover:text-accent sm:text-4xl md:text-[2.75rem]">
-              {entry.title}
-            </h3>
-
-            <p className="mt-4 font-sans text-base leading-[1.65] text-ink-soft md:text-[1.0625rem]">
-              {entry.line}
-            </p>
-
-            <div className="mt-6 hidden flex-wrap items-center gap-3 font-mono text-xs uppercase tracking-[0.1em] text-muted md:flex">
-              {AWUN_FLOW.map((node, i) => (
-                <span key={node} className="contents">
-                  <span>{node}</span>
-                  {i < AWUN_FLOW.length - 1 && <span className="text-accent">→</span>}
-                </span>
-              ))}
-            </div>
-
-            <div className="mt-6 grid gap-3 border-t border-hairline pt-4 sm:grid-cols-3">
-              {AWUN_FACTS.map((fact) => (
-                <div key={fact} className="flex flex-col">
-                  <span className="font-mono text-[0.6875rem] uppercase tracking-[0.12em] text-ink">
-                    {fact}
-                  </span>
-                </div>
-              ))}
-            </div>
-
-            <div className="mt-6 flex flex-wrap gap-2">
-              {entry.tags.map((tag) => (
-                <TechPill key={tag} label={tag} />
-              ))}
-            </div>
-
-            <div className="mt-8 flex flex-wrap items-center gap-3 pt-2">
-              <ExploreLink
-                href={entry.href}
-                label="Explore the Documentary"
-                ariaLabel={`Read the documentary and case study for ${entry.title}`}
-                variant="primary"
-              />
-              {entry.liveUrl && (
-                <a
-                  href={entry.liveUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`Visit live platform for ${entry.title}`}
-                  className="group/link relative inline-flex items-center justify-center gap-1.5 rounded-sm border border-card-border bg-surface px-4 py-2.5 font-mono text-xs uppercase tracking-[0.14em] text-ink transition-[color,background-color,border-color,transform] duration-150 ease-ui hover:border-ink hover:bg-ink/[0.03] active:scale-[0.97]"
-                >
-                  <span>Live Platform</span>
-                  <span
-                    aria-hidden
-                    className="transition-transform duration-200 ease-ui group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5"
-                  >
-                    ↗
-                  </span>
-                </a>
-              )}
-              {entry.githubUrl && (
-                <a
-                  href={entry.githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`View source code for ${entry.title} on GitHub`}
-                  className="group/link relative inline-flex items-center justify-center gap-1.5 rounded-sm border border-card-border bg-surface px-4 py-2.5 font-mono text-xs uppercase tracking-[0.14em] text-ink transition-[color,background-color,border-color,transform] duration-150 ease-ui hover:border-ink hover:bg-ink/[0.03] active:scale-[0.97]"
-                >
-                  <span>GitHub</span>
-                  <span
-                    aria-hidden
-                    className="transition-transform duration-200 ease-ui group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5"
-                  >
-                    ↗
-                  </span>
-                </a>
-              )}
-            </div>
-          </div>
-        </Reveal>
-
-        <Reveal variant="scale" className="md:col-span-6 lg:col-span-6">
-          {entry.visual && (
-            <div className="overflow-hidden rounded-sm border border-hairline bg-ink/[0.02]">
-              <a
-                href={entry.liveUrl || entry.href}
-                target={entry.liveUrl ? "_blank" : undefined}
-                rel={entry.liveUrl ? "noopener noreferrer" : undefined}
-                aria-label={`Open ${entry.title} ${entry.liveUrl ? "live platform" : "case study"}`}
-                className="group/cap block"
-              >
-                <img
-                  src={entry.visual.src}
-                  alt={entry.visual.alt}
-                  loading="lazy"
-                  className="aspect-[16/10] w-full object-cover transition-transform duration-500 ease-ui group-hover/cap:scale-[1.02]"
-                />
-              </a>
-            </div>
-          )}
-        </Reveal>
-      </div>
-    </article>
-  );
-}
+// Projects (3.5, revised 2026-10-31).
+// No tags, no metric rows, no pipeline strips, no boxes. Each row is a number,
+// a title, two or three sentences, one action, and a media plate. The leading
+// edge never moves: the number rail holds the left column on every row.
+// Copy is ASD-STE100: short sentences, active voice, facts in prose.
 
 const DISPLAY_ORDER = [
   "engineering-hub",
@@ -389,51 +18,158 @@ const DISPLAY_ORDER = [
   "awun",
 ] as const;
 
+const pad = (index: number) => String(index + 1).padStart(2, "0");
+
+type SecondaryLink = { label: string; href: string };
+
+function ProjectRow({ entry, index }: { entry: ProjectEntry; index: number }) {
+  const isCaseStudy = entry.href.startsWith("/");
+  const primaryLabel = isCaseStudy ? "Read the case study" : "Visit the live site";
+  const mediaHref = entry.liveUrl ?? entry.href;
+
+  const secondary: SecondaryLink[] = [];
+  if (isCaseStudy && entry.liveUrl) secondary.push({ label: "Live site", href: entry.liveUrl });
+  if (entry.playStoreUrl) secondary.push({ label: "Play Store", href: entry.playStoreUrl });
+  if (entry.githubUrl) secondary.push({ label: "GitHub", href: entry.githubUrl });
+
+  return (
+    <article data-project={entry.id} className="project-row group">
+      <div className="row-idx" aria-hidden="true">
+        <p className="font-mono text-xs tracking-[0.16em] text-accent">{pad(index)}</p>
+        <span className="mt-3 block h-11 w-px bg-accent/35" />
+      </div>
+
+      <Reveal className="row-text">
+        <p className="font-mono text-xs tracking-[0.16em] text-accent md:hidden">
+          {pad(index)}
+        </p>
+        <h3 className="mt-2 font-sans text-[clamp(1.75rem,3vw,2.75rem)] font-bold leading-[1.05] tracking-[-0.025em] text-ink md:mt-0">
+          {entry.title}
+        </h3>
+        <p className="mt-4 max-w-[46ch] font-sans text-base leading-[1.6] text-ink-soft md:text-[1.0625rem]">
+          {entry.line}
+        </p>
+      </Reveal>
+
+      <Reveal variant="fade" className="row-actions flex flex-wrap items-center gap-x-6 gap-y-3">
+        <a
+          href={entry.href}
+          target={isCaseStudy ? undefined : "_blank"}
+          rel={isCaseStudy ? undefined : "noopener noreferrer"}
+          aria-label={
+            isCaseStudy ? `Read the ${entry.title} case study` : `Visit the ${entry.title} website`
+          }
+          className="group/more inline-flex min-h-11 items-center gap-3 text-ink"
+        >
+          <span className="text-[0.9375rem] font-medium underline-offset-4 group-hover/more:underline">
+            {primaryLabel}
+          </span>
+          <span
+            aria-hidden="true"
+            className="grid h-10 w-10 place-items-center rounded-full bg-accent text-white transition-transform duration-200 ease-ui group-hover/more:translate-x-1"
+          >
+            →
+          </span>
+        </a>
+
+        {secondary.length > 0 && (
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+            {secondary.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Open ${link.label} for ${entry.title}`}
+                className="inline-flex min-h-11 items-center font-mono text-[11px] uppercase tracking-[0.12em] text-ink-soft hover:text-ink"
+              >
+                {link.label} ↗
+              </a>
+            ))}
+          </div>
+        )}
+      </Reveal>
+
+      {entry.visual && (
+        <Reveal variant="scale" className="row-media">
+          <a
+            href={mediaHref}
+            target={isCaseStudy ? undefined : "_blank"}
+            rel={isCaseStudy ? undefined : "noopener noreferrer"}
+            aria-label={`Open ${entry.title}`}
+            className="group/img block overflow-hidden bg-plate"
+          >
+            <img
+              src={entry.visual.src}
+              alt={entry.visual.alt}
+              loading="lazy"
+              className={`w-full transition-transform duration-500 ease-ui group-hover/img:scale-[1.02] ${
+                entry.visual.contain
+                  ? "aspect-[4/3] object-contain p-12 md:p-16"
+                  : "aspect-[4/3] object-cover"
+              }`}
+            />
+          </a>
+        </Reveal>
+      )}
+    </article>
+  );
+}
+
 export default function Projects() {
   return (
     <section id="projects" className="py-[clamp(96px,12vw,160px)]">
       <div className="mx-auto w-full max-w-[1200px] px-6 md:px-10">
         <Reveal variant="fade">
-          <div className="grid gap-6 md:grid-cols-12 md:gap-6">
-            <div className="md:col-span-9 md:col-start-4">
-              <p className="font-mono text-xs uppercase tracking-[0.18em] text-accent">
-                The Work
-              </p>
-              <h2 className="mt-4 max-w-[20ch] font-sans text-[clamp(2rem,4.5vw,3.5rem)] font-bold leading-[1.02] tracking-[-0.02em] text-ink md:max-w-none md:text-balance">
-                Selected systems, built and deployed
-              </h2>
-            </div>
+          <div className="md:pl-[calc(3rem+2.5rem)]">
+            <p className="font-mono text-xs uppercase tracking-[0.18em] text-accent">
+              The Work
+            </p>
+            <h2 className="mt-4 max-w-[20ch] font-sans text-[clamp(2rem,4.5vw,3.5rem)] font-bold leading-[1.02] tracking-[-0.02em] text-ink md:max-w-none md:text-balance">
+              Seven systems, built and deployed
+            </h2>
           </div>
         </Reveal>
 
-        <div aria-hidden className="mt-10 border-t border-card-border md:mt-14" />
-
-        <div className="mt-16 flex flex-col gap-20 md:mt-24 md:gap-32 lg:gap-36">
-          {DISPLAY_ORDER.map((id, i) => {
-            const entry = PROJECTS.find((p) => p.id === id);
+        <div className="mt-12 md:mt-16">
+          {DISPLAY_ORDER.map((id, index) => {
+            const entry = PROJECTS.find((project) => project.id === id);
             if (!entry) return null;
-            const isReversed = i % 2 !== 0;
-
-            return (
-              <div key={entry.id} className="relative">
-                {entry.variant === "chapter" ? (
-                  <ChapterCard entry={entry} index={i} />
-                ) : (
-                  <ShowcaseRow
-                    entry={entry}
-                    index={i}
-                    reversed={isReversed}
-                  />
-                )}
-                {i < DISPLAY_ORDER.length - 1 && (
-                  <div
-                    aria-hidden
-                    className="mt-20 h-px w-full bg-hairline md:mt-32 lg:mt-36"
-                  />
-                )}
-              </div>
-            );
+            return <ProjectRow key={entry.id} entry={entry} index={index} />;
           })}
+        </div>
+      </div>
+
+      <div className="mt-16 bg-accent-deep text-white md:mt-24">
+        <div className="mx-auto flex w-full max-w-[1200px] flex-col gap-8 px-6 py-14 md:flex-row md:items-end md:justify-between md:px-10 md:py-16">
+          <div>
+            <p className="font-mono text-xs uppercase tracking-[0.18em] text-white/70">
+              More work
+            </p>
+            <h2 className="mt-4 max-w-[18ch] font-sans text-[clamp(1.75rem,3.5vw,2.75rem)] font-bold leading-[1.05] tracking-[-0.02em] text-white text-balance">
+              This page shows seven systems. The repository has more.
+            </h2>
+            <p className="mt-4 font-mono text-[11px] uppercase tracking-[0.12em] text-white/70">
+              Source code, experiments, and current work
+            </p>
+          </div>
+
+          <a
+            href="https://github.com/awun8191"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group/repo inline-flex min-h-11 items-center gap-3 text-white"
+          >
+            <span className="text-[0.9375rem] font-medium underline-offset-4 group-hover/repo:underline">
+              View all repositories
+            </span>
+            <span
+              aria-hidden="true"
+              className="grid h-10 w-10 place-items-center rounded-full bg-white text-accent-deep transition-transform duration-200 ease-ui group-hover/repo:translate-x-1"
+            >
+              →
+            </span>
+          </a>
         </div>
       </div>
     </section>
