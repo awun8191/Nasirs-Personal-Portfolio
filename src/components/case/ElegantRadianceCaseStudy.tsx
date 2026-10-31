@@ -28,13 +28,13 @@ export default function ElegantRadianceCaseStudy() {
             <figure className="w-full max-w-[560px] shrink-0 md:max-w-[46%]">
               <div className="overflow-hidden rounded-sm border border-card-border">
                 <img
-                  src="/projects/elegant-radiance-luxe.png"
+                  src="/projects/elegant-radiance-luxe.webp"
                   alt="Elegant Radiance Luxe luxury e-commerce storefront"
                   className="aspect-[16/10] w-full object-cover"
                 />
               </div>
               <figcaption className="mt-3 font-mono text-[0.6875rem] uppercase tracking-[0.14em] text-muted">
-                LIVE STOREFRONT / LUXURY BEAUTY COMMERCE
+                LIVE STOREFRONT / LUXURY FASHION &amp; BEAUTY COMMERCE
               </figcaption>
             </figure>
           </div>

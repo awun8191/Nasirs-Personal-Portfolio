@@ -186,8 +186,8 @@ export const PROJECTS: ProjectEntry[] = [
     liveUrl: "https://elegantradianceluxe.com/",
     variant: "medium",
     visual: {
-      src: "/projects/elegant-radiance-luxe.png",
-      alt: "Elegant Radiance Luxe online beauty store interface",
+      src: "/projects/elegant-radiance-luxe.webp",
+      alt: "Elegant Radiance Luxe online storefront hero",
       caption: "ONLINE STOREFRONT & CLOUD RUN API",
     },
   },
@@ -258,7 +258,7 @@ export const PROJECTS: ProjectEntry[] = [
     liveUrl: "https://www.awun.dev/",
     variant: "chapter",
     visual: {
-      src: "/projects/awun.png",
+      src: "/projects/awun.webp",
       alt: "AWUN AI social commerce platform",
       caption: "AI STOREFRONT & CHAT COMMERCE",
     },
