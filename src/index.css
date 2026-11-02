@@ -257,6 +257,13 @@
   --case-accent-deep: #9f1239;
   --case-accent-bright: #e11d48;
 }
+/* Vigil runs a strict monochrome interface, so its page carries graphite
+   instead of a hue. The chrome stays blue. */
+.case-graphite {
+  --case-accent: #334155;
+  --case-accent-deep: #1e293b;
+  --case-accent-bright: #475569;
+}
 
 /* Diagram slot contract (CASE-STUDY-SYSTEM.md section 4) */
 .diagram-slot {

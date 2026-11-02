@@ -70,8 +70,9 @@ export type CaseStudy = {
 };
 
 // Route order is the homepage grid order (spec section 8). Next Project
-// wraps: soiling -> traks -> engineering-hub -> rag -> nuesa -> awun.
+// wraps: vigil -> engineering-hub -> rag -> nuesa -> awun -> soiling -> traks -> vigil.
 export const CASE_STUDY_ORDER = [
+  "vigil",
   "soiling-detection",
   "traks",
   "engineering-hub",
@@ -79,6 +80,112 @@ export const CASE_STUDY_ORDER = [
   "nuesa-academia",
   "awun",
 ] as const;
+
+// ---------------------------------------------------------------------------
+// 00 / Vigil: The Quiet Machine (Graphite)
+// ---------------------------------------------------------------------------
+export const vigilStudy: CaseStudy = {
+  slug: "vigil",
+  accentClass: "case-graphite",
+  kicker: "SELF-HOSTED AGENT RUNTIME",
+  title: "Vigil",
+  meta: "OPEN SOURCE / APACHE 2.0 / ALPHA",
+  description:
+    "A proactive personal assistant that runs on your own server. Vigil reads the accounts you connect, decides which events need attention, and turns each event into an action card. Approved work runs inside a capped Docker sandbox, and the run state lives in PostgreSQL.",
+  hero: {
+    field: "white",
+    headlineMetrics: [
+      { key: "ApiPaths", label: "API PATHS", value: "46" },
+      { key: "Tests", label: "TEST SUITE", value: "612" },
+      { key: "Dimensions", label: "EMBEDDING DIMENSIONS", value: "384" },
+    ],
+  },
+  sections: [
+    {
+      index: "01",
+      title: "Overview",
+      body: "The backend is a FastAPI service of 14 domain modules. Each module keeps its Protocol contracts in repository.py, its mechanism in service.py, and a router factory in router.py. One PostgreSQL 16 database holds the relational state, the job queue, and the vector memory. The deployment needs no Redis, no Celery, and no separate vector store.",
+    },
+    {
+      index: "02",
+      title: "The Problem",
+      body: "An agent loop usually keeps its state in a Python thread or a generator. When the loop waits for a human approval, the process stays in memory for hours, and a restart loses the run. Parallel tool calls make this worse: the model provider requires a result for every call ID before the next turn, and a naive loop cannot supply the ones that wait.",
+    },
+    {
+      index: "03",
+      title: "The Run Loop",
+      body: "Six stages run in order. The partition stage splits the parallel tool calls into three groups: immediate work, background jobs, and gated approvals. The barrier writes a result row for every call ID before the next model turn. When a call needs a person, the run becomes a database row and the process exits.",
+      flow: [
+        "LOAD CONTEXT",
+        "COMPACT CONTEXT",
+        "CALL THE MODEL",
+        "PARTITION CALLS",
+        "EXECUTE",
+        "PERSIST",
+      ],
+      diagrams: [{ id: "02", label: "RUN STATE MACHINE", aspect: "21:9" }],
+    },
+    {
+      index: "04",
+      title: "The Queue",
+      body: "The queue is a table, not a broker. A worker claims a job with FOR UPDATE SKIP LOCKED and orders the claim by priority with aging. Each claim refreshes a heartbeat, and a reaper returns a job to the queue after 90 seconds without one. A crash therefore costs 90 seconds, not the job.",
+      ruled: [
+        { label: "CLAIM", value: "FOR UPDATE SKIP LOCKED, PRIORITY WITH AGING" },
+        { label: "HEARTBEAT", value: "REFRESHED ON EVERY CLAIM" },
+        { label: "REAPER", value: "RECOVERS A JOB AFTER 90 SECONDS" },
+        { label: "SCHEMA", value: "18 TABLES OF 21 REQUIRED, MIGRATIONS 0001 TO 0003" },
+      ],
+    },
+    {
+      index: "05",
+      title: "Memory and Decay",
+      body: "Memory runs on a local int8 ONNX model, bge-small-en-v1.5, at 384 dimensions. A search combines cosine similarity with an exponential decay that halves the score every 30 days. A floor of 0.35 keeps an old fact in reach, and a score above 0.65 overrides the keyword match.",
+      ruled: [
+        { label: "EMBEDDER", value: "BGE-SMALL-EN-V1.5, INT8 ONNX, CLS POOLING" },
+        { label: "INDEX", value: "PGVECTOR, 384 DIMENSIONS, EF_SEARCH 200" },
+        { label: "DECAY", value: "HALF-LIFE 30 DAYS, FLOOR 0.35" },
+        { label: "OVERRIDE", value: "SCORE ABOVE 0.65 WINS" },
+      ],
+      diagrams: [{ id: "01", label: "SYSTEM ARCHITECTURE", aspect: "16:9" }],
+    },
+    {
+      index: "06",
+      title: "The Sandbox",
+      body: "The sandbox is a fixed-schema runner, not a socket proxy. A proxy filters routes, and one tool call can carry any payload past it. The runner accepts a small set of typed operations, caps CPU and memory, and enforces a workspace quota. On pause it snapshots the workspace, and on resume it starts a clean container.",
+      ruled: [
+        { label: "MODEL", value: "FIXED TOOL SCHEMA, NO HOST SHELL" },
+        { label: "CAPS", value: "CPU, MEMORY, WORKSPACE QUOTA" },
+        { label: "PAUSE", value: "WORKSPACE SNAPSHOT TO THE HOST" },
+        { label: "APPROVAL", value: "EVERY EXTERNAL SIDE EFFECT WAITS" },
+      ],
+    },
+    {
+      index: "07",
+      title: "The Client",
+      body: "The web client is React 19 and Vite. It shows the home briefing, streams chat tokens, and writes settings. One contract file holds the API types, and one switch at the bottom of the client selects the live client or the fixture client. The stream uses fetch with a body reader, because EventSource cannot send an authorization header.",
+    },
+    {
+      index: "08",
+      title: "Measured Limits",
+      body: "The project records measurements, not estimates. HNSW recall at 100k rows is 0.561 against a 0.95 target, so the production query passes only because the planner sorts the tenant rows exactly. The indexer measured 4.08 chunks per second and 395 MB peak resident memory before the encoder fix. The fix is merged, and a fresh measurement is pending.",
+      ruled: [
+        { label: "RECALL AT 50", value: "0.561 AT 100K ROWS / TARGET 0.95" },
+        { label: "THROUGHPUT", value: "4.08 CHUNKS PER SECOND / PRE-FIX" },
+        { label: "PEAK MEMORY", value: "395 MB / TARGET 350 MB" },
+        { label: "TEST SUITE", value: "612 TESTS, 469 IN CI" },
+      ],
+    },
+    {
+      index: "09",
+      title: "Links",
+      body: "The source is public under the Apache 2.0 license. The README holds the quickstart, the architecture note is in docs/ARCHITECTURE.md, and the measured limits are in docs/BENCHMARKS.md.",
+    },
+  ],
+  links: {
+    github: "https://github.com/awun8191/vigil",
+  },
+  nextSlug: "engineering-hub",
+};
 
 // ---------------------------------------------------------------------------
 // 01 / Soiling Detection System: The Instrument Panel (Solar Amber)
@@ -355,7 +462,7 @@ export const traksStudy: CaseStudy = {
     },
   ],
   links: {},
-  nextSlug: "engineering-hub",
+  nextSlug: "vigil",
 };
 
 // ---------------------------------------------------------------------------
@@ -1065,6 +1172,7 @@ export const awunStudy: CaseStudy = {
 };
 
 export const CASE_STUDIES: Record<string, CaseStudy> = {
+  vigil: vigilStudy,
   "soiling-detection": soilingStudy,
   traks: traksStudy,
   "engineering-hub": engineeringHubStudy,

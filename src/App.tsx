@@ -11,6 +11,7 @@ import { useRoute } from "./router";
 // Case study routes load on demand. They carry most of the JS, and nobody
 // needs them to paint the homepage hero.
 const SoilingCaseStudy = lazy(() => import("./components/case/SoilingCaseStudy"));
+const VigilCaseStudy = lazy(() => import("./components/case/VigilCaseStudy"));
 const TraksCaseStudy = lazy(() => import("./components/case/TraksCaseStudy"));
 const EngineeringHubCaseStudy = lazy(() => import("./components/case/EngineeringHubCaseStudy"));
 const ElegantRadianceCaseStudy = lazy(() => import("./components/case/ElegantRadianceCaseStudy"));
@@ -53,6 +54,7 @@ function HomePage() {
 // Route table (CASE-STUDY-SYSTEM.md section 8). The homepage EXPLORE
 // PROJECT links already point at these paths; the router intercepts them.
 const CASE_ROUTES: Record<string, LazyExoticComponent<ComponentType>> = {
+  "/projects/vigil": VigilCaseStudy,
   "/projects/soiling-detection": SoilingCaseStudy,
   "/projects/traks": TraksCaseStudy,
   "/projects/engineering-hub": EngineeringHubCaseStudy,

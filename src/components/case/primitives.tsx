@@ -14,6 +14,8 @@ import type {
 // Engineering Hub's ids resolve to a real asset, the rest stay placeholders.
 // ---------------------------------------------------------------------------
 const DIAGRAM_REGISTRY: Record<string, string> = {
+  "vigil:01": "/assets/diagrams/vigil-01.svg",
+  "vigil:02": "/assets/diagrams/vigil-02.svg",
   "engineering-hub:01": "/assets/diagrams/engineering-hub-01.svg",
   "engineering-hub:02": "/assets/diagrams/engineering-hub-02.svg",
   "engineering-hub:03": "/assets/diagrams/engineering-hub-03.svg",
