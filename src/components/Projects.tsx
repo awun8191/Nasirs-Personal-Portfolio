@@ -9,6 +9,7 @@ import type { ProjectEntry } from "../data/site";
 // Copy is ASD-STE100: short sentences, active voice, facts in prose.
 
 const DISPLAY_ORDER = [
+  "vigil",
   "engineering-hub",
   "queen-brique",
   "elegant-radiance-luxe",

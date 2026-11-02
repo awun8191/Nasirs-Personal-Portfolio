@@ -120,6 +120,17 @@ export type ProjectEntry = {
 
 export const PROJECTS: ProjectEntry[] = [
   {
+    id: "vigil",
+    title: "Vigil",
+    line: "Vigil is a self-hosted assistant that watches your inbox, tasks, and deadlines. It sends an action card for each event and runs the approved work in a Docker sandbox. A paused run keeps its state in PostgreSQL, not in memory.",
+    href: "/projects/vigil",
+    githubUrl: "https://github.com/awun8191/vigil",
+    visual: {
+      src: "/projects/vigil.webp",
+      alt: "Vigil web client briefing with action cards and run limits",
+    },
+  },
+  {
     id: "engineering-hub",
     title: "Engineering Hub",
     line: "Engineering Hub gives each student an adaptive quiz. The quiz selects the next question from the last answer. More than 250 students use it across the faculty.",
