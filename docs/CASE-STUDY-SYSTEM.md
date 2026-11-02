@@ -307,6 +307,7 @@ Routes (already the EXPLORE PROJECT targets in `src/data/site.ts`, order is the 
 
 | Route | Component | Page accent |
 |---|---|---|
+| `/projects/vigil` | `VigilCaseStudy` | Graphite |
 | `/projects/soiling-detection` | `SoilingCaseStudy` | Solar Amber |
 | `/projects/traks` | `TraksCaseStudy` | Safety Red |
 | `/projects/engineering-hub` | `EngineeringHubCaseStudy` | Study Violet |
@@ -315,7 +316,7 @@ Routes (already the EXPLORE PROJECT targets in `src/data/site.ts`, order is the 
 | `/projects/awun` | `AwunCaseStudy` | Terracotta |
 
 - React Router route table in `src/App.tsx` or a dedicated `src/routes.tsx` (build decision, not this spec)
-- Next Project order wraps: soiling -> traks -> engineering-hub -> rag -> nuesa -> awun -> (back to soiling)
+- Next Project order wraps: vigil -> engineering-hub -> rag -> nuesa -> awun -> soiling -> traks -> (back to vigil)
 - EXPLORE PROJECT links on the homepage already point to these routes; no homepage change needed
 - Back link targets `/#projects` so the user lands on the projects grid
 - Scroll restoration: each route scrolls to top on mount (or `ScrollRestoration`); no scroll listeners
