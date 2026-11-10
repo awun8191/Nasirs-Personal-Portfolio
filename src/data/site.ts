@@ -217,7 +217,7 @@ export const PROJECTS: ProjectEntry[] = [
     liveUrl: "https://www.awun.dev/",
     visual: {
       src: "/projects/awun.webp",
-      alt: "AWUN storefront landing page",
+      alt: "AWUN landing page hero and vendor dashboard preview",
     },
   },
 ];
