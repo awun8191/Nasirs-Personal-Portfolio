@@ -103,3 +103,7 @@ No manual deployment step is required. Merging to `main` triggers the release.
 ## Canonical note
 
 This repository is the canonical personal portfolio for Dauda Nasir Omotola, a Systems Engineer focused on Backend and Mobile development with AI-Integrated Systems. It is the authoritative source for the site at https://raregazzetto.me.
+
+## License
+
+All Rights Reserved — Copyright © 2026 Dauda Nasir Omotola. See [LICENSE](LICENSE) for details. You may not copy, modify, or redistribute this code or its content without prior written permission.
