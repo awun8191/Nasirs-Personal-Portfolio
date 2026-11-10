@@ -104,6 +104,20 @@ No manual deployment step is required. Merging to `main` triggers the release.
 
 This repository is the canonical personal portfolio for Dauda Nasir Omotola, a Systems Engineer focused on Backend and Mobile development with AI-Integrated Systems. It is the authoritative source for the site at https://raregazzetto.me.
 
+## Release monitoring
+
+Three GitHub Actions keep releases observable — no extra accounts required:
+
+| Workflow | Trigger | What it does |
+| --- | --- | --- |
+| `Deploy to GitHub Pages` ([node.js.yml](.github/workflows/node.js.yml)) | Push to `main` + manual dispatch | Builds and publishes `dist/` to GitHub Pages (`raregazzetto.me`) |
+| `Release Monitor` ([release-monitor.yml](.github/workflows/release-monitor.yml)) | After each Pages deploy + hourly schedule + manual dispatch | Waits ~60s for propagation, checks `https://raregazzetto.me` returns 200, smoke-tests `/sitemap.xml` and `/robots.txt`, verifies the Pages deployment API; on failure it files (or reuses) a `release-monitor` issue so you don't get duplicate alerts |
+| `Create Release` ([release.yml](.github/workflows/release.yml)) | Push a `v*` tag, or manual dispatch with an optional tag | Creates a GitHub Release with auto-generated notes pointing at the live site — use `git tag v1.0.0 && git push origin v1.0.0` to checkpoint a release |
+
+**Rollback:** revert the offending commit and push to `main` (`git revert <sha> && git push`) — Pages redeploys automatically. The hourly uptime check in Release Monitor is your safety net to confirm the rollback went live.
+
+To watch a release: open the repo's **Actions** tab → `Release Monitor`, or check **Releases** for the `v*` checkpoint.
+
 ## License
 
 All Rights Reserved — Copyright © 2026 Dauda Nasir Omotola. See [LICENSE](LICENSE) for details. You may not copy, modify, or redistribute this code or its content without prior written permission.

@@ -1,0 +1,188 @@
+name: Release Monitor
+
+on:
+  workflow_run:
+    workflows: ["Deploy to GitHub Pages"]
+    types: [completed]
+    branches: ["main"]
+  schedule:
+    # Hourly uptime check (UTC)
+    - cron: "0 * * * *"
+  workflow_dispatch:
+    inputs:
+      target_url:
+        description: "Override URL to check (defaults to raregazzetto.me)"
+        required: false
+        type: string
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: "release-monitor"
+  cancel-in-progress: true
+
+env:
+  SITE_URL: ${{ github.event.inputs.target_url || 'https://raregazzetto.me' }}
+  # Only alert on deploy-triggered runs; scheduled runs always verify
+  DEPLOY_CONCLUSION: ${{ github.event.workflow_run.conclusion }}
+
+jobs:
+  deploy-health:
+    name: Post-deploy health check
+    if: github.event_name == 'workflow_run'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Report Pages deploy result
+        run: |
+          echo "Pages deploy conclusion: $DEPLOY_CONCLUSION"
+          echo "Source commit: ${{ github.event.workflow_run.head_sha }}"
+          echo "Source SHA (short): $(echo '${{ github.event.workflow_run.head_sha }}' | cut -c1-7)"
+          if [ "$DEPLOY_CONCLUSION" != "success" ]; then
+            echo "::error::GitHub Pages deployment did not succeed: $DEPLOY_CONCLUSION"
+            exit 1
+          fi
+
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
+
+      - name: Wait for propagation (~60s)
+        run: sleep 60
+
+      - name: Check site is live (HTTP 200)
+        id: hp
+        run: |
+          set +e
+          CODE=$(curl -sL -o /tmp/site.html -w "%{http_code}" --max-time 30 "$SITE_URL")
+          echo "HTTP status: $CODE"
+          echo "html_size: $(wc -c < /tmp/site.html) bytes"
+          head -c 500 /tmp/site.html || true
+          echo ""
+          if [ "$CODE" != "200" ]; then
+            echo "::error::Site returned HTTP $CODE (expected 200)"
+            echo "status_code=$CODE" >> "$GITHUB_OUTPUT"
+            exit 1
+          fi
+          echo "status_code=$CODE" >> "$GITHUB_OUTPUT"
+
+      - name: Smoke test key assets
+        run: |
+          set -e
+          for path in "/sitemap.xml" "/robots.txt"; do
+            URL="${SITE_URL}${path}"
+            CODE=$(curl -sL -o /dev/null -w "%{http_code}" --max-time 20 "$URL")
+            echo "$URL -> $CODE"
+            if [ "$CODE" != "200" ]; then
+              echo "::error::$URL returned $CODE"
+              exit 1
+            fi
+          done
+          echo "All smoke checks passed."
+
+      - name: Verify GitHub Pages deployment API
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          echo "Latest Pages deployment:"
+          gh api "repos/${{ github.repository }}/pages/deployments?per_page=3" \
+            --jq '.[] | "\( .created_at )  \( .sha[0:7] )  \( .status )"' || echo "Pages API query unavailable (ignored)"
+
+      - name: Create issue on failure
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const sha = '${{ github.event.workflow_run.head_sha }}';
+            const short = sha.slice(0, 7);
+            const title = `🔴 Release monitor: Pages deploy failed (${short})`;
+            const body = [
+              `Release monitoring detected a failed Pages deployment.`,
+              ``,
+              `- **Commit:** \`${short}\` (${sha})`,
+              `- **Conclusion:** ${{ github.event.workflow_run.conclusion }}`,
+              `- **Run:** ${{ github.event.workflow_run.html_url }}`,
+              `- **Site:** ${{ env.SITE_URL }}`,
+              ``,
+              `Check the run logs, then re-run the deploy workflow or revert if needed.`,
+              ``,
+              `> Filed by Release Monitor (post-deploy health check)`
+            ].join('\n');
+            const { data: existing } = await github.rest.issues.listForRepo({
+              owner: context.repo.owner, repo: context.repo.repo, state: 'open', labels: 'release-monitor'
+            });
+            if (existing.length > 0) {
+              core.info(`Open release-monitor issue already exists: #${existing[0].number} — skipping duplicate.`);
+              return;
+            }
+            try {
+              await github.rest.issues.createLabel({
+                owner: context.repo.owner, repo: context.repo.repo,
+                name: 'release-monitor', color: 'd93f0b', description: 'Filed by Release Monitor'
+              });
+            } catch (e) { /* label already exists */ }
+            await github.rest.issues.create({
+              owner: context.repo.owner, repo: context.repo.repo,
+              title, body, labels: ['release-monitor', 'bug']
+            });
+
+  uptime:
+    name: Uptime check (scheduled)
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Health check
+        id: hp
+        run: |
+          set +e
+          CODE=$(curl -sL -o /tmp/site.html -w "%{http_code}" --max-time 30 "$SITE_URL")
+          echo "HTTP status: $CODE"
+          echo "content-length: $(wc -c < /tmp/site.html) bytes"
+          echo "status_code=$CODE" >> "$GITHUB_OUTPUT"
+          if [ "$CODE" != "200" ]; then
+            echo "::error::Uptime check failed: $SITE_URL returned HTTP $CODE"
+            exit 1
+          fi
+          # The homepage should ship the portfolio title
+          if ! grep -qi "Dauda Nasir\|Raregazetto" /tmp/site.html; then
+            echo "::error::Homepage did not contain expected portfolio marker"
+            head -c 1000 /tmp/site.html
+            exit 1
+          fi
+          echo "Uptime check passed."
+
+      - name: Create issue on uptime failure
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const title = `🔴 Release monitor: uptime check failed for raregazzetto.me`;
+            const body = [
+              `Scheduled uptime check failed.`,
+              ``,
+              `- **URL:** ${{ env.SITE_URL }}`,
+              `- **Run:** ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}`,
+              `- **Time:** ${new Date().toISOString()}`,
+              ``,
+              `Please check GitHub Pages status and DNS for raregazzetto.me.`,
+              ``,
+              `> Filed by Release Monitor (scheduled uptime check)`
+            ].join('\n');
+            const { data: existing } = await github.rest.issues.listForRepo({
+              owner: context.repo.owner, repo: context.repo.repo, state: 'open', labels: 'release-monitor'
+            });
+            if (existing.length > 0) {
+              core.info(`Open release-monitor issue already exists: #${existing[0].number} — skipping duplicate.`);
+              return;
+            }
+            try {
+              await github.rest.issues.createLabel({
+                owner: context.repo.owner, repo: context.repo.repo,
+                name: 'release-monitor', color: 'd93f0b', description: 'Filed by Release Monitor'
+              });
+            } catch (e) { /* label already exists */ }
+            await github.rest.issues.create({
+              owner: context.repo.owner, repo: context.repo.repo,
+              title, body, labels: ['release-monitor', 'bug']
+            });

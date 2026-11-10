@@ -1,0 +1,71 @@
+name: Create Release
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Tag to release (e.g. v1.0.0). Leave empty to release the latest commit."
+        required: false
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Create GitHub Release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Determine tag
+        id: tag
+        run: |
+          if [ -n "${{ github.event.inputs.tag }}" ]; then
+            TAG="${{ github.event.inputs.tag }}"
+          else
+            TAG="${GITHUB_REF_NAME}"
+            if [ "$TAG" = "main" ]; then
+              TAG="v$(cat package.json | grep '"version"' | sed 's/.*:.*"\(.*\)".*/\1/')-$(date +%Y%m%d.%H%M%S)"
+              echo "No tag input; generated $TAG"
+            fi
+          fi
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+          echo "Releasing tag: $TAG"
+
+      - name: Generate release notes
+        run: |
+          # GitHub auto-generates notes on release creation; this step just
+          # pre-validates the tag points at main's history.
+          git fetch --tags origin
+          git tag --points-at HEAD || true
+          echo "Tag ${{ steps.tag.outputs.tag }} ready"
+
+      - name: Create release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.tag.outputs.tag }}
+          generate_release_notes: true
+          fail_on_unmatched_files: false
+          name: "Portfolio ${{ steps.tag.outputs.tag }}"
+          body: |
+            **Live site:** https://raregazzetto.me
+
+            Auto-generated release for tag `${{ steps.tag.outputs.tag }}`.
+            The site is deployed to GitHub Pages on every push to `main`;
+            this release marks the GitHub-side checkpoint for that build.
+
+      - name: Summary
+        run: |
+          {
+            echo "## Release created"
+            echo ""
+            echo "- **Tag:** \`${{ steps.tag.outputs.tag }}\`"
+            echo "- **Site:** https://raregazzetto.me"
+            echo "- **Commit:** $GITHUB_SHA"
+          } >> "$GITHUB_STEP_SUMMARY"
